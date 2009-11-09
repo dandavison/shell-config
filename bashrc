@@ -166,6 +166,7 @@ shopt -s cmdhist ## stores multiline entries as a single history entry
 ## export EDITOR='emacs -nw -q'
 
 export luscinia=dan@luscinia.princeton.edu
+export tichodroma=dan@tichodroma.princeton.edu
 export yakuba=dan@yakuba.princeton.edu
 export oak=davison@oak.well.ox.ac.uk
 export gate=davison@gate.stats.ox.ac.uk ## 163.1.210.59 ## 
