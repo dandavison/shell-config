@@ -184,3 +184,5 @@ export arizona=ddavison@arizona.princeton.edu
 ## http://linuxart.com/log/archives/2005/10/13/super-useful-inputrc/
 export INPUTRC=~/.inputrc
 ## export R_HOME=/usr/local/src/R/R-svn-trunk
+
+source /usr/local/src/git/contrib/completion/git-completion.bash 
