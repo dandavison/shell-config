@@ -102,7 +102,7 @@ PS2=''
 [ $machine != compute_node ] && eval "`dircolors -b ~/.dircolors`"
 
 # export PATH=$HOME/bin:${PATH%:$HOME/bin}:/sbin
-export PATH=$HOME/bin:$PATH:$HOME/src/plants:/usr/local/arm-elf/bin:/usr/local/src/wmorgan-git-misc/bin
+export PATH=$HOME/bin:$PATH:$HOME/src/plants:/usr/local/arm-elf/bin:/usr/local/src/willgit/bin
 
 ## why do I get ~/bin twice?
 [ $HOSTNAME == "oak" ] && export PATH=$HOME/lib/shellfish:$PATH
