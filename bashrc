@@ -169,6 +169,7 @@ export luscinia=dan@luscinia.princeton.edu
 export tichodroma=dan@tichodroma.princeton.edu
 export yakuba=dan@yakuba.princeton.edu
 export oak=davison@oak.well.ox.ac.uk
+export ash=davison@ash.well.ox.ac.uk
 export gate=davison@gate.stats.ox.ac.uk ## 163.1.210.59 ## 
 export genecluster=davison@genecluster.stats.ox.ac.uk ##'163.1.210.63'
 export wtchg_cluster=davison@login1-cluster1.well.ox.ac.uk
