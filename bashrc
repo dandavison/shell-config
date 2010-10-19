@@ -89,7 +89,7 @@ case $machine in
 	export PROMPT_COMMAND='PS1="$(colourise $prompt_col \\w)$(colourise $red "$(git_branch)")$(colourise $prompt_col $prompt_char) "'
 	;;
     *)
-	prompt_col=$green
+	prompt_col=$blue
 	export PS1='\[\033[${prompt_col}m\]\h:\w$prompt_char \[\033[0m\]'
 	export PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"' ;;
 esac
@@ -166,13 +166,12 @@ shopt -s cmdhist ## stores multiline entries as a single history entry
 ## export EDITOR='emacs -nw -q'
 
 export luscinia=dan@luscinia.princeton.edu
-export tichodroma=dan@tichodroma.princeton.edu
 export yakuba=dan@yakuba.princeton.edu
 export oak=davison@oak.well.ox.ac.uk
 export ash=davison@ash.well.ox.ac.uk
 export gate=davison@gate.stats.ox.ac.uk ## 163.1.210.59 ## 
 export genecluster=davison@genecluster.stats.ox.ac.uk ##'163.1.210.63'
-export wtchg_cluster=davison@login1-cluster1.well.ox.ac.uk
+export wtchg-cluster=davison@login1-cluster1.well.ox.ac.uk
 export arizona=ddavison@arizona.princeton.edu
 
 # alias ssh-zeon='ssh -X davison@zeon.well.ox.ac.uk'
