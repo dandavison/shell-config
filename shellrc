@@ -1,0 +1,84 @@
+#!/bin/bash
+
+export BROWSER=google-chrome
+export EDITOR=emacsclient
+
+# export PATH=$HOME/bin:${PATH%:$HOME/bin}:/sbin
+export PATH=$HOME/bin:$HOME/src/shellfish/bin:$PATH:/usr/local/arm-elf/bin:/usr/local/src/willgit/bin
+
+## why do I get ~/bin twice?
+## [ $HOSTNAME == "oak" ] && export PATH=$HOME/lib/shellfish:$PATH
+
+
+alias c='cat'
+alias cdt='cd $_'
+
+alias emacs-fast='emacs -Q -l /home/dan/src/config/emacs/vanilla.el'
+alias e='echo'
+alias exit='sync-history ; builtin exit'
+alias f='find'
+alias fusermount='fusermount -uz'
+alias g='grep'
+alias gb='git branch'
+alias gc='git checkout'
+alias gcm='git checkout master'
+alias gd='git diff'
+alias gl='git log'
+alias gls='git ls-files'
+alias gs='git stash'
+alias gst='git status'
+alias gitk-all='gitk --all --simplify-by-decoration'
+alias h='head'
+alias gt='gthumb'
+alias hs='sync-history'
+alias less='less -S'
+alias l='ls -1'
+alias ll='ls -lh'
+alias lt='ls -lht'
+alias ls='/bin/ls --color=tty'
+alias mairix='mairix -t'
+alias ma='mairix -t'
+alias mk='mkdir'
+alias m='more'
+alias mutt='LANG=en mutt -y'
+alias mu='mutt'
+alias org='cd ~/org-mode'
+alias pol='~/src/plants/plants-org-image-links'
+alias ps2pdf='ps2pdf -dAutoRotatePages=/None'
+alias ps-me='ps -u `whoami`'
+alias r='Rscript'
+alias rlpr='ssh ddavison@hats.princeton.edu lpr -P xebutleraptsd'
+alias R='R --silent --no-restore --no-save --vanilla'
+alias s='sync-dirs'
+alias screen-external='xrandr --auto && xrandr --output LVDS1 --off && pgrep compiz && compiz --replace &'
+alias screen-internal='xrandr --auto && xrandr --output VGA1 --off'
+alias sshfs='sshfs -o idmap=user'
+alias sync-history='history -a ; history -n'
+alias tm='tree | more'
+alias tree='tree -AC --noreport'
+alias t='tree'
+alias top='top -d.8'
+alias tl='topleft'
+alias xdvi='xdvi -expert -s 5'
+alias xpdf='xpdf -fullscreen -bg white'
+alias xterm='~/src/scripts/xterm-dan'
+alias x='xterm'
+alias tailmessages='tail -f /var/log/messages'
+
+export luscinia=dan@luscinia.princeton.edu
+export tichodroma=dan@tichodroma.princeton.edu
+export yakuba=dan@yakuba.princeton.edu
+export oak=davison@oak.well.ox.ac.uk
+export ash=davison@ash.well.ox.ac.uk
+export gate=davison@gate.stats.ox.ac.uk ## 163.1.210.59 ## 
+export genecluster=davison@genecluster.stats.ox.ac.uk ##'163.1.210.63'
+export wtchg_cluster=davison@login1-cluster1.well.ox.ac.uk
+export arizona=ddavison@arizona.princeton.edu
+export cetus=ddavison@cetus.princeton.edu
+export trogon=martin@192.168.2.3
+
+## http://linuxart.com/log/archives/2005/10/13/super-useful-inputrc/
+export INPUTRC=~/.inputrc
+## export R_HOME=/usr/local/src/R/R-svn-trunk
+
+
