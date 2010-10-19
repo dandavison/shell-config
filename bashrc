@@ -10,9 +10,6 @@ else
     prompt_char='>'
 fi    
 
-export BROWSER=firefox
-export EDITOR='emacs-snapshot -nw -q'
-
 case $HOSTNAME in
     Luscinia | Tichodroma | Microtus )
 	machine=laptop ;;
@@ -101,88 +98,11 @@ PS2=''
 
 [ $machine != compute_node ] && eval "`dircolors -b ~/.dircolors`"
 
-# export PATH=$HOME/bin:${PATH%:$HOME/bin}:/sbin
-export PATH=$HOME/bin:$PATH:$HOME/src/plants:/usr/local/arm-elf/bin:/usr/local/src/willgit/bin
-
-## why do I get ~/bin twice?
-[ $HOSTNAME == "oak" ] && export PATH=$HOME/lib/shellfish:$PATH
-
-
-alias c='cat'
-alias emacs-fast='emacs -Q -l /home/dan/src/config/emacs/vanilla.el'
-alias e='echo'
-alias exit='sync-history ; builtin exit'
-alias f='find'
-alias g='grep'
-alias gd='getmail-dan'
-
-alias gb='git branch'
-alias gc='git checkout'
-alias gcm='git checkout master'
-alias gd='git diff'
-alias gl='git log'
-alias gs='git stash'
-alias gst='git status'
-alias gitk-all='gitk --all --simplify-by-decoration'
-alias h='head'
-alias gt='gthumb'
-alias hs='sync-history'
-alias less='less -S'
-alias l='ls -lh'
-alias lt='ls -lht'
-alias ls='/bin/ls --color=tty'
-alias mairix='mairix -t'
-alias ma='mairix -t'
-alias mk='mkdir'
-alias m='more'
-alias mutt='LANG=en mutt -y'
-alias mu='mutt'
-alias pol='~/src/plants/plants-org-image-links'
-alias ps2pdf='ps2pdf -dAutoRotatePages=/None'
-alias ps-me='ps -u `whoami`'
-alias r='Rscript'
-alias rlpr='ssh ddavison@hats.princeton.edu lpr -P xebutleraptsd'
-alias R='R --silent --no-restore --no-save --vanilla'
-alias s='sync-dirs'
-alias sync-history='history -a ; history -n'
-alias tm='tree | more'
-alias tree='tree -AC --noreport'
-alias t='tree'
-alias top='top -d.8'
-alias tl='topleft'
-alias xdvi='xdvi -expert -s 5'
-alias xpdf='xpdf -fullscreen -bg white'
-alias xterm='~/src/scripts/xterm-dan'
-alias x='xterm'
-alias tailmessages='tail -f /var/log/messages'
-
 # export HISTIGNORE="ls:l:exit:[ \t]*:&" ## '&' supresses duplicate entries
 export HISTFILESIZE=2000
 shopt -s cmdhist ## stores multiline entries as a single history entry
 
 ## http://www.caliban.org/bash/
 ## export CDPATH=.:~:~/docs:~/src:~/src/ops/docs:/mnt:/usr/src/redhat:/usr/src/redhat/RPMS:/usr/src:/usr/lib:/usr/local:
-
-## export EDITOR='emacs -nw -q'
-
-export luscinia=dan@luscinia.princeton.edu
-export yakuba=dan@yakuba.princeton.edu
-export oak=davison@oak.well.ox.ac.uk
-export ash=davison@ash.well.ox.ac.uk
-export gate=davison@gate.stats.ox.ac.uk ## 163.1.210.59 ## 
-export genecluster=davison@genecluster.stats.ox.ac.uk ##'163.1.210.63'
-export wtchg-cluster=davison@login1-cluster1.well.ox.ac.uk
-export arizona=ddavison@arizona.princeton.edu
-
-# alias ssh-zeon='ssh -X davison@zeon.well.ox.ac.uk'
-# alias ssh-morgan='ssh -X davison@morgan.well.ox.ac.uk'
-# alias ssh-octopus='ssh -X davison@octopus.well.ox.ac.uk'
-# alias ssh-zuse='ssh -X gu-dd@zuse.osc.ox.ac.uk'
-# alias ssh-queeg="ssh -X ddavison@$queeg"
-# alias ssh-redqueen="ssh -X ddavison@$redqueen"
-
-## http://linuxart.com/log/archives/2005/10/13/super-useful-inputrc/
-export INPUTRC=~/.inputrc
-## export R_HOME=/usr/local/src/R/R-svn-trunk
 
 source /usr/local/src/git/contrib/completion/git-completion.bash 
