@@ -105,4 +105,6 @@ shopt -s cmdhist ## stores multiline entries as a single history entry
 ## http://www.caliban.org/bash/
 ## export CDPATH=.:~:~/docs:~/src:~/src/ops/docs:/mnt:/usr/src/redhat:/usr/src/redhat/RPMS:/usr/src:/usr/lib:/usr/local:
 
-source /usr/local/src/git/contrib/completion/git-completion.bash 
+source ~/config/bash/git-completion.bash 
+
+source ~/config/bash/shellrc
