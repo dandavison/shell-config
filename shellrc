@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export BROWSER=google-chrome
+export BROWSER=firefox
 export EDITOR=emacsclient
 
 # export PATH=$HOME/bin:${PATH%:$HOME/bin}:/sbin
@@ -76,6 +76,10 @@ export wtchg_cluster=davison@login1-cluster1.well.ox.ac.uk
 export arizona=ddavison@arizona.princeton.edu
 export cetus=ddavison@cetus.princeton.edu
 export trogon=martin@192.168.2.3
+
+export storage=davison@storage.counsyl.com
+export science3=davison@science3.counsyl.com
+export analysis=davison@analysis.counsyl.com
 
 ## http://linuxart.com/log/archives/2005/10/13/super-useful-inputrc/
 export INPUTRC=~/.inputrc
