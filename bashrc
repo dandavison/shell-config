@@ -75,7 +75,7 @@ function git_branch {
 }
 
 case $machine in
-    laptop )
+    * )
 	if [ `whoami` = 'root' ] ; then 
 	    prompt_col=$red
 	else
@@ -83,9 +83,9 @@ case $machine in
 	fi
 	## export PS1="\[\033[${prompt_col}m\]\w${prompt_char} \[\033[0m\]"
         # export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"' what did this do? set window title?
-	export PROMPT_COMMAND='PS1="$(colourise $prompt_col \\w)$(colourise $red "$(git_branch)")$(colourise $prompt_col $prompt_char) "'
+	export PROMPT_COMMAND='PS1="$(colourise $prompt_col \\h:\\w)$(colourise $red "$(git_branch)")$(colourise $prompt_col $prompt_char) "'
 	;;
-    *)
+    * )
 	prompt_col=$blue
 	export PS1='\[\033[${prompt_col}m\]\h:\w$prompt_char \[\033[0m\]'
 	export PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"' ;;
