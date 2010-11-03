@@ -75,8 +75,9 @@ function git_branch {
 }
 
 host=$HOSTNAME:
-[ $host = 'Luscinia:' ] && host=''
-[ $host = 'Dan-Davisons-MacBook-Pro.local:' ] && host=''
+if [ $host = 'Luscinia:' ] || [ $host = 'Dan-Davisons-MacBook-Pro.local:' ] ; then
+    host=''
+fi
 
 case $machine in
     * )
