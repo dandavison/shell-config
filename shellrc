@@ -86,4 +86,5 @@ export analysis=davison@analysis.counsyl.com
 if [ "$_system" = "Darwin" ] ; then
     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
     export PATH=$PATH:/Users/davison/.gem/ruby/1.8/bin
+    export PATH=/opt/local/bin:$PATH
 fi
