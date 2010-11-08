@@ -103,6 +103,12 @@ esac
 
 PS2=''
 
+source ~/config/bash/shellrc
+
+## http://linuxart.com/log/archives/2005/10/13/super-useful-inputrc/
+export INPUTRC=~/.inputrc
+## export R_HOME=/usr/local/src/R/R-svn-trunk
+
 [ $machine != compute_node ] && eval "`dircolors -b ~/.dircolors`"
 
 # export HISTIGNORE="ls:l:exit:[ \t]*:&" ## '&' supresses duplicate entries
@@ -113,5 +119,3 @@ shopt -s cmdhist ## stores multiline entries as a single history entry
 ## export CDPATH=.:~:~/docs:~/src:~/src/ops/docs:/mnt:/usr/src/redhat:/usr/src/redhat/RPMS:/usr/src:/usr/lib:/usr/local:
 
 source ~/config/bash/git-completion.bash 
-
-source ~/config/bash/shellrc

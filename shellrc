@@ -83,10 +83,6 @@ export storage=davison@storage.counsyl.com
 export science3=davison@science3.counsyl.com
 export analysis=davison@analysis.counsyl.com
 
-## http://linuxart.com/log/archives/2005/10/13/super-useful-inputrc/
-export INPUTRC=~/.inputrc
-## export R_HOME=/usr/local/src/R/R-svn-trunk
-
 if [ "$_system" = "Darwin" ] ; then
     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
     export PATH=$PATH:/Users/davison/.gem/ruby/1.8/bin
