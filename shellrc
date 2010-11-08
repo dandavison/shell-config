@@ -6,6 +6,8 @@ export EDITOR=emacsclient
 # export PATH=$HOME/bin:${PATH%:$HOME/bin}:/sbin
 export PATH=$HOME/bin:$HOME/src/shellfish/bin:$PATH:/usr/local/arm-elf/bin:/usr/local/src/willgit/bin
 
+
+
 ## why do I get ~/bin twice?
 ## [ $HOSTNAME == "oak" ] && export PATH=$HOME/lib/shellfish:$PATH
 
@@ -85,4 +87,7 @@ export analysis=davison@analysis.counsyl.com
 export INPUTRC=~/.inputrc
 ## export R_HOME=/usr/local/src/R/R-svn-trunk
 
-
+if [ "$_system" = "Darwin" ] ; then
+    alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+    export PATH=$PATH:/Users/davison/.gem/ruby/1.8/bin
+fi
