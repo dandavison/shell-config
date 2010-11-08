@@ -74,8 +74,10 @@ function git_branch {
     [ -n "$branch" ] && echo "[$branch]"
 }
 
+export _system=`uname`
+
 host=$HOSTNAME:
-if [ $host = 'Luscinia:' ] || [ $host = 'Dan-Davisons-MacBook-Pro.local:' ] ; then
+if [ $host = 'Luscinia:' ] || [ $_system = 'Darwin' ] ; then
     host=''
 fi
 
