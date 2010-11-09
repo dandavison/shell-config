@@ -41,9 +41,6 @@ case $HOSTNAME in
 esac
 
 
-# f=~/src/config/look/set-look
-# [ $machine != compute_node ] && [ -e $f ] && . $f
-
 ## Setting xterm name (shown in ion tabs) is done with the PROMPT_COMMAND variable
 ## see http://www.ibiblio.org/pub/Linux/docs/HOWTO/Xterm-Title
 ## an excerpt from which follows:
