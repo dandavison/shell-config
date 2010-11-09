@@ -59,7 +59,6 @@ alias sync-history='history -a ; history -n'
 alias tm='tree | more'
 alias tree='tree -AC --noreport'
 alias t='tree'
-alias top='top -d.8'
 alias tl='topleft'
 alias xdvi='xdvi -expert -s 5'
 alias xpdf='xpdf -fullscreen -bg white'
@@ -87,4 +86,6 @@ if [ "$_system" = "Darwin" ] ; then
     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
     export PATH=$PATH:/Users/davison/.gem/ruby/1.8/bin
     export PATH=/opt/local/bin:$PATH
+else
+    alias top='top -d.8'
 fi
