@@ -89,3 +89,5 @@ if [ "$_system" = "Darwin" ] ; then
 else
     alias top='top -d.8'
 fi
+
+alias ct='~/base/science/common_modules/ct'
