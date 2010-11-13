@@ -66,9 +66,7 @@ function colourise {
 }
 
 function git_branch {
-    branch=$(git status 2>/dev/null | head -n1 | cut -d" " -f 4)
-    # branch=$(git branch -l --contains HEAD 2>/dev/null | cut -c 3- | tr -d '()')
-    [ -n "$branch" ] && echo "[$branch]"
+    git branch --no-color | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
 export _system=`uname`
