@@ -1,20 +1,10 @@
 #!/bin/bash
 
-export BROWSER=firefox
-export EDITOR=emacsclient
-
-## why do I get ~/bin twice?
-## [ $HOSTNAME == "oak" ] && export PATH=$HOME/lib/shellfish:$PATH
-
-
+## aliases
 alias c='cat'
 alias cdt='cd $_'
-
-alias emacs-fast='emacs -Q -l /home/dan/src/config/emacs/vanilla.el'
 alias e='echo'
-alias exit='sync-history ; builtin exit'
 alias f='find'
-alias fusermount='fusermount -uz'
 alias g='grep'
 alias gb='git branch'
 alias gc='git checkout'
@@ -22,44 +12,48 @@ alias gcm='git checkout master'
 alias gd='git diff'
 alias gl='git log'
 alias gls='git ls-files'
-alias gs='git stash'
 alias gst='git status'
 alias gitk-all='gitk --all --simplify-by-decoration'
 alias h='head'
-alias gt='gthumb'
-alias hs='sync-history'
 alias less='less -S'
 alias l='ls -1'
 alias ll='ls -lh'
 alias lt='ls -lht'
 alias ls='ls --color=tty'
-alias mairix='mairix -t'
-alias ma='mairix -t'
 alias mk='mkdir'
 alias m='more'
-alias mutt='LANG=en mutt -y'
-alias mu='mutt'
 alias org='cd ~/lib/emacs/org'
-alias pol='~/src/plants/plants-org-image-links'
-alias ps2pdf='ps2pdf -dAutoRotatePages=/None'
 alias ps-me='ps -u `whoami`'
 alias r='Rscript'
-alias rlpr='ssh ddavison@hats.princeton.edu lpr -P xebutleraptsd'
 alias R='R --silent --no-restore --no-save --vanilla'
-alias s='sync-dirs'
-alias screen-external='xrandr --auto && xrandr --output LVDS1 --off && pgrep compiz && compiz --replace &'
-alias screen-internal='xrandr --auto && xrandr --output VGA1 --off'
 alias sshfs='sshfs -o idmap=user'
 alias sync-history='history -a ; history -n'
 alias tm='tree | more'
 alias tree='tree -AC --noreport'
 alias t='tree'
 alias tl='topleft'
-alias xdvi='xdvi -expert -s 5'
-alias xpdf='xpdf -fullscreen -bg white'
-alias xterm='~/src/scripts/xterm-dan'
-alias x='xterm'
-alias tailmessages='tail -f /var/log/messages'
+alias tail-messages='tail -f /var/log/messages'
+if [ "$_system" = "Darwin" ] ; then
+    alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+else
+    alias top='top -d.8'
+    alias s='sync-dirs'
+    alias ps2pdf='ps2pdf -dAutoRotatePages=/None'
+    alias mutt='LANG=en mutt -y'
+    alias gt='gthumb'
+    alias exit='sync-history ; builtin exit'
+    alias fusermount='fusermount -uz'
+    alias mu='mutt'
+    alias screen-external='xrandr --auto && xrandr --output LVDS1 --off && pgrep compiz && compiz --replace &'
+    alias screen-internal='xrandr --auto && xrandr --output VGA1 --off'
+    alias xdvi='xdvi -expert -s 5'
+    alias xpdf='xpdf -fullscreen -bg white'
+fi
+
+
+## Exports
+export BROWSER=firefox
+export EDITOR=emacsclient
 
 export luscinia=dan@luscinia.princeton.edu
 export tichodroma=dan@tichodroma.princeton.edu
@@ -77,12 +71,6 @@ export storage=davison@storage.counsyl.com
 export science3=davison@science3.counsyl.com
 export analysis=davison@analysis.counsyl.com
 
-if [ "$_system" = "Darwin" ] ; then
-    alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
-    export PATH=/opt/local/bin:$PATH
-else
-    alias top='top -d.8'
-fi
-
-alias ct='~/base/science/common_modules/ct'
+# $PATH
+[ "$_system" = "Darwin" ] && export PATH=/opt/local/bin:$PATH
 export PATH=$HOME/bin:$PATH
