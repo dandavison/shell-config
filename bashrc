@@ -66,7 +66,7 @@ function colourise {
 }
 
 function git_branch {
-    git branch --no-color | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+    git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1]/'
 }
 
 export _system=`uname`
