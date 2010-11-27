@@ -52,7 +52,11 @@ fi
 
 
 ## Exports
-export BROWSER=firefox
+if [ "$_system" = "Darwin" ] ; then
+    export BROWSER=firefox
+else
+    export BROWSER=google-chrome
+fi
 export EDITOR=emacsclient
 
 export luscinia=dan@luscinia.princeton.edu
