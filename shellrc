@@ -35,6 +35,8 @@ alias tl='topleft'
 alias tail-messages='tail -f /var/log/messages'
 if [ "$_system" = "Darwin" ] ; then
     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+    alias hibernateon="sudo pmset -a hibernatemode 5"
+    alias hibernateoff="sudo pmset -a hibernatemode 0"
 else
     alias top='top -d.8'
     alias s='sync-dirs'
