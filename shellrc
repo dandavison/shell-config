@@ -71,6 +71,7 @@ export storage=davison@storage.counsyl.com
 export science3=davison@science3.counsyl.com
 export analysis=davison@analysis.counsyl.com
 
+export PYTHONPATH=~
 # $PATH
 [ "$_system" = "Darwin" ] && export PATH=/opt/local/bin:$PATH
 export PATH=$HOME/bin:$PATH
