@@ -10,7 +10,7 @@ alias gb='git branch'
 alias gc='git checkout'
 alias gcm='git checkout master'
 alias gd='git diff'
-alias gl='git log'
+alias gl='git log --oneline'
 alias gls='git ls-files'
 alias gst='git status'
 alias gitk-all='gitk --all --simplify-by-decoration'
@@ -34,6 +34,8 @@ alias tl='topleft'
 alias tail-messages='tail -f /var/log/messages'
 if [ "$_system" = "Darwin" ] ; then
     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
+    alias hibernateon="sudo pmset -a hibernatemode 5"
+    alias hibernateoff="sudo pmset -a hibernatemode 0"
 else
     alias top='top -d.8'
     alias s='sync-dirs'
@@ -74,6 +76,7 @@ export storage=davison@storage.counsyl.com
 export science3=davison@science3.counsyl.com
 export analysis=davison@analysis.counsyl.com
 
+export PYTHONPATH=~
 # $PATH
 [ "$_system" = "Darwin" ] && export PATH=/opt/local/bin:$PATH
 export PATH=$HOME/bin:$PATH
