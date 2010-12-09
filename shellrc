@@ -3,7 +3,7 @@
 ## aliases
 alias c='cat'
 alias cdt='cd $_'
-alias e='echo'
+alias e='emacsclient'
 alias f='find'
 alias g='grep'
 alias gb='git branch'
