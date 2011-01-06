@@ -83,8 +83,13 @@ export science3=davison@science3.counsyl.com
 export analysis=davison@analysis.counsyl.com
 
 export PYTHONPATH=~
-# $PATH
 [ "$_system" = "Darwin" ] && {
-    export PATH=/opt/local/bin:/opt/local/lib/postgresql83/bin:$PATH
+    for path in \
+	/usr/local/share/npm/bin \
+	/opt/local/lib/postgresql83/bin \
+	/opt/local/bin ;
+    do
+	export PATH=$path:$PATH
+    done
 }
 export PATH=$HOME/bin:$PATH
