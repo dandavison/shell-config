@@ -91,5 +91,7 @@ export PYTHONPATH=~
     do
 	export PATH=$path:$PATH
     done
+} || {
+    export PATH=/usr/local/src/postgresql/bin:$PATH
 }
 export PATH=$HOME/bin:$PATH
