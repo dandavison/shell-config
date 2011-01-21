@@ -84,10 +84,11 @@ export analysis=davison@analysis.counsyl.com
 
 export PYTHONPATH=~
 [ "$_system" = "Darwin" ] && {
-    for path in \
-	/usr/local/share/npm/bin \
-	/opt/local/lib/postgresql83/bin \
-	/opt/local/bin ;
+    for path in $(cat <<EOF
+/usr/local/bin
+/usr/local/Cellar/python2.6/2.6.5/bin
+EOF
+) ;
     do
 	export PATH=$path:$PATH
     done
