@@ -1,8 +1,4 @@
-#!/bin/bash -x
-
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
-fi
+#!/bin/bash
 
 if [ `whoami` = 'root' ] ; then
     prompt_char='#'
