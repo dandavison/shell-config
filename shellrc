@@ -94,3 +94,5 @@ EOF
     export PATH=/usr/local/src/postgresql/bin:$PATH
 }
 export PATH=$HOME/bin:$PATH
+# Delete duplicated elements in $PATH
+export PATH=$(echo $PATH | perl -p -e 's/:/\n/g' | awk '!_[$0]++' | perl -p -e 's/\n/:/g')
