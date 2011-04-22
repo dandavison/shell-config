@@ -81,6 +81,8 @@ export PYTHONPATH=~
     for path in $(cat <<EOF
 /usr/local/bin
 /usr/local/Cellar/python2.6/2.6.5/bin
+/usr/texbin
+/usr/local/share/npm/bin
 EOF
 ) ;
     do
