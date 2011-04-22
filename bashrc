@@ -61,6 +61,15 @@ function colourise {
     echo "\[\033[${1}m\]$2\[\033[0m\]"
 }
 
+function dir_is_not_ignored {
+    test_file=.git_branch_test_file
+    touch $test_file
+    git add -n $test_file >/dev/null 2>&1
+    code=$?
+    rm -f $test_file
+    [ $code -eq 0 ]
+}
+
 function git_branch {
     git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1]/'
 }
