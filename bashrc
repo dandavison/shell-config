@@ -103,7 +103,7 @@ export INPUTRC=~/.inputrc
 [ $machine != compute_node ] && eval "`dircolors -b ~/.dircolors`"
 
 # export HISTIGNORE="ls:l:exit:[ \t]*:&" ## '&' supresses duplicate entries
-export HISTFILESIZE=2000
+export HISTFILESIZE=10000
 shopt -s cmdhist ## stores multiline entries as a single history entry
 
 ## http://www.caliban.org/bash/
