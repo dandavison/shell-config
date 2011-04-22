@@ -77,7 +77,7 @@ case $machine in
 	if [ `whoami` = 'root' ] ; then 
 	    prompt_col=$red
 	else
-	    prompt_col=$blue
+	    prompt_col=$cyan
 	fi
 	## export PS1="\[\033[${prompt_col}m\]\w${prompt_char} \[\033[0m\]"
         # export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"' what did this do? set window title?
