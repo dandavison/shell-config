@@ -86,6 +86,8 @@ EOF
     do
 	export PATH=$path:$PATH
     done
+
+    export PGDATA=/usr/local/var/db/postgresql/defaultdb
 } || {
     export PATH=/usr/local/src/postgresql/bin:$PATH
 }
