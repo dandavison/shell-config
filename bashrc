@@ -106,6 +106,11 @@ export INPUTRC=~/.inputrc
 export HISTFILESIZE=10000
 shopt -s cmdhist ## stores multiline entries as a single history entry
 
+# http://www.debian-administration.org/articles/543
+export HISTTIMEFORMAT="%s "
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $USER \
+               "$(history 1)" >> ~/.bash_eternal_history'
+
 ## http://www.caliban.org/bash/
 ## export CDPATH=.:~:~/docs:~/src:~/src/ops/docs:/mnt:/usr/src/redhat:/usr/src/redhat/RPMS:/usr/src:/usr/lib:/usr/local:
 
