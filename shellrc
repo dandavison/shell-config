@@ -76,10 +76,6 @@ export arizona=ddavison@arizona.princeton.edu
 export cetus=ddavison@cetus.princeton.edu
 export trogon=martin@192.168.2.3
 
-export storage=davison@storage.counsyl.com
-export science3=davison@science3.counsyl.com
-export analysis=davison@analysis.counsyl.com
-
 export PYTHONPATH=~
 [ "$_system" = "Darwin" ] && {
     for path in $(cat <<EOF
