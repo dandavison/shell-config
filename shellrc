@@ -92,3 +92,5 @@ EOF
 export PATH=$HOME/bin:$PATH
 # Delete duplicated elements in $PATH
 export PATH=$(echo $PATH | perl -p -e 's/:/\n/g' | awk '!_[$0]++' | perl -p -e 's/\n/:/g')
+export NODE_PATH=/usr/local/lib/node
+
