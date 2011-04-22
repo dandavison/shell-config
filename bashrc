@@ -110,3 +110,7 @@ shopt -s cmdhist ## stores multiline entries as a single history entry
 ## export CDPATH=.:~:~/docs:~/src:~/src/ops/docs:/mnt:/usr/src/redhat:/usr/src/redhat/RPMS:/usr/src:/usr/lib:/usr/local:
 
 source ~/config/bash/git-completion.bash 
+if [ -f `brew --prefix`/etc/autojump ]; then
+  . `brew --prefix`/etc/autojump
+fi
+
