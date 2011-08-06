@@ -1,6 +1,7 @@
 #!/bin/bash
 
-## aliases
+## aliase
+alias beh='tac ~/.bash_eternal_history'
 alias c='cat'
 alias cdt='cd $_'
 alias e='emacsclient'
@@ -18,8 +19,9 @@ alias gri='git rebase -i'
 alias gst='git status'
 alias gitk-all='gitk --all --simplify-by-decoration'
 alias h='head'
+alias jp=jsonpipe
 alias less='less -S'
-alias l='ls -1'
+alias l='less'
 alias ll='ls -lh'
 alias lt='ls -lht'
 alias ls='ls --color=tty'
@@ -30,9 +32,9 @@ alias pwdr='pwd | sed "s,$HOME/,,"'
 alias ping-www='ping www.direct.gov.uk'
 alias ps-me='ps -u `whoami`'
 alias reload='. ~/.bashrc'
+alias rsync='rsync --exclude=.git'
 alias R='R --silent --no-restore --no-save --vanilla'
 alias s=show
-alias sshfs='sshfs -o idmap=user'
 alias sync-history='history -a ; history -n'
 alias tm='tree | more'
 alias tree='tree -AC --noreport'
@@ -72,7 +74,7 @@ export tichodroma=dan@tichodroma.princeton.edu
 export yakuba=dan@yakuba.princeton.edu
 export oak=davison@oak.well.ox.ac.uk
 export ash=davison@ash.well.ox.ac.uk
-export gate=davison@gate.stats.ox.ac.uk ## 163.1.210.59 ## 
+export gate=davison@gate.stats.ox.ac.uk ## 163.1.210.59 ##
 export genecluster=davison@genecluster.stats.ox.ac.uk ##'163.1.210.63'
 export wtchg_cluster=davison@login1-cluster1.well.ox.ac.uk
 export arizona=ddavison@arizona.princeton.edu

@@ -4,7 +4,7 @@ if [ `whoami` = 'root' ] ; then
     prompt_char='#'
 else
     prompt_char='>'
-fi    
+fi
 
 case $HOSTNAME in
     Luscinia | Tichodroma | Microtus )
@@ -83,7 +83,7 @@ fi
 
 case $machine in
     * )
-	if [ `whoami` = 'root' ] ; then 
+	if [ `whoami` = 'root' ] ; then
 	    prompt_col=$red
 	else
 	    prompt_col=$cyan
@@ -107,25 +107,28 @@ source ~/config/bash/shellrc
 
 ## http://linuxart.com/log/archives/2005/10/13/super-useful-inputrc/
 export INPUTRC=~/.inputrc
+bind 'set blink-matching-paren on'  ## not working when set in inputrc?
 ## export R_HOME=/usr/local/src/R/R-svn-trunk
 
 [ $machine != compute_node ] && eval "`dircolors -b ~/.dircolors`"
 
-# export HISTIGNORE="ls:l:exit:[ \t]*:&" ## '&' supresses duplicate entries
+export HISTIGNORE="ls:ll:cd:rm:beh:[ \t]*:&" ## '&' supresses duplicate entries
 export HISTFILESIZE=10000
 shopt -s cmdhist ## stores multiline entries as a single history entry
 
 # http://www.debian-administration.org/articles/543
 export HISTTIMEFORMAT="%s "
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $USER \
-               "$(history 1)" >> ~/.bash_eternal_history'
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"
+PROMPT_COMMAND=$PROMPT_COMMAND'echo $PWD "$(history 1)" >> ~/.bash_eternal_history'
 
 ## http://www.caliban.org/bash/
 ## export CDPATH=.:~:~/docs:~/src:~/src/ops/docs:/mnt:/usr/src/redhat:/usr/src/redhat/RPMS:/usr/src:/usr/lib:/usr/local:
 
-source ~/config/bash/git-completion.bash 
+source ~/config/bash/git-completion.bash
 if [ -f `brew --prefix`/etc/autojump ]; then
   . `brew --prefix`/etc/autojump
+  # Redefine autojump's j so as not to echo the new location
+  function j { new_path="$(autojump $@)"; [ -n "$new_path" ] && cd "$new_path" ; }
 fi
 
 source ~/config/bash/bash_completion
