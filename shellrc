@@ -85,7 +85,8 @@ export PYTHONPATH=~
 [ "$_system" = "Darwin" ] && {
     for path in $(cat <<EOF
 /usr/local/bin
-/usr/local/Cellar/python2.6/2.6.5/bin
+/usr/local/share/python
+/usr/local/Cellar/python/2.7.2/bin
 /usr/texbin
 /usr/local/share/npm/bin
 EOF
@@ -95,7 +96,7 @@ EOF
     done
 
     export PGDATA=/usr/local/var/db/postgresql/defaultdb
-    export PYTHON_SITE_PACKAGES=/usr/local/Cellar/python2.6/2.6.5/lib/python2.6/site-packages
+    export PYTHON_SITE_PACKAGES=/usr/local/Cellar/python/2.7.2/lib/python2.7/site-packages
 } || {
     export PATH=/usr/local/src/postgresql/bin:$PATH
 }
