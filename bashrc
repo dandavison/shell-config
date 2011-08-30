@@ -70,8 +70,13 @@ function dir_is_not_ignored {
     [ $code -eq 0 ]
 }
 
-function git_branch {
-    git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1]/'
+function _dan_git_branch {
+    git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/( \1 )/'
+}
+
+function _dan_abbreviate {
+    ans=$(echo "$1" | sed 's,.*\(/.*/.*\),\1,')
+    [ -n "$ans" ] && echo ..$ans || echo $1
 }
 
 export _system=`uname`
@@ -90,7 +95,7 @@ case $machine in
 	fi
 	## export PS1="\[\033[${prompt_col}m\]\w${prompt_char} \[\033[0m\]"
         # export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"' what did this do? set window title?
-	export PROMPT_COMMAND='PS1="$(colourise $prompt_col $host\\w)$(colourise $red "$(git_branch)")$(colourise $prompt_col $prompt_char) "'
+	export PROMPT_COMMAND='PS1="$(colourise $prompt_col $(_dan_abbreviate $(pwd)))$(colourise $red "$(_dan_git_branch)") "'
 	;;
     * )
 	prompt_col=$blue
