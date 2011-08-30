@@ -39,7 +39,7 @@ source ~/config/bash/shellrc
 export INPUTRC=~/.inputrc
 bind 'set blink-matching-paren on'
 
-[ $machine != compute_node ] && eval "`dircolors -b ~/.dircolors`"
+eval "`dircolors -b ~/.dircolors`"
 
 export HISTIGNORE="ls:ll:cd:rm:beh:[ \t]*:&" # '&' supresses duplicate entries
 export HISTFILESIZE=10000
