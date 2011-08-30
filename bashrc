@@ -8,10 +8,10 @@ function _colorize {
 function _dan_git_branch {
     git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/( \1 )/'
 }
-
-function _dan_abbreviate {
-    ans=$(echo "$1" | sed 's,.*\(/.*/.*\),\1,')
-    [ -n "$ans" ] && echo ..$ans || echo $1
+function _dan_abbreviate_path {
+    path=$(echo "$1" | sed "s,$HOME,~,")
+    abbrv=$(echo "$path" | sed 's,^.*/.*/\(.*/.*\)$,\1,')
+    [ "$abbrv" = "$path" ] && echo "$path" || echo ../$abbrv
 }
 
 export _system=`uname`
