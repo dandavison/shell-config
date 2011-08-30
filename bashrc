@@ -6,7 +6,7 @@ function _colorize {
     echo "\[\033[${1}m\]$2\[\033[0m\]"
 }
 function _dan_git_branch {
-    git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/( \1 )/'
+    git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 function _dan_abbreviate_path {
     path=$(echo "$1" | sed "s,$HOME,~,")
