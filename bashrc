@@ -60,4 +60,5 @@ if [ -f `brew --prefix`/etc/autojump ]; then
   function j { new_path="$(autojump $@)"; [ -n "$new_path" ] && cd "$new_path" ; }
 fi
 
+export FIGNORE=.pyc:#:.DS_Store:.git
 source ~/config/bash/bash_completion
