@@ -33,8 +33,6 @@ export PROMPT_COMMAND='PS1="$(_colorize $prompt_col $host$(_dan_abbreviate_path 
 
 PS2=''
 
-source ~/config/bash/shellrc
-
 # http://linuxart.com/log/archives/2005/10/13/super-useful-inputrc/
 export INPUTRC=~/.inputrc
 bind 'set blink-matching-paren on'
@@ -53,7 +51,6 @@ PROMPT_COMMAND=$PROMPT_COMMAND'echo $PWD "$(history 1)" >> ~/.bash_eternal_histo
 ## http://www.caliban.org/bash/
 ## export CDPATH=.:~:~/docs:~/src:~/src/ops/docs:/mnt:/usr/src/redhat:/usr/src/redhat/RPMS:/usr/src:/usr/lib:/usr/local:
 
-source ~/config/bash/git-completion.bash
 if [ -f `brew --prefix`/etc/autojump ]; then
   . `brew --prefix`/etc/autojump
   # Redefine autojump's j so as not to echo the new location
@@ -62,3 +59,6 @@ fi
 
 export FIGNORE=.pyc:#:.DS_Store:.git
 source ~/config/bash/bash_completion
+source ~/config/bash/git-completion.bash
+
+source ~/config/bash/shellrc
