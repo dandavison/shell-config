@@ -101,9 +101,14 @@ EOF
     export PATH=/usr/local/src/postgresql/bin:$PATH
 }
 export PATH=$HOME/bin:$PATH
-# Delete duplicated elements in $PATH
-export PATH=$(echo $PATH | perl -p -e 's/:/\n/g' | awk '!_[$0]++' | perl -p -e 's/\n/:/g')
 export NODE_PATH=/usr/local/lib/node
 
-
 . ~/config/bash/extra.sh
+
+function _dan_uniquify_path {
+    echo "$1" | perl -p -e 's/:/\n/g' | awk '!_[$0]++' | perl -p -e 's/\n/:/g'
+}
+
+export PATH=$(_dan_uniquify_path $PATH)
+export PYTHONPATH=$(_dan_uniquify_path $PYTHONPATH)
+export NODEPATH=$(_dan_uniquify_path $NODEPATH)
