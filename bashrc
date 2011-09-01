@@ -1,5 +1,9 @@
 #!/bin/bash
 
+export _system=`uname`
+
+source ~/config/bash/shellrc
+
 black=30 ; red=31 ; green=32 ; yellow=33 ; blue=34 ; magenta=35 ; cyan=36 ; white=37
 
 function _colorize {
@@ -13,8 +17,6 @@ function _dan_abbreviate_path {
     abbrv=$(echo "$path" | sed 's,^.*/.*/\(.*/.*\)$,\1,')
     [ "$abbrv" = "$path" ] && echo "$path" || echo ../$abbrv
 }
-
-export _system=`uname`
 
 if [ `whoami` = 'root' ] ; then
     prompt_char='#'
@@ -60,5 +62,3 @@ fi
 export FIGNORE=.pyc:#:.DS_Store:.git
 source ~/config/bash/bash_completion
 source ~/config/bash/git-completion.bash
-
-source ~/config/bash/shellrc
