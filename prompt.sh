@@ -15,6 +15,7 @@ if [ $_dan_system = 'Darwin' ] ; then
     _host=''
 fi
 
+GIT_PS1_SHOWDIRTYSTATE=yes
 export PROMPT_COMMAND='PS1="$(_colorize $prompt_col $_host$(_dan_abbreviate_path $(pwd)))$(_colorize $red "$(__git_ps1)") "'
 
 PS2=''
