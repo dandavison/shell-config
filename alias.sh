@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 alias beh='tac ~/.bash_eternal_history'
 alias c='cat'
@@ -40,7 +40,7 @@ alias tree='tree -AC --noreport'
 alias t='tree'
 alias tl='topleft'
 alias tail-messages='tail -f /var/log/messages'
-if [ "$_system" = "Darwin" ] ; then
+if [ "$_dan_system" = "Darwin" ] ; then
     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
     alias hibernateon="sudo pmset -a hibernatemode 5"
     alias hibernateoff="sudo pmset -a hibernatemode 0"
@@ -58,43 +58,3 @@ else
     alias xdvi='xdvi -expert -s 5'
     alias xpdf='xpdf -fullscreen -bg white'
 fi
-
-
-if [ "$_system" = "Darwin" ] ; then
-    export BROWSER=google-chrome
-else
-    export BROWSER=google-chrome
-fi
-export EDITOR=emacsclient
-
-[ "$_system" = "Darwin" ] && {
-    for path in $(cat <<EOF
-/usr/local/bin
-/usr/local/share/python
-/usr/local/Cellar/python/2.7.2/bin
-/usr/texbin
-/usr/local/share/npm/bin
-EOF
-) ;
-    do
-	export PATH=$path:$PATH
-    done
-
-    export PGDATA=/usr/local/var/db/postgresql/defaultdb
-    export PYTHON_SITE_PACKAGES=/usr/local/Cellar/python/2.7.2/lib/python2.7/site-packages
-} || {
-    export PATH=/usr/local/src/postgresql/bin:$PATH
-}
-
-export PATH=$HOME/bin:$PATH
-export NODE_PATH=/usr/local/lib/node
-
-. ~/config/bash/extra.sh
-
-function _dan_uniquify_path {
-    echo "$1" | perl -p -e 's/:/\n/g' | awk '!_[$0]++' | perl -p -e 's/\n/:/g'
-}
-
-export PATH=$(_dan_uniquify_path $PATH)
-export PYTHONPATH=$(_dan_uniquify_path $PYTHONPATH)
-export NODEPATH=$(_dan_uniquify_path $NODEPATH)
