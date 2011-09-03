@@ -1,1 +1,1 @@
-/Users/davison/dotfiles/davison/counsyl.sh
+/Users/davison/dotfiles/davison/config/bash/extra.sh
