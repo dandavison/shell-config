@@ -16,6 +16,8 @@ if [ $_dan_system = 'Darwin' ] ; then
 fi
 
 GIT_PS1_SHOWDIRTYSTATE=yes
+GIT_PS1_UNSTAGED="અ "
+GIT_PS1_STAGED="જ "
 export PROMPT_COMMAND='PS1="$(_colorize $prompt_col $_host$(_dan_abbreviate_path $(pwd)))$(_colorize $red "$(__git_ps1 "(%s)")") "'
 
 PS2=''
