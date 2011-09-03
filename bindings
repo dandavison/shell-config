@@ -92,7 +92,10 @@
 # redraw-current-line
 # reverse-search-history
 # revert-line
-# self-insert
+a: self-insert
+n: self-insert
+o: self-insert
+p: self-insert
 "\e[5 ": set-mark
 # shell-backward-kill-word
 # shell-backward-word
