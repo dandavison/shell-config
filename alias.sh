@@ -2,7 +2,7 @@
 
 alias beh='tac ~/.bash_eternal_history'
 alias c='cat'
-alias cdt='cd $_'
+alias cdt='cd "$_"'
 alias e='emacsclient'
 alias et="emacsclient -t --alternate-editor=''"
 alias f='find'
