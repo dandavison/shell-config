@@ -12,6 +12,6 @@ source autojump.sh
 source readline.sh
 source dircolors.sh
 source alias.sh
-source extra.sh
+[ -f extra.sh] && source extra.sh
 
 cd "$_cwd"
