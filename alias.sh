@@ -3,8 +3,8 @@
 alias beh='tac ~/.bash_eternal_history'
 alias c='cat'
 alias cdt='cd "$_"'
+alias diff=diffg
 alias e='emacsclient'
-alias et="emacsclient -t --alternate-editor=''"
 alias f='find'
 alias g='grep'
 alias gb='git branch'
