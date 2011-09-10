@@ -8,11 +8,11 @@
 # backward-char
 # backward-delete-char
 # backward-kill-line
-"\e[5h" backward-kill-word
-"\e[6h" backward-kill-word
+"\e[5h": backward-kill-word
+"\e[6h": backward-kill-word
 "\e[6D": backward-word
 # beginning-of-history
-# beginning-of-line
+"\e[5a": beginning-of-line
 # call-last-kbd-macro
 "\e[6c": capitalize-word
 "\e[5s": character-search
@@ -44,7 +44,7 @@
 # emacs-editing-mode
 # end-kbd-macro
 # end-of-history
-# end-of-line
+"\e[5e": end-of-line
 "\e[5xx": exchange-point-and-mark
 # forward-backward-delete-char
 # forward-byte
