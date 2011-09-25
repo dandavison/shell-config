@@ -13,7 +13,7 @@ source zsh/path.sh
 source prompt.sh
 # source history.sh
 source ~/lib/git/contrib/completion/git-functions.sh
-# source autojump.sh
+source autojump.sh
 # source readline.sh
 source dircolors.sh
 source alias.sh
