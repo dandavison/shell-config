@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 export _dan_system=`uname`
 
 if [ "$_dan_system" = "Darwin" ] ; then
