@@ -19,7 +19,7 @@ alias h='head'
 alias jp=jsonpipe
 alias less='less -S'
 alias l='less'
-alias ls='ls --color=tty --hide=*.pyc --hide=#*'
+alias ls='ls --color=tty --hide="*.pyc" --hide="#*"'
 alias ll='ls -lh'
 alias lt='ls -lht'
 alias mkdir='mkdir -p'
