@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 alias beh='tac ~/.bash_eternal_history'
 alias c='cat'
 alias cdt='cd "$_"'
@@ -24,6 +22,7 @@ alias l='less'
 alias ls='ls --color=tty --hide=*.pyc --hide=#*'
 alias ll='ls -lh'
 alias lt='ls -lht'
+alias mkdir='mkdir -p'
 alias mk='mkdir'
 alias m='more'
 alias org='cd ~/lib/emacs/org'
@@ -34,6 +33,8 @@ alias reload='. ~/.bashrc'
 alias rsync='rsync --exclude=.git'
 alias R='R --silent --no-restore --no-save --vanilla'
 alias s=show
+alias sshfs=~/lib/sshfs-binaries/sshfs-static-leopard
+alias sshfs-analysis='sshfs analysis: ~/analysis -oauto_cache,reconnect,volname=analysis -oworkaround=nonodelay'
 alias sync-history='history -a ; history -n'
 alias tm='tree | more'
 alias tree='tree -AC --noreport'
