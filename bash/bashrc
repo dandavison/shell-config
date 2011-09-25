@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 _cwd=$(pwd)
-cd ~/config/bash
+cd ~/config/shell
 
 source lib.sh
 source env.sh
 source bash/path.sh
 source prompt.sh
-source history.sh
+source bash/history.sh
 source bash/completion.sh
 source ~/lib/git/contrib/completion/git-completion.bash
 source autojump.sh
