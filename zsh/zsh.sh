@@ -1,12 +1,14 @@
-autoload -U compinit
-compinit
+autoload -U colors
+colors
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:functions' ignored-patterns '_*' # ignore for absent commands
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' verbose false
 
-autoload -U colors
-colors
+autoload -Uz compinit
+compinit
 
 setopt extended_glob
 setopt AUTO_CD
