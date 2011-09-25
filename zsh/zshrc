@@ -1,11 +1,12 @@
-_cwd=$(pwd)
-cd ~/config/shell
-
 autoload -U compinit
 compinit
 
 autoload -U colors
 colors
+
+
+_cwd=$(pwd)
+cd ~/config/shell
 
 source lib.sh
 source env.sh
