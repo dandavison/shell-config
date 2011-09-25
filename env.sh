@@ -7,3 +7,4 @@ else
     export BROWSER=google-chrome
 fi
 export EDITOR=emacsclient
+export INFOPATH=/usr/homebrew/share/info
