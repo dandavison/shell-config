@@ -1,7 +1,7 @@
 _cwd=$(pwd)
 cd ~/config/shell
 
-source zsh.sh
+source zsh/zsh.sh
 source lib.sh
 source env.sh
 source zsh/path.sh
@@ -12,6 +12,6 @@ source autojump.sh
 # source readline.sh
 source dircolors.sh
 source alias.sh
-# [ -f extra.sh ] && source extra.sh
+[ -f extra.sh ] && source extra.sh
 
 cd "$_cwd"

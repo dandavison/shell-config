@@ -1,12 +1,12 @@
 autoload -U compinit
 compinit
 
-autoload -U colors
-colors
-
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:functions' ignored-patterns '_*' # ignore for absent commands
+
+autoload -U colors
+colors
 
 setopt extended_glob
 setopt AUTO_CD

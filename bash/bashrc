@@ -9,6 +9,7 @@ source bash/path.sh
 source prompt.sh
 source bash/history.sh
 source bash/completion.sh
+source ~/lib/git/contrib/completion/git-functions.sh
 source ~/lib/git/contrib/completion/git-completion.bash
 source autojump.sh
 source readline.sh
