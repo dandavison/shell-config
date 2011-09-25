@@ -5,7 +5,7 @@ cd ~/config/bash
 
 source lib.sh
 source env.sh
-source path.sh
+source bash/path.sh
 source prompt.sh
 source history.sh
 source completion.sh
