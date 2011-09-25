@@ -8,7 +8,8 @@ source env.sh
 source bash/path.sh
 source prompt.sh
 source history.sh
-source completion.sh
+source bash/completion.sh
+source ~/lib/git/contrib/completion/git-completion.bash
 source autojump.sh
 source readline.sh
 source dircolors.sh
