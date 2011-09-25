@@ -7,6 +7,7 @@ source lib.sh
 source env.sh
 source path.sh
 source prompt.sh
+source history.sh
 source completion.sh
 source autojump.sh
 source readline.sh
