@@ -1,13 +1,7 @@
-autoload -U compinit
-compinit
-
-autoload -U colors
-colors
-
-
 _cwd=$(pwd)
 cd ~/config/shell
 
+source zsh.sh
 source lib.sh
 source env.sh
 source zsh/path.sh
