@@ -12,7 +12,6 @@ zstyle ':completion:*' verbose false
 autoload -Uz compinit
 compinit
 
-setopt extended_glob
 setopt AUTO_CD
 setopt CHASE_LINKS
 
