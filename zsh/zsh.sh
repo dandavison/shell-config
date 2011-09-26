@@ -1,6 +1,8 @@
 autoload -U colors
 colors
 
+autoload -U zargs
+
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:functions' ignored-patterns '_*' # ignore for absent commands
