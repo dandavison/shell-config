@@ -12,15 +12,5 @@ source autojump.sh
 # source readline.sh
 source dircolors.sh
 source alias.sh
-[ -f extra.sh ] && source extra.sh
-
+[[ -f extra.sh ]] && source extra.sh
 cd "$_cwd"
-# The following lines were added by compinstall
-
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' verbose false
-zstyle :compinstall filename '/Users/davison/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
