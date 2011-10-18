@@ -3,14 +3,21 @@ colors
 
 autoload -U zargs
 
+autoload -U compinit
+compinit
+
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:functions' ignored-patterns '_*' # ignore for absent commands
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' verbose false
+zstyle ':completion:*' menu select=6
 
-autoload -Uz compinit
-compinit
+# prevent git from completing file names, which is unbearably slow
+# http://www.zsh.org/mla/users/2010/msg00435.html
+__git_files(){ _main_complete _files }
+
+# bindkey -M menuselect '^o' accept-and-infer-next-history
 
 unsetopt NOCLOBBER
 setopt rmstarsilent
@@ -38,5 +45,5 @@ unsetopt BEEP
 setopt NOHUP
 setopt NO_BG_NICE
 
-# set INFOPATH for emacs info file reading
+set INFOPATH for emacs info file reading
 

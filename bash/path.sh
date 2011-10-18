@@ -1,16 +1,19 @@
 #!/usr/bin/env bash
 
 if [ "$_dan_system" = "Darwin" ] ; then
+    PATH=""
     for path in $(cat <<EOF
-/usr/homebrew/bin
-/usr/homebrew/share/python
-/usr/homebrew/Cellar/python/2.7.2/bin
-/usr/homebrew/share/npm/bin
-/usr/homebrew/Cellar/ruby/1.9.2-p290/bin
+/bin
+/usr/bin
+/usr/local/bin
 /usr/texbin
+/usr/local/share/npm/bin
+/usr/local/Cellar/ruby/1.9.2-p290/bin
+/usr/local/Cellar/python/2.7.2/bin
+/usr/local/share/python
 EOF
     ) ; do
-	export PATH=$path:$PATH
+	PATH=$path:$PATH
     done
 
     export PYTHON_SITE_PACKAGES=/usr/homebrew/Cellar/python/2.7.2/lib/python2.7/site-packages
