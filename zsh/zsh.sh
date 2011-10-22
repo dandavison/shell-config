@@ -32,9 +32,6 @@ setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_NO_STORE
 setopt HIST_REDUCE_BLANKS
 
-bindkey '\ep' history-beginning-search-backward
-bindkey '\en' history-beginning-search-forward
-
 HISTSIZE=999999999999999999
 SAVEHIST=999999999999999999
 HISTFILE=~/zsh_.history
