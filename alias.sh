@@ -1,7 +1,7 @@
 alias beh='tac ~/.bash_eternal_history'
 alias c='cat'
 alias cdt='cd "$_"'
-alias e='emacsclient'
+alias e="$EDITOR"
 alias f='find'
 alias g='grep'
 alias gb='git branch'
