@@ -41,6 +41,9 @@ HISTFILE=~/zsh_.history
 
 fpath+=~/config/shell/zsh/functions
 
+autoload edit-command-line-in-shell-mode
+zle -N edit-command-line-in-shell-mode
+bindkey '\ee' edit-command-line
 
 unsetopt BEEP
 
