@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 export _dan_system=`uname`
 
 if [ "$_dan_system" = "Darwin" ] ; then
@@ -8,4 +6,5 @@ if [ "$_dan_system" = "Darwin" ] ; then
 else
     export BROWSER=google-chrome
 fi
-export EDITOR=emacsclient
+export EDITOR='emacsclient > /dev/null'
+export INFOPATH=/usr/homebrew/share/info

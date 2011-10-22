@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 _dan_uniquify_path () {
     echo "$1" | perl -p -e 's/:/\n/g' | awk '!_[$0]++' | perl -p -e 's/\n/:/g' | sed 's,^:,,' | sed 's,:$,,'
 }

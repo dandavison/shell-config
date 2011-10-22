@@ -1,0 +1,17 @@
+# Based on edit-command-line widget
+
+local tmpfile=${TMPPREFIX:-/tmp/zsh}ecls$$
+
+print -R - "$PREBUFFER$BUFFER" >$tmpfile
+
+# Added emacs mode specification
+print "# Local Variables:\n# mode: shell-script\n# End:" >>$tmpfile
+
+${=${VISUAL:-${EDITOR:-vi}}} $tmpfile
+exec </dev/tty
+
+# Added deletion of comment lines
+print -Rz - "$(sed '/^#/'d <$tmpfile)"
+
+command rm -f $tmpfile
+zle send-break

@@ -1,10 +1,7 @@
-#!/usr/bin/env bash
+__autojump_src=/usr/homebrew/etc/autojump
 
-
-# If conditions copied from /usr/homebrew/etc/autojump
-if [ "$BASH_VERSION" ] && [ -n "$PS1" ] && echo $SHELLOPTS | grep -v posix >>/dev/null; then
-
-    . ~/lib/bash/autojump.bash
+if [ -e "$__autojump_src" ] ; then
+    . $__autojump_src
     # Redefine autojump's j so as not to echo the new location
-    function j { new_path="$(autojump $@)"; [ -n "$new_path" ] && cd "$new_path" ; }
+    j () { __new_path="$(autojump $@)"; [ -n "$__new_path" ] && cd "$__new_path" ; }
 fi
