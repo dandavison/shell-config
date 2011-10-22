@@ -34,7 +34,7 @@ setopt HIST_REDUCE_BLANKS
 
 HISTSIZE=999999999999999999
 SAVEHIST=999999999999999999
-HISTFILE=~/zsh_.history
+HISTFILE=~/.zsh_history
 
 fpath+=~/config/shell/zsh/functions
 
