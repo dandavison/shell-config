@@ -39,6 +39,9 @@ HISTSIZE=999999999999999999
 SAVEHIST=999999999999999999
 HISTFILE=~/zsh_.history
 
+fpath+=~/config/shell/zsh/functions
+
+
 unsetopt BEEP
 
 setopt NOHUP
