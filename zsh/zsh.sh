@@ -19,7 +19,7 @@ __git_files(){ _main_complete _files }
 
 # bindkey -M menuselect '^o' accept-and-infer-next-history
 
-unsetopt NOCLOBBER
+setopt CLOBBER
 setopt rmstarsilent
 
 setopt AUTO_CD
@@ -39,11 +39,9 @@ HISTSIZE=999999999999999999
 SAVEHIST=999999999999999999
 HISTFILE=~/zsh_.history
 
-unsetopt CLOBBER
 unsetopt BEEP
 
 setopt NOHUP
 setopt NO_BG_NICE
 
 set INFOPATH for emacs info file reading
-
