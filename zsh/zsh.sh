@@ -40,7 +40,7 @@ fpath+=~/config/shell/zsh/functions
 
 autoload edit-command-line-in-shell-mode
 zle -N edit-command-line-in-shell-mode
-bindkey '\ee' edit-command-line
+bindkey '\ee' edit-command-line-in-shell-mode
 
 unsetopt BEEP
 
