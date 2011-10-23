@@ -14,7 +14,7 @@ if [[ -n ${ZSH_VERSION-} ]]; then
 	PROMPT+="%{$fg[red]%}%m%{$reset_color%}:"  # hostname
     fi
 
-    PROMPT+="%{$fg[cyan]%}%2~%{$reset_color%}"         # cwd truncated to last two dirs
+    PROMPT+="%{$fg[cyan]%}%3~%{$reset_color%}"         # cwd truncated to terminal n dirs
     PROMPT+="%{$fg[red]%}%(?..(%?%))%{$reset_color%} " # exit status if nonzero
 
     RPROMPT=$'%{${fg[green]}%}$(__git_ps1)%{${fg[default]}%}'
