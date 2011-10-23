@@ -13,6 +13,11 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' verbose false
 zstyle ':completion:*' menu select=6
 
+# B2Z ch.14
+setopt complete_in_word
+zstyle ':completion::*:::' completer _complete _prefix
+zstyle ':completion:*:prefix:*' add-space true
+
 # prevent git from completing file names, which is unbearably slow
 # http://www.zsh.org/mla/users/2010/msg00435.html
 __git_files(){ _main_complete _files }
