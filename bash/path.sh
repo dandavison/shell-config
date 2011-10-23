@@ -7,6 +7,7 @@ if [ "$_dan_system" = "Darwin" ] ; then
 /usr/bin
 /usr/local/bin
 /usr/texbin
+/usr/local/Cellar/emacs/HEAD/bin
 /usr/local/share/npm/bin
 /usr/local/Cellar/ruby/1.9.2-p290/bin
 /usr/local/Cellar/python/2.7.2/bin
