@@ -1,7 +1,7 @@
 _cwd=$(pwd)
 cd ~/config/shell
 
-# [[ $TERM != screen ]] && tmux
+[[ $TERM != screen ]] && tmux
 
 source lib.sh
 source git-functions.sh
