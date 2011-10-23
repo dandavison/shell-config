@@ -6,7 +6,7 @@ cd ~/config/shell
 source lib.sh
 source git-functions.sh
 source env.sh
-source zsh/zsh_misc.sh
+source zsh/zsh.sh
 source zsh/path.sh
 source prompt.sh
 source autojump.sh
