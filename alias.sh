@@ -29,26 +29,22 @@ alias lt='ls -lht'
 alias mkdir='mkdir -p'
 alias mk='mkdir'
 alias m='more'
-alias org='cd ~/lib/emacs/org'
 alias pwdr='pwd | sed "s,$HOME/,,"'
 alias ping-www='ping www.direct.gov.uk'
 alias ps-me='ps -u `whoami`'
-alias reload='. ~/.bashrc'
 alias rsync='rsync --exclude=.git'
 alias R='R --silent --no-restore --no-save --vanilla'
 alias s=show
-alias sshfs=~/lib/sshfs-binaries/sshfs-static-leopard
-alias sshfs-analysis='sshfs analysis: ~/analysis -oauto_cache,reconnect,volname=analysis -oworkaround=nonodelay'
-alias sync-history='history -a ; history -n'
 alias tm='tree | more'
 alias tree='tree -AC --noreport'
 alias t='tree'
 alias tl='topleft'
 alias tail-messages='tail -f /var/log/messages'
-if [ "$_dan_system" = "Darwin" ] ; then
+if [ $(uname) = "Darwin" ] ; then
     alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'
     alias hibernateon="sudo pmset -a hibernatemode 5"
     alias hibernateoff="sudo pmset -a hibernatemode 0"
+    alias sshfs=~/lib/sshfs-binaries/sshfs-static-leopard
 else
     alias top='top -d.8'
     alias s='sync-dirs'
