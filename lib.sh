@@ -1,3 +1,10 @@
+_dan_is_laptop () {
+    # zsh: $(whoami) == davison && $(hostname) == (cotinga|int)*
+    [ $(whoami) = "davison" ] && {
+	[ $(hostname) = "cotinga.local" ] || [ $(hostname) = "int191" ]
+    }
+}
+
 _dan_uniquify_path () {
     echo "$1" | perl -p -e 's/:/\n/g' | awk '!_[$0]++' | perl -p -e 's/\n/:/g' | sed 's,^:,,' | sed 's,:$,,'
 }
