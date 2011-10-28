@@ -3,6 +3,7 @@ alias c='cat'
 alias cdt='cd "$_"'
 alias e="emacsclient -n"
 alias f='find'
+alias fromip="who | perl -n -e 's,.*\(([0-9.]+)\),$1, and print'"
 alias g='grep'
 alias gb='git branch'
 alias gc='git checkout'
