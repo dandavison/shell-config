@@ -12,6 +12,9 @@ bindkey '\e[1;9B' history-beginning-search-forward   # M-down
 bindkey '\e^[[A' history-beginning-search-backward  # M-up
 bindkey '\e^[[B' history-beginning-search-forward   # M-down
 
+bindkey '^[[A' history-beginning-search-backward  # M-up
+bindkey '^[[B' history-beginning-search-forward   # M-down
+
 
 
 bindkey '^w' kill-region
