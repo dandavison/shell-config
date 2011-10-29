@@ -1,5 +1,5 @@
 if [ _dan_is_laptop ] ; then
-    for dir in $(cat <<EOF
+    for dir in $(/usr/local/bin/cat <<EOF
 /bin
 /usr/bin
 /usr/local/bin
@@ -10,7 +10,7 @@ if [ _dan_is_laptop ] ; then
 /usr/local/Cellar/ruby/1.9.2-p290/bin
 /usr/local/Cellar/python/2.7.2/bin
 /usr/local/share/python
-~/bin
+$HOME/bin
 EOF
     ) ; do
 	export PATH=$dir:$PATH
