@@ -1,3 +1,5 @@
+[[ $TERM != screen ]] && tmux
+
 _cwd=$(pwd)
 cd ~/config/shell
 
