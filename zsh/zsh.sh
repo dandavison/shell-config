@@ -41,7 +41,7 @@ HISTSIZE=999999999999999999
 SAVEHIST=999999999999999999
 HISTFILE=~/.zsh_history
 
-fpath+=~/config/shell/zsh/functions
+fpath=(~/config/shell/zsh/functions $fpath)
 
 autoload edit-command-line-in-shell-mode
 zle -N edit-command-line-in-shell-mode

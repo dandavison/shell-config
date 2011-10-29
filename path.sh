@@ -1,5 +1,5 @@
 if [ _dan_is_laptop ] ; then
-    for dir in $(/usr/local/bin/cat <<EOF
+    for dir in $(cat <<EOF
 /bin
 /usr/bin
 /usr/local/bin
