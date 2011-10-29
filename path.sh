@@ -1,4 +1,4 @@
-if [ _dan_is_laptop ] ; then
+if _dan_is_laptop ; then
     for dir in $(cat <<EOF
 /bin
 /usr/bin
