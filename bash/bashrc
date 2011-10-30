@@ -5,6 +5,7 @@ cd ~/config/shell
 source lib.sh
 source git-functions.sh
 source env.sh
+source tmux.sh
 source path.sh
 source prompt.sh
 source bash/history.sh

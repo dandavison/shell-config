@@ -1,11 +1,10 @@
-[[ $TERM != screen ]] && tmux
-
 _cwd=$(pwd)
 cd ~/config/shell
 
 source lib.sh
 source git-functions.sh
 source env.sh
+source tmux.sh
 source zsh/zsh.sh
 source path.sh
 source prompt.sh
