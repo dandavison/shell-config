@@ -15,5 +15,6 @@ source readline.sh
 source dircolors.sh
 source alias.sh
 [ -f extra.sh ] && source extra.sh
+source tmux.sh
 
 cd "$_cwd"

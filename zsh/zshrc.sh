@@ -1,5 +1,3 @@
-[[ $TERM != screen ]] && tmux
-
 _cwd=$(pwd)
 cd ~/config/shell
 
@@ -14,5 +12,6 @@ source dircolors.sh
 source alias.sh
 source zsh/bindings.sh
 [[ -f extra.sh ]] && source extra.sh
+source tmux.sh
 
 cd "$_cwd"
