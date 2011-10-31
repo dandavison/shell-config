@@ -1,3 +1,5 @@
+[[ -z $TMUX ]] && tmux
+
 _cwd=$(pwd)
 cd ~/config/shell
 
