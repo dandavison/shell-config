@@ -1,4 +1,4 @@
-[[ -z $TMUX ]] && tmux
+[[ -z $TMUX ]] && { tmux attach || tmux }
 
 _cwd=$(pwd)
 cd ~/config/shell
