@@ -3,6 +3,11 @@ GIT_PS1_UNSTAGED="અ "
 GIT_PS1_STAGED="જ "
 
 if [[ -n ${ZSH_VERSION-} ]]; then
+
+    function precmd () {
+	tmux rename-window $PWD
+    }
+
     setopt PROMPT_SUBST
     PROMPT=""
     if _dan_is_laptop ; then
