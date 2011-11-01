@@ -1,7 +1,7 @@
 _dan_is_laptop () {
     # zsh: $(whoami) == davison && $(hostname) == (cotinga|int)*
     [ $(whoami) = "davison" ] && {
-	[ $(hostname) = "cotinga.local" ] || [ $(hostname) = "int191" ]
+	[[ $(hostname) == cotinga.* ]] || [[ $(hostname) == int191.* ]]
     }
 }
 
