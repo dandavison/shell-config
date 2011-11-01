@@ -1,4 +1,16 @@
-[[ -z $TMUX ]] && { tmux attach || tmux }
+_dan_is_laptop () {
+    [[ $(whoami) == davison && $(hostname) == (cotinga|int)* ]]
+}
+
+if [[ -z $TMUX ]] ; then
+    # Only attempt reattach in ssh session. It didn't work well with
+    # iterm2 visor locally.
+    if _dan_is_laptop ; then
+	tmux
+    else
+	tmux attach || tmux
+    fi
+fi
 
 _cwd=$(pwd)
 cd ~/config/shell
