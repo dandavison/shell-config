@@ -1479,7 +1479,7 @@ function __tmux-windows() {
     else
         opts=( )
     fi
-    wins=( ${${(M)${(f)"$(command tmux list-windows "${opts[@]}" | sed 's,\[.\+\],,')"}:#<->*}/:[ $'\t']##/:} )
+    wins=( ${${(M)${(f)"$(command tmux list-windows "${opts[@]}" | sed -e 's,(active),*,' -e 's,\[.\+\],,')"}:#<->*}/:[ $'\t']##/:} )
     _describe -t windows 'windows' wins "$@"
     # if [[ ${IPREFIX} != *: ]]; then
     #     _wanted sessions expl 'sessions' __tmux-sessions -S:
