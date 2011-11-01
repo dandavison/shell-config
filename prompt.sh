@@ -4,8 +4,8 @@ GIT_PS1_STAGED="જ "
 
 if [[ -n ${ZSH_VERSION-} ]]; then
 
-    function precmd () {
-	tmux rename-window $PWD
+    function chpwd () {
+	tmux rename-window $(print -Pn "%3~%")
     }
 
     setopt PROMPT_SUBST
