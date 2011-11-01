@@ -10,7 +10,7 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:functions' ignored-patterns '_*' # ignore for absent commands
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' verbose false
+zstyle ':completion:*' verbose true
 zstyle ':completion:*' menu select=6
 
 # B2Z ch.14
