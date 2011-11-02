@@ -5,6 +5,7 @@ cd ~/config/shell
 source lib.sh
 source git-functions.sh
 source env.sh
+source dircolors.sh
 source path.sh
 source prompt.sh
 source bash/history.sh
@@ -12,7 +13,6 @@ source bash/completion.sh
 source ~/lib/git/contrib/completion/git-completion.bash
 source autojump.sh
 source readline.sh
-source dircolors.sh
 source alias.sh
 [ -f extra.sh ] && source extra.sh
 source tmux.sh
