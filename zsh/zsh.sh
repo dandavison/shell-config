@@ -27,9 +27,14 @@ compinit
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:functions' ignored-patterns '_*' # ignore for absent commands
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' verbose true
 zstyle ':completion:*' menu select=2
+
+# ma is the code for the current completion offering
+# 04 is underline
+ZLS_COLORS="ma=04:$LS_COLORS"
+zstyle ':completion:*' list-colors ${(s.:.)ZLS_COLORS}
+
 
 # B2Z ch.14
 setopt complete_in_word
