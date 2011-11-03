@@ -31,8 +31,7 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*' menu select=2
 
 # ma is the code for the current completion offering
-# 04 is underline
-ZLS_COLORS="ma=04:$LS_COLORS"
+ZLS_COLORS="ma=31:$LS_COLORS"
 zstyle ':completion:*' list-colors ${(s.:.)ZLS_COLORS}
 
 
