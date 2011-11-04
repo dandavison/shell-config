@@ -54,9 +54,3 @@ bindkey '\ee' edit-command-line-in-shell-mode
 
 unfunction _tmux
 autoload _tmux
-
-unfunction _tmux
-autoload _tmux
-
-
-
