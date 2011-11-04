@@ -22,3 +22,9 @@ _dan_abbreviate_path () {
     abbrv=$(echo "$path" | sed 's,^.*/.*/\(.*/.*\)$,\1,')
     [ "$abbrv" = "$path" ] && echo "$path" || echo ../"$abbrv"
 }
+
+ssh () {
+    host=$1
+    cd ~/$host
+    /usr/bin/ssh $host
+}
