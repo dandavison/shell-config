@@ -16,3 +16,4 @@ bindkey '\e^[[B' history-beginning-search-forward   # M-down
 bindkey '^w' kill-region
 
 bindkey -s '^_' '^a^ktmux select-window -t :\t\t'
+bindkey -M menuselect -s '^_' '^g^a^k'
