@@ -41,6 +41,8 @@ setopt complete_in_word
 zstyle ':completion::*:::' completer _complete _prefix
 zstyle ':completion:*:prefix:*' add-space true
 
+compdef _directories cdn
+
 # prevent git from completing file names, which is unbearably slow
 # http://www.zsh.org/mla/users/2010/msg00435.html
 __git_files(){ _main_complete _files }
