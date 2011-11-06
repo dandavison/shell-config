@@ -24,11 +24,12 @@ autoload -U zargs
 autoload -U compinit
 compinit
 
+zmodload zsh/complist
+zstyle ':completion:*' menu select=2
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:functions' ignored-patterns '_*' # ignore for absent commands
 zstyle ':completion:*' verbose true
-zstyle ':completion:*' menu select=2
 
 # ma is the code for the current completion offering
 ZLS_COLORS="ma=31:$LS_COLORS"
