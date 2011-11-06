@@ -26,5 +26,5 @@ _dan_abbreviate_path () {
 ssh () {
     host=$1
     cd ~/$host
-    /usr/bin/ssh $host
+    /usr/bin/ssh $*
 }
