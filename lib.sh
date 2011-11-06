@@ -23,8 +23,13 @@ _dan_abbreviate_path () {
     [ "$abbrv" = "$path" ] && echo "$path" || echo ../"$abbrv"
 }
 
-ssh () {
+ssh_ () {
     host=$1
+    mkdir -p ~/$host
     cd ~/$host
     /usr/bin/ssh $*
+}
+
+cdp () {
+    mkdir -p "$1" && cd "$1"
 }
