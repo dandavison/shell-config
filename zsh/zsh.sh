@@ -55,10 +55,12 @@ autoload edit-command-line-in-shell-mode
 zle -N edit-command-line-in-shell-mode
 bindkey '\ee' edit-command-line-in-shell-mode
 
-for widget in kill-region-to-system-clipboard kill-line-to-system-clipboard yank-from-system-clipboard ; do
-    autoload $widget
-    zle -N $widget
-done
+if _dan_is_laptop ; then
+    for widget in kill-region-to-system-clipboard kill-line-to-system-clipboard yank-from-system-clipboard ; do
+	autoload $widget
+	zle -N $widget
+    done
+fi
 
 unfunction _tmux
 autoload _tmux
