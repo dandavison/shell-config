@@ -1,5 +1,5 @@
 setopt CLOBBER
-setopt rmstarsilent
+setopt RMSTARSILENT
 setopt AUTO_CD
 setopt CHASE_LINKS
 unsetopt BEEP
