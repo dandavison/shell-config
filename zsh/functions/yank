@@ -1,0 +1,2 @@
+CUTBUFFER=$(reattach-to-user-namespace pbpaste)
+zle .yank

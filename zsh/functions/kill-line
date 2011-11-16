@@ -1,2 +1,2 @@
-zle kill-line
+zle .kill-line
 print -n $CUTBUFFER | reattach-to-user-namespace pbcopy

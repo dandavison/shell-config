@@ -14,11 +14,5 @@ bindkey '\e^[[B' history-beginning-search-forward   # M-down
 
 bindkey '\ee' edit-command-line-in-shell-mode
 
-if _dan_is_laptop ; then
-    bindkey '^k' kill-line-to-system-clipboard
-    bindkey '^w' kill-region-to-system-clipboard
-    bindkey '^y' yank-from-system-clipboard
-fi
-
 bindkey -s '^_' '^a^ktmux select-window -t :\t\t'
 bindkey -M menuselect -s '^_' '^g^a^k'

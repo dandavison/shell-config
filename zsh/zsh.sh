@@ -56,7 +56,7 @@ zle -N edit-command-line-in-shell-mode
 bindkey '\ee' edit-command-line-in-shell-mode
 
 if _dan_is_laptop ; then
-    for widget in kill-region-to-system-clipboard kill-line-to-system-clipboard yank-from-system-clipboard ; do
+    for widget in kill-region kill-line yank ; do
 	autoload $widget
 	zle -N $widget
     done

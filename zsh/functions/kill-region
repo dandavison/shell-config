@@ -1,2 +1,2 @@
-zle kill-region
+zle .kill-region
 print -n $CUTBUFFER | reattach-to-user-namespace pbcopy
