@@ -17,3 +17,4 @@ EOF
     done
     export NODE_PATH=/usr/homebrew/lib/node
 fi
+export PYTHONPATH=~/lib/python/ipython
