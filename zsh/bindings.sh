@@ -12,8 +12,11 @@ bindkey '\e[1;9B' history-beginning-search-forward   # M-down
 bindkey '\e^[[A' history-beginning-search-backward  # M-up
 bindkey '\e^[[B' history-beginning-search-forward   # M-down
 
+bindkey '\ee' edit-command-line-in-shell-mode
 
-bindkey '^w' kill-region
+bindkey '^k' kill-line-to-system-clipboard
+bindkey '^w' kill-region-to-system-clipboard
+bindkey '^y' yank-from-system-clipboard
 
 bindkey -s '^_' '^a^ktmux select-window -t :\t\t'
 bindkey -M menuselect -s '^_' '^g^a^k'

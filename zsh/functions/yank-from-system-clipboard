@@ -1,0 +1,1 @@
+LBUFFER=$LBUFFER$(reattach-to-user-namespace pbpaste)
