@@ -1,6 +1,10 @@
 setopt CLOBBER
 setopt RMSTARSILENT
+
 setopt AUTO_CD
+setopt AUTO_PUSHD
+autoload pushd
+
 setopt CHASE_LINKS
 unsetopt BEEP
 setopt NOHUP
