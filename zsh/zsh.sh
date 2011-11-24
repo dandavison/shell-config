@@ -4,6 +4,7 @@ setopt RMSTARSILENT
 setopt AUTO_CD
 setopt AUTO_PUSHD
 autoload pushd
+cdpath=(~)
 
 setopt CHASE_LINKS
 unsetopt BEEP
