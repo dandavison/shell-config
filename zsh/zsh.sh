@@ -23,6 +23,8 @@ HISTFILE=~/.zsh_history
 
 WORDCHARS="*?-.[]~=&;!#$%^(){}<>"
 
+setopt EXTENDED_GLOB
+
 autoload -U colors
 colors
 
