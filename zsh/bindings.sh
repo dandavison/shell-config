@@ -12,6 +12,9 @@ bindkey '\e[1;9B' history-beginning-search-forward   # M-down
 bindkey '\e^[[A' history-beginning-search-backward  # M-up
 bindkey '\e^[[B' history-beginning-search-forward   # M-down
 
+bindkey '\e^[[C' forward-word  # M-right
+bindkey '\e^[[D' backward-word # M-left
+
 bindkey '\ee' edit-command-line-in-shell-mode
 
 bindkey -s '^_' '^a^ktmux select-window -t :\t\t'
