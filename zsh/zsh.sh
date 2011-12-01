@@ -21,6 +21,8 @@ HISTSIZE=999999999999999999
 SAVEHIST=999999999999999999
 HISTFILE=~/.zsh_history
 
+WORDCHARS="*?-.[]~=&;!#$%^(){}<>"
+
 autoload -U colors
 colors
 
