@@ -13,7 +13,9 @@ if _dan_is_laptop ; then
 $HOME/bin
 EOF
     ) ; do
-	export PATH=$dir:$PATH
+	[ -d $dir ] && export PATH=$dir:$PATH || {
+	    echo "Directory doesn't exist: $dir" 1>&2
+	}
     done
     export NODE_PATH=/usr/homebrew/lib/node
 fi
