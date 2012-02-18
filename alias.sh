@@ -26,7 +26,7 @@ alias gitk-all='gitk --all --simplify-by-decoration'
 alias git-init='git init && git add * && git commit -m "init"'
 alias h='head'
 alias jp=jsonpipe
-alias less='less -S'
+alias less='less -SX'
 alias l='less'
 alias ls='ls --color=tty --hide="*.pyc" --hide="#*"'
 alias lh='ls -lht|head'
