@@ -2,14 +2,14 @@ if _dan_is_laptop ; then
     for dir in $(cat <<EOF
 /bin
 /usr/bin
-/usr/local/bin
-/usr/local/sbin
+/usr/homebrew/bin
+/usr/homebrew/sbin
 /usr/texbin
-/usr/local/Cellar/emacs/HEAD/bin
+/usr/homebrew/Cellar/emacs/HEAD/bin
 $HOME/node_modules/coffee-script/bin
-/usr/local/Cellar/ruby/1.9.2-p290/bin
-/usr/local/Cellar/python/2.7.2/bin
-/usr/local/share/python
+/usr/homebrew/Cellar/ruby/1.9.2-p290/bin
+/usr/homebrew/Cellar/python/2.7.2/bin
+/usr/homebrew/share/python
 $HOME/bin
 EOF
     ) ; do
