@@ -1,6 +1,7 @@
 alias beh='tac ~/.bash_eternal_history'
 alias c='cat'
 alias cdt='cd "$_"'
+alias copy='reattach-to-user-namespace pbcopy'
 alias e="emacsclient -n"
 alias ep='emacs_pipe'
 alias ee="emacs -nw -q"
@@ -9,6 +10,7 @@ alias fromip="who | grep \"^$USER\" | sed 1q | perl -n -e 's,.*\(([0-9.]+)\),\1,
 alias g='grep'
 alias gb='git branch'
 alias gc='git checkout'
+alias gcl='git config -l'
 alias gcm='git checkout master'
 alias gd='git diff'
 alias gf='git fixup'
