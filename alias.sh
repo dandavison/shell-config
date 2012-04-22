@@ -28,6 +28,7 @@ alias gri='git rebase -i'
 alias gst='git status'
 alias gitk-all='gitk --all --simplify-by-decoration'
 alias git-init='git init && git add * && git commit -m "init"'
+alias git-squash='git reset --soft HEAD~1 && git commit --amend -C HEAD'
 alias h='head'
 alias jp=jsonpipe
 alias less='less -SX'
