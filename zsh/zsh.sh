@@ -53,6 +53,9 @@ zstyle ':completion:*:prefix:*' add-space true
 compdef _directories cdn
 compdef _files show
 
+# functions/_django completion seems to do more harm than good atm.
+compdef -d manage.py
+
 # prevent git from completing file names, which is unbearably slow
 # http://www.zsh.org/mla/users/2010/msg00435.html
 __git_files(){ _main_complete _files }
