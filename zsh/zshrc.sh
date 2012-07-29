@@ -3,13 +3,7 @@ _dan_is_laptop () {
 }
 
 if [[ -z $TMUX ]] ; then
-    # Only attempt reattach in ssh session. It didn't work well with
-    # iterm2 visor locally.
-    if _dan_is_laptop ; then
-	tmux
-    else
-	tmux attach || tmux
-    fi
+    tmux attach || tmux
 fi
 
 _cwd=$(pwd)
