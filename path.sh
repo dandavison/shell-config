@@ -20,3 +20,4 @@ EOF
     export NODE_PATH=/usr/homebrew/lib/node
 fi
 export PYTHONPATH=~/lib/python/ipython
+export PERL5LIB=/usr/homebrew/lib/perl5/site_perl:${PERL5LIB}
