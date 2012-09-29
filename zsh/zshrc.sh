@@ -1,7 +1,3 @@
-_dan_is_laptop () {
-    [[ $(whoami) == davison && $(hostname) == (cotinga|int)* ]]
-}
-
 if [[ -z $TMUX ]] ; then
     tmux attach || tmux
 fi
@@ -10,11 +6,11 @@ _cwd=$(pwd)
 cd ~/config/shell
 
 source lib.sh
+source path.sh
 source git-functions.sh
 source env.sh
 source dircolors.sh
 source zsh/zsh.sh
-source path.sh
 source prompt.sh
 source fasd.sh
 source alias.sh
