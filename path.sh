@@ -3,6 +3,7 @@ if _dan_is_laptop ; then
 /usr/local/bin
 /usr/local/share/python
 $HOME/bin
+/Applications/Emacs.app/Contents/MacOS/bin
 EOF
     ) ; do
 	[ -d $dir ] && export PATH=$dir:$PATH || {
