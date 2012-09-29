@@ -6,12 +6,12 @@ if [[ -n ${ZSH_VERSION-} ]]; then
 
     # Prior to printing the prompt: set window name to current directory 
     function precmd () {
-	tmux rename-window $(print -Pn "%~%")
+	tmux rename-window "$(print -Pn "%~%")"
     }
 
     # Prior to running a command: set window name to command name
     function preexec () {
-	tmux rename-window $1
+	tmux rename-window "$1"
     }
 
     setopt PROMPT_SUBST
