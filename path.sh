@@ -11,3 +11,5 @@ EOF
     done
     export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 fi
+
+PATH=$(_dan_uniquify_path $PATH)
