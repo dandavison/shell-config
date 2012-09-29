@@ -75,3 +75,6 @@ fi
 
 unfunction _tmux
 autoload _tmux
+
+# bash doesn't allow this
+alias "../.."='cd ../..'
