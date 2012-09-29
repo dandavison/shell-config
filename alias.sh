@@ -66,7 +66,6 @@ if [ $(uname) = "Darwin" ] ; then
     alias emacs="/usr/homebrew/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs"
     alias hibernateon="sudo pmset -a hibernatemode 5"
     alias hibernateoff="sudo pmset -a hibernatemode 0"
-    alias sshfs=~/lib/sshfs-binaries/sshfs-static-leopard
 else
     alias top='top -d.8'
     alias s='sync-dirs'
