@@ -10,6 +10,7 @@ $HOME/node_modules/coffee-script/bin
 /usr/homebrew/Cellar/ruby/1.9.2-p290/bin
 /usr/homebrew/Cellar/python/2.7.2/bin
 /usr/homebrew/share/python
+$HOME/.cabal/bin
 $HOME/bin
 EOF
     ) ; do
