@@ -18,6 +18,6 @@ EOF
 	}
     done
     export NODE_PATH=/usr/homebrew/lib/node
+    export PYTHONPATH=~/lib/python/ipython
+    export PERL5LIB=/usr/homebrew/lib/perl5/site_perl:${PERL5LIB}
 fi
-export PYTHONPATH=~/lib/python/ipython
-export PERL5LIB=/usr/homebrew/lib/perl5/site_perl:${PERL5LIB}
