@@ -3,10 +3,10 @@ _cwd=$(pwd)
 cd ~/config/shell
 
 source lib.sh
+source path.sh
 source git-functions.sh
 source env.sh
 source dircolors.sh
-source path.sh
 source prompt.sh
 source bash/history.sh
 source bash/completion.sh
