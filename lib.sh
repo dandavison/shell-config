@@ -1,6 +1,5 @@
 _dan_is_laptop () {
-    # zsh: $(whoami) == davison && $(hostname) == (cotinga|int)*
-    [ $(whoami) = "davison" ]
+    [ -e /Applications ]
 }
 
 _dan_uniquify_path () {
