@@ -16,7 +16,7 @@ source dircolors.sh
 source zsh/zsh.sh
 source path.sh
 source prompt.sh
-source autojump.sh
+source fasd.sh
 source alias.sh
 source zsh/bindings.sh
 [[ -f extra.sh ]] && source extra.sh

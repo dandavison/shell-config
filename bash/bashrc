@@ -11,7 +11,7 @@ source prompt.sh
 source bash/history.sh
 source bash/completion.sh
 source ~/lib/git/contrib/completion/git-completion.bash
-source autojump.sh
+source fasd.sh
 source readline.sh
 source alias.sh
 [ -f extra.sh ] && source extra.sh
