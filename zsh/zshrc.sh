@@ -1,12 +1,14 @@
-if [[ -z $TMUX ]] ; then
-    tmux attach || tmux
-fi
-
+# PATH=$PATH:/usr/local/bin
 _cwd=$(pwd)
 cd ~/config/shell
 
 source lib.sh
 source path.sh
+
+if [[ -z $TMUX ]] ; then
+    tmux attach || tmux
+fi
+
 source git-functions.sh
 source env.sh
 source dircolors.sh
@@ -19,3 +21,6 @@ source zsh/bindings.sh
 source tmux.sh
 
 cd "$_cwd"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

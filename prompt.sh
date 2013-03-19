@@ -12,6 +12,7 @@ if [[ -n ${ZSH_VERSION-} ]]; then
     # Prior to running a command: set window name to command name
     function preexec () {
 	tmux rename-window "$1"
+	# GIT_LAST_BRANCH=$(git rev-parse HEAD)
     }
 
     setopt PROMPT_SUBST
