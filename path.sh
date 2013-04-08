@@ -6,7 +6,7 @@ if _dan_is_laptop ; then
 /usr/local/share/python
 /usr/local/share/npm/bin
 $HOME/bin
-/Applications/Emacs.app/Contents/MacOS/bin
+/Applications/Emacs.app/Contents/MacOS
 /usr/local/texlive/2012/bin/x86_64-darwin
 EOF
     ) ; do
