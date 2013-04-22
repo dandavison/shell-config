@@ -21,3 +21,5 @@ bindkey -s '^_' '^a^ktmux select-window -t :\t\t'
 bindkey -M menuselect -s '^_' '^g^a^k'
 
 bindkey '^W' kill-region
+
+bindkey '^x^r' replace-string

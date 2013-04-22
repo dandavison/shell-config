@@ -66,6 +66,10 @@ autoload edit-command-line-in-shell-mode
 zle -N edit-command-line-in-shell-mode
 bindkey '\ee' edit-command-line-in-shell-mode
 
+autoload -U replace-string
+zle -N replace-string
+bindkey '^x^r' replace-string
+
 if _dan_is_laptop ; then
     for widget in kill-region kill-line yank ; do
 	autoload $widget
