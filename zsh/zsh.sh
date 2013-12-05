@@ -23,6 +23,8 @@ WORDCHARS="*?[]~=&;!#$%^(){}<>"
 
 setopt EXTENDED_GLOB
 
+fpath=(~/config/shell/zsh/functions ~/lib/zsh/zsh-pip-completion $fpath)
+
 autoload -U colors
 colors
 
@@ -60,7 +62,7 @@ __git_files(){ _main_complete _files }
 
 # bindkey -M menuselect '^o' accept-and-infer-next-history
 
-fpath=(~/config/shell/zsh/functions $fpath)
+compctl -K _virtualenvs switchto
 
 autoload edit-command-line-in-shell-mode
 zle -N edit-command-line-in-shell-mode
