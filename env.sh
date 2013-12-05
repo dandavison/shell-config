@@ -10,4 +10,7 @@ export GEM_HOME=$(brew --prefix)
 
 export GIT_MERGE_AUTOEDIT=no
 
+export WORKON_HOME=$HOME/venvs
+source /usr/local/share/python/virtualenvwrapper.sh
+
 PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"

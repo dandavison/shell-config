@@ -30,3 +30,23 @@ ssh_ () {
 cdp () {
     mkdir -p "$1" && cd "$1"
 }
+
+# gcs () {
+#     git stash save && git checkout $0 && git stash pop
+# }
+
+git-fetch-branch () {
+    git fetch origin $1:$1
+}
+
+cp-desktop-latest () {
+    cp -r ~/Desktop/*(om[1]) $1
+}
+
+cp-tmp-latest () {
+    cp -r /tmp/*(om[1]) $1
+}
+
+switchto () {
+        workon $1 && cdproject
+}
