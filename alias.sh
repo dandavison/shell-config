@@ -105,6 +105,7 @@ alias tree='tree -AC --noreport'
 alias t='tree'
 alias tl='topleft'
 alias tail-messages='tail -f /var/log/messages'
+alias v=vpn
 if [ $(uname) = "Darwin" ] ; then
     alias hibernateon="sudo pmset -a hibernatemode 5"
     alias hibernateoff="sudo pmset -a hibernatemode 0"

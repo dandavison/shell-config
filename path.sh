@@ -8,8 +8,6 @@ if _dan_is_laptop ; then
 $HOME/bin
 $HOME/.cabal/bin
 $HOME/misc
-/Applications/Emacs.app/Contents/MacOS
-/Applications/Emacs.app/Contents/MacOS/bin
 /usr/local/texlive/2012/bin/x86_64-darwin
 EOF
     ) ; do
