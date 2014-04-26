@@ -36,7 +36,17 @@ cdp () {
 # }
 
 git-fetch-branch () {
+    git fetch origin $1:$1 && git checkout $1
+}
+
+git-review () {
     git fetch origin $1:$1
+    git checkout $1 && egit-diff $1
+}
+
+hub-pr () {
+    head=$(git symbolic-ref --short HEAD)
+    EDITOR='emacsclient -n' hub pull-request -b dev:master -h dev:$head $1
 }
 
 cp-desktop-latest () {
