@@ -41,7 +41,13 @@ git-fetch-branch () {
 
 git-review () {
     git fetch origin $1:$1
-    git checkout $1 && egit-diff $1
+    git checkout $1 && egit-diff master...
+}
+
+git-review-merge () {
+    merge_commit=$1
+    git rev-list --parents -n1 $merge_commit | read merge parent1 parent2
+    git checkout $parent2 && egit-diff $parent1...$parent2
 }
 
 hub-pr () {
@@ -59,4 +65,8 @@ cp-tmp-latest () {
 
 switchto () {
         workon $1 && cdproject
+}
+
+git-prune-merged () {
+    gbd | head -n20 | awk '{print $1}' | while read b ; do git branch -d $b ; done
 }
