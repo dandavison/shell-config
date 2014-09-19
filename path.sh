@@ -5,6 +5,7 @@ if _dan_is_osx ; then
 /usr/local/bin
 /usr/local/share/python
 /usr/local/share/npm/bin
+/usr/local/heroku/bin
 $HOME/bin
 $HOME/.cabal/bin
 $HOME/misc
