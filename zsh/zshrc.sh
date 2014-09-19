@@ -1,4 +1,3 @@
-# PATH=$PATH:/usr/local/bin
 _cwd=$(pwd)
 cd ~/config/shell
 
