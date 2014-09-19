@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 export FIGNORE=.pyc:#:.DS_Store:.git
 
 BASH_COMPLETION=~/lib/shell/bash/bash_completion
