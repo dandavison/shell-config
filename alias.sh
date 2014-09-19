@@ -16,6 +16,8 @@ alias fromip="who | grep \"^$USER\" | sed 1q | perl -n -e 's,.*\(([0-9.]+)\),\1,
 
 # git aliases
 alias -g ob='origin/$(git symbolic-ref --short HEAD)'
+alias -g m='master'
+alias -g 'm...'='master...'
 alias ga='git add'
 alias gb='git branch'
 alias gbc='git branch --contains'
@@ -35,6 +37,7 @@ alias gco='git commit'
 alias gcoa='git commit --amend'
 alias gcp='git cherry-pick'
 alias gd='git diff'
+alias gdm='git diff master'
 alias gdob='git diff origin/$(git symbolic-ref --short HEAD)'
 alias gf='git fetch'
 alias gfb='git-fetch-branch'
@@ -81,7 +84,6 @@ alias grbc='git rebase --continue'
 alias grbi='git rebase --interactive'
 alias gri='git rebase --interactive'
 alias grio='git rebase --interactive origin/$(git symbolic-ref --short HEAD)'
-alias git-init='git init && git add * && git commit -m "init"'
 
 alias hubc='open https://github.counsyl.com/dev/website/commit/$(git rev-list -n1 HEAD)'
 
