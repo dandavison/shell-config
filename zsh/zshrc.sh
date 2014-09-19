@@ -10,7 +10,7 @@ if [[ -z $TMUX ]] ; then
 fi
 
 source git-functions.sh
-source env.sh
+_dan_is_osx && source osx_env.sh
 source dircolors.sh
 source zsh/zsh.sh
 source prompt.sh
