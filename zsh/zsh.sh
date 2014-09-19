@@ -71,7 +71,7 @@ autoload -U replace-string
 zle -N replace-string
 
 
-if _dan_is_laptop ; then
+if _dan_is_osx ; then
     for widget in kill-region kill-line yank ; do
 	autoload $widget
 	zle -N $widget

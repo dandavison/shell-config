@@ -17,7 +17,7 @@ if [[ -n ${ZSH_VERSION-} ]]; then
 
     setopt PROMPT_SUBST
     PROMPT=""
-    if _dan_is_laptop ; then
+    if _dan_is_osx ; then
 	:
     else
 	PROMPT="%{$fg[red]%}%n%{$reset_color%}@"   # name@

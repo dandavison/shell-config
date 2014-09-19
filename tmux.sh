@@ -1,1 +1,1 @@
-_dan_is_laptop && tmux set-option prefix C-z >/dev/null
+_dan_is_osx && tmux set-option prefix C-z >/dev/null

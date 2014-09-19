@@ -1,4 +1,4 @@
-_dan_is_laptop () {
+_dan_is_osx () {
     [ -e /Applications ]
 }
 
