@@ -1,1 +1,1 @@
-eval "$(../fasd/fasd --init auto)"
+eval "$(fasd --init auto)"

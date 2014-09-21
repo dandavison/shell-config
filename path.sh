@@ -17,4 +17,6 @@ EOF
     export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 fi
 
+PATH="$PATH:$(readlink -f ../fasd)"
+
 PATH=$(_dan_uniquify_path $PATH)
