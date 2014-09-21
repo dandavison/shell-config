@@ -1,5 +1,3 @@
-# $HOME/lib/iTerm2-1_0_0_20120726/tmux
-
 if _dan_is_osx ; then
     for dir in $(cat <<EOF
 /usr/local/bin
