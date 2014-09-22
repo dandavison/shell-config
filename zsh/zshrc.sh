@@ -2,6 +2,7 @@ _cwd=$(pwd)
 cd ~/config/shell
 
 source lib.sh
+source lib_zsh.sh
 source path.sh
 
 if [[ -z $TMUX ]] ; then

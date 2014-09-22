@@ -55,14 +55,6 @@ hub-pr () {
     EDITOR='emacsclient -n' hub pull-request -b dev:master -h dev:$head $1
 }
 
-cp-desktop-latest () {
-    cp -r ~/Desktop/*(om[1]) $1
-}
-
-cp-tmp-latest () {
-    cp -r /tmp/*(om[1]) $1
-}
-
 switchto () {
         workon $1 && cdproject
 }
