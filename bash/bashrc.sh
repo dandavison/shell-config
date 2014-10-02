@@ -4,6 +4,7 @@ cd ~/config/shell
 source lib.sh
 source path.sh
 source git-functions.sh
+source env.sh
 _dan_is_osx && source osx_env.sh
 source dircolors.sh
 source prompt.sh
