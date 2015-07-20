@@ -4,17 +4,6 @@ GIT_PS1_STAGED="જ "
 
 if [[ -n ${ZSH_VERSION-} ]]; then
 
-    # Prior to printing the prompt: set window name to current directory 
-    function precmd () {
-	tmux rename-window "$(print -Pn "%~%")"
-    }
-
-    # Prior to running a command: set window name to command name
-    function preexec () {
-	tmux rename-window "$1"
-	# GIT_LAST_BRANCH=$(git rev-parse HEAD)
-    }
-
     setopt PROMPT_SUBST
     PROMPT=""
     if _dan_is_osx ; then
