@@ -6,6 +6,7 @@ if _dan_is_osx ; then
 /usr/local/heroku/bin
 $HOME/.cabal/bin
 /usr/local/texlive/2012/bin/x86_64-darwin
+$HOME/projects/vcfutils
 EOF
     ) ; do
 	[ -d $dir ] && PATH=$dir:$PATH || {

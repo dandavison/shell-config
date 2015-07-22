@@ -1,25 +1,22 @@
-_cwd=$(pwd)
-cd ~/config/shell
+TMUX_BASE_SESSION_NAME=base
+DIR=~/config/shell
 
-source lib.sh
-source lib_zsh.sh
-source path.sh
+source $DIR/lib.sh
+source $DIR/lib_zsh.sh
+source $DIR/path.sh
 
 if [[ -z $TMUX ]] ; then
-    tmux attach || tmux
+    tmux attach -t $TMUX_BASE_SESSION_NAME || tmux new-session -s $TMUX_BASE_SESSION_NAME
 fi
 
-source git-functions.sh
-source env.sh
-_dan_is_osx && source osx_env.sh
-source dircolors.sh
-source zsh/zsh.sh
-source prompt.sh
-source fasd.sh
-source alias.sh
-source zsh/bindings.sh
-[[ -f extra.sh ]] && source extra.sh
-source tmux.sh
-
-cd "$_cwd"
-
+source $DIR/git-functions.sh
+source $DIR/env.sh
+_dan_is_osx && source $DIR/osx_env.sh
+source $DIR/dircolors.sh
+source $DIR/zsh/zsh.sh
+source $DIR/prompt.sh
+source $DIR/fasd.sh
+source $DIR/alias.sh
+source $DIR/zsh/bindings.sh
+[[ -f extra.sh ]] && source $DIR/extra.sh
+source $DIR/tmux.sh

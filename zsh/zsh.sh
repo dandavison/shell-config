@@ -9,7 +9,6 @@ unsetopt BEEP
 setopt NOHUP
 setopt NO_BG_NICE
 
-setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST

@@ -62,3 +62,20 @@ switchto () {
 git-prune-merged () {
     gbd | head -n20 | awk '{print $1}' | while read b ; do git branch -d $b ; done
 }
+
+ega () {
+    touch $1 && git add $1 && emacsclient -n $1
+}
+
+
+grip-chrome () {
+    tmpfile=$(mktemp)
+    grip --export $1 $tmpfile > /dev/null 2>&1 && chrome $tmpfile
+}
+    
+
+grip-python () {
+    (echo '```python'
+     cat
+     echo '```') | grip --export -
+}

@@ -3,9 +3,15 @@ alias acurl='curl --user $(cat ~/.ssh/auth)'
 alias beh='tac ~/.bash_eternal_history'
 alias c='cat'
 alias cdt='cd "$_"'
+alias cdtemp='cd $(mktemp -d)'
 alias cgrep='grep --color=always'
 alias chrome='open -a /Applications/Google\ Chrome.app'
 alias copy='reattach-to-user-namespace pbcopy'
+
+alias d=docker
+alias dc=docker-compose
+alias ebs='eval "$(boot2docker shellinit)"'
+
 alias e="emacsclient -n"
 alias ep='emacs_pipe'
 alias ee="emacs -nw -q"
@@ -13,8 +19,10 @@ alias ef='efind'
 alias eg='egit'
 alias f='find'
 alias fromip="who | grep \"^$USER\" | sed 1q | perl -n -e 's,.*\(([0-9.]+)\),\1, and print'"
+alias virtualenv-temp='rm -fr /tmp/v && virtualenv /tmp/v && . /tmp/v/bin/activate'
 
 # git aliases
+alias git-init='git init && touch README.md && git add README.md && git commit -m "Init"'
 alias -g ob='origin/$(git rev-parse --abbrev-ref HEAD)'
 alias -g m='master'
 alias -g 'm...'='master...'
@@ -26,6 +34,7 @@ alias gbdh='git branch-by-date|head'
 alias gbda='git branch-by-date'
 alias gbl='git blame'
 alias gc='git checkout'
+gcf () { git checkout "$@" || git-fetch-branch "$@" }
 alias gcbz='git branch -D z 2> /dev/null ; git checkout -b z'
 alias gconf='git config'
 alias gconfl='git config -l'
@@ -103,13 +112,14 @@ alias ll='ls -lh'
 # alias ll='ls -l --color=always | perl -p -e "s,([^ ]+ +){8},,"'
 alias lt='ls -lht'
 alias lth='ls -lht | head'
+alias 'make-explain'="make -rnd | perl -p -e 's,(^ +),\1\1\1\1,'"
 alias mkdir='mkdir -p'
 alias mk='mkdir'
 alias m='more'
 alias path='readlink -f'
 alias p=path
 alias psl='ps auxwww | less'
-alias python='python -W ignore:Module:UserWarning -W ignore::DeprecationWarning -W ignore::PendingDeprecationWarning'
+alias pvirtualenv='echo $VIRTUAL_ENV'
 alias pwdr='pwd | sed "s,.*$HOME/,,"'
 alias ping-www='ping www.direct.gov.uk'
 alias ps-me='ps -u `whoami`'
@@ -125,9 +135,18 @@ alias thg='tac ~/.zsh_history | grep'
 alias tm='tree | more'
 alias tree='tree -AC --noreport'
 alias t='tree'
+
+alias 'tmux-current-session'='tmux display-message -p "#S"'
+alias ta='tmux attach'
+alias tns='tmux new-session'
+alias tls='tmux list-sessions'
+alias tcs='tmux-current-session'
+
 alias tl='topleft'
 alias tail-messages='tail -f /var/log/messages'
 alias v=vpn
+alias vssh='vagrant ssh'
+alias vpro='vagrant provision'
 alias wt='website_test'
 if [ $(uname) = "Darwin" ] ; then
     alias hibernateon="sudo pmset -a hibernatemode 5"
