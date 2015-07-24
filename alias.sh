@@ -23,9 +23,6 @@ alias virtualenv-temp='rm -fr /tmp/v && virtualenv /tmp/v && . /tmp/v/bin/activa
 
 # git aliases
 alias git-init='git init && touch README.md && git add README.md && git commit -m "Init"'
-alias -g ob='origin/$(git rev-parse --abbrev-ref HEAD)'
-alias -g m='master'
-alias -g 'm...'='master...'
 alias ga='git add'
 alias gb='git branch'
 alias gbc='git branch --contains'
@@ -34,7 +31,7 @@ alias gbdh='git branch-by-date|head'
 alias gbda='git branch-by-date'
 alias gbl='git blame'
 alias gc='git checkout'
-gcf () { git checkout "$@" || git-fetch-branch "$@" }
+gcf () { git checkout "$@" || git-fetch-branch "$@" ; }
 alias gcbz='git branch -D z 2> /dev/null ; git checkout -b z'
 alias gconf='git config'
 alias gconfl='git config -l'

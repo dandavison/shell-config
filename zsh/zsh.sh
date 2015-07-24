@@ -82,3 +82,7 @@ autoload _tmux
 
 # bash doesn't allow this
 alias "../.."='cd ../..'
+
+alias -g ob='origin/$(git rev-parse --abbrev-ref HEAD)'
+alias -g m='master'
+alias -g 'm...'='master...'

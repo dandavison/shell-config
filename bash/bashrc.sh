@@ -1,5 +1,5 @@
 _cwd=$(pwd)
-cd ~/config/shell
+cd ~/src/1p/shell-config
 
 source lib.sh
 source path.sh
@@ -10,7 +10,7 @@ source dircolors.sh
 source prompt.sh
 source bash/history.sh
 source bash/completion.sh
-source ~/lib/git/contrib/completion/git-completion.bash
+source ~/src/git/contrib/completion/git-completion.bash
 source fasd.sh
 source readline.sh
 source alias.sh
