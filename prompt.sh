@@ -23,6 +23,6 @@ else
     _host=""
     _col=$cyan
 
-    export PROMPT_COMMAND='PS1="$(_colorize $_col "$(pwd)")$(_colorize $red "$(__git_ps1 "(%s)")") "'
+    export PROMPT_COMMAND='PS1="$(_colorize $_col "$(pwd | sed "s,$HOME,~,")")$(_colorize $red "$(__git_ps1 "(%s)")") "'
     PS2=''
 fi

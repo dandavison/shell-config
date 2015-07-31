@@ -1,1 +1,1 @@
-eval "`dircolors -b ~/.dircolors`"
+[ -f ~/.dircolors ] && eval "`dircolors -b ~/.dircolors`"

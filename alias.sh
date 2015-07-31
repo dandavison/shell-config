@@ -98,7 +98,6 @@ alias g='grep'
 alias gless='grep --color=always | less -R'
 alias grep='grep --color=auto'
 alias h='head'
-alias hist='tac ~/.zsh_history'
 alias jp=jsonpipe
 alias less='less -SX'
 alias l='less'
@@ -128,7 +127,6 @@ alias rs='rsync -z --progress'
 alias ssh='ssh -A'
 alias s='switchto'
 alias sw='switchto website'
-alias thg='tac ~/.zsh_history | grep'
 alias tm='tree | more'
 alias tree='tree -AC --noreport'
 alias t='tree'
@@ -145,6 +143,14 @@ alias v=vpn
 alias vssh='vagrant ssh'
 alias vpro='vagrant provision'
 alias wt='website_test'
+
+if [[ -n ${ZSH_VERSION-} ]]; then
+    alias hist='tac ~/.zsh_history'
+    alias thg='tac ~/.zsh_history | grep'
+else
+    alias hist='tac ~/.bash_eternal_history'
+fi
+
 if [ $(uname) = "Darwin" ] ; then
     alias hibernateon="sudo pmset -a hibernatemode 5"
     alias hibernateoff="sudo pmset -a hibernatemode 0"
