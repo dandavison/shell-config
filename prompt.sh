@@ -1,28 +1,20 @@
+BLACK=30 ; RED=31 ; GREEN=32 ; YELLOW=33 ; BLUE=34 ; MAGENTA=35 ; CYAN=36 ; WHITE=37
 GIT_PS1_SHOWDIRTYSTATE=yes
 GIT_PS1_UNSTAGED="અ "
 GIT_PS1_STAGED="જ "
+__PROMPT_COL=$cyan
 
-if [[ -n ${ZSH_VERSION-} ]]; then
 
-    setopt PROMPT_SUBST
-    PROMPT=""
-    if _dan_is_osx ; then
-	:
-    else
-	PROMPT="%{$fg[red]%}%n%{$reset_color%}@"   # name@
-	PROMPT+="%{$fg[red]%}%m%{$reset_color%}:"  # hostname
-    fi
+__prompt_command () {
+    PS1=""
+    # Python virtualenv if any
+    [ -n "$VIRTUAL_ENV" ] && PS1+="($(basename $VIRTUAL_ENV))"
+    # Current directory
+    PS1+="$(_colorize $__PROMPT_COL "$(pwd | sed "s,$HOME,~,")")"
+    # Git repository
+    PS1+="$(_colorize $red "$(__git_ps1 "(%s)")")"
+    PS1+=" "
+}
 
-    PROMPT+="%{$fg[cyan]%}%3~%{$reset_color%}"         # cwd truncated to terminal n dirs
-    PROMPT+="%{$fg[red]%}%(?..(%?%))%{$reset_color%} " # exit status if nonzero
-
-    RPROMPT=$'%{${fg[green]}%}$(__git_ps1)%{${fg[default]}%}'
-else
-    black=30 ; red=31 ; green=32 ; yellow=33 ; blue=34 ; magenta=35 ; cyan=36 ; white=37
-
-    _host=""
-    _col=$cyan
-
-    export PROMPT_COMMAND='PS1="$(_colorize $_col "$(pwd | sed "s,$HOME,~,")")$(_colorize $red "$(__git_ps1 "(%s)")") "'
-    PS2=''
-fi
+export PROMPT_COMMAND=__prompt_command
+PS2=''
