@@ -79,3 +79,14 @@ grip-python () {
      cat
      echo '```') | grip --export -
 }
+
+
+vpn () {
+    SERVICE="Counsyl VPN" 
+    if scutil --nc status "$SERVICE" | grep -i -qE '^Disconnected'
+    then
+	scutil --nc start "$SERVICE"
+    else
+	scutil --nc stop "$SERVICE"
+    fi
+}
