@@ -1,0 +1,6 @@
+a: self-insert
+n: self-insert
+o: self-insert
+p: self-insert
+"\e[A": history-search-backward
+"\e[B": history-search-forward
