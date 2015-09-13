@@ -1,7 +1,9 @@
 alias ..='cd ..'
 alias acurl='curl --user $(cat ~/.ssh/auth)'
+alias agp='ag --python'
 alias beh='tac ~/.bash_eternal_history'
 alias c='cat'
+alias cb='cargo build'
 alias cdt='cd "$_"'
 alias cdtemp='cd $(mktemp -d)'
 alias cgrep='grep --color=always'
@@ -10,6 +12,11 @@ alias copy='reattach-to-user-namespace pbcopy'
 
 alias d=docker
 alias dc=docker-compose
+alias di='docker images'
+
+alias docker-prune='docker rmi $(docker images -f "dangling=true" -q)'
+alias docker-rm-all='docker rm -f $(docker ps -a -q)'
+alias docker-clean='docker-rm-all && docker-prune'
 alias ebs='eval "$(boot2docker shellinit)"'
 
 alias e="emacsclient -n"
@@ -22,7 +29,7 @@ alias fromip="who | grep \"^$USER\" | sed 1q | perl -n -e 's,.*\(([0-9.]+)\),\1,
 alias virtualenv-temp='rm -fr /tmp/v && virtualenv /tmp/v && . /tmp/v/bin/activate'
 
 # git aliases
-alias git-init='git init && touch README.md && git add README.md && git commit -m "Init"'
+alias git-init='git init && git commit --allow-empty -m "Init"'
 alias ga='git add'
 alias gb='git branch'
 alias gbc='git branch --contains'
@@ -37,6 +44,7 @@ alias gconf='git config'
 alias gconfl='git config -l'
 alias gcl='git clean'
 alias gcln='git clean -nd'
+alias gclo='git clone'
 alias gcm='git checkout master'
 alias gcmm='git branch master origin/master && git checkout master'
 alias gco='git commit'
@@ -89,6 +97,10 @@ alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
 alias grbi='git rebase --interactive'
 alias gri='git rebase --interactive'
+for i in 1 2 3 4 5 ; do
+    alias gri${i}="git rebase --interactive HEAD~${i}"
+done
+alias gri4='git rebase --interactive HEAD~3'
 alias grio='git rebase --interactive origin/$(git rev-parse --abbrev-ref HEAD)'
 
 alias hubc='open https://github.counsyl.com/dev/website/commit/$(git rev-list -n1 HEAD)'
@@ -142,7 +154,6 @@ alias tail-messages='tail -f /var/log/messages'
 alias v=vpn
 alias vssh='vagrant ssh'
 alias vpro='vagrant provision'
-alias wt='website_test'
 
 if [[ -n ${ZSH_VERSION-} ]]; then
     alias hist='tac ~/.zsh_history'
