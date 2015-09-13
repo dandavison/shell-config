@@ -1,3 +1,5 @@
+. ~/src/1p/wifi/wifi.sh
+
 _dan_is_osx () {
     [ -e /Applications ]
 }
