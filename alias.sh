@@ -17,7 +17,8 @@ alias di='docker images'
 alias docker-prune='docker rmi $(docker images -f "dangling=true" -q)'
 alias docker-rm-all='docker rm -f $(docker ps -a -q)'
 alias docker-clean='docker-rm-all && docker-prune'
-alias ebs='eval "$(boot2docker shellinit)"'
+export DOCKER_MACHINE_NAME=docker
+alias docker-machine-set-env='eval "$(docker-machine env docker)"'
 
 alias e="emacsclient -n"
 alias ep='emacs_pipe'
