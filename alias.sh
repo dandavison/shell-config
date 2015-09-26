@@ -10,15 +10,20 @@ alias cgrep='grep --color=always'
 alias chrome='open -a /Applications/Google\ Chrome.app'
 alias copy='reattach-to-user-namespace pbcopy'
 
-alias d=docker
-alias dc=docker-compose
-alias di='docker images'
+export DOCKER_MACHINE_NAME=docker
 
 alias docker-prune='docker rmi $(docker images -f "dangling=true" -q)'
 alias docker-rm-all='docker rm -f $(docker ps -a -q)'
 alias docker-clean='docker-rm-all && docker-prune'
-export DOCKER_MACHINE_NAME=docker
+
+alias d=docker
+alias dc=docker-compose
+alias di='docker images'
+alias dps='docker ps'
+
 alias docker-machine-set-env='eval "$(docker-machine env docker)"'
+alias dip="docker-machine ip $DOCKER_MACHINE_NAME"
+alias dse=docker-machine-set-env
 
 alias e="emacsclient -n"
 alias ep='emacs_pipe'
