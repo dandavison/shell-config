@@ -103,7 +103,7 @@ alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
 alias grbi='git rebase --interactive'
 alias gri='git rebase --interactive'
-for i in 1 2 3 4 5 ; do
+for i in 1 2 3 4 5 6 7 8 9 10; do
     alias gri${i}="git rebase --interactive HEAD~${i}"
 done
 alias gri4='git rebase --interactive HEAD~3'
