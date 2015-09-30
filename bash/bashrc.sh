@@ -15,6 +15,7 @@ source fasd.sh
 source readline.sh
 source alias.sh
 [ -f extra.sh ] && source extra.sh
+source bash/alias_completion.sh
 source tmux.sh
 
 cd "$_cwd"
