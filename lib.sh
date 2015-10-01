@@ -1,5 +1,10 @@
 . ~/src/1p/wifi/wifi.sh
 
+_raise () {
+    echo -n "$1" >&2
+    kill -INT $$
+}
+
 _dan_is_osx () {
     [ -e /Applications ]
 }
