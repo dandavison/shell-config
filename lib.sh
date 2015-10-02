@@ -1,10 +1,5 @@
 . ~/src/1p/wifi/wifi.sh
 
-_raise () {
-    echo -n "$1" >&2
-    kill -INT $$
-}
-
 _dan_is_osx () {
     [ -e /Applications ]
 }
@@ -105,6 +100,9 @@ cd-site-packages() {
 docker-container-uri () {
     container_name="$1"
     container_port="$2"
-    [ -n "$container_name" -a -n "$container_port" ] || _raise "usage: $0 <container-name> <container-port>"
+    [ -n "$container_name" -a -n "$container_port" ] || {
+        echo "usage: $0 <container-name> <container-port>" >&2
+        return 1
+    }
     echo "http://$(docker-machine ip $DOCKER_MACHINE_NAME):$(docker port $container_name $container_port | cut -d: -f2)"
 }
