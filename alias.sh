@@ -10,8 +10,6 @@ alias cgrep='grep --color=always'
 alias chrome='open -a /Applications/Google\ Chrome.app'
 alias copy='reattach-to-user-namespace pbcopy'
 
-export DOCKER_MACHINE_NAME=docker
-
 alias docker-prune='docker rmi $(docker images -f "dangling=true" -q)'
 alias docker-rm-all='docker rm -f $(docker ps -a -q)'
 alias docker-clean='docker-rm-all && docker-prune'
@@ -21,9 +19,9 @@ alias dc=docker-compose
 alias di='docker images'
 alias dps='docker ps'
 
-alias docker-machine-set-env='eval "$(docker-machine env docker)"'
+alias dm='docker-machine'
 alias dip="docker-machine ip $DOCKER_MACHINE_NAME"
-alias dse=docker-machine-set-env
+alias denv='docker-machine-env-docker'
 
 alias e="emacsclient -n"
 alias ep='emacs_pipe'
@@ -123,7 +121,6 @@ alias ctl='(column -t | less -SX) <'
 alias ls='ls --color=tty --hide="*.pyc" --hide="#*"'
 alias lh='ls -lh'
 alias ll='ls -lh'
-# alias ll='ls -l --color=always | perl -p -e "s,([^ ]+ +){8},,"'
 alias lt='ls -lht'
 alias lth='ls -lht | head'
 alias 'make-explain'="make -rnd | perl -p -e 's,(^ +),\1\1\1\1,'"
@@ -138,7 +135,6 @@ alias pwdr='pwd | sed "s,.*$HOME/,,"'
 alias ping-www='ping www.direct.gov.uk'
 alias ps-me='ps -u `whoami`'
 alias pyz='py /tmp/z.py'
-# alias rsync='rsync --exclude=.git'
 alias R='R --silent --no-restore --no-save --vanilla'
 alias rn='rename'
 alias rs='rsync -z --progress'

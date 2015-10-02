@@ -97,6 +97,10 @@ cd-site-packages() {
     cd `python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
 }
 
+docker-machine-env-docker () {
+    eval "$(docker-machine env docker)"
+}
+
 docker-container-uri () {
     container_name="$1"
     container_port="$2"
