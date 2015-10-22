@@ -110,3 +110,12 @@ docker-container-uri () {
     }
     echo "http://$(docker-machine ip $DOCKER_MACHINE_NAME):$(docker port $container_name $container_port | cut -d: -f2)"
 }
+
+docker-compose-exec () {
+    exec_args=""
+    while [[ "$1" == -* ]] ; do exec_args+="$1" ; shift ; done
+    service="$1"
+    shift
+    container=$(docker-compose ps "$service" | sed -n -e 3p | awk '{print $1}')
+    docker exec $exec_args "$container" $@
+}
