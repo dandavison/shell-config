@@ -50,7 +50,7 @@ grip-chrome () {
     tmpfile=$(mktemp)
     grip --export $1 $tmpfile > /dev/null 2>&1 && chrome $tmpfile
 }
-    
+
 
 grip-python () {
     (echo '```python'
@@ -60,7 +60,7 @@ grip-python () {
 
 
 vpn () {
-    SERVICE="Counsyl VPN" 
+    SERVICE="Counsyl VPN"
     if scutil --nc status "$SERVICE" | grep -i -qE '^Disconnected'
     then
 	scutil --nc start "$SERVICE"
