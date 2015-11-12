@@ -11,7 +11,7 @@ fi
 
 source $DIR/git-functions.sh
 source $DIR/env.sh
-_dan_is_osx && source $DIR/osx_env.sh
+__dan_is_osx && source $DIR/osx_env.sh
 source $DIR/dircolors.sh
 source $DIR/zsh/zsh.sh
 source $DIR/prompt.sh

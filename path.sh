@@ -1,5 +1,10 @@
-if _dan_is_osx ; then
+__dan_uniquify_path () {
+    echo "$1" | perl -p -e 's/:/\n/g' | awk '!_[$0]++' | perl -p -e 's/\n/:/g' | sed 's,^:,,' | sed 's,:$,,'
+}
+
+if __dan_is_osx ; then
     for dir in $(/bin/cat <<EOF
+/usr/local/texlive/2015/bin/x86_64-darwin/
 /usr/local/bin
 $HOME/bin
 EOF
@@ -12,4 +17,4 @@ EOF
     MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 fi
 
-export PATH=$(_dan_uniquify_path $PATH)
+export PATH=$(__dan_uniquify_path $PATH)

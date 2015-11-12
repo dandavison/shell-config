@@ -15,12 +15,12 @@ __prompt_command () {
 
 
 __current_directory_ps1 () {
-    echo -n "$(_colorize $__CYAN "$(pwd | sed "s,$HOME,~,")")"
+    echo -n "$(__colorize $__CYAN "$(pwd | sed "s,$HOME,~,")")"
 }
 
 
 __my_git_ps1 () {
-    echo -n "$(_colorize $__RED "$(__git_ps1 "(%s)")")"
+    echo -n "$(__colorize $__RED "$(__git_ps1 "(%s)")")"
 }
 
 
@@ -53,7 +53,7 @@ __docker_compose_ps1 () {
         dc_ps1+="$(printf "${symbol}%.0s " $(seq 1 $count))"
     done <<< "$counts"
     dc_ps1=" ($dc_ps1)"
-    dc_ps1=$(_colorize $__CYAN "$dc_ps1")
+    dc_ps1=$(__colorize $__CYAN "$dc_ps1")
     echo -n "$dc_ps1"
 }
 

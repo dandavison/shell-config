@@ -5,6 +5,7 @@ alias beh='tac ~/.bash_eternal_history'
 alias c='cat'
 alias cb='cargo build'
 alias cdt='cd "$_"'
+cdp () { mkdir -p "$1" && cd "$1";}
 alias cdtemp='cd $(mktemp -d)'
 alias cgrep='grep --color=always'
 alias chrome='open -a /Applications/Google\ Chrome.app'
@@ -24,11 +25,14 @@ alias dmstart="docker-machine start $DOCKER_MACHINE_NAME"
 alias dip="docker-machine ip $DOCKER_MACHINE_NAME"
 alias denv='docker-machine-env-docker'
 
+mv-downcase () { local f=`mktemp -u`; mv "$1" "$f" && mv "$f" $(tr "[:upper:]" "[:lower:]" <<< "$1"); }
+
 alias e="emacsclient -n"
 alias ep='emacs_pipe'
 alias ee="emacs -nw -q"
 alias ef='efind'
 alias eg='egit'
+egt () { gt "$1" && e "$1" ; }
 alias f='find'
 alias fromip="who | grep \"^$USER\" | sed 1q | perl -n -e 's,.*\(([0-9.]+)\),\1, and print'"
 alias virtualenv-temp='rm -fr /tmp/v && virtualenv /tmp/v && . /tmp/v/bin/activate'
@@ -55,6 +59,7 @@ alias gcmm='git branch master origin/master && git checkout master'
 alias gco='git commit'
 alias gcoa='git commit --amend'
 alias gcp='git cherry-pick'
+alias gcpa='git cherry-pick --abort'
 alias gd='git diff'
 alias gdm='git diff master'
 alias gdob='git diff origin/$(git rev-parse --abbrev-ref HEAD)'
@@ -97,6 +102,7 @@ alias gstr='git stash save && git stash drop stash@{1}'
 alias gstsp='git stash show -p'
 alias gstl='git stash list'
 alias gss='git show --stat=120,120'
+gt () { touch "$1" && git add "$1" ; }
 alias glh='git log --oneline -n 20'
 alias grb='git rebase'
 alias grba='git rebase --abort'
@@ -116,6 +122,7 @@ alias g='grep'
 alias gless='grep --color=always | less -R'
 alias grep='grep --color=auto'
 alias h='head'
+alias ip=ipython
 alias jp=jsonpipe
 alias less='less -SX'
 alias l='less'
@@ -129,12 +136,12 @@ alias 'make-explain'="make -rnd | perl -p -e 's,(^ +),\1\1\1\1,'"
 alias mkdir='mkdir -p'
 alias mk='mkdir'
 alias m='more'
+alias p=python
 alias path='readlink -f'
-alias p=path
 alias psl='ps auxwww | less'
 alias pvirtualenv='echo $VIRTUAL_ENV'
 alias pwdr='pwd | sed "s,.*$HOME/,,"'
-alias ping-www='ping www.direct.gov.uk'
+alias ping-world='ping -c 1 www.direct.gov.uk'
 alias ps-me='ps -u `whoami`'
 alias pyz='py /tmp/z.py'
 alias R='R --silent --no-restore --no-save --vanilla'
