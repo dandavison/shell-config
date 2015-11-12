@@ -28,7 +28,12 @@ git-review-merge () {
     git checkout $parent2 && egit-diff $parent1...$parent2
 }
 
-hub-pr () {
+hub-prepare-pr () {
+  url=$(hub browse -u)
+  open ${url/tree/pull}
+}
+
+hub-commit-pr () {
     head=$(git symbolic-ref --short HEAD)
     EDITOR='emacsclient -n' hub pull-request -b dev:master -h dev:$head $1
 }
