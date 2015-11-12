@@ -87,11 +87,21 @@ docker-container-uri () {
     echo "http://$(docker-machine ip $DOCKER_MACHINE_NAME):$(docker port $container_name $container_port | cut -d: -f2)"
 }
 
-docker-compose-exec () {
-    exec_args=""
-    while [[ "$1" == -* ]] ; do exec_args+="$1" ; shift ; done
-    service="$1"
+docker_compose_get_container() {
+    local service="$1"
     shift
-    container=$(docker-compose ps "$service" | sed -n -e 3p | awk '{print $1}')
-    docker exec $exec_args "$container" $@
+    local container=$(docker-compose $@ ps -q "$service")
+    local n_containers=$(echo -n "$container" | grep -c '^')
+    [ "$n_containers" -eq 1 ] || \
+        die "$n_containers containers found for service: '$service'; expected 1"
+    echo "$container"
+}
+
+# E.g. docker-compose exec -it $service bash
+docker-compose-exec () {
+    local exec_args=""
+    while [[ "$1" == -* ]] ; do exec_args+=" $1" ; shift ; done
+    local service="$1"
+    shift
+    docker exec $exec_args $(docker-compose-get-container "$service") $@
 }
