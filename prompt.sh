@@ -28,10 +28,10 @@ __docker_compose_ps1 () {
     while read count state ; do
         case $state in
             running)
-                symbol="🍏"  # 'GREEN APPLE'
+                symbol="⚡"  # alternatives: '🍏' 'GREEN APPLE'
                 ;;
             exited)
-                symbol="🍎"  # 'RED APPLE'
+                symbol="🔴"  # currently 'LARGE RED CIRCLE'; alternatives: '🍎' 'RED APPLE'
                 ;;
             *)
                 echo "Invalid state: '$state'" 1>&2
