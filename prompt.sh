@@ -20,7 +20,7 @@ __docker_compose_ps1 () {
     local containers=$(docker-compose ps -q 2>/dev/null)
     [[ -n "$containers" ]] || return
     local n_containers=$(echo -n "$containers" | grep -c '^')
-    dc_ps1=" ($n_containers)"
+    dc_ps1=" ($(printf "⚡%.0s " $(seq 1 $n_containers)))"
     echo -n $(_colorize $__GREEN "$dc_ps1")
 }
 
