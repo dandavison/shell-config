@@ -4,7 +4,7 @@ __dan_uniquify_path () {
 
 if __dan_is_osx ; then
     for dir in $(/bin/cat <<EOF
-/usr/local/texlive/2015/bin/x86_64-darwin/
+/usr/local/texlive/2015/bin/x86_64-darwin
 /usr/local/bin
 $HOME/bin
 EOF
