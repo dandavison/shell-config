@@ -31,7 +31,7 @@ __virtualenv_ps1 () {
 
 
 __docker_compose_ps1 () {
-    [ -n "$USE_DOCKER_COMPOSE_PS1" ] || return
+    [ -n "$(__find_file_upwards docker-compose.yml .)" ] || return
     local dc_ps1=""
     local containers=$(docker-compose ps -q 2>/dev/null)
     [ -n "$containers" ] || return
