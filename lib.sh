@@ -39,7 +39,7 @@ hub-commit-pr () {
 }
 
 switchto () {
-        workon $1 && cdproject
+    workon $1 && cdproject
 }
 
 git-prune-merged () {
