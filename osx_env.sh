@@ -1,6 +1,6 @@
 export BROWSER=google-chrome
 
-export EDITOR='emacsclient -n > /dev/null'
+export EDITOR='emacsclient -n'
 
 export INFOPATH=/usr/homebrew/share/info
 export CLOJURESCRIPT_HOME=/Users/Shared/lib/clojure/clojurescript
