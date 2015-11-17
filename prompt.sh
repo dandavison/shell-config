@@ -14,6 +14,11 @@ __prompt_command () {
 }
 
 
+__colorize () {
+    echo "\[\033[${1}m\]$2\[\033[0m\]"
+}
+
+
 __current_directory_ps1 () {
     echo -n "$(__colorize $__CYAN "$(pwd | sed "s,$HOME,~,")")"
 }

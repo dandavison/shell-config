@@ -9,11 +9,6 @@ __dan_is_osx () {
     [ -e /Applications ]
 }
 
-__colorize () {
-    echo "\[\033[${1}m\]$2\[\033[0m\]"
-}
-
-
 git-fetch-branch () {
     git fetch origin $1:$1 && git checkout $1
 }
