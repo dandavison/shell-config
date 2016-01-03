@@ -75,7 +75,7 @@ cd-site-packages () {
 }
 
 docker-machine-env-docker () {
-    eval "$(docker-machine env docker)"
+    eval "$(docker-machine env $DOCKER_MACHINE_NAME)"
 }
 
 docker-container-uri () {
@@ -104,7 +104,8 @@ docker-compose-exec () {
     while [[ "$1" == -* ]] ; do exec_args+=" $1" ; shift ; done
     local service="$1"
     shift
-    docker exec $exec_args $(docker-compose-get-container "$service") $@
+    docker exec $exec_args $(docker_compose_get_container "$service") $@
+}
 
 pip-local () {
     PIP_INDEX_URL="http://$(docker-machine ip $DOCKER_MACHINE_NAME):5555/simple/" \
