@@ -105,4 +105,31 @@ docker-compose-exec () {
     local service="$1"
     shift
     docker exec $exec_args $(docker-compose-get-container "$service") $@
+
+pip-local () {
+    PIP_INDEX_URL="http://$(docker-machine ip $DOCKER_MACHINE_NAME):5555/simple/" \
+    PIP_TRUSTED_HOST=$(docker-machine ip $DOCKER_MACHINE_NAME) \
+    pip $@
+}
+
+local-pypi () {
+    local port=${1:-5555}
+    local package_dir=~/tmp/packages
+    local image_name=simple-http-server
+    local container_name=$image_name
+    local dockerfile_dir=~/src/1p/dockerfiles/simple-http-server
+
+    (cd $dockerfile_dir && docker build -t $image_name .)
+    dir2pi $package_dir
+    docker rm -f $container_name 2> /dev/null
+    echo "Starting local PyPi server: http://$(docker-machine ip $DOCKER_MACHINE_NAME):$port"
+    docker run -p $port:80 --rm --name $container_name -v $package_dir:/srv simple-http-server
+}
+
+docker-build-with-local-pypi () {
+    docker build \
+       --build-arg PIP_TRUSTED_HOST=$(docker-machine ip $DOCKER_MACHINE_NAME) \
+       --build-arg PIP_INDEX_URL="http://$(docker-machine ip $DOCKER_MACHINE_NAME):5555/simple/" \
+       $@
+}
 }
