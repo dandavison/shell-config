@@ -132,4 +132,32 @@ docker-build-with-local-pypi () {
        --build-arg PIP_INDEX_URL="http://$(docker-machine ip $DOCKER_MACHINE_NAME):5555/simple/" \
        $@
 }
+
+
+# toggle iTerm Dock icon
+# https://gist.github.com/CrazyApi/5377685
+# http://apple.stackexchange.com/questions/209250/remove-iterm-from-cmdtab-apps?rq=1
+# http://apple.stackexchange.com/questions/92004/is-there-a-way-to-hide-certain-apps-from-the-cmdtab-menu
+toggle-iterm () {
+    pb='/usr/libexec/PlistBuddy'
+    iTerm='/Applications/iTerm.app/Contents/Info.plist'
+
+    echo "Do you wish to hide iTerm in Dock?"
+    select ync in "Hide" "Show" "Cancel"; do
+        case $ync in
+            'Hide' )
+                $pb -c "Add :LSUIElement bool true" $iTerm
+                echo "relaunch iTerm to take effectives"
+                break
+                ;;
+            'Show' )
+                $pb -c "Delete :LSUIElement" $iTerm
+                echo "run killall 'iTerm' to exit, and then relaunch it"
+                break
+                ;;
+        'Cancel' )
+            break
+            ;;
+        esac
+    done
 }
