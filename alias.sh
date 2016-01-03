@@ -20,6 +20,7 @@ alias dc=docker-compose
 alias di='docker images'
 alias dps='docker ps'
 
+DOCKER_MACHINE_NAME=docker5
 alias dm='docker-machine'
 alias dmstart="docker-machine start $DOCKER_MACHINE_NAME"
 alias dip="docker-machine ip $DOCKER_MACHINE_NAME"
@@ -34,6 +35,7 @@ alias ef='efind'
 alias eg='egit'
 egt () { gt "$1" && e "$1" ; }
 alias f='find'
+alias ff='find . -type f -name'
 alias fromip="who | grep \"^$USER\" | sed 1q | perl -n -e 's,.*\(([0-9.]+)\),\1, and print'"
 alias virtualenv-temp='rm -fr /tmp/v && virtualenv /tmp/v && . /tmp/v/bin/activate'
 
@@ -69,6 +71,7 @@ alias gdc='git diff --cached'
 alias gdcs='git diff --cached --stat=200,200'
 alias gdsc='git diff --cached --stat=200,200'
 alias gdw='git diff --word-diff=color'
+alias gdw.='git diff --word-diff=color --word-diff-regex=.'
 alias gds='git diff --stat=200,200'
 alias gg='git grep'
 alias ghci='ghci -fwarn-incomplete-patterns'
@@ -92,6 +95,7 @@ alias gre='git remote'
 alias gres='git remote -v show'
 alias gs='git show'
 alias gsw='git show --word-diff=color'
+alias gsw.='git show --word-diff=color --word-diff-regex=.'
 alias gst='git stash'
 alias gsta='git stash apply'
 alias gstd='git stash drop'
@@ -126,6 +130,9 @@ alias ip=ipython
 alias jp=jsonpipe
 alias less='less -SX'
 alias l='less'
+alias le='lein'
+alias ler='lein repl'
+
 alias ctl='(column -t | less -SX) <'
 alias ls='ls --color=tty --hide="*.pyc" --hide="#*"'
 alias lh='ls -lh'
@@ -136,6 +143,7 @@ alias 'make-explain'="make -rnd | perl -p -e 's,(^ +),\1\1\1\1,'"
 alias mkdir='mkdir -p'
 alias mk='mkdir'
 alias m='more'
+alias open='reattach-to-user-namespace open'
 alias p=python
 alias path='readlink -f'
 alias psl='ps auxwww | less'
