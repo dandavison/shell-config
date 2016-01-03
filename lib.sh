@@ -39,7 +39,7 @@ switchto () {
 }
 
 git-prune-merged () {
-    gbd | head -n20 | awk '{print $1}' | while read b ; do git branch -d $b ; done
+    git branch-by-date | awk '{print $1}' | while read b ; do git branch -d $b ; done
 }
 
 ega () {
