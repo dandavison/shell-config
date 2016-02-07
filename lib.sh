@@ -135,6 +135,13 @@ docker-build-with-local-pypi () {
 }
 
 
+cdp () { mkdir -p "$1" && cd "$1";}
+mv-downcase () { local f=`mktemp -u`; mv "$1" "$f" && mv "$f" $(tr "[:upper:]" "[:lower:]" <<< "$1"); }
+gt () { touch "$1" && git add "$1" ; }
+egt () { gt "$1" && e "$1" ; }
+gcf () { git checkout "$@" || git-fetch-branch "$@" ; }
+
+
 # toggle iTerm Dock icon
 # https://gist.github.com/CrazyApi/5377685
 # http://apple.stackexchange.com/questions/209250/remove-iterm-from-cmdtab-apps?rq=1

@@ -5,7 +5,6 @@ alias beh='tac ~/.bash_eternal_history'
 alias c='cat'
 alias cb='cargo build'
 alias cdt='cd "$_"'
-cdp () { mkdir -p "$1" && cd "$1";}
 alias cdtemp='cd $(mktemp -d)'
 alias cgrep='grep --color=always'
 alias chrome='open -a /Applications/Google\ Chrome.app'
@@ -26,14 +25,12 @@ alias dmstart="docker-machine start $DOCKER_MACHINE_NAME"
 alias dip="docker-machine ip $DOCKER_MACHINE_NAME"
 alias denv='docker-machine-env-docker'
 
-mv-downcase () { local f=`mktemp -u`; mv "$1" "$f" && mv "$f" $(tr "[:upper:]" "[:lower:]" <<< "$1"); }
 
 alias e="emacsclient -n"
 alias ep='emacs_pipe'
 alias ee="emacs -nw -q"
 alias ef='efind'
 alias eg='egit'
-egt () { gt "$1" && e "$1" ; }
 alias f='find'
 alias ff='find . -type f -name'
 alias fromip="who | grep \"^$USER\" | sed 1q | perl -n -e 's,.*\(([0-9.]+)\),\1, and print'"
@@ -49,7 +46,6 @@ alias gbdh='git branch-by-date|head'
 alias gbda='git branch-by-date'
 alias gbl='git blame'
 alias gc='git checkout'
-gcf () { git checkout "$@" || git-fetch-branch "$@" ; }
 alias gcbz='git branch -D z 2> /dev/null ; git checkout -b z'
 alias gconf='git config'
 alias gconfl='git config -l'
@@ -106,7 +102,6 @@ alias gstr='git stash save && git stash drop stash@{1}'
 alias gstsp='git stash show -p'
 alias gstl='git stash list'
 alias gss='git show --stat=120,120'
-gt () { touch "$1" && git add "$1" ; }
 alias glh='git log --oneline -n 20'
 alias grb='git rebase'
 alias grba='git rebase --abort'
