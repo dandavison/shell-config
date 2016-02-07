@@ -19,7 +19,6 @@ alias dc=docker-compose
 alias di='docker images'
 alias dps='docker ps'
 
-DOCKER_MACHINE_NAME=docker5
 alias dm='docker-machine'
 alias dmstart="docker-machine start $DOCKER_MACHINE_NAME"
 alias dip="docker-machine ip $DOCKER_MACHINE_NAME"
