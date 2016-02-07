@@ -174,12 +174,4 @@ alias v=vpn
 alias vssh='vagrant ssh'
 alias vpro='vagrant provision'
 
-if [[ -n ${ZSH_VERSION-} ]]; then
-    alias hist='tac ~/.zsh_history'
-    alias thg='tac ~/.zsh_history | grep'
-else
-    alias hist='tac ~/.bash_eternal_history'
-fi
-
-alias hibernateon="sudo pmset -a hibernatemode 5"
-alias hibernateoff="sudo pmset -a hibernatemode 0"
+alias hist='tac ~/.bash_eternal_history'
