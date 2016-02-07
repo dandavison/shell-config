@@ -181,20 +181,5 @@ else
     alias hist='tac ~/.bash_eternal_history'
 fi
 
-if [ $(uname) = "Darwin" ] ; then
-    alias hibernateon="sudo pmset -a hibernatemode 5"
-    alias hibernateoff="sudo pmset -a hibernatemode 0"
-else
-    alias top='top -d.8'
-    alias s='sync-dirs'
-    alias ps2pdf='ps2pdf -dAutoRotatePages=/None'
-    alias mutt='LANG=en mutt -y'
-    alias gt='gthumb'
-    alias exit='sync-history ; builtin exit'
-    alias fusermount='fusermount -uz'
-    alias mu='mutt'
-    alias screen-external='xrandr --auto && xrandr --output LVDS1 --off && pgrep compiz && compiz --replace &'
-    alias screen-internal='xrandr --auto && xrandr --output VGA1 --off'
-    alias xdvi='xdvi -expert -s 5'
-    alias xpdf='xpdf -fullscreen -bg white'
-fi
+alias hibernateon="sudo pmset -a hibernatemode 5"
+alias hibernateoff="sudo pmset -a hibernatemode 0"
