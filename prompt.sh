@@ -4,10 +4,13 @@ export GIT_PS1_SHOWDIRTYSTATE=yes
 export GIT_PS1_UNSTAGED="અ "
 export GIT_PS1_STAGED="જ "
 
+
 __prompt_command () {
+    local exit="$?"
+    history 1 >> ~/.bash_eternal_history
     PS1=""
     PS1+="$(__virtualenv_ps1)"
-    PS1+="$(__current_directory_ps1)"
+    PS1+="$(__current_directory_ps1 $exit)"
     PS1+="$(__my_git_ps1)"
     PS1+="$(__docker_compose_ps1)"
     PS1+=" "
@@ -20,7 +23,10 @@ __colorize () {
 
 
 __current_directory_ps1 () {
-    echo -n "$(__colorize $__CYAN "$(pwd | sed "s,$HOME,~,")")"
+    local col=$__CYAN
+    local exit=$1
+    [ "$exit" -ne 0 ] && col=$__RED
+    echo -n "$(__colorize $col "$(pwd | sed "s,$HOME,~,")")"
 }
 
 
