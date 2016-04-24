@@ -24,7 +24,16 @@ git-review-merge () {
     git checkout $parent2 && egit-diff $parent1...$parent2
 }
 
-hub-prepare-pr () {
+git-python-xargs () {
+    git ls-files | grep '\.py$' | xargs $@
+}
+
+git-link () {
+    [[ -n $1 ]] || return 1
+    git commit --allow-empty -m ""
+}
+
+hub-pr () {
   url=$(hub browse -u)
   open ${url/tree/pull}
 }
@@ -39,7 +48,20 @@ switchto () {
 }
 
 git-prune-merged () {
-    git branch-by-date | awk '{print $1}' | while read b ; do git branch -d $b ; done
+    git branch-by-date | \
+        awk '{print $1}' | \
+        while read b ; do
+            git branch -d $b 2> /dev/null && echo "Deleted $b"
+        done
+}
+
+git-delete-temp-branches () {
+    git branch-by-date | \
+        awk '{print $1}' | \
+        grep '^z-' | \
+        while read b ; do
+            git branch -D $b 2> /dev/null
+        done
 }
 
 ega () {
@@ -59,16 +81,6 @@ grip-python () {
      echo '```') | grip --export -
 }
 
-
-vpn () {
-    SERVICE="Counsyl VPN"
-    if scutil --nc status "$SERVICE" | grep -i -qE '^Disconnected'
-    then
-	scutil --nc start "$SERVICE"
-    else
-	scutil --nc stop "$SERVICE"
-    fi
-}
 
 cd-site-packages () {
     cd `python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
@@ -140,6 +152,21 @@ mv-downcase () { local f=`mktemp -u`; mv "$1" "$f" && mv "$f" $(tr "[:upper:]" "
 gt () { touch "$1" && git add "$1" ; }
 egt () { gt "$1" && e "$1" ; }
 gcf () { git checkout "$@" || git-fetch-branch "$@" ; }
+
+git-commit-file () {
+    git add "$1" && git commit -m "$1"
+}
+
+tail0 () {
+    file=$1
+    until [[ -e $file ]]; do sleep 0.1; done
+    tail -f $file
+}
+
+
+kill-python () {
+    kill $(ps aux | grep python | grep -v grep | grep "$1" | awk '{print $2}')
+}
 
 
 # toggle iTerm Dock icon

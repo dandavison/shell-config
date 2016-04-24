@@ -6,7 +6,10 @@ if __dan_is_osx ; then
     for dir in $(/bin/cat <<EOF
 /usr/local/texlive/2015/bin/x86_64-darwin
 /usr/local/bin
+$HOME/src/1p/misc
+$HOME/src/1p/emacs-config/bin
 $HOME/bin
+$HOME/src/counsyl/bin
 EOF
     ) ; do
 	[ -d $dir ] && PATH=$dir:$PATH || {
