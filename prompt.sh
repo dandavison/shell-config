@@ -11,6 +11,7 @@ __prompt_command () {
     PS1=""
     PS1+="$(__virtualenv_ps1)"
     PS1+="$(__current_directory_ps1 $exit)"
+    PS1+="$(__facet_ps1)"
     PS1+="$(__my_git_ps1)"
     PS1+="$(__docker_compose_ps1)"
     PS1+=" "
@@ -29,6 +30,10 @@ __current_directory_ps1 () {
     echo -n "$(__colorize $col "$(pwd | sed "s,$HOME,~,")")"
 }
 
+__facet_ps1() {
+    (pwd | egrep -q '(counsyl|facet)' > /dev/null) &&
+        echo -n "($(cat ~/.facet/.state | jq .facet | tr -d '"\n'))"
+}
 
 __my_git_ps1 () {
     echo -n "$(__colorize $__RED "$(__git_ps1 "(%s)")")"
