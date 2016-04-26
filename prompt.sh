@@ -8,6 +8,7 @@ export GIT_PS1_STAGED="જ "
 __prompt_command () {
     local exit="$?"
     history 1 >> ~/.bash_eternal_history
+    __facet_prompt_commands
     PS1=""
     PS1+="$(__virtualenv_ps1)"
     PS1+="$(__current_directory_ps1 $exit)"
@@ -34,6 +35,13 @@ __facet_ps1() {
     (pwd | egrep -q '(counsyl|facet)' > /dev/null) &&
         echo -n "($(cat ~/.facet/.state | jq .facet | tr -d '"\n'))"
 }
+
+
+__facet_prompt_commands () {
+    [ -e ~/.facet/prompt-commands ] && . ~/.facet/prompt-commands
+    rm -f ~/.facet/prompt-commands
+}
+
 
 __my_git_ps1 () {
     echo -n "$(__colorize $__RED "$(__git_ps1 "(%s)")")"
