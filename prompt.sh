@@ -12,9 +12,11 @@ __prompt_command () {
     PS1=""
     PS1+="$(__virtualenv_ps1)"
     PS1+="$(__current_directory_ps1 $exit)"
-    PS1+="$(__facet_ps1)"
-    PS1+="$(__my_git_ps1)"
+    local task_ps1="$(__my_git_ps1)"
+    [ -n "$task_ps1" ] || task_ps1="$(__facet_ps1)"
+    PS1+="$task_ps1"
     PS1+="$(__docker_compose_ps1)"
+    [[ $(echo -n $PS1 | wc -c) -gt 150 ]] && PS1+="\n$"
     PS1+=" "
 }
 
@@ -33,7 +35,7 @@ __current_directory_ps1 () {
 
 __facet_ps1() {
     (pwd | egrep -q '(counsyl|facet)' > /dev/null) &&
-        echo -n "($(cat ~/.facet/.state | jq .facet | tr -d '"\n'))"
+        echo -n "($(cat ~/.facet/state.json | jq .facet | tr -d '"\n'))"
 }
 
 
@@ -44,7 +46,7 @@ __facet_prompt_commands () {
 
 
 __my_git_ps1 () {
-    echo -n "$(__colorize $__RED "$(__git_ps1 "(%s)")")"
+    echo -n $(__git_ps1 "(%s)")
 }
 
 
