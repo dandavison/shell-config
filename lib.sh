@@ -1,4 +1,4 @@
-. ~/src/1p/wifi/wifi.sh
+. ~/src/wifi/wifi.sh
 
 die () {
     echo "$@" >&2
@@ -130,7 +130,7 @@ local-pypi () {
     local package_dir=~/tmp/packages
     local image_name=simple-http-server
     local container_name=$image_name
-    local dockerfile_dir=~/src/1p/dockerfiles/simple-http-server
+    local dockerfile_dir=~/src/dockerfiles/simple-http-server
 
     (cd $dockerfile_dir && docker build -t $image_name .)
     dir2pi $package_dir

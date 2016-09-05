@@ -1,5 +1,5 @@
 _cwd=$(pwd)
-cd ~/src/1p/shell-config
+cd ~/src/shell-config
 
 . lib.sh
 . path.sh
@@ -10,7 +10,7 @@ __dan_is_osx && . osx_env.sh
 . prompt.sh
 . bash/history.sh
 . bash/completion.sh
-. ~/src/git/contrib/completion/git-completion.bash
+. ~/src/3p/git/contrib/completion/git-completion.bash
 . fasd.sh
 . readline.sh
 . alias.sh
@@ -22,3 +22,6 @@ __dan_is_osx && . osx_env.sh
 export PROMPT_COMMAND=__prompt_command
 
 cd "$_cwd"
+
+export NVM_DIR="/Users/dan/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
