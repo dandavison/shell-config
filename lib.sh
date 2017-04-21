@@ -33,6 +33,24 @@ git-link () {
     git commit --allow-empty -m ""
 }
 
+git-graft-1 () {
+    stock=$1
+    scion=$2
+    git checkout -b "z-temp-graft-branch"
+    git rebase --onto $stock $scion "z-temp-graft-branch"
+    echo "Done; on a temp branch. You probably want to use reset --hard to make your working branch point at this temp branch's HEAD"
+}
+
+git-graft () {
+    new_commits=$1
+    original_branch=$(git rev-parse --abbrev-ref HEAD)
+    git checkout -b "z-temp-graft-branch"
+    git rebase --onto $original_branch $new_commits $(git rev-parse --abbrev-ref HEAD)
+    echo "Done; on temp branch $(git rev-parse --abbrev-ref HEAD). "
+    echo "You probably want to use reset --hard to make your original branch "
+    echo "$original_branch point at this temp branch's HEAD."
+}
+
 hub-pr () {
   url=$(hub browse -u)
   open ${url/tree/pull}
