@@ -9,6 +9,12 @@ __dan_is_osx () {
     [ -e /Applications ]
 }
 
+src-grep () {
+    find ~/src -maxdepth 1 -type d | egrep -v '(3p|counsyl)' | while read d; do
+        (cd $d && [ -d .git ] && git grep $@)
+    done
+}
+
 git-fetch-branch () {
     git fetch origin $1:$1 && git checkout $1
 }
