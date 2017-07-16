@@ -18,3 +18,5 @@ __dan_is_osx && . osx_env.sh
 . tmux.sh
 
 cd "$_cwd"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -57,9 +57,13 @@ git-graft () {
     echo "$original_branch point at this temp branch's HEAD."
 }
 
-hub-pr () {
+pr () {
   url=$(hub browse -u)
   open ${url/tree/pull}
+  # while chrome-cli info | grep -q "Loading: Yes"; do
+  #     sleep 0.1
+  # done
+  # chrome-cli execute "document.getElementById('pull_request_body').value = ''"
 }
 
 hub-commit-pr () {
@@ -219,4 +223,12 @@ toggle-iterm () {
             ;;
         esac
     done
+}
+
+
+gprof2dot-and-go () {
+    local file=$(mktemp).svg
+    gprof2dot --format pstats $1 | dot -T svg -o $file
+    echo $file
+    open -a "/Applications/Google Chrome.app" $file
 }
