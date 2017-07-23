@@ -7,8 +7,9 @@ export GIT_PS1_STAGED="જ "
 
 __prompt_command () {
     local exit="$?"
-    history 1 >> ~/.bash_eternal_history
+    __save_history_and_set_terminal_title
     __facet_prompt_commands
+
     PS1=""
     PS1+="$(__virtualenv_ps1)"
     PS1+="$(__current_directory_ps1 $exit)"
@@ -32,11 +33,25 @@ __colorize () {
 }
 
 
+__save_history_and_set_terminal_title () {
+    cmd=$(history 1)
+    echo "$cmd" >> ~/.bash_eternal_history
+
+    if [[ $cmd == *ssh* ]]; then
+        # TODO: this doesn't work; use https://github.com/rcaloras/bash-preexec
+        local title=$(echo "ssh ${cmd##*ssh}")
+    else
+        local title="$(pwd | sed "s,$HOME,~,")"
+    fi
+    printf "\033]2;${title}\033\\"  # set terminal/pty/tmux pane title
+}
+
 __current_directory_ps1 () {
     local col=$__CYAN
     local exit=$1
     [ "$exit" -ne 0 ] && col=$__RED
-    echo -n "$(__colorize $col "$(pwd | sed "s,$HOME,~,")")"
+    local dir="$(pwd | sed "s,$HOME,~,")"
+    echo -n "$(__colorize $col ${dir})"
 }
 
 __facet_ps1() {
