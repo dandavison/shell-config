@@ -26,13 +26,11 @@ alias docker-clean='docker-rm-all && docker-prune'
 alias docker-prune='docker rmi $(docker images -f "dangling=true" -q)'
 alias docker-rm-all='docker rm -f $(docker ps -a -q)'
 alias dps='docker ps'
-alias e="emacs-find-file"
+alias e="emacsclient -n"
 alias ee="emacs -nw -q"
-alias ef='emacs-find'
-alias eg='emacs-magit-status'
-alias ep='emacs_pipe'
-alias es='emacs-grep'
-alias f='facet'
+alias ef='emacs-find-file'
+alias eg='emacs-grep'
+alias em='emacs-magit-status'
 alias ff='find . -type f -iname'
 alias fromip="who | grep \"^$USER\" | sed 1q | perl -n -e 's,.*\(([0-9.]+)\),\1, and print'"
 alias g='grep'
