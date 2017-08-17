@@ -79,7 +79,7 @@ git-prune-merged () {
     git branch-by-date | \
         awk '{print $1}' | \
         while read b ; do
-            git branch -d $b 2> /dev/null && echo "Deleted $b"
+            git branch -d $b 2> /dev/null
         done
 }
 
