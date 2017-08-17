@@ -44,6 +44,12 @@ __save_history_and_set_terminal_title () {
         local title="$(pwd | sed "s,$HOME,~,")"
     fi
     printf "\033]2;${title}\033\\"  # set terminal/pty/tmux pane title
+
+    # http://iterm2.com/documentation-escape-codes.html
+    # https://groups.google.com/forum/#!msg/iterm2-discuss/Lz7mx06Bxg8/ae9SKC803DkJ;context-place=forum/iterm2-discuss
+    # builtin echo -e "\033]50;CurrentDir=$(pwd)\007"
+
+    echo $PWD > /tmp/cwd
 }
 
 __current_directory_ps1 () {
