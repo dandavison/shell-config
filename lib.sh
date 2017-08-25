@@ -92,6 +92,10 @@ git-delete-temp-branches () {
         done
 }
 
+git-diff-prod () {
+    git diff $@ -- . ':(exclude)*/test*' ':(exclude)*/fake*'
+}
+
 ega () {
     touch $1 && git add $1 && emacsclient -n $1
 }
