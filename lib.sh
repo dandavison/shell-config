@@ -15,22 +15,9 @@ src-grep () {
     done
 }
 
-kill-fzf () {
-    kill $@ $(ps aux | fzf | awk '{print $2}')
+git-fetch-branch () {
+    git fetch origin $1:$1 && git checkout $1
 }
-
-hist-fzf () {
-    tac ~/.bash_eternal_history | fzf | perl -p -e 's,^ *[^ ]+ *[^ ]+ *,,' | reattach-to-user-namespace pbcopy
-}
-
-git-checkout-maybe-remote-branch () {
-    git checkout $1 && git pull origin $1 || {
-            git fetch origin $1:$1 && git checkout $1
-        }
-}
-
-alias gcf=git-checkout-maybe-remote-branch
-
 
 git-review () {
     git fetch origin $1:$1
@@ -50,10 +37,6 @@ git-python-xargs () {
 git-link () {
     [[ -n $1 ]] || return 1
     git commit --allow-empty -m ""
-}
-
-git-replace () {
-    git ls-files '**/*.py' | xargs -P 0 perl -pi -e $@
 }
 
 git-graft-1 () {
@@ -111,10 +94,6 @@ git-delete-temp-branches () {
 
 git-diff-prod () {
     git diff $@ -- . ':(exclude)*/test*' ':(exclude)*/fake*'
-}
-
-git-prod () {
-    git $@ -- . ':(exclude)*/test*' ':(exclude)*/fake*'
 }
 
 ega () {
@@ -200,7 +179,11 @@ docker-build-with-local-pypi () {
 }
 
 
+cdp () { mkdir -p "$1" && cd "$1";}
 mv-downcase () { local f=`mktemp -u`; mv "$1" "$f" && mv "$f" $(tr "[:upper:]" "[:lower:]" <<< "$1"); }
+gt () { touch "$1" && git add "$1" ; }
+egt () { gt "$1" && e "$1" ; }
+gcf () { git checkout "$@" || git-fetch-branch "$@" ; }
 
 git-commit-file () {
     git add "$1" && git commit -m "$1"
