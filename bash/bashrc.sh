@@ -12,7 +12,7 @@ __dan_is_osx && . osx_env.sh
 . bash/completion.sh
 . ~/src/3p/git/contrib/completion/git-completion.bash
 . fasd.sh
-. readline.sh
+# . readline.sh
 . alias.sh
 [ -f extra.sh ] && . extra.sh
 . bash/alias_completion.sh
