@@ -199,6 +199,9 @@ docker-build-with-local-pypi () {
        $@
 }
 
+ping-world () {
+    ping -c 1 www.gov.uk
+}
 
 mv-downcase () { local f=`mktemp -u`; mv "$1" "$f" && mv "$f" $(tr "[:upper:]" "[:lower:]" <<< "$1"); }
 
