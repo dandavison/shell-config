@@ -52,7 +52,7 @@ __current_directory_ps1 () {
     local exit=$1
     [ "$exit" -ne 0 ] && col=$__RED
     local dir="$(pwd | sed "s,$HOME,~,")"
-    echo -n "$(__colorize $col ${dir})"
+    echo -n $(__colorize $col "${dir}")
 }
 
 __facet_ps1() {
