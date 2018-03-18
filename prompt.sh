@@ -14,11 +14,6 @@ __prompt_command () {
     PS1+="$(__virtualenv_ps1)"
     PS1+="$(__current_directory_ps1 $exit)"
 
-    pwd | grep -qF '/counsyl/website-' && {
-        export WEBSITE=$(pwd | sed 's,.\+/website-\([0-9]\)\(/.*\|$\),\1,')
-        PS1+="(w$WEBSITE)"
-    }
-
     local task_ps1="$(__my_git_ps1)"
     [ -n "$task_ps1" ] || task_ps1="$(__facet_ps1)"
     PS1+="$task_ps1"
