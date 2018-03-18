@@ -1,5 +1,3 @@
-. ~/src/wifi/wifi.sh
-
 die () {
     echo "$@" >&2
     return 1
@@ -20,7 +18,7 @@ kill-fzf () {
 }
 
 hist-fzf () {
-    tac ~/.bash_eternal_history | fzf | perl -p -e 's,^ *[^ ]+ *[^ ]+ *,,' | reattach-to-user-namespace pbcopy
+    tac ~/.bash_eternal_history | fzf | perl -p -e 's,^ *[^ ]+ *[^ ]+ *,,' | perl -p -e chomp | reattach-to-user-namespace pbcopy
 }
 
 git-checkout-maybe-remote-branch () {
@@ -50,6 +48,10 @@ git-python-xargs () {
 git-link () {
     [[ -n $1 ]] || return 1
     git commit --allow-empty -m ""
+}
+
+git-ls-xargs () {
+    (cd $(git rev-parse --show-toplevel) && git ls | xargs $@)
 }
 
 git-replace () {

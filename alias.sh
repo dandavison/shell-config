@@ -14,6 +14,7 @@ alias chrome='open -a /Applications/Google\ Chrome.app'
 alias column='~/src/column/column'
 alias copy='reattach-to-user-namespace pbcopy'
 alias ctl='(column -t | less -SX) <'
+alias curl='curl -s'
 alias d=docker
 alias dc=docker-compose
 alias de='docker exec'
@@ -32,6 +33,7 @@ alias e="emacsclient -n"
 alias ee="emacs -nw -q"
 alias ef='emacs-find-file'
 alias eg='emacs-magit-status'
+alias egd='emacs-magit-diff'
 alias egs='emacs-magit-show'
 alias es='emacs-grep'
 alias f='rlwrap facet'
@@ -46,6 +48,7 @@ alias gbdwf='gbdw|fzf'
 alias gbdh='git-branch-by-date|head'
 alias gbl='git blame'
 alias gc='git checkout'
+alias gcal='gcalcli calw --calendar davison@counsyl.com'
 alias gcbz='git branch -D z 2> /dev/null ; git checkout -b z'
 alias gcl='git clean'
 alias gcln='git clean -nd'
@@ -113,6 +116,7 @@ alias gri='EDITOR=emacsclient git rebase --interactive'
 for i in 1 2 3 4 5 6 7 8 9 10; do
     alias gri${i}="EDITOR=emacsclient git rebase --interactive HEAD~${i}"
 done
+alias grim='gri master'
 alias griob='EDITOR=emacsclient git rebase --interactive origin/$(git rev-parse --abbrev-ref HEAD)'
 alias grhob='git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)'
 alias grve='git revert --no-edit'
@@ -143,15 +147,16 @@ alias l='less'
 alias le='lein'
 alias ler='lein repl'
 alias less='less -SX'
+alias l1='ls -1'
 alias lh='ls -lh'
 alias ll='ls -lh'
-alias ls='ls --color=tty --hide="*.pyc" --hide="#*"'  # --hide="*."{aux,out,log} if you get very annoyed by LaTeX
+alias ls='ls -N --color=tty --hide="*.pyc" --hide="#*"'  # --hide="*."{aux,out,log} if you get very annoyed by LaTeX
 alias lt='ls -lht'
 alias lth='ls -lht | head'
 alias lsof-ports='lsof -i -n -P'
 alias make-explain="make -rnd | perl -p -e 's,(^ +),\1\1\1\1,'"
 alias mk='mkdir -p'
-alias mv-desktop-last='mv ~/Desktop/"$(ls -t ~/Desktop/| h -n1)"'
+alias mv-desktop-last='mv ~/Desktop/"$(ls -t ~/Desktop/| head -n1)"'
 alias np=ping-world
 alias npu='until ping-world; do sleep 1; done'
 alias nwp=wifi-poke
@@ -161,19 +166,20 @@ alias path='readlink -f'
 alias pdfjoin='pdfjoin --rotateoversize false'
 alias pf='pip freeze'
 alias pi='pip install'
-alias port-watcher=~/src/port_watcher/port-watcher
 alias ps-me='ps -u `whoami`'
 alias psl='ps auxwww | less'
 # top $(ps aux | grep postgres | grep -v grep | awk '{print "-p"$2}')
 alias pu='pip uninstall'
 alias pupf='pip uninstall -y $(pip freeze)'
+alias preview='open -a /Applications/Preview.app'
 alias pvirtualenv='echo $VIRTUAL_ENV'
 alias pwdr='pwd | sed "s,.*$HOME/,,"'
 alias pyz='py /tmp/z.py'
-alias rm-tex='rm *.{aux,lof,log,lot,out,toc}'
+alias rm-tex='rm -f *.{aux,lof,log,lot,out,toc}'
 alias rn='rename'
 alias rs='rsync -z --progress'
 alias s='switchto'
+alias skim='open -a /Applications/Skim.app'
 alias ssh='ssh -A'
 alias sw='switchto website'
 alias t='tmux'

@@ -9,6 +9,7 @@ if __dan_is_osx ; then
 /usr/local/texlive/2015/bin/x86_64-darwin
 /usr/local/bin
 /usr/local/opt/coreutils/libexec/gnubin
+/usr/local/opt/postgresql@9.6/bin
 $HOME/src/counsyl/1p/misc
 $HOME/src/misc
 $HOME/src/emacs-config/bin

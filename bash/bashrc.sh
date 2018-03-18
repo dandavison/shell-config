@@ -15,7 +15,6 @@ __dan_is_osx && . osx_env.sh
 . readline.sh
 . alias.sh
 [ -f extra.sh ] && . extra.sh
-. bash/alias_completion.sh
 . tmux.sh
 
 # confused
