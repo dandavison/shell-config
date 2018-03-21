@@ -18,7 +18,10 @@ kill-fzf () {
 }
 
 hist-fzf () {
-    tac ~/.bash_eternal_history | fzf | perl -p -e 's,^ *[^ ]+ *[^ ]+ *,,' | perl -p -e chomp | reattach-to-user-namespace pbcopy
+    fzf --tac --no-sort < ~/.bash_eternal_history | \
+        perl -p -e 's,^ *[^ ]+ *[^ ]+ *,,' | \
+        perl -p -e chomp | \
+        reattach-to-user-namespace pbcopy
 }
 
 git-checkout-maybe-remote-branch () {
