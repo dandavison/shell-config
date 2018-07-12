@@ -21,7 +21,7 @@ hist-fzf () {
     fzf --tac --no-sort < ~/.bash_eternal_history | \
         perl -p -e 's,^ *[^ ]+ *[^ ]+ *,,' | \
         perl -p -e chomp | \
-        reattach-to-user-namespace pbcopy
+        pbcopy
 }
 
 git-checkout-maybe-remote-branch () {
