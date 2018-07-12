@@ -93,10 +93,6 @@ hub-commit-pr () {
     EDITOR='emacsclient -n' hub pull-request -b dev:master -h dev:$head $1
 }
 
-switchto () {
-    workon $1 && cdproject
-}
-
 git-prune-merged () {
     git branch-by-date | \
         awk '{print $1}' | \
