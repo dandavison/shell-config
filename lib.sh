@@ -144,8 +144,8 @@ cd-site-packages () {
     cd `python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
 }
 
-docker-machine-env-docker () {
-    eval "$(docker-machine env $DOCKER_MACHINE_NAME)"
+docker-run-last () {
+    docker run --rm -it $@ $(docker images | sed -n 2p | awk '{print $3}')
 }
 
 docker-container-uri () {
