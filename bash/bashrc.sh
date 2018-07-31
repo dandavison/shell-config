@@ -5,7 +5,7 @@ cd ~/src/shell-config
 . path.sh
 . git-functions.sh
 . env.sh
-__dan_is_osx && . osx_env.sh
+__dan_is_osx && . env-macos.sh
 . pyenv.sh
 . dircolors.sh
 . prompt.sh

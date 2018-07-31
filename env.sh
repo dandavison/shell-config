@@ -1,4 +1,7 @@
-export DOCKER_MACHINE_NAME=docker5
-export PYTHONDONTWRITEBYTECODE=1
-export PAGER=less
+export BROWSER='google-chrome'
+export EDITOR='emacsclient -n'
+export GIT_SEQUENCE_EDITOR='emacsclient'
+export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"
+export PAGER='less'
+
 . env-local.sh

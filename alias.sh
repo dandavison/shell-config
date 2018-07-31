@@ -110,12 +110,12 @@ alias gres='git remote -v show'
 alias grh='git reset --hard'
 alias grhh='git reset --hard HEAD'
 alias grhob='git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)'
-alias gri='EDITOR=emacsclient git rebase --interactive'
+alias gri='git rebase --interactive'
 for i in 1 2 3 4 5 6 7 8 9 10; do
-    alias gri${i}="EDITOR=emacsclient git rebase --interactive HEAD~${i}"
+    alias gri${i}="git rebase --interactive HEAD~${i}"
 done
 alias grim='gri master'
-alias griob='EDITOR=emacsclient git rebase --interactive origin/$(git rev-parse --abbrev-ref HEAD)'
+alias griob='git rebase --interactive origin/$(git rev-parse --abbrev-ref HEAD)'
 alias grhob='git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)'
 alias grve='git revert --no-edit'
 alias gs='git show'
