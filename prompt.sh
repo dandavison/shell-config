@@ -12,13 +12,12 @@ __prompt_command () {
 
     PS1=""
     PS1+="$(__virtualenv_ps1)"
-    PS1+="$(__current_directory_ps1 $exit)"
-
-    local task_ps1="$(__my_git_ps1)"
-    [ -n "$task_ps1" ] || task_ps1="$(__facet_ps1)"
-    PS1+="$task_ps1"
-    PS1+="$(__docker_compose_ps1)"
-    [[ $(echo -n $PS1 | wc -c) -gt 150 ]] && PS1+="\n$"
+    PS1+=" $(__git_commit_ps1)"
+    PS1+=" $(__current_directory_ps1 $exit)"
+    PS1+=" $(__my_git_ps1)"
+    # PS1+="$(__facet_ps1)"
+    # PS1+="$(__docker_compose_ps1)"
+    # [[ $(echo -n $PS1 | wc -c) -gt 150 ]] && PS1+="\n$"
     PS1+=" "
 }
 
@@ -51,7 +50,7 @@ __current_directory_ps1 () {
     local col=$__CYAN
     local exit=$1
     [ "$exit" -ne 0 ] && col=$__RED
-    local dir="$(pwd | sed "s,$HOME,~,")"
+    local dir="$(pwd | sed "s,$HOME,~,")"  # sed 's,.\+/,,'
     echo -n $(__colorize $col "${dir}")
 }
 
@@ -68,13 +67,20 @@ __facet_prompt_commands () {
 
 
 __my_git_ps1 () {
-    echo -n $(__git_ps1 "(%s)")
+    echo -n $(__git_ps1 "$(__colorize $__GREEN %s)")
+}
+
+
+__git_commit_ps1 () {
+    local commit=$(git rev-parse --short HEAD 2>/dev/null)
+    [ -n "$commit" ] || return
+    echo -n $(__colorize $__BLUE $commit)
 }
 
 
 __virtualenv_ps1 () {
     [ -n "$VIRTUAL_ENV" ] || return
-    echo -n "($(basename $VIRTUAL_ENV))"
+    echo -n $(__colorize $__BLUE $(basename $VIRTUAL_ENV))
 }
 
 
@@ -100,7 +106,7 @@ __docker_compose_ps1 () {
         esac
         dc_ps1+="$(printf "${symbol}%.0s " $(seq 1 $count))"
     done <<< "$counts"
-    dc_ps1=" ($dc_ps1)"
+    dc_ps1="($dc_ps1)"
     dc_ps1=$(__colorize $__CYAN "$dc_ps1")
     echo -n "$dc_ps1"
 }
