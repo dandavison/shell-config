@@ -1,8 +1,31 @@
 # -*-coding: utf-8;-*-
-export __BLACK=30 __RED=31 __GREEN=32 __YELLOW=33 __BLUE=34 __MAGENTA=35 __CYAN=36 __WHITE=37
 export GIT_PS1_SHOWDIRTYSTATE=yes
 export GIT_PS1_UNSTAGED="અ "
 export GIT_PS1_STAGED="જ "
+
+export _BLACK="\[\033[0;30m\]"
+export _BLACKBOLD="\[\033[1;30m\]"
+export _RED="\[\033[0;31m\]"
+export _REDBOLD="\[\033[1;31m\]"
+export _GREEN="\[\033[0;32m\]"
+export _GREENBOLD="\[\033[1;32m\]"
+export _YELLOW="\[\033[0;33m\]"
+export _YELLOWBOLD="\[\033[1;33m\]"
+export _BLUE="\[\033[0;34m\]"
+export _BLUEBOLD="\[\033[1;34m\]"
+export _MAGENTA="\[\033[0;35m\]"
+export _MAGENTABOLD="\[\033[1;35m\]"
+export _CYAN="\[\033[0;36m\]"
+export _CYANBOLD="\[\033[1;36m\]"
+export _WHITE="\[\033[0;37m\]"
+export _WHITEBOLD="\[\033[1;37m\]"
+export _RESETCOLOR="\[\e[00m\]"
+
+# https://dobsondev.com/2014/02/21/customizing-your-terminal/
+# function prompt {
+#   export PS1="\n$_RED\u $_MAGENTA@ $_GREEN\w $_RESETCOLOR$_GREENBOLD\$(git branch 2> /dev/null)\n $_BLUE[\#] → $_RESETCOLOR"
+#   export PS2=" | → $RESETCOLOR"
+# }
 
 
 __prompt_command () {
@@ -19,11 +42,6 @@ __prompt_command () {
     # PS1+="$(__docker_compose_ps1)"
     # [[ $(echo -n $PS1 | wc -c) -gt 150 ]] && PS1+="\n$"
     PS1+=" "
-}
-
-
-__colorize () {
-    echo "\[\033[${1}m\]$2\[\033[0m\]"
 }
 
 
@@ -47,11 +65,11 @@ __save_history_and_set_terminal_title () {
 }
 
 __current_directory_ps1 () {
-    local col=$__CYAN
+    local col=$_CYANBOLD
     local exit=$1
-    [ "$exit" -ne 0 ] && col=$__RED
+    [ "$exit" -ne 0 ] && col=$_REDBOLD
     local dir="$(pwd | sed "s,$HOME,~,")"  # sed 's,.\+/,,'
-    echo -n $(__colorize $col "${dir}")
+    echo -n "${col}${dir}${_RESETCOLOR}"
 }
 
 __facet_ps1() {
@@ -67,20 +85,19 @@ __facet_prompt_commands () {
 
 
 __my_git_ps1 () {
-    echo -n $(__git_ps1 "$(__colorize $__GREEN %s)")
+    echo -n "${_GREENBOLD}$(__git_ps1)${_RESETCOLOR}"
 }
 
 
 __git_commit_ps1 () {
     local commit=$(git rev-parse --short HEAD 2>/dev/null)
     [ -n "$commit" ] || return
-    echo -n $(__colorize $__BLUE $commit)
+    echo -n "${_BLUE}$commit${_RESETCOLOR}"
 }
-
 
 __virtualenv_ps1 () {
     [ -n "$VIRTUAL_ENV" ] || return
-    echo -n $(__colorize $__BLUE $(basename $VIRTUAL_ENV))
+    echo -n "${_BLUE}$(basename $VIRTUAL_ENV)${_RESETCOLOR}"
 }
 
 
@@ -106,9 +123,7 @@ __docker_compose_ps1 () {
         esac
         dc_ps1+="$(printf "${symbol}%.0s " $(seq 1 $count))"
     done <<< "$counts"
-    dc_ps1="($dc_ps1)"
-    dc_ps1=$(__colorize $__CYAN "$dc_ps1")
-    echo -n "$dc_ps1"
+    echo -n "${_CYAN}($dc_ps1)${_RESETCOLOR}"
 }
 
 
