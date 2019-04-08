@@ -92,7 +92,9 @@ __my_git_ps1 () {
 __git_commit_ps1 () {
     local commit=$(git rev-parse --short HEAD 2>/dev/null)
     [ -n "$commit" ] || return
-    echo -n "${_BLUE}$commit${_RESETCOLOR}"
+    local uncommitted=$(git diff; git diff --cached)
+    [ -n "$uncommitted" ] && uncommitted=" $(md5sum - <<< "$uncommitted" | head -c 4)"
+    echo -n "${_BLUE}$commit$uncommitted${_RESETCOLOR}"
 }
 
 __virtualenv_ps1 () {
