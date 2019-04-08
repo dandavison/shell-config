@@ -2,11 +2,11 @@ _cwd=$(pwd)
 cd ~/src/shell-config
 
 . lib.sh
-. path.sh
 . git-functions.sh
 . env.sh
-__dan_is_osx && . env-macos.sh
 . pyenv.sh
+. path.sh
+__dan_is_osx && . env-macos.sh
 . dircolors.sh
 . prompt.sh
 . bash/history.sh
