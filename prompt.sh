@@ -65,7 +65,7 @@ __save_history_and_set_terminal_title () {
 }
 
 __current_directory_ps1 () {
-    local col=$_CYANBOLD
+    local col=$_BLUEBOLD
     local exit=$1
     [ "$exit" -ne 0 ] && col=$_REDBOLD
     local dir="$(pwd | sed "s,$HOME,~,")"  # sed 's,.\+/,,'

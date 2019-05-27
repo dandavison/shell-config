@@ -39,9 +39,17 @@ git-review () {
 }
 
 git-review-merge () {
-    merge_commit=$1
+    local merge_commit=$1
     git rev-list --parents -n1 $merge_commit | read merge parent1 parent2
     git checkout $parent2 && egit-diff $parent1...$parent2
+}
+
+git-show-merge () {
+    local merge_commit=$1
+    git rev-list --parents -n1 $merge_commit | (
+        read merge parent1 parent2
+        git diff $2 $parent1...$parent2
+    )
 }
 
 git-python-xargs () {
@@ -57,8 +65,8 @@ git-ls-xargs () {
     (cd $(git rev-parse --show-toplevel) && git ls | xargs $@)
 }
 
-git-replace () {
-    git ls-files '**/*.py' | xargs -P 0 perl -pi -e $@
+git-perl () {
+    git ls-files '**/*.py' | xargs -P 0 perl -pi -e "$@"
 }
 
 git-graft-1 () {
@@ -77,6 +85,24 @@ git-graft () {
     echo "Done; on temp branch $(git rev-parse --abbrev-ref HEAD). "
     echo "You probably want to use reset --hard to make your original branch "
     echo "$original_branch point at this temp branch's HEAD."
+}
+
+git-grep-joint () {
+    git grep "$2" $(git grep -l "$1")
+}
+
+git-make-repos () {
+    for d in */; do
+        [ -e "$d/.git" ] && continue
+        echo $d
+        (
+            cd $d
+            git-init
+            git add .
+            find . -type f -name '*.pyc' | xargs git rm -f --ignore-unmatch {}
+            gco -m init
+        ) > /dev/null
+    done
 }
 
 pr () {
@@ -210,6 +236,13 @@ ping-world () {
 
 mv-downcase () { local f=`mktemp -u`; mv "$1" "$f" && mv "$f" $(tr "[:upper:]" "[:lower:]" <<< "$1"); }
 
+mv-link () {
+    local source="$1"
+    local target="$2"
+    [ -n "$1" ] && [ -n "$2" ] || die "mv-link source target"
+    mv "$source" "$target" && ln -s "$target" "$source"
+}
+
 git-commit-file () {
     git add "$1" && git commit -m "$1"
 }
@@ -260,4 +293,28 @@ gprof2dot-and-go () {
     gprof2dot --format pstats $1 | dot -T svg -o $file
     echo $file
     open -a "/Applications/Google Chrome.app" $file
+}
+
+
+dot-view () {
+    local file=$(mktemp).svg
+    dot -T svg -o $file < $1
+    echo $file
+    open -a "/Applications/Google Chrome.app" $file
+}
+
+
+# https://gist.github.com/SlexAxton/4989674
+gifify() {
+  if [[ -n "$1" ]]; then
+    if [[ $2 == '--good' ]]; then
+      ffmpeg -i $1 -r 10 -vcodec png out-static-%05d.png
+      time convert -verbose +dither -layers Optimize -resize 600x600\> out-static*.png  GIF:- | gifsicle --colors 128 --delay=5 --loop --optimize=3 --multifile - > $1.gif
+      rm out-static*.png
+    else
+      ffmpeg -i $1 -s 600x400 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > $1.gif
+    fi
+  else
+    echo "proper usage: gifify <input_movie.mov>. You DO need to include extension."
+  fi
 }

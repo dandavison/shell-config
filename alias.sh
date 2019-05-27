@@ -3,7 +3,6 @@ alias R='R --silent --no-restore --no-save --vanilla'
 alias acurl='curl --user $(cat ~/.ssh/auth)'
 alias agp='ag --python'
 alias b='git branch-by-date|head'
-alias beh='tac ~/.bash_eternal_history'
 alias black-diff='(pyenv shell 3.7.0 && cd $(git rev-parse --show-toplevel) && black --skip-string-normalization -l100 $(git diff --name-only master...))'
 alias black-all="(cd $(git rev-parse --show-toplevel) && git ls-files '**/*.py' | xargs black --skip-string-normalization -l100 $(git diff --name-only master...))"
 alias cat='bat --plain'
@@ -79,6 +78,7 @@ alias gdsm='git diff --stat=200,200 master...'
 alias gdw='git diff --word-diff=color'
 alias gdwc='git diff --cached --word-diff=color'
 alias gdww='git diff --word-diff=color --word-diff-regex="[a-zA-z_]+"'
+alias gdwwc='gdww --cached'
 alias gdz='git diff z'
 alias gf='git fetch'
 alias gfc='git-fuzzy-checkout'
@@ -119,14 +119,18 @@ alias grhh='git reset --hard HEAD'
 alias grh1='echo $(git rev-parse HEAD) && git reset --hard HEAD~1'
 alias grhob='git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)'
 alias gri='grb --interactive'
-for i in 1 2 3 4 5 6 7 8 9 10; do
+for i in 1 2 3 4 5 6 7 8 9; do
     alias gri${i}="grb --interactive HEAD~${i}"
 done
 alias grim='gri master'
 alias griob='grb --interactive origin/$(git rev-parse --abbrev-ref HEAD)'
 alias grhob='git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)'
 alias grve='git revert --no-edit'
+alias grv1='grve HEAD && gr1'
 alias gs='git show'
+for i in 1 2 3 4 5 6 7 8 9; do
+    alias gs${i}="git show HEAD~${i}"
+done
 alias gss='git show --stat=256,256'
 alias gst='git stash'
 alias gsta='git stash apply'
@@ -143,7 +147,7 @@ alias gsww='git show --word-diff=color --word-diff-regex="[a-zA-z_]+"'
 alias h='head'
 alias hibernateoff="sudo pmset -a hibernatemode 0"
 alias hibernateon="sudo pmset -a hibernatemode 5"
-alias hist='tac ~/.bash_eternal_history'
+alias hist='tac $(ls ~/dandavison7@gmail.com/shell_history/bash_eternal_history_0* | tac)'
 alias hubc='open https://github.counsyl.com/dev/website/commit/$(git rev-list -n1 HEAD)'
 alias ip=ipython
 alias isort='isort --force_single_line_imports --lines 999999 --dont-skip __init__.py'
@@ -174,6 +178,7 @@ alias pf='pip freeze'
 alias pi='pip install'
 alias pip='pip --disable-pip-version-check'
 alias ps-me='ps -u `whoami`'
+alias ps1='ps -Af f'
 alias psl='ps auxwww | less'
 # top $(ps aux | grep postgres | grep -v grep | awk '{print "-p"$2}')
 alias pu='pip uninstall'
@@ -184,6 +189,7 @@ alias pwdr='pwd | sed "s,.*$HOME/,,"'
 alias pyz='py /tmp/z.py'
 alias reload='. ~/.bashrc'
 alias rm-tex='rm -f *.{aux,lof,log,lot,out,toc}'
+alias rm-pyc="find . -type f -name '*.pyc' -delete"
 alias rn='rename'
 alias rs='rsync -z --progress'
 alias sg='stack ghci'
@@ -198,6 +204,7 @@ alias tl='topleft'
 alias tls='tmux list-sessions -F "#S"'
 alias tmux-current-session='tmux display-message -p "#S"'
 alias tns='tmux new-session'
+alias tsc='tmux switch-client -l'
 alias tree='tree -AC --noreport'
 alias virtualenv-temp='rm -fr /tmp/v && virtualenv /tmp/v && . /tmp/v/bin/activate'
 alias vpro='vagrant provision'
