@@ -1,3 +1,13 @@
+python-virtualenv-name () {
+    basename `git rev-parse --show-toplevel`
+}
+
+
+python-virtualenv-activate () {
+    source $DAN_VIRTUALENVS_DIRECTORY/$(python-virtualenv-name)/bin/activate
+}
+
+
 die () {
     echo "$@" >&2
     return 1

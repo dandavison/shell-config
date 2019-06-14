@@ -5,7 +5,8 @@ export GIT_SEQUENCE_EDITOR='emacsclient'
 export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"
 export PAGER='less'
 export PIP_INDEX_URL=
-export BAT_THEME=OneHalfDark # GitHub
+export BAT_THEME=GitHub  # OneHalfDark GitHub
+export DAN_VIRTUALENVS_DIRECTORY=~/tmp/virtualenvs
 # export MPLBACKEND="module://itermplot" ITERMPLOT=rv
 
 . env-local.sh
