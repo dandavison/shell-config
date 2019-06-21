@@ -29,7 +29,7 @@ alias docker-rm-all='docker rm -f $(docker ps -a -q)'
 alias dps='docker ps'
 alias dr='docker run'
 alias drl="docker-run-last"
-alias e="emacsclient-dwim"
+alias e='emacsclient-dwim $(fzf-maybe git ls-files)'
 alias ee="emacs -nw -q"
 alias ef='emacs-find-file'
 alias eg='emacs-magit-status'
@@ -50,7 +50,7 @@ alias gbd='git-branch-by-date'
 alias gbdwf='gbdw|fzf'
 alias gbdh='git-branch-by-date|head'
 alias gbl='git blame'
-alias gc='git checkout'
+alias gc='git checkout $(fzf-maybe git branch --sort=-committerdate)'
 alias gcal='gcalcli calw --calendar davison@counsyl.com'
 alias gcbd='git branch -D dev 2> /dev/null ; git checkout -b dev ; git checkout -'
 alias gcbz='git branch -D z 2> /dev/null ; git checkout -b z ; git checkout -'

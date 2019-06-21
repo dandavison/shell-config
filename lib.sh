@@ -21,6 +21,10 @@ __dan_is_osx () {
     [ -e /Applications ]
 }
 
+fzf-maybe () {
+    [ -n "$FZF" ] && $@ | fzf
+}
+
 src-grep () {
     find ~/src -maxdepth 1 -type d | egrep -v '(3p|counsyl)' | while read d; do
         (cd $d && [ -d .git ] && git grep $@)
