@@ -4,8 +4,7 @@ __dan_uniquify_path () {
 
 # $(brew --prefix coreutils)/libexec/gnubin
 
-if __dan_is_osx ; then
-    for dir in $(/bin/cat <<EOF
+for dir in $(/bin/cat <<EOF
 /usr/local/texlive/2018/bin/x86_64-darwin
 /usr/local/bin
 /usr/local/opt/coreutils/libexec/gnubin
@@ -15,12 +14,11 @@ $HOME/src/misc
 $HOME/src/emacs-config/bin
 $HOME/bin
 EOF
-    ) ; do
+    ) ;
+do
 	[ -d $dir ] && PATH=$dir:$PATH || {
-	    echo "Directory doesn't exist: $dir" 1>&2
-	}
-    done
-    MANPATH="$MANPATH:$(brew --prefix coreutils)/libexec/gnuman"
-fi
+echo "Directory doesn't exist: $dir" 1>&2
+}
+done
 
 export PATH=$(__dan_uniquify_path $PATH)

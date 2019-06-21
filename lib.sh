@@ -8,6 +8,10 @@ python-virtualenv-activate () {
 }
 
 
+python-virtualenv-cd-sitepackages () {
+    cd $DAN_VIRTUALENVS_DIRECTORY/$(python-virtualenv-name)/lib/python*/site-packages
+}
+
 die () {
     echo "$@" >&2
     return 1
@@ -21,10 +25,6 @@ src-grep () {
     find ~/src -maxdepth 1 -type d | egrep -v '(3p|counsyl)' | while read d; do
         (cd $d && [ -d .git ] && git grep $@)
     done
-}
-
-kill-fzf () {
-    kill $@ $(ps aux | fzf | awk '{print $2}')
 }
 
 hist-fzf () {
@@ -109,7 +109,7 @@ git-make-repos () {
             cd $d
             git-init
             git add .
-            find . -type f -name '*.pyc' | xargs git rm -f --ignore-unmatch {}
+            find . -type f -name '*.pyc' -o -name '*.elc' | xargs git rm -f --ignore-unmatch {}
             gco -m init
         ) > /dev/null
     done
