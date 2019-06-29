@@ -32,7 +32,6 @@ __prompt_command () {
     local exit="$?"
     __save_history_and_set_terminal_title
     __facet_prompt_commands
-    KERNEL=$(exa ~/Library/Jupyter/runtime/ -s modified | tail -n1)
 
     PS1=""
     PS1+="$(__virtualenv_ps1)"
