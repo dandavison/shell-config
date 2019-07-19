@@ -1,3 +1,10 @@
+jq-preview () {
+    # https://github.com/pawelduda/fzf-live-repl
+    local file="$1"
+    echo '' | fzf --print-query --preview "cat $file | jq '{q}' | head -n 60"
+}
+
+
 python-virtualenv-name () {
     basename `git rev-parse --show-toplevel`
 }
@@ -80,6 +87,10 @@ git-ls-xargs () {
 }
 
 git-perl () {
+    git ls-files | xargs -P 0 perl -pi -e "$@"
+}
+
+git-perl-python () {
     git ls-files '**/*.py' | xargs -P 0 perl -pi -e "$@"
 }
 

@@ -85,7 +85,7 @@ __facet_prompt_commands () {
 
 
 __my_git_ps1 () {
-    echo -n "${_GREENBOLD}$(__git_ps1)${_RESETCOLOR}"
+    echo -n "${_BLUE}$(__git_ps1)${_RESETCOLOR}"
 }
 
 
