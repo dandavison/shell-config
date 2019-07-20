@@ -9,8 +9,7 @@ for dir in $(/bin/cat <<EOF
 /usr/local/bin
 /usr/local/opt/coreutils/libexec/gnubin
 /usr/local/opt/postgresql@9.6/bin
-$HOME/go/bin
-$HOME/src/misc
+$HOME/.cargo/bin
 $HOME/src/emacs-config/bin
 $HOME/bin
 EOF
