@@ -1,9 +1,18 @@
+# https://github.com/pawelduda/fzf-live-repl
 jq-preview () {
-    # https://github.com/pawelduda/fzf-live-repl
     local file="$1"
-    echo '' | fzf --print-query --preview "cat $file | jq '{q}' | head -n 60"
+    echo | fzf --print-query --preview "jq '{q}' < '$file'" --preview-window "top:95%"
 }
 
+
+regex-preview-python () {
+    local input="$1"
+    echo | fzf --print-query --preview-window up --preview "python -c \"
+import re
+print('Input: $input\n')
+m = re.match({q}, '$input')
+print(m.groups() if m else '<no match>')\""
+}
 
 python-virtualenv-name () {
     basename `git rev-parse --show-toplevel`

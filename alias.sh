@@ -145,7 +145,7 @@ alias gstsd='git stash save debugging'
 alias gstsp='git stash show -p'
 alias gsw='git show --word-diff=color'
 alias gsww='git show --word-diff=color --word-diff-regex="[a-zA-z_]+"'
-alias h='head'
+alias h='(hist) | fzf'
 alias hibernateoff="sudo pmset -a hibernatemode 0"
 alias hibernateon="sudo pmset -a hibernatemode 5"
 alias hist='tac $(ls ~/dandavison7@gmail.com/shell_history/bash_eternal_history_0* | tac)'
