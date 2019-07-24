@@ -46,6 +46,24 @@ fzf-maybe () {
     [ -n "$FZF" ] && $@ | fzf
 }
 
+
+with-fzf () {
+    echo $#
+    local n_args=$1
+    shift
+    for (( i = 1; i <= $n_args; i++ )); do
+        echo $i
+        # shift
+    done
+    echo hello
+}
+
+
+# alias gc='git checkout $(fzf-if-no-args)'
+
+# alias gc='with-fzf 2 git checkout'
+
+
 src-grep () {
     find ~/src -maxdepth 1 -type d | egrep -v '(3p|counsyl)' | while read d; do
         (cd $d && [ -d .git ] && git grep $@)
