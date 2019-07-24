@@ -14,6 +14,11 @@ m = re.match({q}, '$input')
 print(m.groups() if m else '<no match>')\""
 }
 
+regex-replacement-preview-sed () {
+    local input="$1"
+    echo | fzf --print-query --preview-window up --preview "echo Input: $input; echo; echo $input | sed 's	{q}	X	'"
+}
+
 python-virtualenv-name () {
     basename `git rev-parse --show-toplevel`
 }
