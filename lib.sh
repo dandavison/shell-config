@@ -100,8 +100,8 @@ git-ls-xargs () {
     (cd $(git rev-parse --show-toplevel) && git ls | xargs $@)
 }
 
-git-perl () {
-    git ls-files | xargs -P 0 perl -pi -e "$@"
+git-sed () {
+    git ls-files | xargs -P 0 sed --follow-symlinks -i -E "$@"
 }
 
 git-perl-python () {
@@ -136,10 +136,10 @@ git-make-repos () {
         echo $d
         (
             cd $d
-            git-init
+            git init && git set-email-public && git commit --allow-empty -m "∅"
             git add .
             find . -type f -name '*.pyc' -o -name '*.elc' | xargs git rm -f --ignore-unmatch {}
-            gco -m init
+            git commit -m init
         ) > /dev/null
     done
 }
@@ -340,6 +340,16 @@ dot-view () {
     dot -T svg -o $file < $1
     echo $file
     open -a "/Applications/Google Chrome.app" $file
+}
+
+emacs-set-minimal () {
+    rm -f ~/.emacs
+    ln -s ~/src/emacs-config/emacs-minimal.el ~/.emacs
+}
+
+emacs-set-normal () {
+    rm -f ~/.emacs
+    ln -s ~/src/emacs-config/emacs.el ~/.emacs
 }
 
 

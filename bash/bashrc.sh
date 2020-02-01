@@ -3,9 +3,9 @@ cd ~/src/shell-config
 
 . lib.sh
 . git-functions.sh
+. path.sh
 . env.sh
 . pyenv.sh
-. path.sh
 __dan_is_osx && . env-macos.sh
 . dircolors.sh
 . prompt.sh
@@ -18,12 +18,15 @@ __dan_is_osx && . env-macos.sh
 . alias.sh
 [ -f extra.sh ] && . extra.sh
 . tmux.sh
+. ~/src/wifi/wifi.sh
 
 # confused
 export PROMPT_COMMAND=__prompt_command
 
 export NVM_DIR="/Users/dan/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+eval "$(jenv init -)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

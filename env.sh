@@ -8,6 +8,9 @@ export GIT_SEQUENCE_EDITOR='emacsclient'
 export PAGER='less'
 export PIP_INDEX_URL=
 export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"
+# To add local TeX .sty files:
+#   Add to /usr/local/texlive/texmf-local/tex/latex/local
+#   Run `texhash`
 
 __dan_is_osx && export MANPATH="$MANPATH:$(brew --prefix coreutils)/libexec/gnuman"
 # export MPLBACKEND="module://itermplot" ITERMPLOT=rv
