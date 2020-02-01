@@ -25,7 +25,7 @@ python-virtualenv-name () {
 
 
 python-virtualenv-activate () {
-    source $DAN_VIRTUALENVS_DIRECTORY/$(python-virtualenv-name)/bin/activate
+    source $DAN_VIRTUALENVS_DIRECTORY/"$1"/bin/activate
 }
 
 

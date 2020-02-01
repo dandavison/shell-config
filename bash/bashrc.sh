@@ -12,6 +12,7 @@ __dan_is_osx && . env-macos.sh
 . bash/history.sh
 . bash/completion.sh
 . ~/src/3p/git/contrib/completion/git-completion.bash
+. ~/src/shell-config/completion/virtualenv-activate.sh
 . fasd.sh
 . readline.sh
 . alias.sh
