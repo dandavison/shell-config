@@ -35,7 +35,7 @@ __prompt_command () {
 
     PS1=""
     PS1+="$(__virtualenv_ps1)"
-    PS1+=" $(__git_commit_ps1)"
+    # PS1+=" $(__git_commit_ps1)"
     PS1+=" $(__current_directory_ps1 $exit)"
     PS1+=" $(__my_git_ps1)"
     # PS1+="$(__facet_ps1)"
