@@ -220,7 +220,6 @@ alias tls='tmux list-sessions -F "#S"'
 alias tmux-current-session='tmux display-message -p "#S"'
 alias tns='tmux new-session'
 alias tsc='tmux switch-client -l'
-alias t="tree -AC --noreport -I 'build|dist|*.egg-info|dask-worker-space|__pycache__' --dirsfirst"
 alias virtualenv-temp='rm -fr /tmp/v && virtualenv /tmp/v && . /tmp/v/bin/activate'
 alias vpro='vagrant provision'
 alias vssh='vagrant ssh'
