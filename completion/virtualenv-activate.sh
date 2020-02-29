@@ -46,3 +46,4 @@ eval "$__virtualenv_activate_previous_extglob_setting"
 unset __virtualenv_activate_previous_extglob_setting
 
 complete -F _virtualenv_activate python-virtualenv-activate
+complete -F _virtualenv_activate pv

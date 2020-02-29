@@ -32,6 +32,8 @@ __prompt_command () {
     local exit="$?"
     __save_history_and_set_terminal_title
     __facet_prompt_commands
+    _SHRIKE_INDEX=1
+    _SHRIKE_TARGET=
 
     PS1=""
     PS1+="$(__virtualenv_ps1)"
