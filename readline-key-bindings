@@ -1,3 +1,7 @@
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 "\eh": backward-kill-word
+set blink-matching-paren on
+set show-all-if-ambiguous on
+set colored-completion-prefix on
+set colored-stats on
