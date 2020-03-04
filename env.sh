@@ -8,7 +8,6 @@ export GIT_SEQUENCE_EDITOR='emacsclient'
 export PAGER='less'
 export PIP_INDEX_URL=
 export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"
-export GREN_GITHUB_TOKEN=829c3517bf6a4024786014f4560ed89721bf6bcf
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
  export XENOCANTO_DATA_DIRECTORY=/tmp/xeno-quero-data
 # To add local TeX .sty files:
