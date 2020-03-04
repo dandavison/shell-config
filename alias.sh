@@ -148,6 +148,7 @@ alias gstsp='git stash show -p'
 alias gsw='git show --word-diff=color'
 alias gsww='git show --word-diff=color --word-diff-regex="[a-zA-z_]+"'
 alias h='(hist | tr -s " " | cut -d " " -f 4-) | fzf --no-sort --exact | tr -d "\n" | pbcopy'
+alias hset='redis-cli hset'
 alias hx='eval $((hist | tr -s " " | cut -d " " -f 4-) | fzf --no-sort --exact)'
 alias hibernateoff="sudo pmset -a hibernatemode 0"
 alias hibernateon="sudo pmset -a hibernatemode 5"
