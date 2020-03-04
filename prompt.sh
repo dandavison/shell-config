@@ -30,6 +30,7 @@ export _RESETCOLOR="\[\e[00m\]"
 
 __prompt_command () {
     local exit="$?"
+    __set_env_vars_from_redis
     __save_history_and_set_terminal_title
     __facet_prompt_commands
     _SHRIKE_INDEX=1
@@ -46,6 +47,15 @@ __prompt_command () {
     PS1+=" "
 }
 
+__set_env_vars_from_redis () {
+    eval $(redis-cli --csv hgetall env | \
+           awk 'BEGIN{FS=","} {for (i = 1; i <= NF; i++) { printf $i; if(i % 2 == 0) { printf "\n" } else { printf "," }}}' |\
+           tr -d \" |\
+           tr ',' ' ' |\
+           while read key val; do\
+               echo export ${key}=${val};\
+           done)
+}
 
 __save_history_and_set_terminal_title () {
     cmd=$(history 1)
