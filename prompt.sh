@@ -152,5 +152,5 @@ __find_file_upwards () {
 }
 
 
-export PROMPT_COMMAND=__prompt_command
+export PROMPT_COMMAND="__prompt_command${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 export PS2=''

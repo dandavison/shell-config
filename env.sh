@@ -9,7 +9,8 @@ export PAGER='less'
 export PIP_INDEX_URL=
 export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
- export XENOCANTO_DATA_DIRECTORY=/tmp/xeno-quero-data
+export XENOCANTO_DATA_DIRECTORY=/tmp/xeno-quero-data
+export EXA_COLORS=$(tr '\n' ':' < exa-colors)
 # To add local TeX .sty files:
 #   Add to /usr/local/texlive/texmf-local/tex/latex/local
 #   Run `texhash`
