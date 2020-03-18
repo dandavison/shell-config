@@ -9,7 +9,7 @@ for dir in $(/bin/cat <<EOF
 /usr/local/bin
 /usr/local/opt/coreutils/libexec/gnubin
 /usr/local/opt/postgresql@9.6/bin
-/usr/local/Cellar/emacs-mac/emacs-26.3-z-mac-7.7/bin
+/usr/local/Cellar/emacs-mac/emacs-26.3-z-mac-7.8/bin
 $HOME/.cargo/bin
 $HOME/src/elaenia/bin
 $HOME/src/emacs-config/bin
