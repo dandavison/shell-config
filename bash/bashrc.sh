@@ -18,7 +18,6 @@ __dan_is_osx && . env-macos.sh
 [ -f extra.sh ] && . extra.sh
 . tmux.sh
 . ~/src/wifi/wifi.sh
-. fasd.sh
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 cd "$_cwd"

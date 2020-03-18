@@ -151,6 +151,7 @@ __find_file_upwards () {
     fi
 }
 
-
+PROMPT_COMMAND=
+. fasd.sh
 export PROMPT_COMMAND="__prompt_command${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 export PS2=''
