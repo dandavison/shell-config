@@ -1,3 +1,4 @@
+export SHELL=/usr/local/bin/bash
 export ALTERNATE_EDITOR='emacs -nw -q'
 export BAT_THEME=base16  # OneHalfDark GitHub
 export BROWSER='google-chrome'
@@ -15,10 +16,11 @@ export EXA_COLORS=$(tr '\n' ':' < exa-colors)
 #   Add to /usr/local/texlive/texmf-local/tex/latex/local
 #   Run `texhash`
 
-__dan_is_osx && export MANPATH="$MANPATH:$(brew --prefix coreutils)/libexec/gnuman"
+__dan_is_osx && export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman"  # $(brew --prefix coreutils) is too slow
 # export MPLBACKEND="module://itermplot" ITERMPLOT=rv
 
 # export   CFLAGS=-I/usr/local/opt/libxml2/include/libxml2
 # export CPPFLAGS=-I/usr/local/opt/libxml2/include/libxml2
+# export LDFLAGS="-L/usr/local/opt/libxml2/lib"
 
 . env-local.sh

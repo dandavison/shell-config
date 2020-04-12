@@ -10,10 +10,11 @@ __dan_is_osx && . env-macos.sh
 . prompt.sh
 . bash/history.sh
 . bash/completion.sh
-. ~/src/3p/git/contrib/completion/git-completion.bash
+# . ~/src/3p/git/contrib/completion/git-completion.bash  # removed to decrease shell start-up time
 . ~/src/shell-config/completion/virtualenv-activate.sh
 . readline.sh
 . ~/src/misc/shrike.sh
+# . gcloud.sh
 . alias.sh
 [ -f extra.sh ] && . extra.sh
 . tmux.sh
