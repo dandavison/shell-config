@@ -76,7 +76,7 @@ __current_directory_ps1 () {
     local col=$_BLUEBOLD
     local exit=$1
     [ "$exit" -ne 0 ] && col=$_REDBOLD
-    local dir="$(pwd | sed "s,$HOME,~,")"  # sed 's,.\+/,,'
+    local dir="$(pwd | sed -e "s,^$HOME,~," -e "s,.\+/,,")"
     echo -n "${col}${dir}${_RESETCOLOR}"
 }
 
