@@ -10,6 +10,7 @@ for dir in $(/bin/cat <<EOF
 /usr/local/opt/libxml2/bin
 /usr/local/bin
 /usr/local/opt/coreutils/libexec/gnubin
+/usr/local/opt/gnu-sed/libexec/gnubin
 /usr/local/opt/postgresql@9.6/bin
 /Users/dan/src/3p/emacs-mac/bin
 $HOME/.cargo/bin

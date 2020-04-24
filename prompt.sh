@@ -36,11 +36,11 @@ __prompt_command () {
     _SHRIKE_INDEX=1
     _SHRIKE_TARGET=
 
-    PS1=""
-    PS1+="$(__virtualenv_ps1)"
+    PS1="- "
     # PS1+=" $(__git_commit_ps1)"
-    PS1+=" $(__current_directory_ps1 $exit)"
-    PS1+=" $(__my_git_ps1)"
+    PS1+="$(__current_directory_ps1 $exit)"
+    PS1+="$(__virtualenv_ps1)"
+    PS1+="$(__my_git_ps1)"
     # PS1+="$(__facet_ps1)"
     # PS1+="$(__docker_compose_ps1)"
     # [[ $(echo -n $PS1 | wc -c) -gt 150 ]] && PS1+="\n$"
@@ -107,7 +107,7 @@ __git_commit_ps1 () {
 
 __virtualenv_ps1 () {
     [ -n "$VIRTUAL_ENV" ] || return
-    echo -n "${_BLUE}$(basename $VIRTUAL_ENV)${_RESETCOLOR}"
+    echo -n " ${_BLUE}($(basename $VIRTUAL_ENV))${_RESETCOLOR}"
 }
 
 
