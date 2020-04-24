@@ -1,4 +1,4 @@
-export SHELL=/usr/local/bin/bash
+export SHELL=/usr/local/bin/zsh
 export ALTERNATE_EDITOR='emacs -nw -q'
 export BAT_THEME=base16  # OneHalfDark GitHub
 export BROWSER='google-chrome'
