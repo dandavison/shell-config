@@ -23,4 +23,4 @@ __dan_is_osx && export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman
 # export CPPFLAGS=-I/usr/local/opt/libxml2/include/libxml2
 # export LDFLAGS="-L/usr/local/opt/libxml2/lib"
 
-. env-local.sh
+source env-local.sh
