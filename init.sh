@@ -4,6 +4,7 @@ cd ~/src/shell-config
 is_zsh () { [ -n "$ZSH_VERSION" ] }
 
 source lib.sh
+source lib_fzf.sh
 source lib_prompt.sh
 if is_zsh; then
     source zsh/lib.sh

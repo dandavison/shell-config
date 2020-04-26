@@ -1,24 +1,3 @@
-# https://github.com/pawelduda/fzf-live-repl
-jq-preview () {
-    local file="$1"
-    echo | fzf --print-query --preview "jq '{q}' < '$file'" --preview-window "top:95%"
-}
-
-
-regex-preview-python () {
-    local input="$1"
-    echo | fzf --print-query --preview-window up --preview "python -c \"
-import re
-print('Input: $input\n')
-m = re.match({q}, '$input')
-print(m.groups() if m else '<no match>')\""
-}
-
-regex-replacement-preview-sed () {
-    local input="$1"
-    echo | fzf --print-query --preview-window up --preview "echo Input: $input; echo; echo $input | sed 's	{q}	X	'"
-}
-
 python-virtualenv-name () {
     basename `git rev-parse --show-toplevel`
 }
@@ -42,28 +21,10 @@ __dan_is_osx () {
     [ -e /Applications ]
 }
 
-fzf-maybe () {
-    [ -n "$FZF" ] && $@ | fzf
-}
-
 src-grep () {
     find ~/src -maxdepth 1 -type d | egrep -v '(3p|counsyl)' | while read d; do
         (cd $d && [ -d .git ] && git grep $@)
     done
-}
-
-hist-fzf () {
-    fzf --tac --no-sort < ~/.bash_eternal_history | \
-        perl -p -e 's,^ *[^ ]+ *[^ ]+ *,,' | \
-        perl -p -e chomp | \
-        pbcopy
-}
-
-tmux-fzf () {
-    tmux switch-client -t $(tmux list-panes -a -F '#{session_name},#{window_index},#{pane_title}' | \
-                            xsv table | \
-                            fzf --exact | \
-                            awk '{print $1":"$2}')
 }
 
 tmux-send-all () {
