@@ -22,7 +22,7 @@ WORDCHARS="*?[]~=&;!#$%^(){}<>"
 
 setopt EXTENDED_GLOB
 
-fpath=(~/config/shell/zsh/functions ~/lib/zsh/zsh-pip-completion $fpath)
+fpath=(~/config/shell/zsh/functions $fpath)
 
 autoload -U colors
 colors

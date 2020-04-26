@@ -28,48 +28,16 @@ export _RESETCOLOR="\[\e[00m\]"
 # }
 
 
-__prompt_command () {
-    local exit="$?"
-    __set_env_vars_from_redis
-    __save_history_and_set_terminal_title
-    __facet_prompt_commands
-    _SHRIKE_INDEX=1
-    _SHRIKE_TARGET=
-
+__bash_construct_ps1 () {
     PS1="- "
     # PS1+=" $(__git_commit_ps1)"
-    PS1+="$(__current_directory_ps1 $exit)"
+    PS1+="$(__current_directory_ps1 $__exit_for_bash_ps1)"
     PS1+="$(__virtualenv_ps1)"
     PS1+="$(__my_git_ps1)"
     # PS1+="$(__facet_ps1)"
     # PS1+="$(__docker_compose_ps1)"
     # [[ $(echo -n $PS1 | wc -c) -gt 150 ]] && PS1+="\n$"
     PS1+=" "
-}
-
-__set_env_vars_from_redis () {
-    (echo >/dev/tcp/localhost/6379) 2>/dev/null && \
-    eval $(redis-cli --raw hgetall env |\
-           awk '{i = (NR - 1) % 2; args[i] = $1; if(i == 1) { printf("export %s=%s\n", args[0], args[1]) }}')
-}
-
-__save_history_and_set_terminal_title () {
-    cmd=$(history 1)
-    echo "$cmd" >> ~/.bash_eternal_history
-
-    if [[ $cmd == *ssh* ]]; then
-        # TODO: this doesn't work; use https://github.com/rcaloras/bash-preexec
-        local title=$(echo "ssh ${cmd##*ssh}")
-    else
-        local title="$(pwd | sed "s,$HOME,~,")"
-    fi
-    printf "\033]2;${title}\033\\"  # set terminal/pty/tmux pane title
-
-    # http://iterm2.com/documentation-escape-codes.html
-    # https://groups.google.com/forum/#!msg/iterm2-discuss/Lz7mx06Bxg8/ae9SKC803DkJ;context-place=forum/iterm2-discuss
-    # builtin echo -e "\033]50;CurrentDir=$(pwd)\007"
-
-    echo $PWD > /tmp/cwd
 }
 
 __current_directory_ps1 () {
@@ -83,12 +51,6 @@ __current_directory_ps1 () {
 __facet_ps1() {
     (pwd | egrep -q '(counsyl|facet)' > /dev/null) &&
         echo -n "($(cat ~/.facet/state.json | jq .facet | tr -d '"\n'))"
-}
-
-
-__facet_prompt_commands () {
-    [ -e ~/.facet/prompt-commands ] && . ~/.facet/prompt-commands
-    rm -f ~/.facet/prompt-commands
 }
 
 
@@ -153,5 +115,5 @@ __find_file_upwards () {
 
 PROMPT_COMMAND=
 source fasd.sh
-export PROMPT_COMMAND="__prompt_command${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+export PROMPT_COMMAND="__prompt_command; __bash_construct_ps1${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 export PS2=''
