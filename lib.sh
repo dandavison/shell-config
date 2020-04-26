@@ -62,8 +62,13 @@ hist-fzf () {
 tmux-fzf () {
     tmux switch-client -t $(tmux list-panes -a -F '#{session_name},#{window_index},#{pane_title}' | \
                             xsv table | \
-                            fzf | \
+                            fzf --exact | \
                             awk '{print $1":"$2}')
+}
+
+tmux-send-all () {
+    tmux list-panes -a -F '#{session_name}:#{window_index}.#{pane_index}' | \
+        xargs -I PANE tmux send-keys -t PANE "$1" Enter
 }
 
 git-checkout-maybe-remote-branch () {
