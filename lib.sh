@@ -59,6 +59,13 @@ hist-fzf () {
         pbcopy
 }
 
+tmux-fzf () {
+    tmux switch-client -t $(tmux list-panes -a -F '#{session_name},#{window_index},#{pane_title}' | \
+                            xsv table | \
+                            fzf | \
+                            awk '{print $1":"$2}')
+}
+
 git-checkout-maybe-remote-branch () {
     git checkout $1 && git pull origin $1 || {
             git fetch origin $1:$1 && git checkout $1
