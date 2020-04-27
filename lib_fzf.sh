@@ -54,8 +54,18 @@ fzf-preview-regex-sed () {
 }
 
 fzf-tmux () {
-    tmux switch-client -t $(tmux list-panes -a -F '#{session_name},#{window_index},#{pane_title}' | \
-                            xsv table | \
-                            fzf --exact | \
-                            awk '{print $1":"$2}')
+    if [ -n "$1" ]; then
+        local next_window="$1"
+    else
+        local next_window=$(tmux list-panes -a -F '#{session_name},#{window_index},#{pane_title}' | \
+                               xsv table | \
+                               fzf --exact | \
+                               awk '{print $1":"$2}')
+    fi
+    tmux display-message -p -F '#{session_name}:#{window_index}' > /tmp/tmux-last-window
+    tmux switch-client -t "$next_window"
+}
+
+tmux-back () {
+    fzf-tmux $(cat /tmp/tmux-last-window)
 }
