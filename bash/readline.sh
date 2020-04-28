@@ -1,2 +1,2 @@
-bind -f readline-key-bindings
+bind -f bash/readline-key-bindings
 

@@ -1,7 +1,9 @@
 _cwd=$(pwd)
 cd ~/src/shell-config
 
-is_zsh () { [ -n "$ZSH_VERSION" ] }
+is_zsh () {
+    [ -n "$ZSH_VERSION" ]
+}
 
 source lib.sh
 source lib_fzf.sh
