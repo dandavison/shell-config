@@ -1,12 +1,5 @@
--fzf-hist-1 () {
-    fzf --tac --no-sort < ~/.eternal_shell_history | \
-        perl -p -e 's,^ *[^ ]+ *[^ ]+ *,,' | \
-        perl -p -e chomp | \
-        pbcopy
-}
-
 -fzf-hist () {
-    hist | tr -s " " | cut -d " " -f 4- | fzf --no-sort --exact
+    dan-history | fzf --no-sort --exact
 }
 
 fzf-hist-cp () {
