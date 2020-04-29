@@ -11,7 +11,7 @@ source lib_prompt.sh
 if is_zsh; then
     source zsh/lib.sh
 fi
-source git-functions.sh
+source ~/src/3p/git/contrib/completion/git-prompt.sh
 source path.sh
 source env.sh
 source pyenv.sh
