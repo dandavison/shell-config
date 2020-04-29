@@ -1,3 +1,8 @@
+fzf-git-checkout () {
+    git checkout $(git branch | fzf)
+}
+
+
 -fzf-hist () {
     dan-history | fzf --no-sort --exact
 }
