@@ -1,17 +1,3 @@
-fzf-set-environment-variables () {
-    export FZF_DEFAULT_COMMAND="fd --type file --color=always"
-    export FZF_DEFAULT_OPTS="--ansi"
-}
-
-fzf-emacs () {
-    emacsclient -n $(fzf)
-}
-
-fzf-git-checkout () {
-    git checkout $(git branch | fzf)
-}
-
-
 -fzf-hist () {
     dan-history | fzf --no-sort --exact
 }
