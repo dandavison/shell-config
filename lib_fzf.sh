@@ -8,7 +8,7 @@ fzf-emacs () {
 }
 
 fzf-git-checkout () {
-    git checkout $(git branch | fzf)
+    git checkout $(git-branch-by-date | fzf | awk '{print $1}')
 }
 
 
