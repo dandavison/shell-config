@@ -13,6 +13,8 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export XENOCANTO_DATA_DIRECTORY=/tmp/xeno-quero-data
 export EXA_COLORS=$(tr '\n' ':' < exa-colors)
 is_zsh && export HISTFILE=~/.eternal_shell_history
+fzf-set-environment-variables
+
 # To add local TeX .sty files:
 #   Add to /usr/local/texlive/texmf-local/tex/latex/local
 #   Run `texhash`
