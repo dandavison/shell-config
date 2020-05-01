@@ -24,22 +24,6 @@ fzf-hist-x () {
     eval $(-fzf-hist)
 }
 
-fzf-maybe () {
-    [ -n "$FZF" ] && $@ | fzf
-}
-
-fzf-maybe-emacsclient () {
-    emacsclient -n $(fzf-maybe git ls-files)
-}
-
-fzf-maybe-git-checkout () {
-    git checkout $(fzf-maybe git branch --sort=-committerdate)
-}
-
-fzf-maybe-git-cherry-pick () {
-    git cherry-pick $(git branch | fzf-maybe)
-}
-
 fzf-preview-jq () {
     # https://github.com/pawelduda/fzf-live-repl
     local file="$1"
