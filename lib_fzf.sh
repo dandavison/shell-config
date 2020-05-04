@@ -7,10 +7,17 @@ fzf-emacs () {
     emacsclient -n $(fzf)
 }
 
-fzf-git-checkout () {
-    git checkout $(git-branch-by-date | fzf | awk '{print $1}')
+-fzf-git-branch-by-date () {
+    git-branch-by-date | fzf | awk '{print $1}'
 }
 
+fzf-git-checkout () {
+    git checkout $(-fzf-git-branch-by-date)
+}
+
+fzf-git-log () {
+    git log $(-fzf-git-branch-by-date)
+}
 
 -fzf-hist () {
     dan-history | fzf --no-sort --exact
@@ -22,6 +29,10 @@ fzf-hist-cp () {
 
 fzf-hist-x () {
     eval $(-fzf-hist)
+}
+
+fzf-kill () {
+    kill "$@" $(ps aux | fzf | awk '{print $2}')
 }
 
 fzf-preview-jq () {
