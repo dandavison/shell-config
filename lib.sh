@@ -68,6 +68,14 @@ git-show-merge () {
     )
 }
 
+git-unified-diff () {
+    local commit="$1"
+    local file="$2"
+    git show "$commit~1":"$file" > "/tmp/before-$(basename $file)"
+    git show "$commit":"$file" > "/tmp/after-$(basename $file)"
+    diff -u "/tmp/before-$(basename $file)" "/tmp/after-$(basename $file)"
+}
+
 git-python-xargs () {
     git ls-files | grep '\.py$' | xargs $@
 }
