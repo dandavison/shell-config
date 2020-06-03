@@ -50,9 +50,13 @@ m = re.match({q}, '$input')
 print(m.groups() if m else '<no match>')\""
 }
 
+
 fzf-preview-regex-sed () {
     local input="$1"
-    echo | fzf --print-query --preview-window up --preview "echo Input: $input; echo; echo $input | sed 's	{q}	X	'"
+    echo | fzf \
+               --print-query \
+               --preview-window up \
+               --preview "printf \""$input"\n\n\n─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n\n\n\"; echo \"$input\" | sed -E 's/\x1b\[[0-9;]*[mK]//g' | sed -E '{q}'"
 }
 
 fzf-tmux () {
