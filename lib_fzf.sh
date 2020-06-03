@@ -1,8 +1,3 @@
-fzf-set-environment-variables () {
-    export FZF_DEFAULT_COMMAND="fd --type file --color=always"
-    export FZF_DEFAULT_OPTS="--ansi"
-}
-
 fzf-emacs () {
     emacsclient -n $(fzf)
 }
@@ -57,6 +52,11 @@ fzf-preview-regex-sed () {
                --print-query \
                --preview-window up \
                --preview "printf \""$input"\n\n\n─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n\n\n\"; echo \"$input\" | sed -E 's/\x1b\[[0-9;]*[mK]//g' | sed -E '{q}'"
+}
+
+fzf-set-environment-variables () {
+    export FZF_DEFAULT_COMMAND="fd --type file --color=always"
+    export FZF_DEFAULT_OPTS="--ansi"
 }
 
 fzf-tmux () {
