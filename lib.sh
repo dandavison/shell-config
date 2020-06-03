@@ -117,6 +117,13 @@ python-virtualenv-name () {
     basename `git rev-parse --show-toplevel`
 }
 
+rust-list-tests () {
+   # TODO: distinguish between tests that are indented and thus in a
+   # module probably named 'tests', and tests which are not indented.
+   rg -H --vimgrep 'fn test' | \
+       sed -E s,src/\(.+\)\.rs:\[0-9\]+:\[0-9\]:\ +fn\ \(test\[^\(\]+\).\*,\\1::tests::\\2, | \
+       sed -E s,/,::,g
+}
 
 src-grep () {
     find ~/src -maxdepth 1 -type d | egrep -v '(3p|counsyl)' | while read d; do

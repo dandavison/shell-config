@@ -1,3 +1,7 @@
+fzf-cargo-test () {
+    cargo test $(rust-list-tests | fzf)
+}
+
 fzf-emacs () {
     emacsclient -n $(fzf)
 }
