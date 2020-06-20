@@ -122,7 +122,7 @@ rust-list-tests () {
    # module probably named 'tests', and tests which are not indented.
    rg -H --vimgrep 'fn test' | \
        sed -E s,src/\(.+\)\.rs:\[0-9\]+:\[0-9\]:\ +fn\ \(test\[^\(\]+\).\*,\\1::tests::\\2, | \
-       sed -E s,/,::,g
+       sed -E s,/,::,g | sed -E s,mod::,,
 }
 
 src-grep () {

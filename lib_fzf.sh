@@ -1,5 +1,8 @@
 fzf-cargo-test () {
-    cargo test $(rust-list-tests | fzf)
+    local test="$(rust-list-tests | fzf)"
+    [[ -n "$test" ]] || return
+    echo cargo test "$test"
+    cargo test "$test"
 }
 
 fzf-emacs () {
