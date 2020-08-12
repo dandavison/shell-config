@@ -2,6 +2,7 @@ fzf-cargo-test () {
     local test="$(rust-list-tests | fzf)"
     [[ -n "$test" ]] || return
     echo cargo test "$test"
+    print -s "cargo test $test"  # zsh
     cargo test "$test"
 }
 
