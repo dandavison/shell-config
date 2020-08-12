@@ -40,6 +40,7 @@ alias emacs-app='open -n /Applications/Emacs.app/'
 alias emacs-byte-compile="emacs --batch --eval '(package-initialize)' -f batch-byte-compile"
 alias es='emacs-grep'
 alias f='fzf'
+alias fgc='fzf-git-checkout'
 alias facet='rlwrap facet'
 alias ff='find . -type f -iname'
 alias fromip="who | grep \"^$USER\" | sed 1q | perl -n -e 's,.*\(([0-9.]+)\),\1, and print'"
