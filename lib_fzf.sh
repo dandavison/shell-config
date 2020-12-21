@@ -38,6 +38,10 @@ fzf-kill () {
     kill "$@" $(ps aux | fzf | awk '{print $2}')
 }
 
+fzf-open () {
+    open "$(ls | fzf)"
+}
+
 fzf-preview-jq () {
     # https://github.com/pawelduda/fzf-live-repl
     local file="$1"

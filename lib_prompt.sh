@@ -16,7 +16,7 @@ __save_history_and_set_terminal_title () {
 
     if ! is_zsh; then
         cmd=$(history 1)
-        echo "$cmd" >> ~/.eternal_shell_history
+        echo "$cmd" >> $DAN_ETERNAL_HISTORY_FILE
     fi
 
     if [[ $cmd == *ssh* ]]; then

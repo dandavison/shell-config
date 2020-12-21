@@ -14,6 +14,7 @@ for dir in $(/bin/cat <<EOF
 /usr/local/opt/postgresql@9.6/bin
 /Users/dan/src/3p/emacs-mac/bin
 $HOME/.cargo/bin
+$HOME/.elan/bin
 $HOME/src/elaenia/bin
 $HOME/src/emacs-config/bin
 $HOME/bin
