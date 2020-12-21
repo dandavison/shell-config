@@ -1,6 +1,13 @@
 typeset -ag precmd_functions;
 precmd_functions=( __prompt_command ${precmd_functions[@]} )
 
+__dan_preexec_function () {
+    export DELTA_FEATURES="my-$(iterm2-get-light-or-dark-bg)-mode"
+}
+typeset -ag preexec_functions;
+preexec_functions=( __dan_preexec_function ${preexec_functions[@]} )
+
+
 # Based on oh-my-zsh/themes/robbyrussell.zsh-theme
 # But using __git_ps1 from https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 
