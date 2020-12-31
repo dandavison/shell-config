@@ -160,6 +160,7 @@ alias hzx='fzf-hist-x'
 alias ip=ipython
 alias isort='isort --force_single_line_imports --lines 999999 --dont-skip __init__.py'
 alias jp=jsonpipe
+alias json-cat='(jq -C . | l)'
 alias l='less'
 alias latex='latex -shell-escape -interaction nonstopmode -output-directory=${LATEX_OUTPUT_DIRECTORY:-.}'
 alias less='less -S'
