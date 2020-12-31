@@ -12,7 +12,7 @@ for dir in $(/bin/cat <<EOF
 /usr/local/opt/coreutils/libexec/gnubin
 /usr/local/opt/gnu-sed/libexec/gnubin
 /usr/local/opt/postgresql@9.6/bin
-/Users/dan/src/3p/emacs-mac/bin
+/Users/dan/src-3p/emacs-mac/bin
 $HOME/.cargo/bin
 $HOME/.elan/bin
 $HOME/src/elaenia/bin
