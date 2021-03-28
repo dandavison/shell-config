@@ -6,3 +6,4 @@ source $ZSH/oh-my-zsh.sh
 # personal
 source ~/src/shell-config/init.sh
 compdef _gnu_generic bat delta
+setopt rmstarsilent

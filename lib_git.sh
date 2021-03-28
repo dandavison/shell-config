@@ -1,3 +1,8 @@
+git-force-create-branch () {
+    local branch="$1"
+    [ -n "$branch" ] && git branch -D "$branch" && git checkout -b "$branch" && git checkout -
+}
+
 git-commit-file () {
     git add "$1" && git commit -m "$1"
 }
