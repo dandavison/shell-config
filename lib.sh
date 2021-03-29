@@ -1,4 +1,4 @@
-__dan_is_osx () {
+__dan_is_macos () {
     [ -e /Applications ]
 }
 

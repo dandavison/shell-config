@@ -1,1 +1,1 @@
-__dan_is_osx && [ -n "$TMUX" ] && tmux set-option prefix C-z >/dev/null
+__dan_is_macos && [ -n "$TMUX" ] && tmux set-option prefix C-z >/dev/null

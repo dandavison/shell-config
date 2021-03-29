@@ -23,7 +23,7 @@ fzf-set-environment-variables
 #   Add to /usr/local/texlive/texmf-local/tex/latex/local
 #   Run `texhash`
 
-__dan_is_osx && export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman"  # $(brew --prefix coreutils) is too slow
+__dan_is_macos && export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman"  # $(brew --prefix coreutils) is too slow
 # export MPLBACKEND="module://itermplot" ITERMPLOT=rv
 
 # export   CFLAGS=-I/usr/local/opt/libxml2/include/libxml2

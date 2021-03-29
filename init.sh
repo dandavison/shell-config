@@ -20,10 +20,10 @@ if is_zsh; then
     source zsh/lib.sh
 fi
 source ./3p/git-prompt.sh
-source path.sh
+__dan_is_macos && source path-macos.sh
 source env.sh
 source pyenv.sh
-__dan_is_osx && source env-macos.sh
+__dan_is_macos && source env-macos.sh
 if is_zsh; then
     source zsh/prompt.sh
     source zsh/bindings.sh
