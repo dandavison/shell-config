@@ -8,6 +8,7 @@ alias black-diff='(pyenv shell 3.7.0 && cd $(git rev-parse --show-toplevel) && b
 alias black-all="(cd $(git rev-parse --show-toplevel) && git ls-files '**/*.py' | xargs black --skip-string-normalization -l100 $(git diff --name-only master...))"
 alias blank='for _ in `seq 1 128`; do echo; done && clear'
 alias c='code'
+alias cn='code --new-window'
 alias cargo-test-fzf='fzf-cargo-test'
 alias cat='bat --plain'
 alias cb='cargo build'
