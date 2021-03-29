@@ -2,9 +2,6 @@ __prompt_command () {
     local __exit_for_bash_ps1="$?"
     __set_env_vars_from_redis
     __save_history_and_set_terminal_title
-    __facet_prompt_commands
-    _SHRIKE_INDEX=1
-    _SHRIKE_TARGET=
 }
 
 __set_env_vars_from_redis () {
