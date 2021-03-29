@@ -1,9 +1,16 @@
 _cwd=$(pwd)
-cd ~/src/shell-config
+cd ~/devenv/shell-config
 
 is_zsh () {
     [ -n "$ZSH_VERSION" ]
 }
+
+if is_zsh; then
+    # oh-my-zsh
+    export ZSH="$HOME/.ohmyzsh"
+    plugins=(fasd)
+    source $ZSH/oh-my-zsh.sh
+fi
 
 source lib.sh
 source lib_fzf.sh
@@ -12,7 +19,7 @@ source lib_prompt.sh
 if is_zsh; then
     source zsh/lib.sh
 fi
-source ~/src-3p/git/contrib/completion/git-prompt.sh
+source ~/devenv/git/contrib/completion/git-prompt.sh
 source path.sh
 source env.sh
 source pyenv.sh
@@ -26,13 +33,17 @@ else
     source bash/history.sh
     source bash/completion/completion.sh
     source bash/completion/virtualenv-activate.sh
-    source ~/src/misc/shrike.sh
     source bash/readline.sh
     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 fi
 [ -f extra.sh ] && source extra.sh
 source alias.sh
 source tmux.sh
+
+if is_zsh; then
+    compdef _gnu_generic bat delta
+    setopt rmstarsilent
+fi
 
 cd "$_cwd"
 unset _cwd

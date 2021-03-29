@@ -33,12 +33,12 @@ ega () {
 
 emacs-set-minimal () {
     rm -f ~/.emacs
-    ln -s ~/src/emacs-config/emacs-minimal.el ~/.emacs
+    ln -s ~/devenv/emacs-config/emacs-minimal.el ~/.emacs
 }
 
 emacs-set-normal () {
     rm -f ~/.emacs
-    ln -s ~/src/emacs-config/emacs.el ~/.emacs
+    ln -s ~/devenv/emacs-config/emacs.el ~/.emacs
 }
 
 # https://gist.github.com/SlexAxton/4989674
@@ -155,7 +155,7 @@ pypi-local () {
     local package_dir=~/tmp/packages
     local image_name=simple-http-server
     local container_name=$image_name
-    local dockerfile_dir=~/src/dockerfiles/simple-http-server
+    local dockerfile_dir=~/devenv/dockerfiles/simple-http-server
 
     (cd $dockerfile_dir && docker build -t $image_name .)
     dir2pi $package_dir
