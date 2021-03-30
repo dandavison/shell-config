@@ -208,6 +208,7 @@ alias rg='rg -M 1000'
 alias rgc='rg --color=always -M 1000'
 alias rn='rename'
 alias rs='rsync -z --progress'
+unalias sd
 alias sg='stack ghci'
 alias skim='open -a /Applications/Skim.app'
 alias ssh='ssh -A'
