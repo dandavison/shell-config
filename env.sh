@@ -4,11 +4,10 @@ export BAT_THEME=GitHub  # base16 OneHalfDark
 export BROWSER='google-chrome'
 export DAN_VIRTUALENVS_DIRECTORY=~/tmp/virtualenvs
 export EDITOR='emacsclient -n'
-export FZF=
 export GIT_SEQUENCE_EDITOR='emacsclient'
 export HOMEBREW_NO_AUTO_UPDATE=1
-export LESS='-RX'
-export DELTA_PAGER='less -RSX'
+export LESS='-FRSX'
+export DELTA_PAGER='less -FRSX'
 export PIP_INDEX_URL=
 export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
@@ -17,6 +16,8 @@ export EXA_COLORS=$(tr '\n' ':' < exa-colors)
 export DAN_ETERNAL_HISTORY_DIR=~/dandavison7@gmail.com/shell_history
 export DAN_ETERNAL_HISTORY_FILE=$DAN_ETERNAL_HISTORY_DIR/eternal_shell_history_03.99
 is_zsh && export HISTFILE=$DAN_ETERNAL_HISTORY_FILE
+
+export FZF_DEFAULT_COMMAND='fd'
 fzf-set-environment-variables
 
 # To add local TeX .sty files:
