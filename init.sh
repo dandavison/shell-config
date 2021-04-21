@@ -10,6 +10,7 @@ if is_zsh; then
     export ZSH="$HOME/.ohmyzsh"
     plugins=(fasd)
     source $ZSH/oh-my-zsh.sh
+    unalias sd
 fi
 
 source lib.sh
