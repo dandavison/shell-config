@@ -7,6 +7,15 @@ git-commit-file () {
     git add "$1" && git commit -m "$1"
 }
 
+git-delete-squashed-branch () {
+    local branch=$1
+    local main=master
+    git checkout $branch \
+    && git rebase $main \
+    && git checkout $main \
+    && git branch -d $branch
+}
+
 git-prune-merged () {
     git branch-by-date | \
         awk '{print $1}' | \
