@@ -21,7 +21,7 @@ alias cog='open -a /Applications/Cog.app'
 alias ct='cargo-test-fzf'
 alias ddbg='ln -fs ~/src/delta/target/debug/delta ~/bin/delta && delta --version'
 alias ddev='ln -fs ~/src/delta/target/release/delta ~/bin/delta && delta --version'
-alias drel='ln -fs /usr/local/bin/delta ~/bin/delta; delta --version'
+alias drel='ln -fs /opt/homebrew/bin/delta ~/bin/delta; delta --version'
 alias dh='delta --help | less'
 alias di='docker images'
 alias docker-clean='docker-rm-all && docker-prune'
@@ -171,7 +171,7 @@ alias less='less -S'
 alias ll='ls -l'
 alias lr='latexrun --latex-args="-shell-escape" -O .build'
 alias ls="exa --group-directories-first --ignore-glob '*.pyc|__pycache__|Icon*'"
-alias ls-gnu='/usr/local/opt/coreutils/libexec/gnubin/ls -N --color=tty --hide="*.pyc" --hide=__pycache__'  # --git-ignore ; --hide="*."{aux,out,log} if you get very annoyed by LaTeX
+alias ls-gnu='/opt/homebrew/opt/coreutils/libexec/gnubin/ls -N --color=tty --hide="*.pyc" --hide=__pycache__'  # --git-ignore ; --hide="*."{aux,out,log} if you get very annoyed by LaTeX
 alias lt='ls -lht'
 alias lth='ls -lht | head'
 alias lsof-ports='lsof -i -n -P | rg -i LISTEN'

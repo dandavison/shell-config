@@ -4,15 +4,15 @@ __dan_uniquify_path () {
 
 # $(brew --prefix coreutils)/libexec/gnubin
 
+# /opt/homebrew/opt/texinfo/bin/
+# /opt/homebrew/texlive/2018/bin/x86_64-darwin
+
 for dir in $(/bin/cat <<EOF
-/usr/local/opt/texinfo/bin/
-/usr/local/texlive/2018/bin/x86_64-darwin
-/usr/local/opt/libxml2/bin
-/usr/local/bin
-/usr/local/opt/coreutils/libexec/gnubin
-/usr/local/opt/gnu-sed/libexec/gnubin
-/usr/local/opt/postgresql@9.6/bin
-/Users/dan/src-3p/emacs-mac/bin
+/opt/homebrew/opt/libxml2/bin
+/opt/homebrew/bin
+/opt/homebrew/opt/coreutils/libexec/gnubin
+/opt/homebrew/opt/gnu-sed/libexec/gnubin
+/opt/homebrew/opt/postgresql/bin
 $HOME/.cargo/bin
 $HOME/.elan/bin
 $HOME/src/elaenia/bin
