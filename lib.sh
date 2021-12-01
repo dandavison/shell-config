@@ -164,6 +164,18 @@ pypi-local () {
     docker run -p $port:80 --rm --name $container_name -v $package_dir:/srv simple-http-server
 }
 
+random-leetcode () {
+    local file=`ls lc_* | shuf -n1`
+    echo $file
+    LEETCODE=$file
+    open "https://leetcode.com/problems/`sed -E "s/lc_(.+)\.py/\1/" <<< $file | tr _ - `"
+}
+
+rgd () {
+    command rg --json $@ | delta
+}
+
+
 tail0 () {
     file=$1
     until [[ -e $file ]]; do sleep 0.1; done
