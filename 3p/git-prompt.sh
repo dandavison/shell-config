@@ -391,6 +391,10 @@ __git_ps1 ()
 	[ -z "${ZSH_VERSION-}" ] || [[ -o PROMPT_SUBST ]] || ps1_expanded=no
 	[ -z "${BASH_VERSION-}" ] || shopt -q promptvars || ps1_expanded=no
 
+	if [  "$PWD" = "/Users/ddavison/workspace/source" ]; then
+		return $exit
+	fi
+
 	local repo_info rev_parse_exit_code
 	repo_info="$(git rev-parse --git-dir --is-inside-git-dir \
 		--is-bare-repository --is-inside-work-tree \
