@@ -1,4 +1,4 @@
-export SHELL=/opt/homebrew/bin/zsh
+export SHELL=zsh
 export ALTERNATE_EDITOR='emacs -nw -q'
 export BROWSER='google-chrome'
 export DAN_VIRTUALENVS_DIRECTORY=~/tmp/virtualenvs
