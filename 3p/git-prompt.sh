@@ -391,6 +391,7 @@ __git_ps1 ()
 	[ -z "${ZSH_VERSION-}" ] || [[ -o PROMPT_SUBST ]] || ps1_expanded=no
 	[ -z "${BASH_VERSION-}" ] || shopt -q promptvars || ps1_expanded=no
 
+    echo $PWD > /tmp/cwd
 	if [[  "$PWD" = /Users/ddavison/workspace/source* ]]; then
 		printf -- " ▶"
 		return $exit
@@ -510,8 +511,8 @@ __git_ps1 ()
 		if [ -n "${GIT_PS1_SHOWDIRTYSTATE-}" ] &&
 		   [ "$(git config --bool bash.showDirtyState)" != "false" ]
 		then
-			git diff --no-ext-diff --quiet || w="*"
-			git diff --no-ext-diff --cached --quiet || i="+"
+			git diff --no-ext-diff --quiet || w="$GIT_PS1_UNSTAGED"
+			git diff --no-ext-diff --cached --quiet || i="$GIT_PS1_STAGED"
 			if [ -z "$short_sha" ] && [ -z "$i" ]; then
 				i="#"
 			fi
