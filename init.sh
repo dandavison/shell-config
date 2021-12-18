@@ -10,12 +10,13 @@ if is_zsh; then
     export ZSH="$HOME/.ohmyzsh"
     plugins=(fasd)
     source $ZSH/oh-my-zsh.sh
-    (type sd | grep alias > /dev/null) && unalias sd
+    (type sd | grep alias >/dev/null) && unalias sd
 fi
 
 source lib.sh
 source lib_fzf.sh
 source lib_git.sh
+source lib_sourcegraph.sh
 source lib_prompt.sh
 if is_zsh; then
     source zsh/lib.sh
