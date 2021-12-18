@@ -26,6 +26,8 @@ __save_history_and_set_terminal_title () {
     # http://iterm2.com/documentation-escape-codes.html
     # https://groups.google.com/forum/#!msg/iterm2-discuss/Lz7mx06Bxg8/ae9SKC803DkJ;context-place=forum/iterm2-discuss
     # builtin echo -e "\033]50;CurrentDir=$(pwd)\007"
+
+    echo $PWD > /tmp/cwd
 }
 
 __facet_prompt_commands () {

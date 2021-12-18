@@ -6,6 +6,10 @@ fzf-cargo-test () {
     cargo test "$test"
 }
 
+fzf-cat () {
+    bat --style="header,grid" $(fd . $1 | fzf)
+}
+
 fzf-emacs () {
     emacsclient -n $(fzf)
 }

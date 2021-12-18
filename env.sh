@@ -1,8 +1,10 @@
 export ALTERNATE_EDITOR='emacs -nw -q'
+export BAT_THEME=GitHub
 export BROWSER='google-chrome'
 export DAN_VIRTUALENVS_DIRECTORY=~/tmp/virtualenvs
 export EDITOR='emacsclient -n'
 export GIT_SEQUENCE_EDITOR='emacsclient'
+export OPEN_IN_EDITOR=~/bin/code
 export HOMEBREW_NO_AUTO_UPDATE=1
 export LESS='-FIRXS'
 export DELTA_PAGER='less -FRSX'
@@ -14,7 +16,7 @@ export EXA_COLORS=$(tr '\n' ':' < exa-colors)
 export DAN_ETERNAL_HISTORY_DIR=~/google-drive/shell_history
 export DAN_ETERNAL_HISTORY_FILE=$DAN_ETERNAL_HISTORY_DIR/eternal_shell_history_03.99
 is_zsh && {
-    export PROMPT_EOL_MARK=␊
+    export PROMPT_EOL_MARK=
     export HISTFILE=$DAN_ETERNAL_HISTORY_FILE
 }
 

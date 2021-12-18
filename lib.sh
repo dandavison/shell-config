@@ -13,6 +13,20 @@ dan-history () {
     tac $dir/eternal_shell_history_01.* | awk '{$1=$2=$3=""; print substr($0, 4)}'
 }
 
+delta-side-by-side() {
+    declare -a new_features
+    local new_state="on"
+    for feature in ${=DELTA_FEATURES}; do  # ${=xxx} is zsh, meaning: split on spaces  
+        if [ $feature = "side-by-side" ]; then
+            new_state="off"
+        else
+            new_features+=("$feature")
+        fi
+    done
+    [ $new_state = "on" ] && new_features+=(side-by-side)
+    export DELTA_FEATURES=${new_features[*]}
+    echo "DELTA_FEATURES=$DELTA_FEATURES"
+}
 
 die () {
     echo "$@" >&2
