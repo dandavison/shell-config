@@ -1,28 +1,20 @@
-sourcegraph-search-files() {
-    local repo=$(git remote get-url origin | sed 's,^https://,,')
-    src search --stream --json "repo:$repo $@" | jq -r ".path"
+src-matching-files() {
+    local repo=${SRC_REPO:-$(git remote get-url origin | sed 's,^https://,,')}
+    src search --stream --json "repo:$repo $*" | jq -r 'select(.type=="content").path' | sort
 }
 
-sourcegraph-search-files-scala-strato() {
-    sourcegraph-search-files "file:\.(strato|scala)$ $@"
+src-grep-args() {
+    echo "${@:$#}" -- $(src-matching-files "$@")
 }
 
-sourcegraph-search-files-scala() {
-    sourcegraph-search-files "file:\.scala$ $@"
+src-grep-args-scala() {
+    src-grep-args 'file:\.scala$' $@
 }
 
-sourcegraph-search() {
-    git grep -F --function-context $@ -- $(sourcegraph-search-files $@)
+src-grep-args-scala-strato() {
+    src-grep-args 'file:\.(strato|scala)$' $@
 }
 
-sourcegraph-search-scala() {
-    git grep -F --function-context $@ -- $(sourcegraph-search-files-scala $@)
-}
-
-sourcegraph-search-scala-strato() {
-    git grep -F --function-context $@ -- $(sourcegraph-search-files-scala-strato $@)
-}
-
-rgd-scala() {
-    rgd -g '*.scala' -g '!*Test.scala' $@
+src-git-grep() {
+    git grep -W $(src-grep-args $@)
 }
