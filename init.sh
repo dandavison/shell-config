@@ -1,7 +1,7 @@
 _cwd=$(pwd)
 cd ~/devenv/shell-config
 
-is_zsh () {
+is_zsh() {
     [ -n "$ZSH_VERSION" ]
 }
 
