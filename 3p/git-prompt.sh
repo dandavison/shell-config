@@ -393,7 +393,14 @@ __git_ps1 ()
 
     echo $PWD > /tmp/cwd
 	if [[  "$PWD" = /Users/ddavison/workspace/source* ]]; then
-		printf -- " ▶"
+		local w=""
+		local i=""
+		local s=""
+		local b="$(git rev-parse --abbrev-ref HEAD)"
+		git diff --no-ext-diff --quiet || w="$GIT_PS1_UNSTAGED"
+		git diff --no-ext-diff --cached --quiet || i="$GIT_PS1_STAGED"
+		([ -n "$w" ] || [ -n "$i" ]) && s=" "
+		printf -- "($b$s$w$i)"
 		return $exit
 	fi
 
