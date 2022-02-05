@@ -7,7 +7,7 @@ cd-site-packages() {
 }
 
 dan-history() {
-    local dir=~/google-drive/shell_history
+    local dir=~/GoogleDrive/shell_history
     tac $dir/eternal_shell_history_03.* | cut -d\; -f2-
     tac $dir/eternal_shell_history_02.* | awk '{$1=$2=""; print substr($0,3)}'
     tac $dir/eternal_shell_history_01.* | awk '{$1=$2=$3=""; print substr($0, 4)}'
@@ -16,7 +16,8 @@ dan-history() {
 delta-side-by-side() {
     declare -a new_features
     local new_state="on"
-    for feature in ${=DELTA_FEATURES}; do  # ${=xxx} is zsh, meaning: split on spaces  
+    local delta_features="${DELTA_FEATURES#+}"  # strip "+" prefix if present
+    for feature in ${=delta_features}; do  # ${=xxx} is zsh, meaning: split on spaces
         if [ $feature = "side-by-side" ]; then
             new_state="off"
         else
@@ -24,8 +25,10 @@ delta-side-by-side() {
         fi
     done
     [ $new_state = "on" ] && new_features+=(side-by-side)
-    export DELTA_FEATURES=${new_features[*]}
-    echo "DELTA_FEATURES=$DELTA_FEATURES"
+    local delta_features=${new_features[*]}
+    [ -n "$delta_features" ] && delta_features="+$delta_features"
+    export DELTA_FEATURES=$delta_features
+    echo "DELTA_FEATURES=$delta_features"
 }
 
 die() {

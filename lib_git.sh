@@ -85,6 +85,16 @@ git-unified-diff () {
     diff -u "/tmp/before-$(basename $file)" "/tmp/after-$(basename $file)"
 }
 
+git-user-public () {
+    git config user.name "Dan Davison"
+    git config user.email "dandavison7@gmail.com"
+}
+
+git-user-twitter () {
+    git config user.name "Dan Davison"
+    git config user.email "ddavison@twitter.com"
+}
+
 git-python-xargs () {
     git ls-files | grep '\.py$' | xargs $@
 }
@@ -167,4 +177,3 @@ git-make-repos () {
 #           --preview \"(grep -o '[a-f0-9]\\{7\\}' | head -1 | xargs -I % sh -c 'git -c core.pager=cat show --color=never % | delta') <<< {}\" #"
 #     log6 = log --date=format:'%a %Y-%m-%d %k:%M' --color=always --format='%n%C(green)%ad %C(blue)%an <%ae> %C(auto)%h%d%n%n %s%n%w(0,2,2)%+b%C(reset)' --compact-summary
 # state = !"echo $(git rev-parse --abbrev-ref HEAD; git rev-parse HEAD; _diff=$(git diff; git diff --cached); [ -n \"$_diff\" ] && md5sum - <<< \"$_diff\")"
-

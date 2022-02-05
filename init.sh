@@ -25,6 +25,7 @@ source ./3p/git-prompt.sh
 __dan_is_macos && source path-macos.sh
 source env.sh
 source pyenv.sh
+source nvm.sh
 __dan_is_macos && source env-macos.sh
 if is_zsh; then
     source zsh/prompt.sh
@@ -38,14 +39,15 @@ else
     source bash/readline.sh
     [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 fi
-[ -f extra.sh ] && source extra.sh
 source alias.sh
 source tmux.sh
 
 if is_zsh; then
     compdef _gnu_generic bat delta
     setopt rmstarsilent
+    source zsh/syntax-highlighting.sh
 fi
 
 cd "$_cwd"
 unset _cwd
+[ -f extra.sh ] && source extra.sh
