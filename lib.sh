@@ -2,6 +2,31 @@ __dan_is_macos() {
     [ -e /Applications ]
 }
 
+resolve-file() {
+    local query="$1"
+    local depth="${2:-1}"
+    if [ -e "$query" ]; then
+        echo "$query"
+    else
+        (( depth += 1 ))
+        if [ $depth -eq 4 ]; then
+            echo "Failed to resolve: $query" >&2
+            return
+        fi
+        local resolved=$(which "$query")
+        local prefix="$query: aliased to "
+        if [[ "$resolved" =~ "$prefix" ]]; then
+            resolve-file ${resolved#"$prefix"} $depth
+        else
+            resolve-file "$resolved" $depth
+        fi
+    fi
+}
+
+cat-file() {
+    bat --style header,grid $(resolve-file "$1")
+}
+
 cd-site-packages() {
     cd $(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 }
