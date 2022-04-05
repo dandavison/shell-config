@@ -11,6 +11,7 @@ if is_zsh; then
     plugins=(fasd)
     source $ZSH/oh-my-zsh.sh
     (type sd | grep alias >/dev/null) && unalias sd
+    zstyle ':completion:*' matcher-list '' # case-sensitive matching
 fi
 
 source lib.sh
@@ -18,15 +19,12 @@ source lib_fzf.sh
 source lib_git.sh
 source lib_sourcegraph.sh
 source lib_prompt.sh
+source ~/src/misc/git-stash.sh
 if is_zsh; then
     source zsh/lib.sh
 fi
 source ./3p/git-prompt.sh
 __dan_is_macos && source path-macos.sh
-source env.sh
-source pyenv.sh
-source nvm.sh
-__dan_is_macos && source env-macos.sh
 if is_zsh; then
     source zsh/prompt.sh
     source zsh/bindings.sh
@@ -48,6 +46,10 @@ if is_zsh; then
     source zsh/syntax-highlighting.sh
 fi
 
+source env.sh
+[ -f extra.sh ] && source extra.sh
+source pyenv.sh
+source nvm.sh 2>/dev/null
 cd "$_cwd"
 unset _cwd
-[ -f extra.sh ] && source extra.sh
+source ~/.zlogin
