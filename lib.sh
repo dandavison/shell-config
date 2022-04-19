@@ -10,8 +10,10 @@ resolve-file() {
     else
         (( depth += 1 ))
         if [ $depth -eq 4 ]; then
-            echo "Failed to resolve: $query" >&2
-            return
+            # echo "Failed to resolve; assuming shell function" >&2
+            local file=/tmp/function.sh
+            echo "$query" > "$file"
+            resolve-file "$file"
         fi
         local resolved=$(which "$query")
         local prefix="$query: aliased to "
@@ -25,6 +27,10 @@ resolve-file() {
 
 cat-file() {
     bat --style header,grid $(resolve-file "$1")
+}
+
+open-file() {
+    code --new-window $(resolve-file "$1")
 }
 
 cd-site-packages() {
