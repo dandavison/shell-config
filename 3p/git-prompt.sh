@@ -397,8 +397,8 @@ __git_ps1 ()
 		local i=""
 		local s=""
 		local b="$(git rev-parse --abbrev-ref HEAD)"
-		git diff --no-ext-diff --quiet $GIT_PATHS || w="$GIT_PS1_UNSTAGED"
-		git diff --no-ext-diff --cached --quiet $GIT_PATHS || i="$GIT_PS1_STAGED"
+		# git diff --no-ext-diff --quiet $GIT_PATHS || w="$GIT_PS1_UNSTAGED"
+		# git diff --no-ext-diff --cached --quiet $GIT_PATHS || i="$GIT_PS1_STAGED"
 		([ -n "$w" ] || [ -n "$i" ]) && s=" "
 		printf -- "($b$s$w$i)"
 		return $exit
