@@ -11,7 +11,8 @@ if is_zsh; then
     plugins=(fasd)
     source $ZSH/oh-my-zsh.sh
     (type sd | grep alias >/dev/null) && unalias sd
-    zstyle ':completion:*' matcher-list '' # case-sensitive matching
+    zstyle ':completion:*' matcher-list ''                                         # case-sensitive matching
+    zstyle ':completion:*' completer _expand_alias _complete _history _approximate # alias tab expansion
 fi
 
 source lib.sh
@@ -53,3 +54,7 @@ source nvm.sh 2>/dev/null
 cd "$_cwd"
 unset _cwd
 source ~/.zlogin
+
+# [ -f ~/.resh/shellrc ] && source ~/.resh/shellrc # this line was added by RESH (Rich Enchanced Shell History)
+eval "$(mcfly init zsh)"
+export MCFLY_LIGHT=1

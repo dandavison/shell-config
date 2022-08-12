@@ -220,7 +220,7 @@ random-leetcode() {
 }
 
 rgd() {
-    command rg --json $@ | delta
+    command rg $@ --json | delta
 }
 
 tail0() {
