@@ -256,3 +256,18 @@ toggle-iterm() {
         esac
     done
 }
+
+function hyperlink() {
+    local url="$1"
+    local text="$2"
+    printf '\e]8;;%s\e\\%s\e]8;;\e\\\n' "$url" "$text"
+}
+
+function fd() {
+    command fd --color=always "$@" \
+    | while read path; do
+        abspath=$(readlink -f $(echo -n $path | ansifilter))
+        url="vscode-insiders://file/$abspath"
+        hyperlink $url $path
+      done
+}
