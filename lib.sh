@@ -38,7 +38,7 @@ cd-site-packages() {
 }
 
 dan-history() {
-    local dir=~/GoogleDrive/shell_history
+    local dir=~/Drive/shell_history
     tac $dir/eternal_shell_history_03.* | cut -d\; -f2-
     tac $dir/eternal_shell_history_02.* | awk '{$1=$2=""; print substr($0,3)}'
     tac $dir/eternal_shell_history_01.* | awk '{$1=$2=$3=""; print substr($0, 4)}'

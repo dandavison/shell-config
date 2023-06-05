@@ -85,16 +85,6 @@ git-unified-diff () {
     diff -u "/tmp/before-$(basename $file)" "/tmp/after-$(basename $file)"
 }
 
-git-user-public () {
-    git config user.name "Dan Davison"
-    git config user.email "dandavison7@gmail.com"
-}
-
-git-user-twitter () {
-    git config user.name "Dan Davison"
-    git config user.email "ddavison@twitter.com"
-}
-
 git-python-xargs () {
     git ls-files | grep '\.py$' | xargs $@
 }

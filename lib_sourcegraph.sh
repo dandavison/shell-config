@@ -1,3 +1,8 @@
+#!/bin/bash
+
+# To login / generate token see
+# src login https://sourcegraph.twitter.biz/
+
 src-matching-files() {
     local repo=${SRC_REPO:-$(git remote get-url origin | sed 's,^https://,,')}
     src search --stream --json "repo:$repo $*" | jq -r 'select(.type=="content").path' | sort
@@ -38,3 +43,7 @@ src-strato-column-hits-with-matching-scala-files() {
             [ -n "$files" ] && echo $column
         done
 }
+
+
+
+src-git-grep $@

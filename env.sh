@@ -13,7 +13,7 @@ export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; 
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export XENOCANTO_DATA_DIRECTORY=/tmp/xeno-quero-data
 export LS_COLORS="$(vivid generate one-light)"
-export DAN_ETERNAL_HISTORY_DIR=~/GoogleDrive/shell_history
+export DAN_ETERNAL_HISTORY_DIR=~/Drive/shell_history
 export DAN_ETERNAL_HISTORY_FILE=$DAN_ETERNAL_HISTORY_DIR/eternal_shell_history_03.99
 is_zsh && {
     export PROMPT_EOL_MARK=
