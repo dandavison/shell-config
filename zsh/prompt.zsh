@@ -6,5 +6,5 @@ export GIT_PS1_SHOWDIRTYSTATE=yes
 export GIT_PS1_UNSTAGED="અ "
 export GIT_PS1_STAGED="જ "
 
-PROMPT="%(?:%{$fg_bold[cyan]%}%2c:%{$fg[red]%}%c)%{$reset_color%}"
+PROMPT="%(?:%{$fg_bold[cyan]%}%c:%{$fg[red]%}%c)%{$reset_color%}"
 PROMPT+='%{$fg[red]%}$(__git_ps1 "(%s)")%{$reset_color%} '
