@@ -37,13 +37,6 @@ cd-site-packages() {
     cd $(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 }
 
-dan-history() {
-    local dir=~/Drive/shell_history
-    tac $dir/eternal_shell_history_03.* | cut -d\; -f2-
-    tac $dir/eternal_shell_history_02.* | awk '{$1=$2=""; print substr($0,3)}'
-    tac $dir/eternal_shell_history_01.* | awk '{$1=$2=$3=""; print substr($0, 4)}'
-}
-
 delta-side-by-side() {
     declare -a new_features
     local new_state="on"
@@ -219,10 +212,6 @@ random-leetcode() {
     open "https://leetcode.com/problems/$(sed -E "s/lc_(.+)\.py/\1/" <<<$file | tr _ -)"
 }
 
-rgd() {
-    command rg $@ --json | delta
-}
-
 tail0() {
     file=$1
     until [[ -e $file ]]; do sleep 0.1; done
@@ -270,4 +259,8 @@ function fd() {
         url="vscode-insiders://file/$abspath"
         hyperlink $url $path
       done
+}
+
+function whichf() {
+    readlink -f $(which "$1")
 }

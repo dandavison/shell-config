@@ -27,7 +27,7 @@ fzf-git-log () {
 }
 
 -fzf-hist () {
-    dan-history | fzf --no-sort --exact
+    history | fzf --no-sort --exact
 }
 
 fzf-hist-cp () {

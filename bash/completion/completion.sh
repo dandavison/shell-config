@@ -1,7 +1,6 @@
 export FIGNORE=.pyc:#:.DS_Store:.git
 
 . $(brew --prefix)/etc/bash_completion
-# [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # . ~/src-3p/tmuxinator/completion/tmuxinator.bash
 # . ~/src-3p/maven-bash-completion/bash_completion.bash

@@ -1,3 +1,5 @@
+# Use `read` to determine bytes being sent by key sequences
+
 bindkey '\ep' history-beginning-search-backward
 bindkey '\en' history-beginning-search-forward
 
@@ -18,8 +20,9 @@ bindkey '\e^[[D' backward-word # M-left
 bindkey '\ee' edit-command-line-in-shell-mode
 
 bindkey -s '^_' '^a^ktmux select-window -t :\t\t'
-bindkey -M menuselect -s '^_' '^g^a^k'
 
 bindkey '^W' kill-region
 
 bindkey '^x^r' replace-string
+
+bindkey "^ " pm-switch-widget

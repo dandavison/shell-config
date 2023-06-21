@@ -1,5 +1,6 @@
 # Based on oh-my-zsh/themes/robbyrussell.zsh-theme
 # But using __git_ps1 from https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+setopt prompt_subst
 
 export GIT_PS1_SHOWDIRTYSTATE=yes
 export GIT_PS1_UNSTAGED="અ "

@@ -9,4 +9,4 @@ ZSH_HIGHLIGHT_STYLES[alias]='fg=blue'
 ZSH_HIGHLIGHT_STYLES[path]='fg=green'
 
 # source ~/devenv/shell-config//zsh/3p/zsh-syntax-highlighting--dracula.sh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh &> /dev/null
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh &> /dev/null
