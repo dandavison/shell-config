@@ -5,6 +5,7 @@ source lib.sh
 source lib_fzf.sh
 source lib_git.sh
 source zsh/lib.zsh
+source zsh/history.zsh
 source ./3p/git-prompt.sh
 
 __dan_is_macos && source path-macos.sh
@@ -32,6 +33,7 @@ source pyenv.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source nvm.sh 2>/dev/null
 source ~/tmp/3p/zsh-gpt/zsh-gpt.plugin.zsh
+eval "$(atuin init zsh --disable-up-arrow)"
 
 cd "$_cwd"
 unset _cwd

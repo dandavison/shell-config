@@ -1,21 +1,23 @@
-# Use `read` to determine bytes being sent by key sequences
+# To determine bytes being sent by key sequences:
+# read
+# infocmp -L -1
 
-bindkey '\ep' history-beginning-search-backward
-bindkey '\en' history-beginning-search-forward
+declare -A MY_KEYS
+MY_KEYS=(
+    UP '^[[A'
+    DOWN '^[[B'
+    M_UP '^[[1;3A'
+    M_DOWN '^[[1;3B'
+    M_LEFT '^[[1;3D'
+    M_RIGHT '^[[1;3C'
+)
 
-# bindkey '\e[A' history-beginning-search-backward  # up
-# bindkey '\e[B' history-beginning-search-forward   # down
+bindkey "$MY_KEYS[UP]" my-history-prefix-search-backward-widget
+bindkey "$MY_KEYS[DOWN]" my-history-prefix-search-forward-widget
+# zsh native widgets are named history-beginning-search-{backward,forward}
 
-# On the macbook, M-up/down send these sequences normally
-bindkey '\e[1;9A' history-beginning-search-backward   # M-up
-bindkey '\e[1;9B' history-beginning-search-forward   # M-down
-
-# but these under tmux
-bindkey '\e^[[A' history-beginning-search-backward  # M-up
-bindkey '\e^[[B' history-beginning-search-forward   # M-down
-
-bindkey '\e^[[C' forward-word  # M-right
-bindkey '\e^[[D' backward-word # M-left
+bindkey "$MY_KEYS[M_RIGHT]" forward-word
+bindkey "$MY_KEYS[M_LEFT]" backward-word
 
 bindkey '\ee' edit-command-line-in-shell-mode
 
