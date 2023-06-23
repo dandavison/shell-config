@@ -34,6 +34,7 @@ source pyenv.sh
 source nvm.sh 2>/dev/null
 source ~/tmp/3p/zsh-gpt/zsh-gpt.plugin.zsh
 eval "$(atuin init zsh --disable-up-arrow)"
+# eval "$(github-copilot-cli alias -- "$0")"
 
 cd "$_cwd"
 unset _cwd
