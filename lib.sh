@@ -252,7 +252,7 @@ function hyperlink() {
     printf '\e]8;;%s\e\\%s\e]8;;\e\\\n' "$url" "$text"
 }
 
-function fd() {
+function fd-link() {
     command fd --color=always "$@" \
     | while read path; do
         abspath=$(readlink -f $(echo -n $path | ansifilter))
