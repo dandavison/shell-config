@@ -1,39 +1,3 @@
-# my-uniquify-path() {
-#     typeset -A seen
-#     local unique=""
-#     echo $PATH | tr : ' ' | while read dir; do
-#         if [[ -n $seen[$dir] ]]; then
-#             continue
-#         else
-#             if [[ -n $unique ]]; then
-#                 unique="$dir"
-#             else
-#                 unique="$unique:$dir"
-#             fi
-#             seen[$dir]=1
-#         fi
-#     done
-#     echo $unique | tr ' ' ':'
-# }
-
-# my-uniquify-path-2() {
-#     typeset -A seen
-#     local unique=""
-#     for dir in ${(s.:.)1}; do
-#         if [[ -z $seen[$dir] ]]; then
-#             continue
-#         else
-#             if [[ -n $unique ]]; then
-#                 unique="$dir"
-#             else
-#                 unique="$unique:$dir"
-#             fi
-#             seen[$dir]=1
-#         fi
-#     done
-#     echo $unique | tr ' ' ':'
-# }
-
 for dir in $(
     /bin/cat <<EOF
 /opt/homebrew/bin
@@ -52,4 +16,4 @@ EOF
     }
 done
 
-export PATH=$PATH
+export PATH=$(echo $PATH | tr ':' '\n' | awk '!_[$0]++' | tr '\n' ':')
