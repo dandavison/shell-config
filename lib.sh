@@ -1,3 +1,11 @@
+pyenv-load() {
+    source /Users/dan/src/devenv/shell-config/pyenv.sh
+}
+
+nvm-load() {
+    source /Users/dan/src/devenv/shell-config/nvm.sh
+}
+
 __dan_is_macos() {
     [ -e /Applications ]
 }
