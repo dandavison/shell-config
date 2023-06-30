@@ -28,4 +28,4 @@ bindkey '^W' kill-region
 bindkey '^x^r' replace-string
 
 bindkey "^ " pm-switch-widget
-bindkey "^v" pm-switch-widget
+# bindkey "^v" pm-switch-widget

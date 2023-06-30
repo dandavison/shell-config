@@ -1,8 +1,7 @@
 export ALTERNATE_EDITOR='emacs -nw -q'
 export BAT_THEME=GitHub
 export BROWSER='google-chrome'
-export DAN_VIRTUALENVS_DIRECTORY=~/tmp/virtualenvs
-export EDITOR='emacsclient -n'
+export CARGO_BUILD_TARGET=aarch64-apple-darwin
 export GIT_SEQUENCE_EDITOR='emacsclient'
 export OPEN_IN_EDITOR=~/bin/code
 export HOMEBREW_NO_AUTO_UPDATE=1
