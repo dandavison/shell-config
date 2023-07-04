@@ -79,7 +79,7 @@ __docker_compose_ps1() {
     [ -n "$containers" ] || return
     local counts=$(docker inspect --format "{{ .State.Status }}" $containers | sort | uniq -c)
     dc_ps1=""
-    while read count state; do
+    local count state while read count state; do
         case $state in
         running)
             symbol="🌵" # ⚡ 🍏

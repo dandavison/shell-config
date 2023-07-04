@@ -11,7 +11,6 @@ alias acurl='curl --user $(cat ~/.ssh/auth)'
 alias agp='ag --python'
 alias ansifilter="perl -pe 's/\e\[[0-9;]*[mK]//g'"
 alias b='git branch-by-date|head'
-alias bat-files='while read f ; do bat --color=always $f; done | less -R'
 alias bat='bat --style header,grid'
 alias bazel-query='bazel query --noshow_progress --noshow_loading_progress --ui_event_filters=-INFO'
 alias black-all="(cd $(git rev-parse --show-toplevel) && git ls-files '**/*.py' | xargs black --skip-string-normalization -l100 $(git diff --name-only master...))"

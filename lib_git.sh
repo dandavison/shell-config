@@ -25,6 +25,7 @@ git-delete-squashed-branch() {
 }
 
 git-prune-merged() {
+    local b
     git branch-by-date |
         awk '{print $1}' |
         while read b; do
@@ -33,6 +34,7 @@ git-prune-merged() {
 }
 
 git-delete-temp-branches() {
+    local b
     git branch-by-date |
         awk '{print $1}' |
         grep '^z-' |

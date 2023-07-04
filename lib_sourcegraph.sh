@@ -34,6 +34,7 @@ src-git-grep-scala-strato() {
 }
 
 src-strato-column-hits-with-matching-scala-files() {
+    local column
     src-matching-files 'file:\.strato$' $@ |
         sed -E 's,.+/([^/]+)\.strato,\1,' |
         sort |

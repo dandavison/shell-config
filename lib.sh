@@ -1,3 +1,7 @@
+bat-files() {
+    local f; while read f ; do bat --color=always $f; done | less -R
+}
+
 pyenv-load() {
     source /Users/dan/src/devenv/shell-config/pyenv.sh
 }
@@ -175,6 +179,7 @@ rust-list-tests() {
 }
 
 src-grep() {
+    local d
     find ~/src -maxdepth 1 -type d | egrep -v '(3p|counsyl)' | while read d; do
         (cd $d && [ -d .git ] && git grep $@)
     done
@@ -260,7 +265,8 @@ function hyperlink() {
     printf '\e]8;;%s\e\\%s\e]8;;\e\\\n' "$url" "$text"
 }
 
-function fd-link() {
+function fd() {
+    local path
     command fd --color=always "$@" \
     | while read path; do
         abspath=$(readlink -f $(echo -n $path | ansifilter))
