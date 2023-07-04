@@ -198,7 +198,6 @@ alias np=ping-world
 alias npu='until ping-world; do sleep 1; done'
 alias nwp=wifi-poke
 alias p=python
-alias path='readlink -f'
 alias pdfjoin='pdfjoin --rotateoversize false'
 alias pdflatex='pdflatex -shell-escape -interaction nonstopmode -output-directory=${LATEX_OUTPUT_DIRECTORY:-.}'
 alias pf='pip freeze'
@@ -248,7 +247,6 @@ alias xenops-cache-size='fd . /tmp/xenops-cache | wc -l'
 alias xhyve-nsenter='docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i'
 alias z=zed
 alias z-exec='exec zsh'
-
 
 for i in 1 2 3 4 5 6 7 8 9; do
     alias gs${i}="gs HEAD~${i}"

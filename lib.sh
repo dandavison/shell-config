@@ -266,12 +266,12 @@ function hyperlink() {
 }
 
 function fd() {
-    local path
+    local _path
     command fd --color=always "$@" \
-    | while read path; do
-        abspath=$(readlink -f $(echo -n $path | ansifilter))
+    | while read _path; do
+        abspath=$(readlink -f $(echo -n $_path | ansifilter))
         url="vscode-insiders://file/$abspath"
-        hyperlink $url $path
+        hyperlink $url $_path
       done
 }
 
