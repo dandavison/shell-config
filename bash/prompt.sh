@@ -27,8 +27,7 @@ export _RESETCOLOR="\[\e[00m\]"
 #   export PS2=" | → $RESETCOLOR"
 # }
 
-
-__bash_construct_ps1 () {
+__bash_construct_ps1() {
     PS1="- "
     # PS1+=" $(__git_commit_ps1)"
     PS1+="$(__current_directory_ps1 $__exit_for_bash_ps1)"
@@ -40,7 +39,7 @@ __bash_construct_ps1 () {
     PS1+=" "
 }
 
-__current_directory_ps1 () {
+__current_directory_ps1() {
     local col=$_BLUEBOLD
     local exit=$1
     [ "$exit" != "0" ] && col=$_REDBOLD
@@ -49,58 +48,57 @@ __current_directory_ps1 () {
 }
 
 __facet_ps1() {
-    (pwd | egrep -q '(counsyl|facet)' > /dev/null) &&
+    (pwd | egrep -q '(counsyl|facet)' >/dev/null) &&
         echo -n "($(cat ~/.facet/state.json | jq .facet | tr -d '"\n'))"
 }
 
-
-__my_git_ps1 () {
+__my_git_ps1() {
     echo -n "${_BLUE}$(__git_ps1)${_RESETCOLOR}" ## YELLOW
 }
 
-
-__git_commit_ps1 () {
+__git_commit_ps1() {
     local commit=$(git rev-parse --short HEAD 2>/dev/null)
     [ -n "$commit" ] || return
-    local uncommitted=$(git diff; git diff --cached)
-    [ -n "$uncommitted" ] && uncommitted=" $(md5sum - <<< "$uncommitted" | head -c 4)"
+    local uncommitted=$(
+        git diff
+        git diff --cached
+    )
+    [ -n "$uncommitted" ] && uncommitted=" $(md5sum - <<<"$uncommitted" | head -c 4)"
     echo -n "${_BLUE}$commit$uncommitted${_RESETCOLOR}"
 }
 
-__virtualenv_ps1 () {
+__virtualenv_ps1() {
     [ -n "$VIRTUAL_ENV" ] || return
     echo -n " ${_BLUE}($(basename $VIRTUAL_ENV))${_RESETCOLOR}"
 }
 
-
-__docker_compose_ps1 () {
+__docker_compose_ps1() {
     [ -n "$(__find_file_upwards docker-compose.yml .)" ] || return
     local dc_ps1=""
     local containers=$(docker-compose ps -q 2>/dev/null)
     [ -n "$containers" ] || return
     local counts=$(docker inspect --format "{{ .State.Status }}" $containers | sort | uniq -c)
     dc_ps1=""
-    while read count state ; do
+    while read count state; do
         case $state in
-            running)
-                symbol="🌵"  # ⚡ 🍏
-                ;;
-            exited)
-                symbol="🍄"  # ⭕ 🔴 🍎
-                ;;
-            *)
-                echo "Invalid state: '$state'" 1>&2
-                return
-                ;;
+        running)
+            symbol="🌵" # ⚡ 🍏
+            ;;
+        exited)
+            symbol="🍄" # ⭕ 🔴 🍎
+            ;;
+        *)
+            echo "Invalid state: '$state'" 1>&2
+            return
+            ;;
         esac
         dc_ps1+="$(printf "${symbol}%.0s " $(seq 1 $count))"
-    done <<< "$counts"
+    done <<<"$counts"
     echo -n "${_CYAN}($dc_ps1)${_RESETCOLOR}"
 }
 
-
 # Find first occurrence of file in parent directories
-__find_file_upwards () {
+__find_file_upwards() {
     local file="$1"
     local dir=$(readlink -f "$2")
 
