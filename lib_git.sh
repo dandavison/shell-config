@@ -1,3 +1,8 @@
+git-user-public() {
+    git config user.name "Dan Davison"
+    git config user.email "dandavison7@gmail.com"
+}
+
 git-force-create-branch() {
     local branch="$1"
     [ -n "$branch" ] && git branch -D "$branch" && git checkout -b "$branch" && git checkout -
