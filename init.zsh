@@ -47,7 +47,6 @@ tsource zsh/env.zsh
 
 tsource zsh/pm.zsh
 [ -f ~/.fzf.zsh ] && tsource ~/.fzf.zsh
-tsource ~/tmp/3p/zsh-gpt/zsh-gpt.plugin.zsh
 eval "$(atuin init zsh --disable-up-arrow)"
 
 cd "$_cwd"

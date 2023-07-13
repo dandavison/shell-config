@@ -28,3 +28,9 @@ export HOMEBREW_REPOSITORY="/opt/homebrew"
 export HOMEBREW_SHELLENV_PREFIX="/opt/homebrew"
 export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
+
+# export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+# export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"

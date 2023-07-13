@@ -4,9 +4,8 @@ for dir in $(
 /opt/homebrew/sbin
 /opt/homebrew/opt/coreutils/libexec/gnubin
 /opt/homebrew/opt/gnu-sed/libexec/gnubin
-/opt/homebrew/opt/postgresql/bin
 $HOME/.cargo/bin
-$HOME/src/emacs-config/bin
+$HOME/src/devenv/emacs-config/bin
 $HOME/.local/bin
 $HOME/bin
 EOF
