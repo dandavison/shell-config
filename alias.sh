@@ -180,7 +180,7 @@ alias latex='latex -shell-escape -interaction nonstopmode -output-directory=${LA
 alias less='less -S'
 alias ll='ls -l'
 alias lr='latexrun --latex-args="-shell-escape" -O .build'
-alias ls-gnu='/opt/homebrew/opt/coreutils/libexec/gnubin/ls -N --color=tty --hide="*.pyc" --hide=__pycache__' # --git-ignore ; --hide="*."{aux,out,log} if you get very annoyed by LaTeX
+alias ls='/opt/homebrew/opt/coreutils/libexec/gnubin/ls -N --color=tty --hide=__pycache__' # --git-ignore ; --hide="*."{aux,out,log} if you get very annoyed by LaTeX
 alias lsof-ports-all='lsof -i -n -P'
 alias lsof-ports='lsof -i -n -P | rg -i LISTEN'
 alias lt='ls -lt'
