@@ -10,7 +10,7 @@ function tsource {
         source "$1"
         local __end_ns=$($__date +%s%N)
         local __delta_ns=$((__end_ns - __start_ns))
-        local __delta_ms=${__delta_ns:0:-3}
+        local __delta_ms=${__delta_ns:0:-6}
         if ((__delta_ms > 999)); then
             __delta_ms=${__delta_ms::-3},${__delta_ms: -3}
         fi
