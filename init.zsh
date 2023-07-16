@@ -43,6 +43,8 @@ setopt rmstarsilent
 source zsh/syntax-highlighting.zsh # tsource breaks syntax highlighting; don't know why
 
 tsource env.sh
+[ -f /tmp/pm.env ] && tsource /tmp/pm.env
+
 tsource zsh/env.zsh
 [ -f secret.sh ] && tsource secret.sh
 

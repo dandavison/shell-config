@@ -1,3 +1,11 @@
+cd() {
+    if [ -n "$1" ]; then
+        builtin cd "$1"
+    else
+        builtin cd $PM_PROJECT_DIR
+    fi
+}
+
 bat-files() {
     local f; while read f ; do bat --color=always $f; done | less -R
 }
