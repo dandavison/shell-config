@@ -31,6 +31,7 @@ autoload -U colors && colors
 
 autoload -Uz compinit && compinit
 compdef _gnu_generic bat delta
+eval "$(temporal completion zsh 2>/dev/null)"
 
 tsource zsh/prompt.zsh
 
