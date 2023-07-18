@@ -27,5 +27,5 @@ bindkey '^W' kill-region
 
 bindkey '^x^r' replace-string
 
-bindkey "^ " pm-switch-widget
-# bindkey "^v" pm-switch-widget
+bindkey "^ " twitch-switch-widget
+# bindkey "^v" twitch-switch-widget

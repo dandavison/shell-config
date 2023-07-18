@@ -2,7 +2,7 @@ cd() {
     if [ -n "$1" ]; then
         builtin cd "$1"
     else
-        builtin cd $PM_PROJECT_DIR
+        builtin cd $TWITCH_PROJECT_DIR
     fi
 }
 
