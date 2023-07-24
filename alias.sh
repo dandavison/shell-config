@@ -196,6 +196,7 @@ alias mypy='mypy --check-untyped-defs'
 alias np=ping-world
 alias npu='until ping-world; do sleep 1; done'
 alias nwp=wifi-poke
+alias o=open-app
 alias p=python
 alias pdfjoin='pdfjoin --rotateoversize false'
 alias pdflatex='pdflatex -shell-escape -interaction nonstopmode -output-directory=${LATEX_OUTPUT_DIRECTORY:-.}'
