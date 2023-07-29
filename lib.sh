@@ -1,10 +1,13 @@
+which-follow() {
+    readlink -f $(which -a $1)
+}
+
 open-app() {
     open "$(command fd -d 1 '.+\.app' /Applications /System/Applications /System/Applications/Utilities |
         rg -r '$2$1' '^(.*/([^/]+)\.app)/?$' |
         fzf '--with-nth' 1 '-d' / |
         sed -E 's,[^/]+/,/,')"
 }
-
 
 wormhole-cd() {
     if [ -n "$1" ]; then
@@ -28,29 +31,6 @@ nvm-load() {
 
 __dan_is_macos() {
     [ -e /Applications ]
-}
-
-resolve-file() {
-    local query="$1"
-    local depth="${2:-1}"
-    if [ -e "$query" ]; then
-        echo "$query"
-    else
-        (( depth += 1 ))
-        if [ $depth -eq 4 ]; then
-            # echo "Failed to resolve; assuming shell function" >&2
-            local file=/tmp/function.sh
-            echo "$query" > "$file"
-            resolve-file "$file"
-        fi
-        local resolved=$(which "$query")
-        local prefix="$query: aliased to "
-        if [[ "$resolved" =~ "$prefix" ]]; then
-            resolve-file ${resolved#"$prefix"} $depth
-        else
-            resolve-file "$resolved" $depth
-        fi
-    fi
 }
 
 cat-file() {
