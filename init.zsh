@@ -43,12 +43,12 @@ setopt rmstarsilent
 source zsh/syntax-highlighting.zsh # tsource breaks syntax highlighting; don't know why
 
 tsource env.sh
-[ -f /tmp/twitch.env ] && tsource /tmp/twitch.env
+[ -f /tmp/wormhole.env ] && tsource /tmp/wormhole.env
 
 tsource zsh/env.zsh
 [ -f secret.sh ] && tsource secret.sh
 
-tsource zsh/twitch.zsh
+tsource zsh/wormhole.zsh
 [ -f ~/.fzf.zsh ] && tsource ~/.fzf.zsh
 eval "$(atuin init zsh --disable-up-arrow)"
 

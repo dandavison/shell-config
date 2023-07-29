@@ -27,5 +27,5 @@ bindkey '^W' kill-region
 
 bindkey '^x^r' replace-string
 
-bindkey "^ " twitch-switch-widget
-# bindkey "^v" twitch-switch-widget
+bindkey "^ " wormhole-switch-widget
+# bindkey "^v" wormhole-switch-widget

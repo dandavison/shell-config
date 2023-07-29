@@ -6,11 +6,11 @@ open-app() {
 }
 
 
-cd() {
+wormhole-cd() {
     if [ -n "$1" ]; then
         builtin cd "$1"
     else
-        builtin cd $TWITCH_PROJECT_DIR
+        builtin cd $WORMHOLE_PROJECT_DIR
     fi
 }
 
