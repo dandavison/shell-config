@@ -52,7 +52,7 @@ tsource /tmp/wormhole.env
 tsource zsh/env.zsh
 
 tsource zsh/wormhole.zsh
-eval "$(atuin init zsh --disable-up-arrow)"
+tsource zsh/atuin.zsh
 
 cd "$_cwd"
 unset _cwd
