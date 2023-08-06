@@ -18,7 +18,7 @@ fzf-emacs() {
     emacsclient -n $(fzf)
 }
 
--fzf-git-branch-by-date() {
+fzf-git-branch() {
     git-branch-by-date | fzf | awk '{print $1}'
 }
 
@@ -27,7 +27,7 @@ fzf-emacs() {
 }
 
 fzf-git-checkout() {
-    git checkout --quiet $(-fzf-git-branch-by-date)
+    git checkout --quiet $(fzf-git-branch)
 }
 
 fzf-git-rebase-interactive() {
@@ -35,7 +35,7 @@ fzf-git-rebase-interactive() {
 }
 
 fzf-git-log() {
-    git log $(-fzf-git-branch-by-date)
+    git log $(fzf-git-branch)
 }
 
 -fzf-hist() {
