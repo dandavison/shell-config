@@ -1,3 +1,7 @@
+fzf() {
+    command fzf --layout reverse --exact --cycle --height 50% --info hidden --prompt ' ' --border rounded --color light
+}
+
 fzf-cargo-test() {
     local test="$(rust-list-tests | fzf)"
     [[ -n "$test" ]] || return
@@ -18,8 +22,16 @@ fzf-emacs() {
     git-branch-by-date | fzf | awk '{print $1}'
 }
 
+-fzf-git-log() {
+    git log --color=always --oneline | fzf | awk '{print $1}'
+}
+
 fzf-git-checkout() {
     git checkout --quiet $(-fzf-git-branch-by-date)
+}
+
+fzf-git-rebase-interactive() {
+    git rebase --interactive $(-fzf-git-log)
 }
 
 fzf-git-log() {
