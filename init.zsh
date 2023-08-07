@@ -51,7 +51,6 @@ tsource /tmp/wormhole.env
 
 tsource zsh/env.zsh
 
-tsource zsh/wormhole.zsh
 tsource zsh/atuin.zsh
 
 cd "$_cwd"

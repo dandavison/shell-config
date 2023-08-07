@@ -26,6 +26,3 @@ bindkey -s '^_' '^a^ktmux select-window -t :\t\t'
 bindkey '^W' kill-region
 
 bindkey '^x^r' replace-string
-
-bindkey "^ " wormhole-switch-widget
-# bindkey "^v" wormhole-switch-widget
