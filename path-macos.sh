@@ -5,6 +5,7 @@ for dir in $(
 /opt/homebrew/opt/coreutils/libexec/gnubin
 /opt/homebrew/opt/gnu-sed/libexec/gnubin
 $HOME/.cargo/bin
+$HOME/go/bin
 $HOME/src/devenv/emacs-config/bin
 $HOME/src/devenv/tools/bash
 $HOME/.local/bin

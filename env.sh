@@ -33,3 +33,7 @@ export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
 
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
+
+# export GOPATH=$HOME/go
+# export GOROOT="$(brew --prefix go)/libexec"
+# export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"

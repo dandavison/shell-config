@@ -23,19 +23,43 @@ fzf-git-branch() {
 }
 
 -fzf-git-log() {
-    git log --color=always --oneline | fzf | awk '{print $1}'
+    git log --color=always --oneline --decorate | fzf | awk '{print $1}'
 }
 
 fzf-git-checkout() {
     git checkout --quiet $(fzf-git-branch)
 }
 
+fzf-git-rebase() {
+    git rebase $(fzf-git-branch)
+}
+
 fzf-git-rebase-interactive() {
     git rebase --interactive $(-fzf-git-log)
 }
 
+fzf-git-reset() {
+    git reset $(-fzf-git-log)
+}
+
+fzf-git-reset-hard() {
+    git reset --hard $(-fzf-git-log)
+}
+
+fzf-git-revert() {
+    git revert --no-edit $(-fzf-git-log)
+}
+
+fzf-git-cherry-pick() {
+    git cherry-pick $(-fzf-git-log)
+}
+
 fzf-git-log() {
-    git log $(fzf-git-branch)
+    git log --decorate $(fzf-git-branch)
+}
+
+fzf-git-show() {
+    git show $(-fzf-git-log)
 }
 
 -fzf-hist() {

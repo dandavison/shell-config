@@ -1,5 +1,5 @@
 which-follow() {
-    readlink -f $(which -a $1)
+    readlink -f $(which $1)
 }
 
 open-app() {
