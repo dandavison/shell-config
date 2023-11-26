@@ -1,3 +1,12 @@
+git-list-refs() {
+    git for-each-ref --format '%(refname:short)'
+}
+
+git-log-all-refs() {
+    local b
+    git-list-refs | while read b; do git log "$@" $b; done
+}
+
 git-user-public() {
     git config user.name "Dan Davison"
     git config user.email "dandavison7@gmail.com"

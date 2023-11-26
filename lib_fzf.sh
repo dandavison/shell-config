@@ -51,11 +51,11 @@ fzf-git-revert() {
 }
 
 fzf-git-cherry-pick() {
-    git cherry-pick $(-fzf-git-log)
+    git cherry-pick $(fzf-git-branch)
 }
 
 fzf-git-log() {
-    git log --decorate $(fzf-git-branch)
+    git log --stat --decorate $(fzf-git-branch)
 }
 
 fzf-git-show() {

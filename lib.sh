@@ -1,9 +1,17 @@
+vscode() {
+    if [ "$1" = "." ] && [ -n "$(fd -1 -d1 '.+\.code-workspace$')" ]; then
+        code *.code-workspace
+    else
+        code "$@"
+    fi
+}
+
 which-follow() {
     readlink -f $(which $1)
 }
 
 open-app() {
-    open "$(command fd -d 1 '.+\.app' /Applications /System/Applications /System/Applications/Utilities |
+    open "$(fd -d 1 '.+\.app' /Applications /System/Applications /System/Applications/Utilities |
         rg -r '$2$1' '^(.*/([^/]+)\.app)/?$' |
         fzf '--with-nth' 1 '-d' / |
         sed -E 's,[^/]+/,/,')"
@@ -261,7 +269,7 @@ function hyperlink() {
     printf '\e]8;;%s\e\\%s\e]8;;\e\\\n' "$url" "$text"
 }
 
-function fd() {
+function fdd() {
     local _path
     command fd --color=always "$@" \
     | while read _path; do

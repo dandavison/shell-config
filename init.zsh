@@ -33,7 +33,7 @@ __dan_is_macos && tsource path-macos.sh
 autoload -U colors && colors
 
 autoload -Uz compinit && compinit
-compdef _gnu_generic bat delta
+eval "$(delta --generate-completion zsh 2>/dev/null)"
 eval "$(temporal completion zsh 2>/dev/null)"
 
 tsource zsh/prompt.zsh
