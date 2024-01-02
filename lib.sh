@@ -1,6 +1,10 @@
 vscode() {
-    if [ "$1" = "." ] && [ -n "$(fd -1 -d1 '.+\.code-workspace$')" ]; then
-        code *.code-workspace
+    if [ -z "$1" ]; then
+        if (ls *.code-workspace 1>/dev/null 2>&1); then
+            code *.code-workspace
+        else
+            code .
+        fi
     else
         code "$@"
     fi
