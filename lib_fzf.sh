@@ -14,6 +14,15 @@ fzf-cat() {
     bat --style="header,grid" $(fd . $1 | fzf)
 }
 
+fzf-docker-exec() {
+    local container=$(
+        docker ps --format '{{.ID}}\t{{.Names}}\t{{.Image}}' |
+            fzf |
+            awk '{print $1}'
+    )
+    docker exec -it $container bash
+}
+
 fzf-emacs() {
     emacsclient -n $(fzf)
 }
@@ -28,6 +37,10 @@ fzf-git-branch() {
 
 fzf-git-checkout() {
     git checkout --quiet $(fzf-git-branch)
+}
+
+fzf-git-diff() {
+    git diff $(-fzf-git-log)
 }
 
 fzf-git-rebase() {

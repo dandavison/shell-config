@@ -17,9 +17,9 @@ git-user-temporal() {
     git config user.email "dan.davison@temporal.io"
 }
 
-git-force-create-branch() {
+git-create-branch-overwrite() {
     local branch="$1"
-    [ -n "$branch" ] && git branch -D "$branch" && git checkout -b "$branch" && git checkout -
+    [ -n "$branch" ] && git branch -D "$branch" && git branch -c "$branch"
 }
 
 git-commit-file() {

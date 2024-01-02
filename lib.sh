@@ -282,3 +282,4 @@ function fdd() {
 function whichf() {
     readlink -f $(which "$1")
 }
+

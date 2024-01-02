@@ -53,5 +53,7 @@ tsource zsh/env.zsh
 
 tsource zsh/atuin.zsh
 
+tsource ../tools/temporal/temporal.sh
+
 cd "$_cwd"
 unset _cwd
