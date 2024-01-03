@@ -287,3 +287,25 @@ function whichf() {
     readlink -f $(which "$1")
 }
 
+
+function -tempyral() {
+    local file=$1
+    local class=$2
+    local _path=/Users/dan/src/temporalio/tempyral/media/videos/$file/1080p60/$class.mp4
+    : > /tmp/log && \
+    manim -qh scenes/$file.py $class && pkill 'QuickTime Player' && \
+    sleep 1 && \
+    open $_path
+}
+
+function tempyral-execute-workflow() {
+    -tempyral execute_workflow ExecuteWorkflow
+}
+
+function tempyral-execute-update() {
+    -tempyral execute_update ExecuteUpdate
+}
+
+function tempyral-call-activity() {
+    -tempyral call_activity CallActivity
+}
