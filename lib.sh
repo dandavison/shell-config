@@ -1,3 +1,15 @@
+sockets() {
+    (osqueryi --list --separator ',' | column -t -s ',') <<EOF
+SELECT s.local_port, p.cmdline
+FROM process_open_sockets AS s
+INNER JOIN processes AS p
+ON s.pid = p.pid
+WHERE s.state = 'LISTEN'
+ORDER BY p.cmdline;
+EOF
+}
+
+
 vscode() {
     if [ -z "$1" ]; then
         if ls | rg -q '\.code-workspace$'; then
