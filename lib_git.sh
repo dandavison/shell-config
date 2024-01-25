@@ -1,3 +1,11 @@
+git-default-branch() {
+    if git branch -r | grep -q origin/master; then
+        echo master
+    else
+        echo main
+    fi
+}
+
 git-list-refs() {
     git for-each-ref --format '%(refname:short)'
 }

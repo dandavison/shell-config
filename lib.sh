@@ -1,12 +1,12 @@
 vscode() {
     if [ -z "$1" ]; then
-        if (ls *.code-workspace 1>/dev/null 2>&1); then
+        if ls | rg -q '\.code-workspace$'; then
             code *.code-workspace
         else
             code .
         fi
     else
-        code "$@"
+        code -g "$@"
     fi
 }
 
