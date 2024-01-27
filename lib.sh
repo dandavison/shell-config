@@ -1,6 +1,6 @@
 sockets() {
-    (osqueryi --list --separator ',' | column -t -s ',') <<EOF
-SELECT s.local_port, p.cmdline
+    (osqueryi --list --separator ',' | column -t -s ',' | less -S) <<EOF
+SELECT s.pid, s.local_port, p.cmdline
 FROM process_open_sockets AS s
 INNER JOIN processes AS p
 ON s.pid = p.pid
@@ -8,7 +8,6 @@ WHERE s.state = 'LISTEN'
 ORDER BY p.cmdline;
 EOF
 }
-
 
 vscode() {
     if [ -z "$1" ]; then
@@ -42,7 +41,8 @@ wormhole-cd() {
 }
 
 bat-files() {
-    local f; while read f ; do bat --color=always $f; done | less -R
+    local f
+    while read f; do bat --color=always $f; done | less -R
 }
 
 pyenv-load() {
@@ -69,22 +69,8 @@ cd-site-packages() {
     cd $(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 }
 
-delta-side-by-side() {
-    declare -a new_features
-    local new_state="on"
-    local delta_features="${DELTA_FEATURES#+}"  # strip "+" prefix if present
-    for feature in ${=delta_features}; do  # ${=xxx} is zsh, meaning: split on spaces
-        if [ $feature = "side-by-side" ]; then
-            new_state="off"
-        else
-            new_features+=("$feature")
-        fi
-    done
-    [ $new_state = "on" ] && new_features+=(side-by-side)
-    local delta_features=${new_features[*]}
-    [ -n "$delta_features" ] && delta_features="+$delta_features"
-    export DELTA_FEATURES=$delta_features
-    echo "DELTA_FEATURES=$delta_features"
+delta-toggle() {
+    eval "export DELTA_FEATURES=$(-delta-features-toggle $1 | tee /dev/stderr)"
 }
 
 die() {
@@ -287,27 +273,26 @@ function hyperlink() {
 
 function fdd() {
     local _path
-    command fd --color=always "$@" \
-    | while read _path; do
-        abspath=$(readlink -f $(echo -n $_path | ansifilter))
-        url="vscode-insiders://file/$abspath"
-        hyperlink $url $_path
-      done
+    command fd --color=always "$@" |
+        while read _path; do
+            abspath=$(readlink -f $(echo -n $_path | ansifilter))
+            url="vscode-insiders://file/$abspath"
+            hyperlink $url $_path
+        done
 }
 
 function whichf() {
     readlink -f $(which "$1")
 }
 
-
 function -tempyral() {
     local file=$1
     local class=$2
     local _path=/Users/dan/src/temporalio/tempyral/media/videos/$file/1080p60/$class.mp4
-    : > /tmp/log && \
-    manim -qh scenes/$file.py $class && pkill 'QuickTime Player' && \
-    sleep 1 && \
-    open $_path
+    : >/tmp/log &&
+        manim -qh scenes/$file.py $class && pkill 'QuickTime Player' &&
+        sleep 1 &&
+        open $_path
 }
 
 function tempyral-execute-workflow() {
