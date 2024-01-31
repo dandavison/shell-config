@@ -8,6 +8,7 @@ alias -g H1='HEAD~1'
 alias -g H2='HEAD~2'
 alias -g H3='HEAD~3'
 alias -g H4='HEAD~4'
+alias -g B='git symbolic-ref --short HEAD'
 alias ..='cd ..'
 alias acurl='curl --user $(cat ~/.ssh/auth)'
 alias agp='ag --python'
@@ -263,16 +264,12 @@ alias tcs='tmux-current-session'
 alias tl='topleft'
 alias tls='tmux list-sessions -F "#S"'
 alias tmux-current-session='tmux display-message -p "#S"'
-alias tns='tmux new-session'
 alias v=vscode
 alias virtualenv-temp='rm -fr /tmp/v && virtualenv /tmp/v && . /tmp/v/bin/activate'
-alias vpro='vagrant provision'
 alias vscode-list-contexts='(cd ~/src-3p/vscode && rg --color=always RawContextKey)'
-alias vssh='vagrant ssh'
 alias xenops-cache-size='fd . /tmp/xenops-cache | wc -l'
 alias xhyve-nsenter='docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i'
-alias z-exec='exec zsh'
-alias z=zed
+alias zsh-help='run-help'
 
 for i in 1 2 3 4 5 6 7 8 9; do
     alias gs${i}="gs HEAD~${i}"

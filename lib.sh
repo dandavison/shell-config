@@ -1,3 +1,7 @@
+glow() {
+    command glow "$@" | less
+}
+
 sockets() {
     (osqueryi --list --separator ',' | column -t -s ',' | less -S) <<EOF
 SELECT s.pid, s.local_port, p.cmdline

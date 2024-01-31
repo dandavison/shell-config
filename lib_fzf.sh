@@ -118,7 +118,7 @@ fzf-preview-regex-sed() {
         --preview "printf \""$input"\n\n\n─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n\n\n\"; echo \"$input\" | sed -E 's/\x1b\[[0-9;]*[mK]//g' | sed -E '{q}'"
 }
 
-fzf-rg() {
+fzf-rg2() {
     local INITIAL_QUERY=""
     local RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
     FZF_DEFAULT_COMMAND="$RG_PREFIX '$INITIAL_QUERY'" \
