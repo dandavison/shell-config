@@ -70,12 +70,12 @@ git-delete-temp-branches() {
         done
 }
 
-git-diff-prod() {
-    git diff $@ -- . ':(exclude)*/test*' ':(exclude)*/fake*'
+git-diff-no-tests() {
+    git diff "$@" -- ':!*test*' ':!*mock*'
 }
 
-git-prod() {
-    git $@ -- . ':(exclude)*/test*' ':(exclude)*/fake*'
+git-no-test() {
+    git $@ -- ':!*test*' ':!*mock*'
 }
 
 git-checkout-maybe-remote-branch() {
