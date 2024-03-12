@@ -36,14 +36,6 @@ open-app() {
         sed -E 's,[^/]+/,/,')"
 }
 
-wormhole-cd() {
-    if [ -n "$1" ]; then
-        builtin cd "$1"
-    else
-        builtin cd $WORMHOLE_PROJECT_DIR
-    fi
-}
-
 bat-files() {
     local f
     while read f; do bat --color=always $f; done | less -R
