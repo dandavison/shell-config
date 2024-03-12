@@ -18,11 +18,7 @@ bindkey "$MY_KEYS[DOWN]" my-history-prefix-search-forward-widget
 
 bindkey "$MY_KEYS[M_RIGHT]" forward-word
 bindkey "$MY_KEYS[M_LEFT]" backward-word
-
 bindkey '\ee' edit-command-line-in-shell-mode
-
-bindkey -s '^_' '^a^ktmux select-window -t :\t\t'
-
-bindkey '^W' kill-region
-
+bindkey '^w' kill-region
 bindkey '^x^r' replace-string
+bindkey '^_' undo
