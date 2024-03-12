@@ -15,6 +15,7 @@ alias agp='ag --python'
 alias ansifilter="perl -pe 's/\e\[[0-9;]*[mK]//g'"
 alias b='git branch-by-date|head'
 alias bat='bat --style header,grid'
+alias batz='bat $(fzf)'
 alias bazel-query='bazel query --noshow_progress --noshow_loading_progress --ui_event_filters=-INFO'
 alias blank='for _ in `seq 1 128`; do echo; done && clear'
 alias c='cat'
@@ -243,31 +244,22 @@ alias pwdr='pwd | sed "s,.*$HOME/,,"'
 alias pytest='pytest --no-header'
 alias python-pdb='python -m pdb -c continue'
 alias R='R --silent --no-restore --no-save --vanilla'
+alias r=fzf-rg
+alias rn='fzf-rg --exclude-tests'
 alias rgb=rg-blame
 alias rgc='rg --color=always'
 alias rgd=rg-delta
+alias rgz=fzf-rg
 alias rgf='rg --files'
 alias rm-pyc="find . -type f -name '*.pyc' -delete"
 alias rm-tex='rm -v *.{aux,log,out,toc}'
-alias rn='rename'
-alias rs='rsync -z --progress'
-alias s='fzf-rg-preview'
-alias sgg='src-git-grep-scala-strato'
-alias skim='open -a /Applications/Skim.app'
 alias ssh='ssh -A'
-alias sw='switchto website'
 alias t=tree
-alias ta='tmux attach'
-alias tail-messages='tail -f /var/log/messages'
-alias tb='tmux-back'
-alias tcs='tmux-current-session'
-alias tl='topleft'
 alias tls='tmux list-sessions -F "#S"'
 alias tmux-current-session='tmux display-message -p "#S"'
 alias v=vscode
 alias virtualenv-temp='rm -fr /tmp/v && virtualenv /tmp/v && . /tmp/v/bin/activate'
 alias vscode-list-contexts='(cd ~/src-3p/vscode && rg --color=always RawContextKey)'
-alias xenops-cache-size='fd . /tmp/xenops-cache | wc -l'
 alias xhyve-nsenter='docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i'
 alias zsh-help='run-help'
 
