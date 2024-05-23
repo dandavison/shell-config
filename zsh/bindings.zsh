@@ -21,4 +21,4 @@ bindkey "$MY_KEYS[M_LEFT]" backward-word
 bindkey '\ee' edit-command-line-in-shell-mode
 bindkey '^w' kill-region
 bindkey '^x^r' replace-string
-bindkey '^_' undo
+bindkey '^z' undo

@@ -14,6 +14,10 @@ fzf-cat() {
     bat --style="header,grid" $(fd . $1 | fzf)
 }
 
+fzf-vscode() {
+    code $(fzf)
+}
+
 fzf-docker-exec() {
     local container=$(
         docker ps --format '{{.ID}}\t{{.Names}}\t{{.Image}}' |
@@ -28,7 +32,7 @@ fzf-emacs() {
 }
 
 fzf-git-branch() {
-    git-branch-by-date | fzf | awk '{print $1}'
+    git-branch-by-date | rg -v '^z-' | fzf | awk '{print $1}'
 }
 
 -fzf-git-log() {
@@ -88,7 +92,7 @@ fzf-hist-x() {
 }
 
 fzf-kill() {
-    kill "$@" $(ps aux | fzf | awk '{print $2}')
+    kill "$@" $(ps | fzf | awk '{print $1}')
 }
 
 fzf-open() {

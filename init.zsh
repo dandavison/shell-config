@@ -42,6 +42,7 @@ tsource zsh/bindings.zsh
 
 tsource alias.sh
 
+setopt interactivecomments
 setopt rmstarsilent
 source zsh/syntax-highlighting.zsh # tsource breaks syntax highlighting; don't know why
 

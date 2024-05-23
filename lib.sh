@@ -3,7 +3,11 @@ glow() {
 }
 
 sockets() {
-    (osqueryi --list --separator ',' | column -t -s ',' | less -S) <<EOF
+    (osqueryi --list --separator ',' |
+        column -t -s ',' |
+        sed '1d' |
+        rg -v '(rapportd|node.mojom.NodeService|wormhole)' |
+        sort) <<EOF
 SELECT s.pid, s.local_port, p.cmdline
 FROM process_open_sockets AS s
 INNER JOIN processes AS p
@@ -95,6 +99,15 @@ emacs-set-normal() {
     ln -s ~/devenv/emacs-config/emacs.el ~/.emacs
 }
 
+fd() {
+    command fd --color=always "$@" |
+        while read colored_path; do
+            local _path=$(readlink -f $(echo -n $colored_path | ansifilter))
+            local url="vscode://file/$_path"
+            hyperlink $url $colored_path
+        done
+}
+
 # https://gist.github.com/SlexAxton/4989674
 gifify() {
     if [[ -n "$1" ]]; then
@@ -142,6 +155,12 @@ hub-pr() {
     #     sleep 0.1
     # done
     # chrome-cli execute "document.getElementById('pull_request_body').value = ''"
+}
+
+hyperlink() {
+    local url="$1"
+    local text="$2"
+    printf '\e]8;;%s\e\\%s\e]8;;\e\\\n' "$url" "$text"
 }
 
 kill-python() {

@@ -1,10 +1,9 @@
 export ALTERNATE_EDITOR='emacs -nw -q'
-export BAT_THEME=GitHub
 export GIT_SEQUENCE_EDITOR='emacsclient'
 export OPEN_IN_EDITOR=~/bin/code
 export HOMEBREW_NO_AUTO_UPDATE=1
-export LESS='-FIRS'
-export DELTA_PAGER='less -FRS'
+export LESS='-FIR'
+export DELTA_PAGER='less -FR'
 export GH_PAGER=delta
 export PIP_INDEX_URL=
 export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"
