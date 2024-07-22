@@ -100,12 +100,8 @@ emacs-set-normal() {
 }
 
 fd() {
-    command fd --color=always "$@" |
-        while read colored_path; do
-            local _path=$(readlink -f $(echo -n $colored_path | ansifilter))
-            local url="vscode://file/$_path"
-            hyperlink $url $colored_path
-        done
+    command fd --color=always --hyperlink=always "$@" |
+        rg -r "$(printf '\x1b')]8;;vscode://file\$1" "\x1b]8;;file://$(hostname)(.*)"
 }
 
 # https://gist.github.com/SlexAxton/4989674
