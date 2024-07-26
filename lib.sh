@@ -34,7 +34,7 @@ which-follow() {
 }
 
 open-app() {
-    open "$(fd -d 1 '.+\.app' /Applications /System/Applications /System/Applications/Utilities |
+    open "$(command fd -d 1 '.+\.app' /Applications /System/Applications /System/Applications/Utilities |
         rg -r '$2$1' '^(.*/([^/]+)\.app)/?$' |
         fzf '--with-nth' 1 '-d' / |
         sed -E 's,[^/]+/,/,')"
@@ -101,7 +101,7 @@ emacs-set-normal() {
 
 fd() {
     command fd --color=always --hyperlink=always "$@" |
-        rg -r "$(printf '\x1b')]8;;vscode://file\$1" "\x1b]8;;file://$(hostname)(.*)"
+        rg -r "$(printf '\x1b')]8;;vscode://file\$1" "^\x1b]8;;file://$(hostname)(.*)"
 }
 
 # https://gist.github.com/SlexAxton/4989674
@@ -287,7 +287,7 @@ function fdd() {
     command fd --color=always "$@" |
         while read _path; do
             abspath=$(readlink -f $(echo -n $_path | ansifilter))
-            url="vscode-insiders://file/$abspath"
+            url="vscode://file/$abspath"
             hyperlink $url $_path
         done
 }

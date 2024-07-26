@@ -47,6 +47,7 @@ setopt rmstarsilent
 source zsh/syntax-highlighting.zsh # tsource breaks syntax highlighting; don't know why
 
 tsource env.sh
+tsource secret.sh
 tsource ~/src/wormhole/cli/lib.sh
 tsource /tmp/wormhole.env
 

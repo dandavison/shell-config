@@ -33,3 +33,6 @@ export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
 # export GOPATH=$HOME/go
 # export GOROOT="$(brew --prefix go)/libexec"
 # export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+export AIDER_LIGHT_MODE=1
+export AIDER_GITIGNORE=0

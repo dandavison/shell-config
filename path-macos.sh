@@ -1,5 +1,6 @@
 for dir in $(
     /bin/cat <<EOF
+/Library/TeX/texbin
 /opt/homebrew/bin
 /opt/homebrew/sbin
 /opt/homebrew/opt/coreutils/libexec/gnubin
