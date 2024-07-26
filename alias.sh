@@ -15,7 +15,6 @@ alias acurl='curl --user $(cat ~/.ssh/auth)'
 alias agp='ag --python'
 alias ansifilter="perl -pe 's/\e\[[0-9;]*[mK]//g'"
 alias b='git branch-by-date | rg -v "^z-" | head'
-alias bat='bat --style header,grid --theme GitHub'
 alias batz='bat $(fzf)'
 alias bazel-query='bazel query --noshow_progress --noshow_loading_progress --ui_event_filters=-INFO'
 alias blank='for _ in `seq 1 128`; do echo; done && clear'
