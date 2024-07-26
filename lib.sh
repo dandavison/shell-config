@@ -1,3 +1,7 @@
+glow() {
+    command glow "$@" | less
+}
+
 sockets() {
     (osqueryi --list --separator ',' |
         column -t -s ',' |
@@ -34,23 +38,6 @@ open-app() {
         rg -r '$2$1' '^(.*/([^/]+)\.app)/?$' |
         fzf '--with-nth' 1 '-d' / |
         sed -E 's,[^/]+/,/,')"
-}
-
-bat() {
-    local theme="GitHub"
-
-    for arg in "$@"; do
-        if [[ "$arg" =~ \.mdx?$ ]]; then
-            theme=""
-            break
-        fi
-    done
-
-    if [ -n "$theme" ]; then
-        command bat --theme "$theme" --style header,grid "$@"
-    else
-        command bat --style header,grid "$@"
-    fi
 }
 
 bat-files() {
