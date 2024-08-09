@@ -101,7 +101,7 @@ emacs-set-normal() {
 
 fd() {
     command fd --color=always --hyperlink=always "$@" |
-        rg -r "$(printf '\x1b')]8;;vscode://file\$1" "^\x1b]8;;file://$(hostname)(.*)"
+        rg -r $'\e]8;;vscode://file$1' $'^\e]8;;file://'$(hostname)'(.*)'
 }
 
 # https://gist.github.com/SlexAxton/4989674
