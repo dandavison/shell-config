@@ -70,7 +70,7 @@ cd-site-packages() {
 }
 
 delta-toggle() {
-    eval "export DELTA_FEATURES=$(-delta-features-toggle $1 | tee /dev/stderr)"
+    eval "export DELTA_FEATURES='$(-delta-features-toggle $1 | tee /dev/stderr)'"
 }
 
 die() {
