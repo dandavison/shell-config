@@ -39,8 +39,12 @@ fzf-git-branch() {
     git log --color=always --oneline --decorate | fzf | awk '{print $1}'
 }
 
-fzf-git-checkout() {
+fzf-git-checkout-branch() {
     git checkout --quiet $(fzf-git-branch)
+}
+
+fzf-git-checkout-commit() {
+    git checkout --quiet $(-fzf-git-log)
 }
 
 fzf-git-diff() {
@@ -71,7 +75,7 @@ fzf-git-cherry-pick() {
     git cherry-pick $(fzf-git-branch)
 }
 
-fzf-git-log() {
+fzf-git-log-branch() {
     git log --stat --decorate $(fzf-git-branch)
 }
 
