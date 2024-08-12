@@ -36,7 +36,7 @@ which-follow() {
 open-app() {
     open "$(command fd -d 1 '.+\.app' /Applications /System/Applications /System/Applications/Utilities |
         rg -r '$2$1' '^(.*/([^/]+)\.app)/?$' |
-        fzf '--with-nth' 1 '-d' / |
+        -fzf '--with-nth' 1 '-d' / |
         sed -E 's,[^/]+/,/,')"
 }
 
