@@ -27,7 +27,7 @@ export HOMEBREW_SHELLENV_PREFIX="/opt/homebrew"
 export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
 
-export JAVA_HOME=/opt/homebrew/opt/openjdk@21
+export JAVA_HOME=/opt/homebrew/opt/openjdk@17
 export PATH=$JAVA_HOME/bin:$PATH
 export CPPFLAGS="-I$JAVA_HOME/include"
 
