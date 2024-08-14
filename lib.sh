@@ -31,12 +31,16 @@ vscode() {
 
 which-follow() {
     local p
-    p="$(which "$1")"
+    p="$(which -a "$1" | tee /dev/stderr | tail -n1)"
     if [[ -z "$p" ]]; then
         :
+    elif [[ "$p" == *" not found" ]]; then
+        echo "$p"
     elif [[ "$p" == *": aliased to "* ]]; then
         echo "$p"
-        which-follow "$(echo "$p" | rg -r '$1' '.+aliased to (.+)')"
+        local p2
+        p2=$(echo "$p" | rg -r '$1' '.+aliased to ([^ ]+).*')
+        [ "$p" != "$p2" ] && which-follow "$p2"
     else
         readlink -f "$p"
     fi
