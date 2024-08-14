@@ -30,7 +30,16 @@ vscode() {
 }
 
 which-follow() {
-    readlink -f $(which $1)
+    local p
+    p="$(which "$1")"
+    if [[ -z "$p" ]]; then
+        :
+    elif [[ "$p" == *": aliased to "* ]]; then
+        echo "$p"
+        which-follow "$(echo "$p" | rg -r '$1' '.+aliased to (.+)')"
+    else
+        readlink -f "$p"
+    fi
 }
 
 open-app() {
