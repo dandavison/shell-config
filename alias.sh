@@ -30,9 +30,11 @@ alias delta-dbg='ln -fs ~/src/delta/target/debug/delta ~/bin/delta && delta --ve
 alias delta-dev='ln -fs ~/src/delta/target/release/delta ~/bin/delta && delta --version'
 alias delta-rel='ln -fs /opt/homebrew/bin/delta ~/bin/delta; delta --version'
 alias di='docker images'
+alias dl='delta-toggle line-numbers'
 alias docker-clean='docker-rm-all && docker-prune'
 alias docker-prune='docker rmi $(docker images -f "dangling=true" -q)'
 alias docker-rm-all='docker rm -f $(docker ps -a -q)'
+alias ds='delta-toggle side-by-side'
 alias e="emacsclient -n"
 alias ee="emacs -nw -q"
 alias ef='emacs-find-file'
