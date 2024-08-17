@@ -8,7 +8,6 @@ export GH_PAGER=delta
 export PIP_INDEX_URL=
 export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-export LS_COLORS="$(vivid generate one-light)"
 
 export FZF_DEFAULT_COMMAND='fd'
 fzf-set-environment-variables

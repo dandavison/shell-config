@@ -28,13 +28,11 @@ tsource zsh/lib.zsh
 tsource zsh/history.zsh
 tsource ./3p/git-prompt.sh
 
-__dan_is_macos && tsource path-macos.sh
+tsource path-macos.sh
 
 autoload -U colors && colors
 
-autoload -Uz compinit && compinit
-eval "$(delta --generate-completion zsh 2>/dev/null)"
-eval "$(temporal completion zsh 2>/dev/null)"
+tsource completion.sh
 
 tsource zsh/prompt.zsh
 

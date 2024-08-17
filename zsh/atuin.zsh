@@ -9,7 +9,7 @@
 # Source this in your ~/.zshrc
 autoload -U add-zsh-hook
 
-export ATUIN_SESSION=$(atuin uuid)
+export ATUIN_SESSION=${WEZTERM_PANE:-$(uuidgen)}
 export ATUIN_HISTORY="atuin history list"
 
 _atuin_preexec() {
