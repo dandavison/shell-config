@@ -21,38 +21,29 @@ function tsource {
     fi
 }
 
+setopt interactivecomments
+setopt rmstarsilent
+setopt AUTO_CD
+autoload -U colors && colors
+
 tsource lib.sh
 tsource lib_fzf.sh
 tsource lib_git.sh
 tsource zsh/lib.zsh
 tsource zsh/history.zsh
 tsource ./3p/git-prompt.sh
-
 tsource path-macos.sh
-
-autoload -U colors && colors
-
 tsource completion.sh
-
 tsource zsh/prompt.zsh
-
 tsource zsh/bindings.zsh
-
 tsource alias.sh
-
-setopt interactivecomments
-setopt rmstarsilent
 source zsh/syntax-highlighting.zsh # tsource breaks syntax highlighting; don't know why
-
 tsource env.sh
 tsource secret.sh
 tsource ~/src/wormhole/cli/lib.sh
 tsource /tmp/wormhole.env
-
 tsource zsh/env.zsh
-
 tsource zsh/atuin.zsh
-
 tsource ../temporal/temporal.sh
 
 cd "$_cwd"
