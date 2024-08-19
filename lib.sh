@@ -113,7 +113,7 @@ emacs-set-normal() {
 }
 
 fd() {
-    command fd --color=always --hyperlink=always "$@" |
+    ~/bin/fd --color=always --hyperlink=always "$@" |
         rg -r $'\e]8;;vscode://file$1' $'^\e]8;;file://'$(hostname)'(.*)'
 }
 
