@@ -1,14 +1,15 @@
 path=(
-    /Library/TeX/texbin
-    /opt/homebrew/bin
-    /opt/homebrew/sbin
-    /opt/homebrew/opt/coreutils/libexec/gnubin
+    ~/bin
+    ~/.local/bin
+    ~/src/devenv/temporal/tools
+    ~/src/devenv/tools/bash
+    ~/src/devenv/emacs-config/bin
+    ~/go/bin
+    ~/.cargo/bin
     /opt/homebrew/opt/gnu-sed/libexec/gnubin
-    $HOME/.cargo/bin
-    $HOME/go/bin
-    $HOME/src/devenv/emacs-config/bin
-    $HOME/src/devenv/tools/bash
-    $HOME/.local/bin
-    $HOME/bin
+    /opt/homebrew/opt/coreutils/libexec/gnubin
+    /opt/homebrew/sbin
+    /opt/homebrew/bin
+    /Library/TeX/texbin
     $path
 )
