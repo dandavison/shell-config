@@ -21,39 +21,47 @@ function tsource {
     fi
 }
 
-tsource lib.sh
-tsource lib_fzf.sh
-tsource lib_git.sh
-tsource zsh/lib.zsh
-tsource zsh/history.zsh
-tsource ./3p/git-prompt.sh
-
-tsource path-macos.sh
-
 autoload -U colors && colors
-
-tsource completion.sh
-
-tsource zsh/prompt.zsh
-
-tsource zsh/bindings.zsh
-
-tsource alias.sh
-
 setopt interactivecomments
 setopt rmstarsilent
-source zsh/syntax-highlighting.zsh # tsource breaks syntax highlighting; don't know why
 
-tsource env.sh
-tsource secret.sh
-tsource ~/src/wormhole/cli/lib.sh
-tsource /tmp/wormhole.env
+concatenated=/tmp/concatenated.sh
+[ -e $concatenated ] || cat $(rg -r '$1' '^    t?source ([^ ]+.sh).*' /Users/dan/src/devenv/shell-config/init.zsh | xargs readlink -f) > $concatenated
+tsource $concatenated
 
-tsource zsh/env.zsh
+if false; then    
+    tsource lib.sh
+    tsource lib_fzf.sh
+    tsource lib_git.sh
+    tsource zsh/lib.zsh
+    tsource zsh/history.zsh
+    tsource ./3p/git-prompt.sh
 
-tsource zsh/atuin.zsh
+    tsource path-macos.sh
 
-tsource ../temporal/lib.sh
+
+    tsource completion.sh
+
+    tsource zsh/prompt.zsh
+
+    tsource zsh/bindings.zsh
+
+    tsource alias.sh
+
+    source zsh/syntax-highlighting.zsh # tsource breaks syntax highlighting; don't know why
+
+    tsource env.sh
+    tsource secret.sh
+    tsource ~/src/wormhole/cli/lib.sh
+    tsource /tmp/wormhole.env
+
+    tsource zsh/env.zsh
+
+    tsource zsh/atuin.zsh
+
+    tsource ../temporal/lib.sh
+    tsource ../temporal/env.sh
+fi
 
 cd "$_cwd"
 unset _cwd
