@@ -4,6 +4,7 @@ glow() {
 
 sockets() {
     (osqueryi --list --separator ',' |
+        cut -c 1-300 |
         column -t -s ',' |
         sed '1d' |
         rg -v '(rapportd|node.mojom.NodeService|wormhole)' |
