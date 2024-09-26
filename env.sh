@@ -8,6 +8,11 @@ export GH_PAGER=delta
 export PIP_INDEX_URL=
 export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export LS_COLORS="$(vivid generate one-light)"
+
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
 
 export FZF_DEFAULT_COMMAND='fd'
 fzf-set-environment-variables

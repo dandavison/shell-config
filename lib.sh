@@ -71,8 +71,8 @@ __dan_is_macos() {
     [ -e /Applications ]
 }
 
-cat-file() {
-    bat --style header,grid $(resolve-file "$1")
+cat-which() {
+    bat --style header,grid $(which "$1")
 }
 
 open-file() {
@@ -115,7 +115,7 @@ emacs-set-normal() {
 
 fd() {
     ~/bin/fd --color=always --hyperlink=always "$@" |
-        rg -r $'\e]8;;vscode://file$1' $'^\e]8;;file://'$(hostname)'(.*)'
+        rg -r $'\e]8;;cursor://file$1' $'^\e]8;;file://'$(hostname)'(.*)'
 }
 
 # https://gist.github.com/SlexAxton/4989674
@@ -288,6 +288,10 @@ toggle-iterm() {
             ;;
         esac
     done
+}
+
+function unset-env-vars() {
+    cut -d= -f1 | while read s; do unset $s; done
 }
 
 function hyperlink() {
