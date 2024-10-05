@@ -110,6 +110,17 @@ fzf-open() {
     [ -n "$app" ] && open "$app"
 }
 
+fzf-wormhole-open() {
+    local project
+    project="$(command fd -d 1 . ~/src ~/src/temporalio |
+        rg -r '$2$1' '^(.*/([^/]+))/?$' |
+        _fzf '--with-nth' 1 '-d' / |
+        sed -E 's,[^/]+/,/,')"
+    echo "$project"
+    [ -n "$project" ] && wormhole-open "$project"
+}
+
+
 fzf-preview-jq() {
     # https://github.com/pawelduda/fzf-live-repl
     local file="$1"
