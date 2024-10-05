@@ -1,9 +1,10 @@
--fzf() {
+_fzf() {
     fzf --layout reverse --exact --cycle --height 50% --info hidden --prompt ' ' --border rounded --color light
 }
 
 fzf-cargo-test() {
-    local test="$(rust-list-tests | -fzf)"
+    local test
+    test="$(rust-list-tests | _fzf)"
     [[ -n "$test" ]] || return
     echo cargo test "$test"
     print -s "cargo test $test" # zsh
@@ -11,92 +12,93 @@ fzf-cargo-test() {
 }
 
 fzf-cat() {
-    bat --style="header,grid" $(fd . $1 | -fzf)
+    bat --style="header,grid" "$(fd . "$1" | _fzf)"
 }
 
 fzf-vscode() {
-    code $(-fzf)
+    code "$(_fzf)"
 }
 
 fzf-docker-exec() {
-    local container=$(
+    local container
+    container="$(
         docker ps --format '{{.ID}}\t{{.Names}}\t{{.Image}}' |
-            -fzf |
+            _fzf |
             awk '{print $1}'
-    )
-    docker exec -it $container bash
+    )"
+    docker exec -it "$container" bash
 }
 
 fzf-emacs() {
-    emacsclient -n $(-fzf)
+    emacsclient -n "$(_fzf)"
 }
 
 fzf-git-branch() {
-    git-branch-by-date | rg -v '^z-' | -fzf | awk '{print $1}'
+    git-branch-by-date | rg -v '^z-' | _fzf | awk '{print $1}'
 }
 
--fzf-git-log() {
-    git log --color=always --oneline --decorate | -fzf | awk '{print $1}'
+_fzf-git-log() {
+    git log --color=always --oneline --decorate | _fzf | awk '{print $1}'
 }
 
 fzf-git-checkout-branch() {
-    git checkout --quiet $(fzf-git-branch)
+    git checkout --quiet "$(fzf-git-branch)"
 }
 
 fzf-git-checkout-commit() {
-    git checkout --quiet $(-fzf-git-log)
+    git checkout --quiet "$(_fzf-git-log)"
 }
 
 fzf-git-diff() {
-    git diff $(-fzf-git-log)
+    git diff "$(_fzf-git-log)"
 }
 
 fzf-git-rebase() {
-    git rebase $(fzf-git-branch)
+    git rebase "$(fzf-git-branch)"
 }
 
 fzf-git-rebase-interactive() {
-    git rebase --interactive $(-fzf-git-log)
+    git rebase --interactive "$(_fzf-git-log)"
 }
 
 fzf-git-reset() {
-    git reset $(-fzf-git-log)
+    git reset "$(_fzf-git-log)"
 }
 
 fzf-git-reset-hard() {
-    git reset --hard $(-fzf-git-log)
+    git reset --hard "$(_fzf-git-log)"
 }
 
 fzf-git-revert() {
-    git revert --no-edit $(-fzf-git-log)
+    git revert --no-edit "$(_fzf-git-log)"
 }
 
 fzf-git-cherry-pick() {
-    git cherry-pick $(fzf-git-branch)
+    git cherry-pick "$(fzf-git-branch)"
 }
 
 fzf-git-log-branch() {
-    git log --stat --decorate $(fzf-git-branch)
+    git log --stat --decorate "$(fzf-git-branch)"
 }
 
 fzf-git-show() {
-    git show $(-fzf-git-log)
+    git show "$(_fzf-git-log)"
 }
 
--fzf-hist() {
-    atuin history list | -fzf --no-sort --exact
+_fzf-hist() {
+    atuin history list | _fzf --no-sort --exact
 }
 
 fzf-hist-cp() {
-    -fzf-hist | tr -d "\n" | pbcopy
+    _fzf-hist | tr -d "\n" | pbcopy
 }
 
 fzf-hist-x() {
-    eval $(-fzf-hist)
+    eval "$(_fzf-hist)"
 }
 
 fzf-kill() {
-    kill "$@" $(ps | -fzf | awk '{print $1}')
+    kill "$@" "$(ps | _fzf | awk '{print $1}')"
 }
 
 fzf-open() {
@@ -109,12 +111,12 @@ fzf-open() {
 fzf-preview-jq() {
     # https://github.com/pawelduda/fzf-live-repl
     local file="$1"
-    echo | -fzf --print-query --preview "jq '{q}' < '$file'" --preview-window "top:95%"
+    echo | _fzf --print-query --preview "jq '{q}' < '$file'" --preview-window "top:95%"
 }
 
 fzf-preview-regex-python() {
     local input="$1"
-    echo | -fzf --print-query --preview-window up --preview "python -c \"
+    echo | _fzf --print-query --preview-window up --preview "python -c \"
 import re
 print('Input: $input\n')
 m = re.match({q}, '$input')
@@ -123,10 +125,10 @@ print(m.groups() if m else '<no match>')\""
 
 fzf-preview-regex-sed() {
     local input="$1"
-    echo | -fzf \
+    echo | _fzf \
         --print-query \
         --preview-window up \
-        --preview "printf \""$input"\n\n\n─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n\n\n\"; echo \"$input\" | sed -E 's/\x1b\[[0-9;]*[mK]//g' | sed -E '{q}'"
+        --preview "printf \"$input\n\n\n─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n\n\n\"; echo \"$input\" | sed -E 's/\x1b\[[0-9;]*[mK]//g' | sed -E '{q}'"
 }
 
 fzf-rg2() {
@@ -147,15 +149,18 @@ fzf-tmux() {
     if [ -n "$1" ]; then
         local next_window="$1"
     else
-        local next_window=$(tmux list-panes -a -F '#{session_name},#{window_index},#{pane_title}' |
-            xsv table |
-            -fzf --exact |
-            awk '{print $1":"$2}')
+        local next_window
+        next_window="$(
+            tmux list-panes -a -F '#{session_name},#{window_index},#{pane_title}' |
+                xsv table |
+                _fzf --exact |
+                awk '{print $1":"$2}'
+        )"
     fi
     tmux display-message -p -F '#{session_name}:#{window_index}' >/tmp/tmux-last-window
     tmux switch-client -t "$next_window"
 }
 
 tmux-back() {
-    fzf-tmux $(cat /tmp/tmux-last-window)
+    fzf-tmux "$(cat /tmp/tmux-last-window)"
 }
