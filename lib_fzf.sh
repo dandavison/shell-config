@@ -1,5 +1,5 @@
 _fzf() {
-    fzf --layout reverse --exact --cycle --height 50% --info hidden --prompt ' ' --border rounded --color light
+    fzf --layout reverse --exact --cycle --height 50% --info hidden --prompt ' ' --border rounded --color light "$@"
 }
 
 fzf-cargo-test() {
