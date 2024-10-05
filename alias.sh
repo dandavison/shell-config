@@ -192,7 +192,7 @@ alias hz='fzf-hist-cp'
 alias hzx='fzf-hist-x'
 alias idea='/Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea'
 alias ip='ipython --no-banner'
-alias isort='isort --force_single_line_imports --lines 999999 --dont-skip __init__.py'
+alias isort-dan='isort --force_single_line_imports --lines 999999 --dont-skip __init__.py'
 alias jqp='(jq -C . | less -RSX)'
 alias jp=jsonpipe
 alias l='gl'
@@ -217,7 +217,7 @@ alias nr='npm run'
 alias np=ping-world
 alias npu='until ping-world; do sleep 1; done'
 alias nwp=wifi-poke
-alias o=open-app
+alias o=fzf-open
 alias p=python
 alias pdfjoin='pdfjoin --rotateoversize false'
 alias pdflatex='pdflatex -shell-escape -interaction nonstopmode -output-directory=${LATEX_OUTPUT_DIRECTORY:-.}'

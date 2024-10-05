@@ -100,7 +100,10 @@ fzf-kill() {
 }
 
 fzf-open() {
-    open "$(ls | -fzf)"
+    open "$(command fd -d 1 '.+\.app' /Applications /System/Applications /System/Applications/Utilities |
+        rg -r '$2$1' '^(.*/([^/]+)\.app)/?$' |
+        _fzf '--with-nth' 1 '-d' / |
+        sed -E 's,[^/]+/,/,')"
 }
 
 fzf-preview-jq() {

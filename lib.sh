@@ -9,7 +9,7 @@ sockets() {
         sed '1d' |
         rg -v '(rapportd|node.mojom.NodeService|wormhole)' |
         sort) <<EOF
-SELECT s.pid, s.local_port, p.cmdline
+SELECT s.pid, s.local_port, p.cmdline, p.cwd
 FROM process_open_sockets AS s
 INNER JOIN processes AS p
 ON s.pid = p.pid
@@ -45,13 +45,6 @@ which-follow() {
     else
         readlink -f "$p"
     fi
-}
-
-open-app() {
-    open "$(command fd -d 1 '.+\.app' /Applications /System/Applications /System/Applications/Utilities |
-        rg -r '$2$1' '^(.*/([^/]+)\.app)/?$' |
-        -fzf '--with-nth' 1 '-d' / |
-        sed -E 's,[^/]+/,/,')"
 }
 
 bat-files() {
