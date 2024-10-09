@@ -18,6 +18,14 @@ ORDER BY p.cmdline;
 EOF
 }
 
+processes() {
+    (osqueryi --list --separator ',') <<EOF
+SELECT p.pid, p.name, p.cwd
+FROM processes AS p
+ORDER BY p.cmdline;
+EOF
+}
+
 vscode() {
     if [ -z "$1" ]; then
         if ls | rg -q '\.code-workspace$'; then
