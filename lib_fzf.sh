@@ -2,6 +2,19 @@ _fzf() {
     fzf --layout reverse --exact --cycle --height 50% --info hidden --prompt ' ' --border rounded --color light "$@"
 }
 
+f-git-show-file() {
+    local commit file
+    commit=$(
+        git log --stat --color=always "$@" |
+            delta |
+            fzf --layout reverse --exact --ansi --info hidden --prompt ' ' --border rounded --color light |
+            awk '{print $2}'
+    )
+    [[ -n "$commit" ]] || return
+    file=$(git show --name-only --pretty=format: "$commit" | _fzf)
+    git show "$commit" "$file"
+}
+
 f-cargo-test() {
     local test
     test="$(rust-list-tests | _fzf)"
