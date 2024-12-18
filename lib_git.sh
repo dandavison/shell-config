@@ -170,6 +170,10 @@ git-make-repos() {
     done
 }
 
+git-reflog-day-of-week() {
+    git reflog --date=iso | awk -F'@\\{' '{print $2}' | awk '{print $1}' | while read -r date; do gdate -d "$date" +%A; done | sort | uniq -c | sort -rn
+}
+
 # From decluttering of gitconfig:
 #
 #     copy-head = !git head | tr -d '\n' | pbcopy

@@ -115,8 +115,16 @@ emacs-set-normal() {
 }
 
 fd() {
-    ~/bin/fd --color=always --hyperlink=always "$@" |
-        rg -r $'\e]8;;cursor://file$1' $'^\e]8;;file://'$(hostname)'(.*)'
+    if test -t 1; then
+        command fd --color=always --hyperlink=always "$@" |
+            rg -r $'\e]8;;cursor://file$1' $'^\e]8;;file://'$(hostname)'(.*)'
+    else
+        command fd "$@"
+    fi
+}
+
+fd-list-files-by-size() {
+    command fd . "$@" --type f --exec du -ah {} | sort -rh
 }
 
 # https://gist.github.com/SlexAxton/4989674

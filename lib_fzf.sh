@@ -125,7 +125,7 @@ f-open() {
 
 f-wormhole-open() {
     local project
-    project="$(command fd -d 1 . ~/src ~/src/temporalio |
+    project="$(command fd -d 1 . ~/src ~/src/temporalio ~/tmp/3p |
         rg -r '$2$1' '^(.*/([^/]+))/?$' |
         _fzf '--with-nth' 1 '-d' / |
         sed -E 's,[^/]+/,/,')"
@@ -154,15 +154,6 @@ f-preview-regex-sed() {
         --print-query \
         --preview-window up \
         --preview "printf \"$input\n\n\n─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n\n\n\"; echo \"$input\" | sed -E 's/\x1b\[[0-9;]*[mK]//g' | sed -E '{q}'"
-}
-
-f-rg2() {
-    local INITIAL_QUERY=""
-    local RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
-    FZF_DEFAULT_COMMAND="$RG_PREFIX '$INITIAL_QUERY'" \
-        fzf --bind "change:reload:$RG_PREFIX {q} || true" \
-        --ansi --query "$INITIAL_QUERY" \
-        --height=100% --layout=reverse
 }
 
 fzf-set-environment-variables() {
