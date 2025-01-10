@@ -60,10 +60,6 @@ bat-files() {
     while read f; do bat --color=always $f; done | less -R
 }
 
-pyenv-load() {
-    source /Users/dan/src/devenv/shell-config/pyenv.sh
-}
-
 nvm-load() {
     source /Users/dan/src/devenv/shell-config/nvm.sh
 }
