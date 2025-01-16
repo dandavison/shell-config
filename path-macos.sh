@@ -10,6 +10,12 @@ path=(
     /opt/homebrew/opt/coreutils/libexec/gnubin
     /opt/homebrew/sbin
     /opt/homebrew/bin
+    /opt/homebrew/opt/openjdk@17/bin
     /Library/TeX/texbin
-    $path
+    /usr/local/bin
+    /usr/bin
+    /bin
+    /usr/sbin
+    /sbin
+    /Library/Apple/usr/bin
 )
