@@ -246,7 +246,7 @@ alias rg='rg --hidden -g "!.git/*"'
 alias rn='f-rg --exclude-tests'
 alias rgb=rg-blame
 alias rgc='rg --color=always'
-alias rgd="delta rg --hidden -g '!.git/*'"
+alias rgd=rg-delta
 alias rgz=f-rg
 alias rgf='rg --files'
 alias rm-pyc="find . -type f -name '*.pyc' -delete"
