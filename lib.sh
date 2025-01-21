@@ -7,13 +7,25 @@ sockets() {
         cut -c 1-300 |
         column -t -s ',' |
         sed '1d' |
-        rg -v '(rapportd|node.mojom.NodeService|wormhole)' |
-        sort) <<EOF
+        rg -v '(rapportd|node.mojom.NodeService|wormhole)') <<EOF
 SELECT s.pid, s.local_port, p.cmdline, p.cwd
 FROM process_open_sockets AS s
 INNER JOIN processes AS p
 ON s.pid = p.pid
 WHERE s.state = 'LISTEN'
+ORDER BY p.cmdline;
+EOF
+}
+
+sockets-all() {
+    (osqueryi --list --separator ',' |
+        cut -c 1-300 |
+        column -t -s ',' |
+        sed '1d') <<EOF
+SELECT s.pid, s.local_port, p.cmdline, p.cwd
+FROM process_open_sockets AS s
+INNER JOIN processes AS p
+ON s.pid = p.pid
 ORDER BY p.cmdline;
 EOF
 }
