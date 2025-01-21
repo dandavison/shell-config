@@ -10,7 +10,7 @@ path=(
     /opt/homebrew/opt/coreutils/libexec/gnubin
     /opt/homebrew/sbin
     /opt/homebrew/bin
-    /opt/homebrew/opt/openjdk@17/bin
+    $JAVA_HOME/bin
     /Library/TeX/texbin
     /usr/local/bin
     /usr/bin

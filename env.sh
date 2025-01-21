@@ -32,13 +32,7 @@ export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
 
 export JAVA_HOME=/opt/homebrew/opt/openjdk@17
-export PATH=$JAVA_HOME/bin:$PATH
 export CPPFLAGS="-I$JAVA_HOME/include"
-
-# export GOPATH=$HOME/go
-# export GOROOT="$(brew --prefix go)/libexec"
-# export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-
 
 export FORGIT_FZF_DEFAULT_OPTS="--ansi --layout=reverse-list"
 

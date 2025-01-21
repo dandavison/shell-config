@@ -32,6 +32,7 @@ tsource lib_git.sh
 tsource zsh/lib.zsh
 tsource zsh/history.zsh
 tsource ./3p/git-prompt.sh
+tsource zsh/env.zsh
 tsource path-macos.sh
 tsource completion.sh
 tsource zsh/prompt.zsh
@@ -42,7 +43,6 @@ tsource env.sh
 tsource secret.sh
 tsource ~/src/wormhole/cli/lib.sh
 tsource /tmp/wormhole.env
-tsource zsh/env.zsh
 tsource zsh/atuin.zsh
 tsource ../temporal/temporal.sh
 
