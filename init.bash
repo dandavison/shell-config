@@ -18,6 +18,7 @@ source alias.sh
 
 source env.sh
 [ -f extra.sh ] && source extra.sh
+source pyenv.sh
 source nvm.sh 2>/dev/null
 cd "$_cwd"
 unset _cwd
