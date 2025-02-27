@@ -8,7 +8,7 @@ export GH_PAGER=delta
 export PIP_INDEX_URL=
 export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-export LS_COLORS="$(vivid generate one-light)"
+export LS_COLORS="$(/opt/homebrew/bin/vivid generate one-light)"
 
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=$HOME/.config
@@ -31,7 +31,7 @@ export HOMEBREW_SHELLENV_PREFIX="/opt/homebrew"
 export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
 
-export JAVA_HOME=/opt/homebrew/opt/openjdk@17
+export JAVA_HOME=${JAVA_HOME:-/opt/homebrew/opt/openjdk@17}
 export CPPFLAGS="-I$JAVA_HOME/include"
 
 export FORGIT_FZF_DEFAULT_OPTS="--ansi --layout=reverse-list"
