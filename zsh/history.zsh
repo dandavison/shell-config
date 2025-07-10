@@ -11,17 +11,17 @@ function my-history-prefix-search() {
     local offset=$((MY_HISTORY_SEARCH_OFFSET + $offset_delta))
 
     (($offset < 0)) && return
-    local result=$(
+    local result="$(
         atuin search \
             --search-mode prefix \
             --limit 1 \
             --offset $offset \
             --format '{command}' \
             "$MY_HISTORY_SEARCH_PREFIX"
-    )
+    )"
     if [[ -n "$result" ]]; then
-        BUFFER=$result
-        CURSOR=${#BUFFER}
+        BUFFER="$result"
+        CURSOR="${#BUFFER}"
         MY_HISTORY_SEARCH_OFFSET=$offset
     fi
 }
