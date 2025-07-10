@@ -356,3 +356,15 @@ function tempyral-execute-update() {
 function tempyral-call-activity() {
     -tempyral call_activity CallActivity
 }
+
+function r() {
+    RG_PATH="$2" f-rg "$1"
+}
+
+function rn() {
+    RG_PATH="$2" f-rg --exclude-tests "$1"
+}
+
+dump-files() {
+    (fd -t f '\.py$' . | while read f; do bat --decorations always --paging=never "$f"; done) 
+}

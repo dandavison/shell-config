@@ -63,7 +63,11 @@ f-git-checkout-commit() {
 }
 
 f-git-diff() {
-    git diff "$(_f-git-log)"
+    git diff "$(fzf)"
+}
+
+f-git-diff-main() {
+    git diff main "$(fzf)"
 }
 
 f-git-rebase() {
@@ -116,7 +120,7 @@ f-kill() {
 
 f-open() {
     local app
-    app="$(command fd -d 1 '.+\.app' /Applications /System/Applications /System/Applications/Utilities |
+    app="$(command fd -d 1 '.+\.app' /Applications /System/Applications /System/Applications/Utilities ~/Applications/Chrome\ Apps.localized/ |
         rg -r '$2$1' '^(.*/([^/]+)\.app)/?$' |
         _fzf '--with-nth' 1 '-d' / |
         sed -E 's,[^/]+/,/,')"
@@ -125,7 +129,8 @@ f-open() {
 
 f-wormhole-open() {
     local project
-    project="$(command fd -d 1 . ~/src ~/src/temporalio ~/tmp/3p |
+    project="$(command fd -d 1 . ~/src ~/src/ai ~/src/temporalio ~/tmp/3p |
+        rg -v '^/Users/dan/src/(ai|temporalio)/$' |
         rg -r '$2$1' '^(.*/([^/]+))/?$' |
         _fzf '--with-nth' 1 '-d' / |
         sed -E 's,[^/]+/,/,')"

@@ -1,4 +1,3 @@
 if [ -z "$XOLMIS" ]; then
-    export XOLMIS="true"
-    xolmis
+    XOLMIS="true" xolmis
 fi

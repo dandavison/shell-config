@@ -4,6 +4,7 @@ export OPEN_IN_EDITOR=~/bin/code
 export HOMEBREW_NO_AUTO_UPDATE=1
 export LESS='-FIR'
 export DELTA_PAGER='less -FR'
+export HYPERLINKED_SCHEME=cursor
 export GH_PAGER=delta
 export PIP_INDEX_URL=
 export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"
@@ -33,6 +34,8 @@ export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
 
 export JAVA_HOME=${JAVA_HOME:-/opt/homebrew/opt/openjdk@17}
 export CPPFLAGS="-I$JAVA_HOME/include"
+
+export COMPOSE_MENU=0 # https://github.com/docker/for-mac/issues/7366
 
 export FORGIT_FZF_DEFAULT_OPTS="--ansi --layout=reverse-list"
 
