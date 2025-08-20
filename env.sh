@@ -6,6 +6,7 @@ export LESS='-FIR'
 export DELTA_PAGER='less -FR'
 export HYPERLINKED_SCHEME=cursor
 export GH_PAGER=delta
+export FILTER_BRANCH_SQUELCH_WARNING=1
 export PIP_INDEX_URL=
 export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
@@ -37,8 +38,4 @@ export CPPFLAGS="-I$JAVA_HOME/include"
 
 export COMPOSE_MENU=0 # https://github.com/docker/for-mac/issues/7366
 
-export FORGIT_FZF_DEFAULT_OPTS="--ansi --layout=reverse-list"
-
-
-export AIDER_LIGHT_MODE=1
-export AIDER_GITIGNORE=0
+export E=localhost:7233  # sdk-python pytest -E$E 

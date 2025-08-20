@@ -129,8 +129,10 @@ f-open() {
 
 f-wormhole-open() {
     local project
-    project="$(command fd -d 1 . ~/src ~/src/ai ~/src/temporalio ~/tmp/3p |
-        rg -v '^/Users/dan/src/(ai|temporalio)/$' |
+    local dirs="$(command fd -d 1 . ~/src ~/src/temporalio ~/src/temporalio/projects ~/src/temporal/repos ~/tmp/3p)"
+    dirs+="\n/Users/dan/src/temporal/repos/sdk-python/temporalio/bridge/sdk-core"
+    project="$(echo "$dirs" |
+        rg -v '^/Users/dan/src/(temporalio|temporalio/projects)/$' |
         rg -r '$2$1' '^(.*/([^/]+))/?$' |
         _fzf '--with-nth' 1 '-d' / |
         sed -E 's,[^/]+/,/,')"

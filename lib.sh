@@ -69,7 +69,7 @@ which-follow() {
 
 bat-files() {
     local f
-    while read f; do bat --color=always $f; done | less -R
+    while read f; do bat --decorations always --paging=never $f; done | less -R
 }
 
 pyenv-load() {
@@ -86,6 +86,10 @@ __dan_is_macos() {
 
 cat-which() {
     bat --style header,grid $(which "$1")
+}
+
+cc() {
+    echo "$@" | claude --print --allowedTools=Bash
 }
 
 open-file() {
@@ -367,4 +371,17 @@ function rn() {
 
 dump-files() {
     (fd -t f '\.py$' . | while read f; do bat --decorations always --paging=never "$f"; done) 
+}
+
+phonelink() {
+    python -m http.server 8000 &
+    local server_pid=$!
+    sleep 2
+    ngrok http 8000 &
+    local ngrok_pid=$!
+    sleep 3
+    local url=$(curl -s http://localhost:4040/api/tunnels | python -c "import sys, json; print(json.load(sys.stdin)['tunnels'][0]['public_url'])")
+    qrencode -tANSI "$url/$*"
+    echo "Server: $url/$*"
+    wait $server_pid $ngrok_pid
 }
