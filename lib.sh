@@ -130,7 +130,7 @@ emacs-set-normal() {
     ln -s ~/devenv/emacs-config/emacs.el ~/.emacs
 }
 
-fd() {
+fdd() {
     if test -t 1; then
         command fd --color=always --hyperlink=always "$@" |
             rg -r $'\e]8;;cursor://file$1' $'^\e]8;;file://'$(hostname)'(.*)'
@@ -323,16 +323,6 @@ function hyperlink() {
     local url="$1"
     local text="$2"
     printf '\e]8;;%s\e\\%s\e]8;;\e\\\n' "$url" "$text"
-}
-
-function fdd() {
-    local _path
-    command fd --color=always "$@" |
-        while read _path; do
-            abspath=$(readlink -f $(echo -n $_path | ansifilter))
-            url="vscode://file/$abspath"
-            hyperlink $url $_path
-        done
 }
 
 function whichf() {

@@ -184,6 +184,10 @@ f-tmux() {
     tmux switch-client -t "$next_window"
 }
 
-tmux-back() {
+f-tmux-back() {
     f-tmux "$(cat /tmp/tmux-last-window)"
+}
+
+f-workspace() {
+    echo temporal nexus ai | tr ' ' '\n' | _fzf > /tmp/ws 
 }
