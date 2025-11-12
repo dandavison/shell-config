@@ -329,36 +329,6 @@ function whichf() {
     readlink -f $(which "$1")
 }
 
-function -tempyral() {
-    local file=$1
-    local class=$2
-    local _path=/Users/dan/src/temporalio/tempyral/media/videos/$file/1080p60/$class.mp4
-    : >/tmp/log &&
-        manim -qh scenes/$file.py $class && pkill 'QuickTime Player' &&
-        sleep 1 &&
-        open $_path
-}
-
-function tempyral-execute-workflow() {
-    -tempyral execute_workflow ExecuteWorkflow
-}
-
-function tempyral-execute-update() {
-    -tempyral execute_update ExecuteUpdate
-}
-
-function tempyral-call-activity() {
-    -tempyral call_activity CallActivity
-}
-
-function r() {
-    RG_PATH="$2" f-rg "$1"
-}
-
-function rn() {
-    RG_PATH="$2" f-rg --exclude-tests "$1"
-}
-
 dump-files() {
     (fd -t f '\.py$' . | while read f; do bat --decorations always --paging=never "$f"; done) 
 }
@@ -375,3 +345,4 @@ phonelink() {
     echo "Server: $url/$*"
     wait $server_pid $ngrok_pid
 }
+

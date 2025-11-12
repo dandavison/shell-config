@@ -49,4 +49,4 @@ tsource ../temporal/temporal.sh
 cd "$_cwd"
 unset _cwd
 
-tsource ~/src/devenv/shell-config/xolmis.sh
+# tsource ~/src/devenv/shell-config/xolmis.sh

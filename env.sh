@@ -1,10 +1,16 @@
+# zsh
+export DAN_NO_PREEXEC=1
+export WORDCHARS="${WORDCHARS}/"
+
 export ALTERNATE_EDITOR='emacs -nw -q'
 export GIT_SEQUENCE_EDITOR='emacsclient'
 export OPEN_IN_EDITOR=~/bin/code
+export RGI_EDITOR=wormhole
 export HOMEBREW_NO_AUTO_UPDATE=1
 export LESS='-FIR'
 export DELTA_PAGER='less -FR'
 export HYPERLINKED_SCHEME=cursor
+export BAT_THEME=GitHub
 export GH_PAGER=delta
 export FILTER_BRANCH_SQUELCH_WARNING=1
 export PIP_INDEX_URL=

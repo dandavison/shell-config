@@ -1,5 +1,14 @@
 _fzf() {
-    fzf --layout reverse --exact --cycle --height 50% --info hidden --prompt ' ' --border rounded --color light "$@"
+    command fzf \
+    --layout reverse \
+    --exact \
+    --cycle \
+    --height 50% \
+    --info hidden \
+    --prompt ' ' \
+    --border rounded \
+    --color light \
+    "$@"
 }
 
 f-git-show-file() {
@@ -7,7 +16,7 @@ f-git-show-file() {
     commit=$(
         git log --stat --color=always "$@" |
             delta |
-            fzf --layout reverse --exact --ansi --info hidden --prompt ' ' --border rounded --color light |
+            _fzf |
             awk '{print $2}'
     )
     [[ -n "$commit" ]] || return
@@ -120,9 +129,9 @@ f-kill() {
 
 f-open() {
     local app
-    app="$(command fd -d 1 '.+\.app' /Applications /System/Applications /System/Applications/Utilities ~/Applications/Chrome\ Apps.localized/ |
+    app="$(command fd -d 1 '.+\.app' /Applications ~/Applications/Chrome\ Apps.localized/ |
         rg -r '$2$1' '^(.*/([^/]+)\.app)/?$' |
-        _fzf '--with-nth' 1 '-d' / |
+        _fzf --with-nth 1 '-d' / |
         sed -E 's,[^/]+/,/,')"
     [ -n "$app" ] && open "$app"
 }
@@ -190,4 +199,39 @@ f-tmux-back() {
 
 f-workspace() {
     echo temporal nexus ai | tr ' ' '\n' | _fzf > /tmp/ws 
+}
+
+f-visible-word() {
+    local pane_content="$(tmux capture-pane -p)"
+    echo -n "$(
+        echo "$pane_content" |
+        tr -cs '[:alnum:]_.-/' '\n' |
+        rg -v '^$' |
+        LC_ALL=C sort -u |
+        _fzf
+    )"
+}
+
+f-git-stash-list() {
+    local selected
+    selected="$(
+        git stash list --date=relative |
+        # Transform: stash@{TIME}: On branch: DATE message
+        # Into: INDEX|{TIME}: On branch: message  
+        sed -E 's/^stash@//' |                          # Remove stash@ prefix
+        sed -E 's/^(\{[^}]+\}): /\1|/' |                # Replace first ": " with "|" to separate time
+        nl -v 0 -w 1 -s '|' |                           # Add line numbers
+        awk -F'|' '{
+            # $1 = line number, $2 = {TIME}, $3 = description with date
+            idx = $1
+            time = $2
+            desc = $3
+            # Remove the date timestamp (YYYY-MM-DD HH:MM) from description
+            gsub(/[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}[ ]?/, "", desc)
+            printf "%s|%s: %s\n", idx, time, desc
+        }' |
+        _fzf --with-nth 2.. --delimiter '|' |           # Display only the formatted part
+        cut -d'|' -f1                                   # Extract the index
+    )"
+    [ -n "$selected" ] && echo -n "stash@{$selected}"
 }
