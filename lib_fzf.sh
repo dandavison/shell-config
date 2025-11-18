@@ -198,18 +198,18 @@ f-tmux-back() {
 }
 
 f-workspace() {
-    echo temporal nexus ai | tr ' ' '\n' | _fzf > /tmp/ws 
+    echo temporal nexus ai | tr ' ' '\n' | _fzf > /tmp/ws
 }
 
 f-visible-word() {
-    local pane_content="$(tmux capture-pane -p)"
-    echo -n "$(
-        echo "$pane_content" |
-        tr -cs '[:alnum:]_.-/' '\n' |
-        rg -v '^$' |
-        LC_ALL=C sort -u |
-        _fzf
-    )"
+    f-word-from-stdin <<<"$(tmux capture-pane -p)"
+}
+
+f-word-from-stdin() {
+    tr -cs '[:alnum:]_.,-/~@#+=:' '\n' |
+    rg '[a-zA-Z/._]{4,}$' |
+    LC_ALL=C sort -u |
+    _fzf
 }
 
 f-git-stash-list() {
@@ -217,7 +217,7 @@ f-git-stash-list() {
     selected="$(
         git stash list --date=relative |
         # Transform: stash@{TIME}: On branch: DATE message
-        # Into: INDEX|{TIME}: On branch: message  
+        # Into: INDEX|{TIME}: On branch: message
         sed -E 's/^stash@//' |                          # Remove stash@ prefix
         sed -E 's/^(\{[^}]+\}): /\1|/' |                # Replace first ": " with "|" to separate time
         nl -v 0 -w 1 -s '|' |                           # Add line numbers

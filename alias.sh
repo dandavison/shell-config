@@ -10,9 +10,12 @@ alias -g H2='HEAD~2'
 alias -g H3='HEAD~3'
 alias -g H4='HEAD~4'
 alias -g pytest-verbose='-xvs --tb=short -o log_cli=true -o log_cli_level=DEBUG'
-alias -g git-go="':(exclude)*pb.go' ':(exclude)*gen.go' ':(exclude)*mock.go' ':(exclude)*test*'"
-alias -g rg-go="-g '*.go' -g '\!*pb.go' -g '\!*test.go' -g '\!*mock.go'"
+alias -g ggo="':(exclude)*pb.go' ':(exclude)*gen.go' ':(exclude)*mock.go' ':(exclude)*test*'"
+alias -g ggot="':(exclude)*pb.go' ':(exclude)*gen.go' ':(exclude)*mock.go'"
+alias -g rgo="-g '*.go' -g '\!*pb.go' -g '\!*test.go' -g '\!*mock.go'"
 alias -g snap='$(git-snapshot)'
+alias -g w='"$(f-visible-word)"'
+alias ws='f-word-from-stdin'
 alias ..='cd ..'
 alias ansifilter="perl -pe 's/\e\[[0-9;]*[mK]//g'"
 alias b='git branch-by-date | rg -v "^z-" | head'
@@ -29,6 +32,7 @@ alias chrome='open -a /Applications/Google\ Chrome.app'
 alias clipboard-restart='killall pboard'
 alias comp='load-completions'
 alias copy='pbcopy'
+alias cop='pbcopy'
 alias count='sort | uniq -c | sort -rn'
 alias cw='cat-which'
 alias d='delta-toggle'
@@ -41,10 +45,10 @@ alias docker-clean='docker-rm-all && docker-prune'
 alias docker-prune='docker rmi $(docker images -f "dangling=true" -q)'
 alias docker-rm-all='docker rm -f $(docker ps -a -q)'
 alias ds='delta-toggle side-by-side'
-alias e="emacsclient -n"
+alias ec="emacsclient -n"
 alias ee="emacs -nw -q"
 alias ef='emacs-find-file'
-alias eg='emacs-magit-status'
+alias e='emacs-magit-status'
 alias egd='emacs-magit-diff'
 alias egr='emacs-grep'
 alias egs='emacs-magit-show'
@@ -280,9 +284,9 @@ alias v='cursor .'
 alias vd='vscode-debug'
 alias vs='vscode-summary'
 alias vscode-list-contexts='(cd ~/tmp/3p/vscode && rg --color=always RawContextKey)'
-alias w='f-workspace'
 alias wf='which-follow'
 alias wl='wormhole-list'
+alias ww='f-word-from-stdin'
 alias xhyve-nsenter='docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i'
 alias zsh-help='run-help'
 
