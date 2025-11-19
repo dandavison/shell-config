@@ -206,8 +206,8 @@ f-visible-word() {
 }
 
 f-word-from-stdin() {
-    tr -cs '[:alnum:]_.,-/~@#+=:' '\n' |
-    rg '[a-zA-Z/._]{4,}$' |
+    rg -o '[[:alnum:]_.,/~@#+=:-]{4,}' |
+    rg '[[:alpha:]]' |
     LC_ALL=C sort -u |
     _fzf
 }
