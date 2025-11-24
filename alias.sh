@@ -10,7 +10,7 @@ alias -g H2='HEAD~2'
 alias -g H3='HEAD~3'
 alias -g H4='HEAD~4'
 alias -g pytest-verbose='-xvs --tb=short -o log_cli=true -o log_cli_level=DEBUG'
-alias -g ggo="':(exclude)*pb.go' ':(exclude)*gen.go' ':(exclude)*mock.go' ':(exclude)*test*'"
+alias -g ggo="':(exclude)*pb.go' ':(exclude)*gen.go' ':(exclude)*mock.go' ':(exclude)*test*' ':(exclude)*.md'"
 alias -g ggot="':(exclude)*pb.go' ':(exclude)*gen.go' ':(exclude)*mock.go'"
 alias -g rgo="-g '*.go' -g '\!*pb.go' -g '\!*test.go' -g '\!*mock.go'"
 alias -g snap='$(git-snapshot)'

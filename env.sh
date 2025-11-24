@@ -8,7 +8,7 @@ export OPEN_IN_EDITOR=~/bin/code
 export RGI_EDITOR=wormhole
 export HOMEBREW_NO_AUTO_UPDATE=1
 export LESS='-FIR'
-export DELTA_PAGER='less -FR'
+export DELTA_PAGER='less -FR -j.3 -g'
 export HYPERLINKED_SCHEME=cursor
 export BAT_THEME=GitHub
 export GH_PAGER=delta
@@ -44,4 +44,4 @@ export CPPFLAGS="-I$JAVA_HOME/include"
 
 export COMPOSE_MENU=0 # https://github.com/docker/for-mac/issues/7366
 
-export E=localhost:7233  # sdk-python pytest -E$E 
+export E=localhost:7233  # sdk-python pytest -E$E

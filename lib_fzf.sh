@@ -133,7 +133,7 @@ f-open() {
         rg -r '$2$1' '^(.*/([^/]+)\.app)/?$' |
         _fzf --with-nth 1 '-d' / |
         sed -E 's,[^/]+/,/,')"
-    [ -n "$app" ] && open "$app"
+    [ -n "$app" ] && DELTA_FEATURES="" open "$app"
 }
 
 f-wormhole-open() {
@@ -174,7 +174,7 @@ f-preview-regex-sed() {
 
 fzf-set-environment-variables() {
     export FZF_DEFAULT_COMMAND="fd --type file --color=always"
-    export FZF_DEFAULT_OPTS="--ansi"
+    export FZF_DEFAULT_OPTS="--ansi --color light"
 }
 
 f-tmux() {
