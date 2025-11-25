@@ -1,6 +1,3 @@
-# alias ls='lsd --icon never'
-# top $(ps aux | grep postgres | grep -v grep | awk '{print "-p"$2}')
-alias _gl='git log --date relative --color=always --format="%n%n▸ %h %C(blue)%an %C(green)%ar%C(auto)%d%C(reset)%n%n    %s"'
 alias -g 'o/m'='origin/main'
 alias -g B='git symbolic-ref --short HEAD'
 alias -g H='HEAD'

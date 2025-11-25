@@ -1,3 +1,11 @@
+_gl() {
+    git log \
+        --date relative \
+        --color=always \
+        --format="%n%n▸ %h %C(blue)%an %C(blue)%ar%C(auto)%d%C(reset)%n%n    %C(green)%s%C(auto)" \
+        "$@"
+}
+
 git-default-branch() {
     if git branch -r | grep -q origin/master; then
         echo master
