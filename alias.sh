@@ -12,7 +12,7 @@ alias -g ggot="':(exclude)*pb.go' ':(exclude)*gen.go' ':(exclude)*mock.go'"
 alias -g rgo="-g '*.go' -g '\!*pb.go' -g '\!*test.go' -g '\!*mock.go'"
 alias -g snap='$(git-snapshot)'
 alias -g w='"$(f-visible-word)"'
-alias ws='f-word-from-stdin'
+alias _gl='git log --date relative --color=always --format="%n%n▸ %h %C(blue)%an %C(blue)%ar%C(auto)%d%C(reset)%n%n    %C(green)%s%C(auto)"'
 alias ..='cd ..'
 alias ansifilter="perl -pe 's/\e\[[0-9;]*[mK]//g'"
 alias b='git branch-by-date | rg -v "^z-" | head'
@@ -283,7 +283,7 @@ alias vs='vscode-summary'
 alias vscode-list-contexts='(cd ~/tmp/3p/vscode && rg --color=always RawContextKey)'
 alias wf='which-follow'
 alias wl='wormhole-list'
-alias ww='f-word-from-stdin'
+alias ws='f-word-from-stdin'
 alias xhyve-nsenter='docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i'
 alias zsh-help='run-help'
 
