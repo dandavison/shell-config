@@ -12,7 +12,7 @@ git-list-refs() {
 
 git-log-all-refs() {
     local b
-    git-list-refs | while read b; do git log "$@" $b; done
+    git-list-refs | while read b; do _gl "$@" $b; done
 }
 
 git-user-public() {

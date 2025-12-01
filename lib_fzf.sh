@@ -1,32 +1,48 @@
-_fzf() {
-    command fzf \
-    --layout reverse \
-    --exact \
-    --cycle \
-    --height 50% \
-    --info hidden \
-    --prompt ' ' \
-    --border rounded \
-    --color light \
-    "$@"
+fzf-set-environment-variables() {
+    export FZF_DEFAULT_COMMAND="fd --type file --color=always"
+    export FZF_DEFAULT_OPTS="--exact --height 50% --ansi  --layout reverse --cycle --info hidden --prompt ' ' --border rounded --color light"
 }
+
+
+# alias c='f-git-select-commit'
+alias -g b='$(f-git-select-branch)'
+alias -g c='$(f-git-select-commit)'
+alias batz='bat $(fzf)'
+alias cargo-test-fzf='f-cargo-test'
+alias gcpz='f-git-cherry-pick'
+alias gcz='f-git-checkout-branch'
+alias gdmz='f-git-diff-main'
+alias gdz='f-git-diff'
+alias glz='f-git-log-branch'
+alias grhz='f-git-reset-hard'
+alias griz='f-git-rebase-interactive'
+alias grsz='f-git-reset'
+alias grvz='f-git-revert'
+alias grz='f-git-rebase'
+alias gstaz='git stash apply $(f-git-stash-list)'
+alias gstz='f-git-stash'
+alias gsz='f-git-show'
+alias hz='f-hist-cp'
+alias hzx='f-hist-x'
+alias -g w='"$(f-visible-word)"'
+
 
 f-git-show-file() {
     local commit file
     commit=$(
         git log --stat --color=always "$@" |
             delta |
-            _fzf |
+            fzf |
             awk '{print $2}'
     )
     [[ -n "$commit" ]] || return
-    file=$(git show --name-only --pretty=format: "$commit" | _fzf)
+    file=$(git show --name-only --pretty=format: "$commit" | fzf)
     git show "$commit" "$file"
 }
 
 f-cargo-test() {
     local test
-    test="$(rust-list-tests | _fzf)"
+    test="$(rust-list-tests | fzf)"
     [[ -n "$test" ]] || return
     echo cargo test "$test"
     print -s "cargo test $test" # zsh
@@ -34,41 +50,46 @@ f-cargo-test() {
 }
 
 f-cat() {
-    bat --style="header,grid" "$(fd . "$1" | _fzf)"
+    bat --style="header,grid" "$(fd . "$1" | fzf)"
 }
 
 f-vscode() {
-    code "$(_fzf)"
+    code "$(fzf)"
 }
 
 f-docker-exec() {
     local container
     container="$(
         docker ps --format '{{.ID}}\t{{.Names}}\t{{.Image}}' |
-            _fzf |
+            fzf |
             awk '{print $1}'
     )"
     docker exec -it "$container" bash
 }
 
 f-emacs() {
-    emacsclient -n "$(_fzf)"
+    emacsclient -n "$(fzf)"
 }
 
-f-git-branch() {
-    git-branch-by-date | rg -v '^z-' | _fzf | awk '{print $1}'
+# () -> branch
+f-git-select-branch() {
+    git-branch-by-date | rg -v '^z-' | fzf | awk '{print $1}'
 }
 
-_f-git-log() {
-    git log --color=always --oneline --decorate | _fzf | awk '{print $1}'
+# branch -> commit
+f-git-select-commit() {
+    local opts=()
+    [[ ! -t 0 ]] && opts=(--stdin)
+    # --sync because this may be downstream in an fzf pipeline
+    git log --color=always --oneline --decorate "${opts[@]}" "$@" | fzf --sync | awk '{print $1}'
 }
 
 f-git-checkout-branch() {
-    git checkout --quiet "$(f-git-branch)"
+    git checkout --quiet "$(f-git-select-branch)"
 }
 
 f-git-checkout-commit() {
-    git checkout --quiet "$(_f-git-log)"
+    git checkout --quiet "$(f-git-select-commit)"
 }
 
 f-git-diff() {
@@ -80,39 +101,39 @@ f-git-diff-main() {
 }
 
 f-git-rebase() {
-    git rebase "$(f-git-branch)"
+    git rebase "$(f-git-select-branch)"
 }
 
 f-git-rebase-interactive() {
-    git rebase --interactive "$(_f-git-log)"
+    git rebase --interactive "$(f-git-select-commit)"
 }
 
 f-git-reset() {
-    git reset "$(_f-git-log)"
+    git reset "$(f-git-select-commit)"
 }
 
 f-git-reset-hard() {
-    git reset --hard "$(_f-git-log)"
+    git reset --hard "$(f-git-select-commit)"
 }
 
 f-git-revert() {
-    git revert --no-edit "$(_f-git-log)"
+    git revert --no-edit "$(f-git-select-commit)"
 }
 
 f-git-cherry-pick() {
-    git cherry-pick "$(f-git-branch)"
+    git cherry-pick "$(f-git-select-branch)"
 }
 
 f-git-log-branch() {
-    git log --stat --decorate "$(f-git-branch)"
+    _gl "$(f-git-select-branch)"
 }
 
 f-git-show() {
-    git show "$(_f-git-log)"
+    git show "$(f-git-select-commit)"
 }
 
 _f-hist() {
-    atuin history list | _fzf --no-sort --exact
+    atuin history list | fzf --no-sort --exact
 }
 
 f-hist-cp() {
@@ -124,14 +145,14 @@ f-hist-x() {
 }
 
 f-kill() {
-    kill "$@" "$(ps | _fzf | awk '{print $1}')"
+    kill "$@" "$(ps | fzf | awk '{print $1}')"
 }
 
 f-open() {
     local app
     app="$(command fd -d 1 '.+\.app' /Applications ~/Applications/Chrome\ Apps.localized/ |
         rg -r '$2$1' '^(.*/([^/]+)\.app)/?$' |
-        _fzf --with-nth 1 '-d' / |
+        fzf --with-nth 1 '-d' / |
         sed -E 's,[^/]+/,/,')"
     [ -n "$app" ] && DELTA_FEATURES="" open "$app"
 }
@@ -143,7 +164,7 @@ f-wormhole-open() {
     project="$(echo "$dirs" |
         rg -v '^/Users/dan/src/(temporalio|temporalio/projects)/$' |
         rg -r '$2$1' '^(.*/([^/]+))/?$' |
-        _fzf '--with-nth' 1 '-d' / |
+        fzf '--with-nth' 1 '-d' / |
         sed -E 's,[^/]+/,/,')"
     echo "$project"
     [ -n "$project" ] && wormhole-open "$project"
@@ -152,12 +173,12 @@ f-wormhole-open() {
 f-preview-jq() {
     # https://github.com/pawelduda/fzf-live-repl
     local file="$1"
-    echo | _fzf --print-query --preview "jq '{q}' < '$file'" --preview-window "top:95%"
+    echo | fzf --print-query --preview "jq '{q}' < '$file'" --preview-window "top:95%"
 }
 
 f-preview-regex-python() {
     local input="$1"
-    echo | _fzf --print-query --preview-window up --preview "python -c \"
+    echo | fzf --print-query --preview-window up --preview "python -c \"
 import re
 print('Input: $input\n')
 m = re.match({q}, '$input')
@@ -166,15 +187,10 @@ print(m.groups() if m else '<no match>')\""
 
 f-preview-regex-sed() {
     local input="$1"
-    echo | _fzf \
+    echo | fzf \
         --print-query \
         --preview-window up \
         --preview "printf \"$input\n\n\n─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n\n\n\"; echo \"$input\" | sed -E 's/\x1b\[[0-9;]*[mK]//g' | sed -E '{q}'"
-}
-
-fzf-set-environment-variables() {
-    export FZF_DEFAULT_COMMAND="fd --type file --color=always"
-    export FZF_DEFAULT_OPTS="--ansi --color light"
 }
 
 f-tmux() {
@@ -185,7 +201,7 @@ f-tmux() {
         next_window="$(
             tmux list-panes -a -F '#{session_name},#{window_index},#{pane_title}' |
                 xsv table |
-                _fzf --exact |
+                fzf --exact |
                 awk '{print $1":"$2}'
         )"
     fi
@@ -198,7 +214,7 @@ f-tmux-back() {
 }
 
 f-workspace() {
-    echo temporal nexus ai | tr ' ' '\n' | _fzf > /tmp/ws
+    echo temporal nexus ai | tr ' ' '\n' | fzf > /tmp/ws
 }
 
 f-visible-word() {
@@ -209,7 +225,7 @@ f-word-from-stdin() {
     rg -o '[[:alnum:]_.,/~@#+=:-]{4,}' |
     rg '[[:alpha:]]' |
     LC_ALL=C sort -u |
-    _fzf
+    fzf
 }
 
 f-git-stash-list() {
@@ -230,7 +246,7 @@ f-git-stash-list() {
             gsub(/[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}[ ]?/, "", desc)
             printf "%s|%s: %s\n", idx, time, desc
         }' |
-        _fzf --with-nth 2.. --delimiter '|' |           # Display only the formatted part
+        fzf --with-nth 2.. --delimiter '|' |           # Display only the formatted part
         cut -d'|' -f1                                   # Extract the index
     )"
     [ -n "$selected" ] && echo -n "stash@{$selected}"
