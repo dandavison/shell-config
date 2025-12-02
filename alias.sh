@@ -14,6 +14,7 @@ alias -g snap='$(git-snapshot)'
 alias -g w='"$(f-visible-word)"'
 alias _gl='git log --date relative --color=always --format="%n%n▸ %h %C(blue)%an %C(blue)%ar%C(auto)%d%C(reset)%n%n    %C(green)%s%C(auto)"'
 alias ..='cd ..'
+alias ai='cursor agent --print'
 alias ansifilter="perl -pe 's/\e\[[0-9;]*[mK]//g'"
 alias b='git branch-by-date | rg -v "^z-" | head'
 alias bat='bat --style header,grid --theme GitHub'
