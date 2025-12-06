@@ -38,13 +38,13 @@ tsource path-macos.sh
 tsource completion.sh
 tsource zsh/prompt.zsh
 tsource zsh/bindings.zsh
-tsource alias.sh
 source zsh/syntax-highlighting.zsh # tsource breaks syntax highlighting; don't know why
 tsource secret.sh
 tsource ~/src/wormhole/cli/lib.sh
 tsource /tmp/wormhole.env
 tsource zsh/atuin.zsh
 tsource ../temporal/temporal.sh
+tsource alias.sh
 
 cd "$_cwd"
 unset _cwd

@@ -3,30 +3,6 @@ fzf-set-environment-variables() {
     export FZF_DEFAULT_OPTS="--exact --height 50% --ansi  --layout reverse --cycle --info hidden --prompt ' ' --border rounded --color light"
 }
 
-
-# alias c='f-git-select-commit'
-alias -g b='$(f-git-select-branch)'
-alias -g c='$(f-git-select-commit)'
-alias batz='bat $(fzf)'
-alias cargo-test-fzf='f-cargo-test'
-alias gcpz='f-git-cherry-pick'
-alias gcz='f-git-checkout-branch'
-alias gdmz='f-git-diff-main'
-alias gdz='f-git-diff'
-alias glz='f-git-log-branch'
-alias grhz='f-git-reset-hard'
-alias griz='f-git-rebase-interactive'
-alias grsz='f-git-reset'
-alias grvz='f-git-revert'
-alias grz='f-git-rebase'
-alias gstaz='git stash apply $(f-git-stash-list)'
-alias gstz='f-git-stash'
-alias gsz='f-git-show'
-alias hz='f-hist-cp'
-alias hzx='f-hist-x'
-alias -g w='"$(f-visible-word)"'
-
-
 f-git-show-file() {
     local commit file
     commit=$(
