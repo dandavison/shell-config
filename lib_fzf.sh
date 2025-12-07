@@ -104,9 +104,6 @@ f-git-log-branch() {
     _gl "$(f-git-select-branch)"
 }
 
-f-git-show() {
-    git show "$(f-git-select-commit)"
-}
 
 _f-hist() {
     atuin history list | fzf --no-sort --exact

@@ -105,6 +105,19 @@ git-show-merge() {
     )
 }
 
+git-graph-merge() {
+    local merge_commit=$1
+    git log --oneline --graph \
+        $(git merge-base $merge_commit^1 $merge_commit^2)..$merge_commit
+}
+
+git-resolve-generated() {
+  git diff --name-only --diff-filter=U | \
+    rg '\.(pb|pb\.mock)\.go$|_(gen|mock)\.go$' | \
+    xargs -I{} sh -c 'git checkout --theirs "{}" && git add "{}"'
+  echo "Remaining conflicts:"; git diff --name-only --diff-filter=U
+}
+
 git-unified-diff() {
     local commit="$1"
     local file="$2"
