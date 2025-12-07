@@ -2,7 +2,8 @@
 # fzf
 # alias c='f-git-select-commit'
 alias -g b='$(f-git-select-branch)'
-alias -g c='$(f-git-select-commit)'
+alias -g bc='$(f-git-select-commit)'
+alias -g cf='$(f-git-select-file)'
 alias -g f='$(fzf)'
 alias bb='gc b'
 alias batz='bat $(fzf)'

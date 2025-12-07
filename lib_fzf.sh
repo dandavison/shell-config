@@ -60,6 +60,13 @@ f-git-select-commit() {
     git log --color=always --oneline --decorate "${opts[@]}" "$@" | fzf --sync | awk '{print $1}'
 }
 
+# commit -> file
+f-git-select-file() {
+    local commit="${1:-HEAD}"
+    [[ ! -t 0 ]] && read commit
+    git ls-tree -r --name-only "$commit" | fzf --sync
+}
+
 f-git-checkout-branch() {
     git checkout --quiet "$(f-git-select-branch)"
 }
