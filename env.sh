@@ -1,6 +1,7 @@
 # zsh
 export DAN_NO_PREEXEC=1
-export WORDCHARS="${WORDCHARS}/"
+# Line-editor operations stop on / in addition to word characters
+export WORDCHARS="${WORDCHARS/\//}"
 
 export ALTERNATE_EDITOR='emacs -nw -q'
 export GIT_SEQUENCE_EDITOR='emacsclient'
