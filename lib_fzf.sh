@@ -49,7 +49,7 @@ f-emacs() {
 
 # () -> branch
 f-git-select-branch() {
-    git-branch-by-date | rg -v '^z-' | fzf | awk '{print $1}'
+    git-branch-by-date | rg -v '^z-' | fzf --sync  | awk '{print $1}'
 }
 
 # branch -> commit
@@ -64,7 +64,7 @@ f-git-select-commit() {
 f-git-select-file() {
     local commit="${1:-HEAD}"
     [[ ! -t 0 ]] && read commit
-    git ls-tree -r --name-only "$commit" | fzf --sync
+    git show --name-only --pretty=format: "$commit" | fzf --sync
 }
 
 f-git-checkout-branch() {

@@ -88,6 +88,14 @@ cat-which() {
     bat --style header,grid $(which "$1")
 }
 
+cp() {
+    if [[ ! -t 0 ]]; then
+        pbcopy
+    else
+        command cp "$@"
+    fi
+}
+
 cc() {
     echo "$@" | claude --print --allowedTools=Bash
 }
@@ -330,7 +338,7 @@ function whichf() {
 }
 
 dump-files() {
-    (fd -t f '\.py$' . | while read f; do bat --decorations always --paging=never "$f"; done) 
+    (fd -t f '\.py$' . | while read f; do bat --decorations always --paging=never "$f"; done)
 }
 
 phonelink() {
