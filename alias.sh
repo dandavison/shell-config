@@ -34,9 +34,10 @@ alias -g H2='HEAD~2'
 alias -g H3='HEAD~3'
 alias -g H4='HEAD~4'
 alias -g pytest-verbose='-xvs --tb=short -o log_cli=true -o log_cli_level=DEBUG'
-alias -g ggo="':(exclude)*pb.go' ':(exclude)*gen.go' ':(exclude)*mock.go' ':(exclude)*test*' ':(exclude)*.md'"
-alias -g ggot="':(exclude)*pb.go' ':(exclude)*gen.go' ':(exclude)*mock.go'"
+alias -g ggo="':(exclude)*pb.go' ':(exclude)*gen.go' ':(exclude)*mock.go' ':(exclude)*.md'"
+alias -g ggot="':(exclude)*pb.go' ':(exclude)*gen.go' ':(exclude)*mock.go' ':(exclude)*test*'"
 alias -g rgo="-g '*.go' -g '\!*pb.go' -g '\!*test.go' -g '\!*mock.go'"
+alias -g gpy="':(exclude)*_pb2_*' ':(exclude)*_pb2.*' ':(exclude)*_generated*'"
 alias -g snap='$(git-snapshot)'
 alias _gl='git log --date relative --color=always --format="%n%n▸ %h %C(blue)%an %C(blue)%ar%C(auto)%d%C(reset)%n%n    %C(green)%s%C(auto)"'
 alias ..='cd ..'
@@ -59,9 +60,7 @@ alias delta-dev='ln -fs ~/src/delta/target/release/delta ~/bin/delta && delta --
 alias delta-rel='ln -fs /opt/homebrew/bin/delta ~/bin/delta; delta --version'
 alias di='docker images'
 alias dl='delta-toggle line-numbers'
-alias docker-clean='docker-rm-all && docker-prune'
-alias docker-prune='docker rmi $(docker images -f "dangling=true" -q)'
-alias docker-rm-all='docker rm -f $(docker ps -a -q)'
+alias docker-prune-all='docker system prune -a --volumes'
 alias ds='delta-toggle side-by-side'
 alias ec="emacsclient -n"
 alias ee="emacs -nw -q"
@@ -224,6 +223,7 @@ alias m='cd $(git rev-parse --show-toplevel) && make'
 alias make-explain="make -rnd | perl -p -e 's,(^ +),\1\1\1\1,'"
 alias mathematica='open -a /Applications/Mathematica.app'
 alias mk='mkdir -p'
+alias mp='make proto'
 alias mt='cd $(git rev-parse --show-toplevel) && make test'
 alias mv-desktop-last='mv ~/Desktop/"$(ls -t ~/Desktop/| head -n1)"'
 alias newlines="sed 's,\\\\n,\\n,g'"
@@ -284,7 +284,7 @@ alias vd='vscode-debug'
 alias vs='vscode-summary'
 alias vscode-list-contexts='(cd ~/tmp/3p/vscode && rg --color=always RawContextKey)'
 alias wf='which-follow'
-alias wl='wormhole-list'
+alias wl='wormhole list'
 alias ws='f-word-from-stdin'
 alias xhyve-nsenter='docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i'
 alias zsh-help='run-help'

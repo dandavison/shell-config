@@ -7,6 +7,7 @@ export ALTERNATE_EDITOR='emacs -nw -q'
 export GIT_SEQUENCE_EDITOR='emacsclient'
 export OPEN_IN_EDITOR=~/bin/code
 export RGI_EDITOR=wormhole
+export RIPGREP_CONFIG_PATH=~/src/devenv/dotfiles/rg/go--real-code.config
 export PS_LINK_FORMAT=wormhole
 export HOMEBREW_NO_AUTO_UPDATE=1
 export LESS='-FIRX'

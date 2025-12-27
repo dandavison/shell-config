@@ -1,6 +1,16 @@
 fzf-set-environment-variables() {
     export FZF_DEFAULT_COMMAND="fd --type file --color=always"
-    export FZF_DEFAULT_OPTS="--exact --height 50% --ansi  --layout reverse --cycle --info hidden --prompt ' ' --border rounded --color light"
+    export FZF_DEFAULT_OPTS="\
+--ansi
+--border rounded
+--color light
+--cycle
+--exact
+--height 50%
+--info hidden
+--layout reverse
+--prompt ' '
+"
 }
 
 f-git-show-file() {
@@ -125,7 +135,10 @@ f-hist-x() {
 }
 
 f-kill() {
-    kill "$@" "$(ps | fzf | awk '{print $1}')"
+    ps aux |
+        fzf --multi |
+        awk '{print $2}' |
+        xargs kill "$@"
 }
 
 f-open() {
@@ -139,8 +152,8 @@ f-open() {
 
 f-wormhole-open() {
     local project
-    local dirs="$(command fd -d 1 . ~/src ~/src/temporalio ~/src/temporalio/projects ~/src/temporal/repos ~/tmp/3p)"
-    dirs+="\n/Users/dan/src/temporal/repos/sdk-python/temporalio/bridge/sdk-core"
+    local dirs="$(command fd -d 1 . ~/src/temporal-all/repos ~/src ~/tmp/3p)"
+    dirs+="\n/Users/dan/src/temporal-all/repos/sdk-python/temporalio/bridge/sdk-core"
     project="$(echo "$dirs" |
         rg -v '^/Users/dan/src/(temporalio|temporalio/projects)/$' |
         rg -r '$2$1' '^(.*/([^/]+))/?$' |
