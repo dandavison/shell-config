@@ -150,19 +150,6 @@ f-open() {
     [ -n "$app" ] && DELTA_FEATURES="" open "$app"
 }
 
-f-wormhole-open() {
-    local project
-    local dirs="$(command fd -d 1 . ~/src/temporal-all/repos ~/src ~/tmp/3p)"
-    dirs+="\n/Users/dan/src/temporal-all/repos/sdk-python/temporalio/bridge/sdk-core"
-    project="$(echo "$dirs" |
-        rg -v '^/Users/dan/src/(temporalio|temporalio/projects)/$' |
-        rg -r '$2$1' '^(.*/([^/]+))/?$' |
-        fzf '--with-nth' 1 '-d' / |
-        sed -E 's,[^/]+/,/,')"
-    echo "$project"
-    [ -n "$project" ] && wormhole-open "$project"
-}
-
 f-preview-jq() {
     # https://github.com/pawelduda/fzf-live-repl
     local file="$1"
