@@ -160,7 +160,7 @@ f-wormhole-open() {
         fzf '--with-nth' 1 '-d' / |
         sed -E 's,[^/]+/,/,')"
     echo "$project"
-    [ -n "$project" ] && wormhole-open "$project"
+    [ -n "$project" ] && wormhole project "$project"
 }
 
 f-preview-jq() {
