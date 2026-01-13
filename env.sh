@@ -13,6 +13,7 @@ export PS_LINK_FORMAT=wormhole
 export HOMEBREW_NO_AUTO_UPDATE=1
 export LESS='-FIRX'
 export DELTA_PAGER='less -FR -j.3 -g'
+export LLM='claude --print'
 export HYPERLINKED_SCHEME=cursor
 export BAT_THEME=GitHub
 export GH_PAGER=delta
