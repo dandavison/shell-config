@@ -2,6 +2,7 @@ path=(
     ~/bin
     ~/.local/bin
     ~/src/devenv/temporal/tools
+    ~/src/devenv/temporal/tools/oss-cicd
     ~/src/devenv/tools/bash
     ~/src/devenv/emacs-config/bin
     ~/go/bin

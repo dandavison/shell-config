@@ -3,7 +3,7 @@
 # alias c='f-git-select-commit'
 alias -g b='$(f-git-select-branch)'
 alias -g bc='$(f-git-select-commit)'
-alias -g cf='$(f-git-select-file)'
+#alias -g cf='$(f-git-select-file)'
 alias -g f='$(fzf)'
 alias bb='gc b'
 alias batz='bat $(fzf)'
@@ -41,7 +41,6 @@ alias -g gpy="':(exclude)*_pb2_*' ':(exclude)*_pb2.*' ':(exclude)*_generated*'"
 alias -g snap='$(git-snapshot)'
 alias _gl='git log --date relative --color=always --format="%n%n▸ %h %C(blue)%an %C(blue)%ar%C(auto)%d%C(reset)%n%n    %C(green)%s%C(auto)"'
 alias ..='cd ..'
-alias ai='cursor agent --print'
 alias ansifilter="perl -pe 's/\e\[[0-9;]*[mK]//g'"
 alias bat='bat --style header,grid --theme GitHub'
 alias blank='for _ in `seq 1 128`; do echo; done && clear'
@@ -261,6 +260,7 @@ alias pytest='python -m pytest --no-header'
 alias python-pdb='python -m pdb -c continue'
 alias R='R --silent --no-restore --no-save --vanilla'
 alias r=rgi
+alias rf='readlink -f'
 alias rw='r $(f-visible-word)'
 alias rn='RIPGREP_CONFIG_PATH= rgi'
 alias rnw='rn $(f-visible-word)'
@@ -270,7 +270,6 @@ alias rgd=rg-delta
 alias rm-pyc="find . -type f -name '*.pyc' -delete"
 alias rm-tex='rm -v *.{aux,log,out,toc}'
 alias ssh='ssh -A'
-alias t='tree --gitignore --hyperlink'
 alias tda='temporal-delete-all'
 alias tls='tmux list-sessions -F "#S"'
 alias tmux-current-session='tmux display-message -p "#S"'

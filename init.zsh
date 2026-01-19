@@ -45,6 +45,7 @@ tsource /tmp/wormhole.env
 tsource zsh/atuin.zsh
 tsource ../temporal/temporal.sh
 tsource alias.sh
+tsource ~/.cloud-tools/ct_setup_shell.sh
 
 cd "$_cwd"
 unset _cwd
