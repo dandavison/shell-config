@@ -77,51 +77,6 @@ f-git-select-file() {
     git show --name-only --pretty=format: "$commit" | fzf --sync
 }
 
-f-git-checkout-branch() {
-    git checkout --quiet "$(f-git-select-branch)"
-}
-
-f-git-checkout-commit() {
-    git checkout --quiet "$(f-git-select-commit)"
-}
-
-f-git-diff() {
-    git diff "$(fzf)"
-}
-
-f-git-diff-main() {
-    git diff main "$(fzf)"
-}
-
-f-git-rebase() {
-    git rebase "$(f-git-select-branch)"
-}
-
-f-git-rebase-interactive() {
-    git rebase --interactive "$(f-git-select-commit)"
-}
-
-f-git-reset() {
-    git reset "$(f-git-select-commit)"
-}
-
-f-git-reset-hard() {
-    git reset --hard "$(f-git-select-commit)"
-}
-
-f-git-revert() {
-    git revert --no-edit "$(f-git-select-commit)"
-}
-
-f-git-cherry-pick() {
-    git cherry-pick "$(f-git-select-branch)"
-}
-
-f-git-log-branch() {
-    _gl "$(f-git-select-branch)"
-}
-
-
 _f-hist() {
     atuin history list | fzf --no-sort --exact
 }
