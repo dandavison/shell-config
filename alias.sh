@@ -24,10 +24,10 @@ alias hz='f-hist-cp'
 alias hzx='f-hist-x'
 alias -g W='"$(f-visible-word)"'
 alias -g P='$(wormhole completion --projects | fzf)'
+alias -g C='$(f-git-select-commit)'
+alias -g B='$(f-git-select-branch)'
 # ------------------------------------------------
 
-alias -g B='git symbolic-ref --short HEAD'
-alias -g C='$(f-git-select-commit)'
 alias -g H='HEAD'
 alias -g H0='HEAD'
 alias -g H1='HEAD~1'
