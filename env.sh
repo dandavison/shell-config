@@ -8,7 +8,10 @@ export GIT_SEQUENCE_EDITOR='emacsclient'
 export OPEN_IN_EDITOR=~/bin/code
 export RGI_EDITOR=wormhole
 export WORMHOLE_PATH=~/src/temporal-all/repos:~/src:~/src/devenv
-export RIPGREP_CONFIG_PATH=~/src/devenv/dotfiles/rg/go--real-code.config
+export WORMHOLE_DEFAULT_HOME_PROJECT=temporal
+if [[ -f "$WORMHOLE_PROJECT_DIR/go.mod" ]]; then
+  export RIPGREP_CONFIG_PATH=~/src/devenv/dotfiles/rg/go--real-code.config
+fi
 export PS_LINK_FORMAT=wormhole
 export HOMEBREW_NO_AUTO_UPDATE=1
 export LESS='-FIRX'
