@@ -8,7 +8,6 @@ export GIT_SEQUENCE_EDITOR='emacsclient'
 export OPEN_IN_EDITOR=~/bin/code
 export RGI_EDITOR=wormhole
 export WORMHOLE_PATH=~/src/temporal-all/repos:~/src:~/src/devenv
-export WORMHOLE_DEFAULT_HOME_PROJECT=temporal
 if [[ -f "$WORMHOLE_PROJECT_DIR/go.mod" ]]; then
   export RIPGREP_CONFIG_PATH=~/src/devenv/dotfiles/rg/go--real-code.config
 fi
@@ -52,4 +51,4 @@ export CPPFLAGS="-I$JAVA_HOME/include"
 
 export COMPOSE_MENU=0 # https://github.com/docker/for-mac/issues/7366
 
-export E=localhost:7233  # sdk-python pytest -E$E
+export E=localhost:7233 # sdk-python pytest -E$E

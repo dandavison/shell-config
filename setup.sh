@@ -1,1 +1,1 @@
-ln -s `readlink -f bash/bashrc.sh` ~/.bashrc
+ln -s $(readlink -f bash/bashrc.sh) ~/.bashrc

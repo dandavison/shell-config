@@ -1,4 +1,3 @@
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/dan/src-3p/google-cloud-sdk/path.bash.inc' ]; then . '/Users/dan/src-3p/google-cloud-sdk/path.bash.inc'; fi
 

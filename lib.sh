@@ -353,4 +353,3 @@ phonelink() {
     echo "Server: $url/$*"
     wait $server_pid $ngrok_pid
 }
-

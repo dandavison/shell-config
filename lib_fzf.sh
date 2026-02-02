@@ -59,7 +59,7 @@ f-emacs() {
 
 # () -> branch
 f-git-select-branch() {
-    git-branch-by-date | rg -v '^z-' | fzf --sync  | awk '{print $1}'
+    git-branch-by-date | rg -v '^z-' | fzf --sync | awk '{print $1}'
 }
 
 # branch -> commit
@@ -96,7 +96,7 @@ f-kill() {
         xargs kill "$@"
 }
 
-f-open() {
+f-open-app() {
     local app
     app="$(command fd -d 1 '.+\.app' /Applications ~/Applications/Chrome\ Apps.localized/ |
         rg -r '$2$1' '^(.*/([^/]+)\.app)/?$' |
@@ -149,7 +149,7 @@ f-tmux-back() {
 }
 
 f-workspace() {
-    echo temporal nexus ai | tr ' ' '\n' | fzf > /tmp/ws
+    echo temporal nexus ai | tr ' ' '\n' | fzf >/tmp/ws
 }
 
 f-visible-word() {
@@ -158,21 +158,21 @@ f-visible-word() {
 
 f-word-from-stdin() {
     rg -o '[[:alnum:]_.,/~@#+=:-]{4,}' |
-    rg '[[:alpha:]]' |
-    LC_ALL=C sort -u |
-    fzf
+        rg '[[:alpha:]]' |
+        LC_ALL=C sort -u |
+        fzf
 }
 
 f-git-stash-list() {
     local selected
     selected="$(
         git stash list --date=relative |
-        # Transform: stash@{TIME}: On branch: DATE message
-        # Into: INDEX|{TIME}: On branch: message
-        sed -E 's/^stash@//' |                          # Remove stash@ prefix
-        sed -E 's/^(\{[^}]+\}): /\1|/' |                # Replace first ": " with "|" to separate time
-        nl -v 0 -w 1 -s '|' |                           # Add line numbers
-        awk -F'|' '{
+            # Transform: stash@{TIME}: On branch: DATE message
+            # Into: INDEX|{TIME}: On branch: message
+            sed -E 's/^stash@//' |           # Remove stash@ prefix
+            sed -E 's/^(\{[^}]+\}): /\1|/' | # Replace first ": " with "|" to separate time
+            nl -v 0 -w 1 -s '|' |            # Add line numbers
+            awk -F'|' '{
             # $1 = line number, $2 = {TIME}, $3 = description with date
             idx = $1
             time = $2
@@ -181,8 +181,8 @@ f-git-stash-list() {
             gsub(/[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}[ ]?/, "", desc)
             printf "%s|%s: %s\n", idx, time, desc
         }' |
-        fzf --with-nth 2.. --delimiter '|' |           # Display only the formatted part
-        cut -d'|' -f1                                   # Extract the index
+            fzf --with-nth 2.. --delimiter '|' | # Display only the formatted part
+            cut -d'|' -f1                        # Extract the index
     )"
     [ -n "$selected" ] && echo -n "stash@{$selected}"
 }

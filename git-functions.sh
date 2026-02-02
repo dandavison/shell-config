@@ -2,8 +2,7 @@
 
 # __gitdir accepts 0 or 1 arguments (i.e., location)
 # returns location of .git repo
-__gitdir ()
-{
+__gitdir() {
 	if [ -z "${1-}" ]; then
 		if [ -n "${__git_dir-}" ]; then
 			echo "$__git_dir"
@@ -21,8 +20,7 @@ __gitdir ()
 
 # stores the divergence from upstream in $p
 # used by GIT_PS1_SHOWUPSTREAM
-__git_ps1_show_upstream ()
-{
+__git_ps1_show_upstream() {
 	local key value
 	local svn_remote=() svn_url_pattern count n
 	local upstream=git legacy="" verbose=""
@@ -38,7 +36,7 @@ __git_ps1_show_upstream ()
 			fi
 			;;
 		svn-remote.*.url)
-			svn_remote[ $((${#svn_remote[@]} + 1)) ]="$value"
+			svn_remote[$((${#svn_remote[@]} + 1))]="$value"
 			svn_url_pattern+="\\|$value"
 			upstream=svn+git # default upstream is SVN if available, else git
 			;;
@@ -48,25 +46,25 @@ __git_ps1_show_upstream ()
 	# parse configuration values
 	for option in ${GIT_PS1_SHOWUPSTREAM}; do
 		case "$option" in
-		git|svn) upstream="$option" ;;
+		git | svn) upstream="$option" ;;
 		verbose) verbose=1 ;;
-		legacy)  legacy=1  ;;
+		legacy) legacy=1 ;;
 		esac
 	done
 
 	# Find our upstream
 	case "$upstream" in
-	git)    upstream="@{upstream}" ;;
+	git) upstream="@{upstream}" ;;
 	svn*)
 		# get the upstream from the "git-svn-id: ..." in a commit message
 		# (git-svn uses essentially the same procedure internally)
 		local svn_upstream=($(git log --first-parent -1 \
-					--grep="^git-svn-id: \(${svn_url_pattern#??}\)" 2>/dev/null))
+			--grep="^git-svn-id: \(${svn_url_pattern#??}\)" 2>/dev/null))
 		if [[ 0 -ne ${#svn_upstream[@]} ]]; then
-			svn_upstream=${svn_upstream[ ${#svn_upstream[@]} - 2 ]}
+			svn_upstream=${svn_upstream[${#svn_upstream[@]} - 2]}
 			svn_upstream=${svn_upstream%@*}
 			local n_stop="${#svn_remote[@]}"
-			for ((n=1; n <= n_stop; ++n)); do
+			for ((n = 1; n <= n_stop; ++n)); do
 				svn_upstream=${svn_upstream#${svn_remote[$n]}}
 			done
 
@@ -85,19 +83,19 @@ __git_ps1_show_upstream ()
 	# Find how many commits we are ahead/behind our upstream
 	if [[ -z "$legacy" ]]; then
 		count="$(git rev-list --count --left-right \
-				"$upstream"...HEAD 2>/dev/null)"
+			"$upstream"...HEAD 2>/dev/null)"
 	else
 		# produce equivalent output to --count for older versions of git
 		local commits
-		if commits="$(git rev-list --left-right "$upstream"...HEAD 2>/dev/null)"
-		then
+		if commits="$(git rev-list --left-right "$upstream"...HEAD 2>/dev/null)"; then
 			local commit behind=0 ahead=0
-			for commit in $commits
-			do
+			for commit in $commits; do
 				case "$commit" in
-				"<"*) let ++behind
+				"<"*)
+					let ++behind
 					;;
-				*)    let ++ahead
+				*)
+					let ++ahead
 					;;
 				esac
 			done
@@ -118,7 +116,7 @@ __git_ps1_show_upstream ()
 			p=">" ;;
 		*"	0") # behind upstream
 			p="<" ;;
-		*)	    # diverged from upstream
+		*) # diverged from upstream
 			p="<>" ;;
 		esac
 	else
@@ -131,18 +129,16 @@ __git_ps1_show_upstream ()
 			p=" u+${count#0	}" ;;
 		*"	0") # behind upstream
 			p=" u-${count%	0}" ;;
-		*)	    # diverged from upstream
+		*) # diverged from upstream
 			p=" u+${count#*	}-${count%	*}" ;;
 		esac
 	fi
 
 }
 
-
 # __git_ps1 accepts 0 or 1 arguments (i.e., format string)
 # returns text to add to bash PS1 prompt (includes branch name)
-__git_ps1 ()
-{
+__git_ps1() {
 	local g="$(__gitdir)"
 	if [ -n "$g" ]; then
 		local r=""
@@ -173,19 +169,23 @@ __git_ps1 ()
 			b="$(git symbolic-ref HEAD 2>/dev/null)" || {
 
 				b="$(
-				case "${GIT_PS1_DESCRIBE_STYLE-}" in
-				(contains)
-					git describe --contains HEAD ;;
-				(branch)
-					git describe --contains --all HEAD ;;
-				(describe)
-					git describe HEAD ;;
-				(* | default)
-					git describe --tags --exact-match HEAD ;;
-				esac 2>/dev/null)" ||
-
-				b="$(cut -c1-7 "$g/HEAD" 2>/dev/null)..." ||
-				b="unknown"
+					case "${GIT_PS1_DESCRIBE_STYLE-}" in
+					contains)
+						git describe --contains HEAD
+						;;
+					branch)
+						git describe --contains --all HEAD
+						;;
+					describe)
+						git describe HEAD
+						;;
+					* | default)
+						git describe --tags --exact-match HEAD
+						;;
+					esac 2>/dev/null
+				)" ||
+					b="$(cut -c1-7 "$g/HEAD" 2>/dev/null)..." ||
+					b="unknown"
 				b="($b)"
 			}
 		fi
@@ -215,13 +215,13 @@ __git_ps1 ()
 				fi
 			fi
 			if [ -n "${GIT_PS1_SHOWSTASHSTATE-}" ]; then
-			        git rev-parse --verify refs/stash >/dev/null 2>&1 && s="$"
+				git rev-parse --verify refs/stash >/dev/null 2>&1 && s="$"
 			fi
 
 			if [ -n "${GIT_PS1_SHOWUNTRACKEDFILES-}" ]; then
-			   if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-			      u="%"
-			   fi
+				if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+					u="%"
+				fi
 			fi
 
 			if [ -n "${GIT_PS1_SHOWUPSTREAM-}" ]; then

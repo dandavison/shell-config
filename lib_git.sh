@@ -112,10 +112,11 @@ git-graph-merge() {
 }
 
 git-resolve-generated() {
-  git diff --name-only --diff-filter=U | \
-    rg '\.(pb|pb\.mock)\.go$|_(gen|mock)\.go$' | \
-    xargs -I{} sh -c 'git checkout --theirs "{}" && git add "{}"'
-  echo "Remaining conflicts:"; git diff --name-only --diff-filter=U
+    git diff --name-only --diff-filter=U |
+        rg '\.(pb|pb\.mock)\.go$|_(gen|mock)\.go$' |
+        xargs -I{} sh -c 'git checkout --theirs "{}" && git add "{}"'
+    echo "Remaining conflicts:"
+    git diff --name-only --diff-filter=U
 }
 
 git-unified-diff() {
