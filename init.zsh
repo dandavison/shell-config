@@ -38,11 +38,9 @@ tsource path-macos.sh
 tsource completion.sh
 tsource zsh/prompt.zsh
 tsource zsh/bindings.zsh
+tsource ~/src/wormhole/shell/lib.sh
 source zsh/syntax-highlighting.zsh # tsource breaks syntax highlighting; don't know why
 tsource secret.sh
-tsource ~/src/wormhole/shell/lib.sh
-tsource ~/src/wormhole/shell/zsh/prompt.sh
-tsource /tmp/wormhole.env
 tsource zsh/atuin.zsh
 tsource ../temporal/temporal.sh
 tsource alias.sh
@@ -52,3 +50,4 @@ cd "$_cwd"
 unset _cwd
 
 tsource ~/src/devenv/shell-config/xolmis.sh
+tsource ~/src/wormhole/shell/zsh/prompt.sh

@@ -7,7 +7,7 @@ export ALTERNATE_EDITOR='emacs -nw -q'
 export GIT_SEQUENCE_EDITOR='emacsclient'
 export OPEN_IN_EDITOR=~/bin/code
 export RGI_EDITOR=wormhole
-export WORMHOLE_PATH=~/src/temporal-all/repos:~/src:~/src/devenv
+export WORMHOLE_SEARCH_PATHS=~/src/temporal-all/repos:~/src:~/src/devenv
 if [[ -f "$WORMHOLE_PROJECT_DIR/go.mod" ]]; then
   export RIPGREP_CONFIG_PATH=~/src/devenv/dotfiles/rg/go--real-code.config
 fi
