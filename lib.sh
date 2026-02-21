@@ -67,6 +67,10 @@ which-follow() {
     fi
 }
 
+which-cat() {
+    cat $(which "$@")
+}
+
 bat-files() {
     local f
     while read f; do bat --decorations always --paging=never $f; done | less -R
@@ -89,7 +93,7 @@ cat-which() {
 }
 
 cp() {
-    if [[ ! -t 0 ]]; then
+    if [[ ! -t 0 && $# -eq 0 ]]; then
         pbcopy
     else
         command cp "$@"

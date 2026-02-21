@@ -44,10 +44,10 @@ tsource secret.sh
 tsource zsh/atuin.zsh
 tsource ../temporal/temporal.sh
 tsource alias.sh
-tsource ~/.cloud-tools/ct_setup_shell.sh
 
 cd "$_cwd"
 unset _cwd
 
+tsource ~/.cloud-tools/ct_setup_shell.sh
 tsource ~/src/devenv/shell-config/xolmis.sh
 tsource ~/src/wormhole/shell/zsh/prompt.sh
