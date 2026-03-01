@@ -267,6 +267,7 @@ alias rgd=rg-delta
 alias rm-pyc="find . -type f -name '*.pyc' -delete"
 alias rm-tex='rm -v *.{aux,log,out,toc}'
 alias ssh='ssh -A'
+alias tags='git fetch --tags && git tag | sort -V | rg -v "^v\."'
 alias tda='temporal-delete-all'
 alias tls='tmux list-sessions -F "#S"'
 alias tmux-current-session='tmux display-message -p "#S"'
