@@ -3,10 +3,11 @@ export DAN_NO_PREEXEC=1
 # Line-editor operations stop on / in addition to word characters
 export WORDCHARS="${WORDCHARS/\//}"
 
-export ALTERNATE_EDITOR='emacs -nw -q'
-export GIT_SEQUENCE_EDITOR='emacsclient'
+export EDITOR='code --wait'
+export GIT_EDITOR='code --wait'
 export OPEN_IN_EDITOR=~/bin/code
 export RGI_EDITOR=wormhole
+
 export WORMHOLE_SEARCH_PATHS=~/src/temporal-all/repos:~/src:~/src/devenv
 if [[ -f "$WORMHOLE_PROJECT_DIR/go.mod" ]]; then
   export RIPGREP_CONFIG_PATH=~/src/devenv/dotfiles/rg/go--real-code.config
@@ -22,7 +23,6 @@ export GH_PAGER=delta
 export GLAMOUR_STYLE=light
 export FILTER_BRANCH_SQUELCH_WARNING=1
 export PIP_INDEX_URL=
-export PSQL_EDITOR="emacsclient --eval \"(setq-default major-mode 'sql-mode)\"; emacsclient"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export LS_COLORS="$(/opt/homebrew/bin/vivid generate one-light)"
 

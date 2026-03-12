@@ -62,14 +62,8 @@ alias di='docker images'
 alias dl='delta-toggle line-numbers'
 alias docker-prune-all='docker system prune -a --volumes'
 alias ds='delta-toggle side-by-side'
-alias ec="emacsclient -n"
 alias ee="emacs -nw -q"
-alias ef='emacs-find-file'
-alias e='emacs-magit-status'
-alias egd='emacs-magit-diff'
-alias egr='emacs-grep'
-alias egs='emacs-magit-show'
-alias emacs-app='open -n /Applications/Emacs.app/'
+alias e='open "cursor://kahole.magit/command?id=magit.status"'
 alias emacs-byte-compile="emacs --batch --eval '(package-initialize)' -f batch-byte-compile"
 alias es='emacs-grep'
 alias fdl="fd --color=always --strip-cwd-prefix=always -d1 -l | tr -s ' ' | cut -d' ' -f9-"
