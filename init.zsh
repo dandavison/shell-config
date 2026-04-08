@@ -23,6 +23,7 @@ function tsource {
 
 setopt interactivecomments
 setopt rmstarsilent
+setopt shwordsplit
 setopt AUTO_CD
 autoload -U colors && colors
 
