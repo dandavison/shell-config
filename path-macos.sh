@@ -12,6 +12,8 @@ path=(
     /opt/homebrew/sbin
     /opt/homebrew/bin
     $JAVA_HOME/bin
+    /opt/homebrew/opt/dotnet@8/bin
+    /opt/homebrew/opt/ruby/bin
     /Library/TeX/texbin
     /usr/local/bin
     /usr/bin
