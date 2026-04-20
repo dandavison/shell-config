@@ -20,11 +20,19 @@ function my-history-prefix-search() {
         return
     fi
     local db=${MY_HISTORY_DB_PATH:-$HOME/.local/share/atuin/history.db}
-    local filter=""
+    local -a where_clauses
     if [[ -n $MY_HISTORY_SEARCH_PREFIX ]]; then
         local escaped=${MY_HISTORY_SEARCH_PREFIX//\'/\'\'}
-        filter="WHERE instr(command, '$escaped') = 1"
+        where_clauses+=("instr(command, '$escaped') = 1")
     fi
+    if [[ -n ${DAN_HISTORY_SEARCH_PIN_DIRECTORY:-} ]]; then
+        local pwd_sql=${PWD//\'/\'\'}
+        local pwd_len=${#PWD}
+        where_clauses+=("substr(cwd, 1, $pwd_len) = '$pwd_sql'")
+        where_clauses+=("(length(cwd) = $pwd_len OR substr(cwd, $pwd_len+1, 1) = '/')")
+    fi
+    local filter=""
+    (( ${#where_clauses[@]} > 0 )) && filter="WHERE ${(j: AND :)where_clauses}"
     local result
     result=$(sqlite3 "$db" \
         "SELECT command FROM history $filter GROUP BY command ORDER BY MAX(timestamp) DESC LIMIT 1 OFFSET $offset;")
