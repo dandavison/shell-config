@@ -30,7 +30,7 @@ tsource lib.sh
 tsource lib_fzf.sh
 tsource lib_git.sh
 tsource zsh/lib.zsh
-tsource zsh/history.zsh
+tsource zsh/atuin-history/history.zsh
 tsource ./3p/git-prompt.sh
 tsource zsh/env.zsh
 tsource env.sh
@@ -41,7 +41,7 @@ tsource zsh/bindings.zsh
 tsource ~/src/wormhole/shell/lib.sh
 source zsh/syntax-highlighting.zsh # tsource breaks syntax highlighting; don't know why
 tsource secret.sh
-tsource zsh/atuin.zsh
+tsource zsh/atuin-history/atuin.zsh
 tsource ../temporal/temporal.sh
 tsource alias.sh
 
