@@ -128,6 +128,34 @@ test_prefix_locked_on_first_press() {
     teardown_atuin_isolated
 }
 
+test_down_past_newest_restores_typed_text() {
+    print "test_down_past_newest_restores_typed_text"
+    setup_atuin_isolated
+    seed_history "git log" "git status" "git commit"
+    reset_widget_state
+    LBUFFER="git "
+    BUFFER="git "
+    my-history-prefix-search-backward-widget
+    assert_eq "UP reaches newest match" "git commit" "$BUFFER"
+    mark_lastwidget_backward
+    my-history-prefix-search-forward-widget
+    assert_eq "DOWN past newest restores originally-typed text" "git " "$BUFFER"
+    assert_eq "offset reset to -1 sentinel" "-1" "$MY_HISTORY_SEARCH_OFFSET"
+    teardown_atuin_isolated
+}
+
+test_prefix_starting_with_dash_is_literal() {
+    print "test_prefix_starting_with_dash_is_literal"
+    setup_atuin_isolated
+    seed_history "ls" "--help me" "pwd"
+    reset_widget_state
+    LBUFFER="--"
+    BUFFER="--"
+    my-history-prefix-search-backward-widget
+    assert_eq "UP with '--' prefix matches literal, not flag" "--help me" "$BUFFER"
+    teardown_atuin_isolated
+}
+
 main() {
     test_up_empty_prefix_returns_most_recent
     test_up_twice_walks_backward_in_time
@@ -138,6 +166,8 @@ main() {
     test_prefix_not_substring
     test_no_matches_leaves_buffer_unchanged
     test_prefix_locked_on_first_press
+    test_down_past_newest_restores_typed_text
+    test_prefix_starting_with_dash_is_literal
     report_and_exit
 }
 main
