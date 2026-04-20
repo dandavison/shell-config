@@ -1,23 +1,30 @@
 typeset -g MY_HISTORY_SEARCH_OFFSET=0
 typeset -g MY_HISTORY_SEARCH_PREFIX=""
+typeset -g MY_HISTORY_SEARCH_ORIGINAL=""
 
 function my-history-prefix-search() {
     if [[ $LASTWIDGET != my-history-prefix-search-* ]]; then
         # start state machine
         MY_HISTORY_SEARCH_OFFSET=-1
         MY_HISTORY_SEARCH_PREFIX="$LBUFFER"
+        MY_HISTORY_SEARCH_ORIGINAL="$BUFFER"
     fi
     local offset_delta=$1
     local offset=$((MY_HISTORY_SEARCH_OFFSET + $offset_delta))
 
-    (($offset < 0)) && return
+    if (($offset < 0)); then
+        BUFFER="$MY_HISTORY_SEARCH_ORIGINAL"
+        CURSOR="${#MY_HISTORY_SEARCH_PREFIX}"
+        MY_HISTORY_SEARCH_OFFSET=-1
+        return
+    fi
     local result="$(
         atuin search \
             --search-mode prefix \
             --limit 1 \
             --offset $offset \
             --format '{command}' \
-            "$MY_HISTORY_SEARCH_PREFIX"
+            -- "$MY_HISTORY_SEARCH_PREFIX"
     )"
     if [[ -n "$result" ]]; then
         BUFFER="$result"
