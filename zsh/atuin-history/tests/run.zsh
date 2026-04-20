@@ -242,6 +242,32 @@ test_pin_directory_combined_with_prefix() {
     teardown_atuin_isolated
 }
 
+test_cache_refill_walks_past_batch_boundary() {
+    print "test_cache_refill_walks_past_batch_boundary"
+    setup_atuin_isolated
+    seed_history "c1" "c2" "c3" "c4" "c5" "c6" "c7"
+    reset_widget_state
+    local saved_batch=$MY_HISTORY_SEARCH_CACHE_BATCH
+    MY_HISTORY_SEARCH_CACHE_BATCH=3
+    my-history-prefix-search-backward-widget
+    assert_eq "UP 1" "c7" "$BUFFER"
+    mark_lastwidget_backward
+    my-history-prefix-search-backward-widget
+    my-history-prefix-search-backward-widget
+    assert_eq "UP 3 (at batch edge)" "c5" "$BUFFER"
+    assert_eq "cache has first batch only" "3" "${#MY_HISTORY_SEARCH_CACHE}"
+    my-history-prefix-search-backward-widget
+    assert_eq "UP 4 (triggers refill)" "c4" "$BUFFER"
+    assert_eq "cache grew after refill" "6" "${#MY_HISTORY_SEARCH_CACHE}"
+    my-history-prefix-search-backward-widget
+    my-history-prefix-search-backward-widget
+    my-history-prefix-search-backward-widget
+    assert_eq "UP 7 (past last match, stays)" "c1" "$BUFFER"
+    assert_eq "cache exhausted flag set" "1" "$MY_HISTORY_SEARCH_CACHE_EXHAUSTED"
+    MY_HISTORY_SEARCH_CACHE_BATCH=$saved_batch
+    teardown_atuin_isolated
+}
+
 main() {
     test_up_empty_prefix_returns_most_recent
     test_up_twice_walks_backward_in_time
@@ -259,6 +285,7 @@ main() {
     test_pin_directory_scopes_to_descendants
     test_pin_directory_unset_ignores_cwd
     test_pin_directory_combined_with_prefix
+    test_cache_refill_walks_past_batch_boundary
     report_and_exit
 }
 main
