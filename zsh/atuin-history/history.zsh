@@ -10,7 +10,11 @@ function _my-history-build-filter() {
     local -a where_clauses
     if [[ -n $MY_HISTORY_SEARCH_PREFIX ]]; then
         local escaped=${MY_HISTORY_SEARCH_PREFIX//\'/\'\'}
-        where_clauses+=("instr(command, '$escaped') = 1")
+        if [[ $MY_HISTORY_SEARCH_PREFIX == *[*?]* ]]; then
+            where_clauses+=("command GLOB '$escaped'")
+        else
+            where_clauses+=("instr(command, '$escaped') = 1")
+        fi
     fi
     if [[ -n ${DAN_HISTORY_SEARCH_PIN_DIRECTORY:-} ]]; then
         local pwd_sql=${PWD//\'/\'\'}

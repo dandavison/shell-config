@@ -242,6 +242,75 @@ test_pin_directory_combined_with_prefix() {
     teardown_atuin_isolated
 }
 
+test_glob_substring_match() {
+    print "test_glob_substring_match"
+    setup_atuin_isolated
+    seed_history "ls" "git status" "make build" "curl --force foo" "pwd"
+    reset_widget_state
+    LBUFFER="*force*"
+    BUFFER="*force*"
+    my-history-prefix-search-backward-widget
+    assert_eq "substring glob matches middle of command" "curl --force foo" "$BUFFER"
+    teardown_atuin_isolated
+}
+
+test_glob_suffix_match() {
+    print "test_glob_suffix_match"
+    setup_atuin_isolated
+    seed_history "cat foo.py" "ls bar.rs" "cat baz.rs" "pwd"
+    reset_widget_state
+    LBUFFER="*.rs"
+    BUFFER="*.rs"
+    my-history-prefix-search-backward-widget
+    assert_eq "suffix glob matches newest .rs command" "cat baz.rs" "$BUFFER"
+    mark_lastwidget_backward
+    my-history-prefix-search-backward-widget
+    assert_eq "walks to next .rs command" "ls bar.rs" "$BUFFER"
+    teardown_atuin_isolated
+}
+
+test_glob_middle_wildcard() {
+    print "test_glob_middle_wildcard"
+    setup_atuin_isolated
+    seed_history "git status" "git push origin main" "git push -u origin feat" "ls"
+    reset_widget_state
+    LBUFFER="git*push*"
+    BUFFER="git*push*"
+    my-history-prefix-search-backward-widget
+    assert_eq "middle wildcard matches newest git...push" "git push -u origin feat" "$BUFFER"
+    teardown_atuin_isolated
+}
+
+test_glob_question_mark_single_char() {
+    print "test_glob_question_mark_single_char"
+    setup_atuin_isolated
+    seed_history "ls" "cd" "pwd" "rm" "cat"
+    reset_widget_state
+    LBUFFER="??"
+    BUFFER="??"
+    my-history-prefix-search-backward-widget
+    assert_eq "?? matches a 2-char command" "rm" "$BUFFER"
+    mark_lastwidget_backward
+    my-history-prefix-search-backward-widget
+    assert_eq "walks to next 2-char command" "cd" "$BUFFER"
+    mark_lastwidget_backward
+    my-history-prefix-search-backward-widget
+    assert_eq "walks to next 2-char command" "ls" "$BUFFER"
+    teardown_atuin_isolated
+}
+
+test_glob_auto_detect_no_wildcards_is_still_prefix() {
+    print "test_glob_auto_detect_no_wildcards_is_still_prefix"
+    setup_atuin_isolated
+    seed_history "ls foo" "git log" "cat foo git" "git status"
+    reset_widget_state
+    LBUFFER="git "
+    BUFFER="git "
+    my-history-prefix-search-backward-widget
+    assert_eq "no wildcards: prefix, not substring" "git status" "$BUFFER"
+    teardown_atuin_isolated
+}
+
 test_cache_refill_walks_past_batch_boundary() {
     print "test_cache_refill_walks_past_batch_boundary"
     setup_atuin_isolated
@@ -285,6 +354,11 @@ main() {
     test_pin_directory_scopes_to_descendants
     test_pin_directory_unset_ignores_cwd
     test_pin_directory_combined_with_prefix
+    test_glob_substring_match
+    test_glob_suffix_match
+    test_glob_middle_wildcard
+    test_glob_question_mark_single_char
+    test_glob_auto_detect_no_wildcards_is_still_prefix
     test_cache_refill_walks_past_batch_boundary
     report_and_exit
 }
