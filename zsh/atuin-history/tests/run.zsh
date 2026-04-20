@@ -181,6 +181,67 @@ test_duplicates_are_collapsed() {
     teardown_atuin_isolated
 }
 
+test_pin_directory_scopes_to_descendants() {
+    print "test_pin_directory_scopes_to_descendants"
+    setup_atuin_isolated
+    mkdir -p "$TEST_TMPDIR/scope/sub" "$TEST_TMPDIR/other"
+    local saved_pwd=$PWD
+    (cd "$TEST_TMPDIR/other"      && seed_history "in other")
+    (cd "$TEST_TMPDIR/scope"      && seed_history "in scope")
+    (cd "$TEST_TMPDIR/scope/sub"  && seed_history "in scope sub")
+    (cd "$TEST_TMPDIR/other"      && seed_history "in other 2")
+    cd "$TEST_TMPDIR/scope"
+    export DAN_HISTORY_SEARCH_PIN_DIRECTORY=1
+    reset_widget_state
+    my-history-prefix-search-backward-widget
+    assert_eq "first UP: newest in-scope is a subdir command" "in scope sub" "$BUFFER"
+    mark_lastwidget_backward
+    my-history-prefix-search-backward-widget
+    assert_eq "second UP: next in-scope is the $PWD command" "in scope" "$BUFFER"
+    mark_lastwidget_backward
+    my-history-prefix-search-backward-widget
+    assert_eq "third UP: out-of-scope not returned, buffer stays" "in scope" "$BUFFER"
+    unset DAN_HISTORY_SEARCH_PIN_DIRECTORY
+    cd "$saved_pwd"
+    teardown_atuin_isolated
+}
+
+test_pin_directory_unset_ignores_cwd() {
+    print "test_pin_directory_unset_ignores_cwd"
+    setup_atuin_isolated
+    mkdir -p "$TEST_TMPDIR/scope" "$TEST_TMPDIR/other"
+    local saved_pwd=$PWD
+    (cd "$TEST_TMPDIR/scope" && seed_history "in scope")
+    (cd "$TEST_TMPDIR/other" && seed_history "in other")
+    cd "$TEST_TMPDIR/scope"
+    unset DAN_HISTORY_SEARCH_PIN_DIRECTORY
+    reset_widget_state
+    my-history-prefix-search-backward-widget
+    assert_eq "without pin: newest across all dirs" "in other" "$BUFFER"
+    cd "$saved_pwd"
+    teardown_atuin_isolated
+}
+
+test_pin_directory_combined_with_prefix() {
+    print "test_pin_directory_combined_with_prefix"
+    setup_atuin_isolated
+    mkdir -p "$TEST_TMPDIR/scope" "$TEST_TMPDIR/other"
+    local saved_pwd=$PWD
+    (cd "$TEST_TMPDIR/other" && seed_history "git status")
+    (cd "$TEST_TMPDIR/scope" && seed_history "git log")
+    (cd "$TEST_TMPDIR/scope" && seed_history "ls")
+    (cd "$TEST_TMPDIR/other" && seed_history "git push")
+    cd "$TEST_TMPDIR/scope"
+    export DAN_HISTORY_SEARCH_PIN_DIRECTORY=1
+    reset_widget_state
+    LBUFFER="git "
+    my-history-prefix-search-backward-widget
+    assert_eq "prefix + pin: only in-scope git commands" "git log" "$BUFFER"
+    unset DAN_HISTORY_SEARCH_PIN_DIRECTORY
+    cd "$saved_pwd"
+    teardown_atuin_isolated
+}
+
 main() {
     test_up_empty_prefix_returns_most_recent
     test_up_twice_walks_backward_in_time
@@ -195,6 +256,9 @@ main() {
     test_prefix_starting_with_dash_is_literal
     test_prefix_with_single_quote_is_handled
     test_duplicates_are_collapsed
+    test_pin_directory_scopes_to_descendants
+    test_pin_directory_unset_ignores_cwd
+    test_pin_directory_combined_with_prefix
     report_and_exit
 }
 main

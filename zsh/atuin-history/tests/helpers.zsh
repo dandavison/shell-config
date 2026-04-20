@@ -3,6 +3,7 @@ typeset -gi TESTS_FAILED=0
 
 setup_atuin_isolated() {
     TEST_TMPDIR=$(mktemp -d)
+    TEST_TMPDIR=${TEST_TMPDIR:A}
     export ATUIN_CONFIG_DIR="$TEST_TMPDIR/config"
     mkdir -p "$ATUIN_CONFIG_DIR" "$TEST_TMPDIR/data"
     cat > "$ATUIN_CONFIG_DIR/config.toml" <<EOF
