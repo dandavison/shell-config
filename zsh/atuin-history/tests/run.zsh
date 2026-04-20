@@ -156,6 +156,31 @@ test_prefix_starting_with_dash_is_literal() {
     teardown_atuin_isolated
 }
 
+test_prefix_with_single_quote_is_handled() {
+    print "test_prefix_with_single_quote_is_handled"
+    setup_atuin_isolated
+    seed_history "ls" "echo 'hello world'" "pwd"
+    reset_widget_state
+    LBUFFER="echo '"
+    BUFFER="echo '"
+    my-history-prefix-search-backward-widget
+    assert_eq "prefix with single quote matches literally" "echo 'hello world'" "$BUFFER"
+    teardown_atuin_isolated
+}
+
+test_duplicates_are_collapsed() {
+    print "test_duplicates_are_collapsed"
+    setup_atuin_isolated
+    seed_history "ls" "pwd" "ls" "pwd" "ls"
+    reset_widget_state
+    my-history-prefix-search-backward-widget
+    assert_eq "first UP returns newest unique" "ls" "$BUFFER"
+    mark_lastwidget_backward
+    my-history-prefix-search-backward-widget
+    assert_eq "second UP skips duplicate 'ls', returns 'pwd'" "pwd" "$BUFFER"
+    teardown_atuin_isolated
+}
+
 main() {
     test_up_empty_prefix_returns_most_recent
     test_up_twice_walks_backward_in_time
@@ -168,6 +193,8 @@ main() {
     test_prefix_locked_on_first_press
     test_down_past_newest_restores_typed_text
     test_prefix_starting_with_dash_is_literal
+    test_prefix_with_single_quote_is_handled
+    test_duplicates_are_collapsed
     report_and_exit
 }
 main

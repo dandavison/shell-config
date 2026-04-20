@@ -28,7 +28,7 @@ print
 run_bench() {
     local label=$1; shift
     print "=== $label ==="
-    hyperfine --warmup 3 --runs 30 --shell=none "$@"
+    hyperfine --warmup 3 --runs 30 "$@"
     print
 }
 
@@ -52,3 +52,17 @@ run_bench "prefix search, long-tail prefix, offset 0" \
 
 run_bench "full-text search (what ^R uses), 'git' query" \
     "atuin search --search-mode full-text --limit 1 --offset 0 --format {command} -- git"
+
+DB="$BENCH_TMPDIR/data/history.db"
+
+run_bench "sqlite3: empty prefix, offset 0 (my-history-prefix-search path)" \
+    "sqlite3 '$DB' 'SELECT command FROM history GROUP BY command ORDER BY MAX(timestamp) DESC LIMIT 1 OFFSET 0;'"
+
+run_bench "sqlite3: empty prefix, offset 100" \
+    "sqlite3 '$DB' 'SELECT command FROM history GROUP BY command ORDER BY MAX(timestamp) DESC LIMIT 1 OFFSET 100;'"
+
+run_bench "sqlite3: 'git ' prefix, offset 0" \
+    "sqlite3 '$DB' \"SELECT command FROM history WHERE instr(command, 'git ') = 1 GROUP BY command ORDER BY MAX(timestamp) DESC LIMIT 1 OFFSET 0;\""
+
+run_bench "sqlite3: 'git ' prefix, offset 100" \
+    "sqlite3 '$DB' \"SELECT command FROM history WHERE instr(command, 'git ') = 1 GROUP BY command ORDER BY MAX(timestamp) DESC LIMIT 1 OFFSET 100;\""

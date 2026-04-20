@@ -1,6 +1,7 @@
 typeset -g MY_HISTORY_SEARCH_OFFSET=0
 typeset -g MY_HISTORY_SEARCH_PREFIX=""
 typeset -g MY_HISTORY_SEARCH_ORIGINAL=""
+typeset -g MY_HISTORY_DB_PATH=""
 
 function my-history-prefix-search() {
     if [[ $LASTWIDGET != my-history-prefix-search-* ]]; then
@@ -18,14 +19,15 @@ function my-history-prefix-search() {
         MY_HISTORY_SEARCH_OFFSET=-1
         return
     fi
-    local result="$(
-        atuin search \
-            --search-mode prefix \
-            --limit 1 \
-            --offset $offset \
-            --format '{command}' \
-            -- "$MY_HISTORY_SEARCH_PREFIX"
-    )"
+    local db=${MY_HISTORY_DB_PATH:-$HOME/.local/share/atuin/history.db}
+    local filter=""
+    if [[ -n $MY_HISTORY_SEARCH_PREFIX ]]; then
+        local escaped=${MY_HISTORY_SEARCH_PREFIX//\'/\'\'}
+        filter="WHERE instr(command, '$escaped') = 1"
+    fi
+    local result
+    result=$(sqlite3 "$db" \
+        "SELECT command FROM history $filter GROUP BY command ORDER BY MAX(timestamp) DESC LIMIT 1 OFFSET $offset;")
     if [[ -n "$result" ]]; then
         BUFFER="$result"
         CURSOR="${#BUFFER}"

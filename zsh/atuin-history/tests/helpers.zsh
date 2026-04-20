@@ -10,11 +10,12 @@ data_dir = "$TEST_TMPDIR/data"
 auto_sync = false
 update_check = false
 EOF
+    export MY_HISTORY_DB_PATH="$TEST_TMPDIR/data/history.db"
 }
 
 teardown_atuin_isolated() {
     [[ -n ${TEST_TMPDIR:-} && -d $TEST_TMPDIR ]] && rm -rf "$TEST_TMPDIR"
-    unset ATUIN_CONFIG_DIR TEST_TMPDIR
+    unset ATUIN_CONFIG_DIR TEST_TMPDIR MY_HISTORY_DB_PATH
 }
 
 seed_history() {
