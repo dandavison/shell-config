@@ -5,7 +5,9 @@
 declare -A MY_KEYS
 MY_KEYS=(
     UP '^[[A'
+    UP_APP '^[OA'
     DOWN '^[[B'
+    DOWN_APP '^[OB'
     M_UP '^[[1;3A'
     M_DOWN '^[[1;3B'
     M_LEFT '^[[1;3D'
@@ -13,7 +15,9 @@ MY_KEYS=(
 )
 
 bindkey "$MY_KEYS[UP]" my-history-prefix-search-backward-widget
+bindkey "$MY_KEYS[UP_APP]" my-history-prefix-search-backward-widget
 bindkey "$MY_KEYS[DOWN]" my-history-prefix-search-forward-widget
+bindkey "$MY_KEYS[DOWN_APP]" my-history-prefix-search-forward-widget
 # zsh native widgets are named history-beginning-search-{backward,forward}
 
 bindkey "$MY_KEYS[M_RIGHT]" forward-word
