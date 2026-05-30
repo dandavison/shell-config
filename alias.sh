@@ -69,7 +69,6 @@ alias emacs-byte-compile="emacs --batch --eval '(package-initialize)' -f batch-b
 alias es='emacs-grep'
 alias fdl="fd -I --color=always --strip-cwd-prefix=always -d1 -l | tr -s ' ' | cut -d' ' -f9-"
 alias ff='find . -type f -iname'
-alias fg='git-forgit'
 alias fo='open-file'
 alias fr='resolve-file'
 alias fromip="who | grep \"^$USER\" | sed 1q | perl -n -e 's,.*\(([0-9.]+)\),\1, and print'"
