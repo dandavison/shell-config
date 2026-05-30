@@ -7,6 +7,7 @@ export EDITOR='code --wait'
 export GIT_EDITOR='code --wait'
 export OPEN_IN_EDITOR=~/bin/code
 export RGI_EDITOR=wormhole
+export WORMHOLE_EDITOR=code
 
 export WORMHOLE_SEARCH_PATHS=~/src/temporal-all/repos:~/src:~/src/devenv
 if [[ -f "$WORMHOLE_PROJECT_DIR/go.mod" ]]; then
@@ -17,7 +18,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export LESS='-FIRX'
 export DELTA_PAGER='less -FR -j.3 -g'
 export LLM='claude --print'
-export HYPERLINKED_SCHEME=cursor
+export HYPERLINKED_SCHEME=vscode
 export BAT_THEME=GitHub
 export GH_PAGER=delta
 export GLAMOUR_STYLE=light
