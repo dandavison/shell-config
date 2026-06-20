@@ -96,15 +96,6 @@ f-kill() {
         xargs kill "$@"
 }
 
-f-open-app() {
-    local app
-    app="$(command fd -d 1 '.+\.app' /Applications ~/Applications/Chrome\ Apps.localized/ |
-        rg -r '$2$1' '^(.*/([^/]+)\.app)/?$' |
-        fzf --with-nth 1 '-d' / |
-        sed -E 's,[^/]+/,/,')"
-    [ -n "$app" ] && DELTA_FEATURES="" open "$app"
-}
-
 f-preview-jq() {
     # https://github.com/pawelduda/fzf-live-repl
     local file="$1"
