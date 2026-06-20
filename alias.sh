@@ -264,12 +264,14 @@ alias rgc='rg --color=always'
 alias rgd=rg-delta
 alias rm-pyc="find . -type f -name '*.pyc' -delete"
 alias rm-tex='rm -v *.{aux,log,out,toc}'
+alias s='should'
 alias ssh='ssh -A'
 alias tags='git fetch --tags && git tag | sort -V | rg -v "^v\."'
 alias tda='temporal-delete-all'
 alias tls='tmux list-sessions -F "#S"'
 alias tmux-current-session='tmux display-message -p "#S"'
 alias tonc='temporal operator namespace create -n default'
+alias trace=tracecli
 alias tree='tree --gitignore --hyperlink'
 alias ts='temporal server start-dev --dynamic-config-value frontend.enableExecuteMultiOperation=true'
 alias uvr='uv run'
