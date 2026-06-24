@@ -64,7 +64,7 @@ alias dl='delta-toggle line-numbers'
 alias docker-prune-all='docker system prune -a --volumes'
 alias ds='delta-toggle side-by-side'
 alias ee="emacs -nw -q"
-alias e='open "vscode://kahole.magit/command?id=magit.status"'
+alias e='open "$(editor-scheme)://kahole.magit/command?id=magit.status"'
 alias emacs-byte-compile="emacs --batch --eval '(package-initialize)' -f batch-byte-compile"
 alias es='emacs-grep'
 alias fdl="fd -I --color=always --strip-cwd-prefix=always -d1 -l | tr -s ' ' | cut -d' ' -f9-"

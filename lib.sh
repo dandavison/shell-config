@@ -50,6 +50,18 @@ editor-file-url() {
     printf 'http://wormhole:7117/file/%s%s?land-in=editor' "$1" "${2:+:$2}"
 }
 
+# The current editor's URL scheme, for editor URLs that can't be wormhole URLs
+# (e.g. extension command invocations like `<scheme>://kahole.magit/command?...`).
+editor-scheme() {
+    local e
+    e="$(editor-cli)"
+    case "$e" in
+        code) echo vscode ;;
+        code-insiders) echo vscode-insiders ;;
+        *) echo "$e" ;;
+    esac
+}
+
 vscode() {
     local editor
     editor="$(editor-cli)"
