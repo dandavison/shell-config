@@ -38,15 +38,29 @@ ORDER BY p.cmdline;
 EOF
 }
 
+# The current editor's CLI executable (cursor/code/...), from the wormhole
+# daemon, which serves the source of truth in ~/.wormhole/wormhole.toml.
+editor-cli() {
+    wormhole editor
+}
+
+# A wormhole URL that opens path[:line] in the current editor. Editor-agnostic:
+# the daemon picks the editor, as with delta's hyperlinks-file-link-format.
+editor-file-url() {
+    printf 'http://wormhole:7117/file/%s%s?land-in=editor' "$1" "${2:+:$2}"
+}
+
 vscode() {
+    local editor
+    editor="$(editor-cli)"
     if [ -z "$1" ]; then
         if ls | rg -q '\.code-workspace$'; then
-            code *.code-workspace
+            "$editor" *.code-workspace
         else
-            code .
+            "$editor" .
         fi
     else
-        code -g "$@"
+        "$editor" -g "$@"
     fi
 }
 
@@ -105,7 +119,7 @@ cc() {
 }
 
 open-file() {
-    code --new-window $(resolve-file "$1")
+    "$(editor-cli)" --new-window $(resolve-file "$1")
 }
 
 cd-site-packages() {
@@ -145,7 +159,7 @@ emacs-set-normal() {
 fdd() {
     if test -t 1; then
         command fd --color=always --hyperlink=always "$@" |
-            rg -r $'\e]8;;vscode://file$1' $'^\e]8;;file://'$(hostname)'(.*)'
+            rg -r $'\e]8;;http://wormhole:7117/file$1?land-in=editor' $'^\e]8;;file://'$(hostname)'(.*)'
     else
         command fd "$@"
     fi

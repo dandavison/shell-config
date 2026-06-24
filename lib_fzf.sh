@@ -40,7 +40,7 @@ f-cat() {
 }
 
 f-vscode() {
-    code "$(fzf)"
+    "$(editor-cli)" "$(fzf)"
 }
 
 f-docker-exec() {

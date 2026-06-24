@@ -3,10 +3,14 @@ export DAN_NO_PREEXEC=1
 # Line-editor operations stop on / in addition to word characters
 export WORDCHARS="${WORDCHARS/\//}"
 
-export EDITOR='code --wait'
-export GIT_EDITOR='code --wait'
-export OPEN_IN_EDITOR=~/bin/code
+# `editor` resolves the current editor (from ~/.wormhole/wormhole.toml, served
+# live by the wormhole daemon) at invocation time, so these track editor
+# switches without re-sourcing.
+export EDITOR='editor --wait'
+export GIT_EDITOR='editor --wait'
+export OPEN_IN_EDITOR=~/bin/editor
 export RGI_EDITOR=wormhole
+# Fallback default only; wormhole.toml's `editor` field is the source of truth.
 export WORMHOLE_EDITOR=code
 
 export WORMHOLE_SEARCH_PATHS=~/src/temporal-all/repos:~/src:~/src/devenv
@@ -18,6 +22,10 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export LESS='-FIRX'
 export DELTA_PAGER='less -FR -j.3 -g'
 export LLM='claude --print'
+# Consumed by the external `hyperlinked` lib, which builds `<scheme>://file/...`
+# URLs. Not routed through wormhole (it has no scheme form) and fixed at shell
+# init, so it doesn't track live editor switches. Left static; revisit if it
+# becomes worth teaching `hyperlinked` to emit wormhole URLs.
 export HYPERLINKED_SCHEME=vscode
 export BAT_THEME=GitHub
 export GH_PAGER=delta
