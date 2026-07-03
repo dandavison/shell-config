@@ -36,13 +36,24 @@ export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 
-fzf-set-environment-variables
+export FZF_DEFAULT_COMMAND="fd --type file --color=always"
+export FZF_DEFAULT_OPTS="\
+--ansi
+--border rounded
+--color light
+--cycle
+--exact
+--height 50%
+--info hidden
+--layout reverse
+--prompt ' '
+"
 
 # To add local TeX .sty files:
 #   Add to /opt/homebrew/texlive/texmf-local/tex/latex/local
 #   Run `texhash`
 
-__dan_is_macos && export MANPATH="$MANPATH:/opt/homebrew/opt/coreutils/libexec/gnuman" # $(brew --prefix coreutils) is too slow
+[ -e /Applications ] && export MANPATH="$MANPATH:/opt/homebrew/opt/coreutils/libexec/gnuman" # $(brew --prefix coreutils) is too slow
 # export MPLBACKEND="module://itermplot" ITERMPLOT=rv
 
 export HOMEBREW_PREFIX="/opt/homebrew"

@@ -26,15 +26,12 @@ setopt rmstarsilent
 setopt AUTO_CD
 autoload -U colors && colors
 
-tsource lib.sh
-tsource lib_fzf.sh
-tsource lib_git.sh
-tsource zsh/lib.zsh
 tsource zsh/atuin-history/history.zsh
 tsource ./3p/git-prompt.sh
 tsource zsh/env.zsh
 tsource env.sh
 tsource path-macos.sh
+tsource ~/tmp/3p/zsh-defer/zsh-defer.plugin.zsh
 tsource completion.sh
 tsource zsh/prompt.zsh
 tsource zsh/bindings.zsh
