@@ -9,6 +9,7 @@ setopt AUTO_CD
 autoload -U colors && colors
 
 source ./3p/git-prompt.sh
+source lib.sh
 source zsh/env.zsh
 source env.sh
 source path-macos.sh
