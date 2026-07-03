@@ -1,17 +1,17 @@
 load-completions() {
     autoload -Uz compinit && compinit -C
 
-    local dir=$XDG_CACHE_HOME/zsh-completions
+    local dir=$ZSH_STARTUP_CACHE/completions
     # _cached <name> <command...>: generate the completion script once, then
     # source the cached file (~ms) instead of forking the tool (~100-400ms).
-    # Delete $dir to regenerate (e.g. after upgrading a tool).
+    # Clear with `zsh-startup-cache-clear` (e.g. after upgrading a tool).
     _cached() {
         local f=$dir/$1; shift
         if [[ ! -s $f ]]; then
             mkdir -p $dir
             "$@" >| $f.tmp 2>/dev/null && [[ -s $f.tmp ]] && mv $f.tmp $f || rm -f $f.tmp
         fi
-        [[ -s $f ]] && tsource $f
+        [[ -s $f ]] && source $f
     }
 
     _cached temporal  temporal completion zsh
