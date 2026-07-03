@@ -1,90 +1,7 @@
-git-default-branch() {
-    if git branch -r | grep -q origin/master; then
-        echo master
-    else
-        echo main
-    fi
-}
-
-git-list-refs() {
-    git for-each-ref --format '%(refname:short)'
-}
-
 git-log-all-refs() {
     local b
     git-list-refs | while read b; do _gl "$@" $b; done
 }
-
-git-user-public() {
-    git config user.name "Dan Davison"
-    git config user.email "dandavison7@gmail.com"
-}
-
-git-user-temporal() {
-    git config user.name "Dan Davison"
-    git config user.email "dan.davison@temporal.io"
-}
-
-git-branch-overwrite() {
-    local branch="$1"
-    [ -n "$branch" ] && git branch -D "$branch" && git branch -c "$branch"
-}
-
-git-commit-file() {
-    git add "$1" && git commit -m "$1"
-}
-
-git-contributors() {
-    git log --format=format:"%an" | sort | uniq -c | sort -rn
-}
-
-git-copy-branch() {
-    git checkout -b $1 && git checkout -
-}
-
-git-delete-squashed-branch() {
-    local branch=$1
-    local main=master
-    git checkout $branch &&
-        git rebase $main &&
-        git checkout $main &&
-        git branch -d $branch
-}
-
-git-prune-merged() {
-    local b
-    git branch-by-date |
-        awk '{print $1}' |
-        while read b; do
-            git branch -d $b 2>/dev/null
-        done
-}
-
-git-delete-temp-branches() {
-    local b
-    git branch-by-date |
-        awk '{print $1}' |
-        grep '^z-' |
-        while read b; do
-            git branch -D $b 2>/dev/null
-        done
-}
-
-git-diff-no-tests() {
-    git diff "$@" -- ':!*test*' ':!*mock*'
-}
-
-git-no-test() {
-    git $@ -- ':!*test*' ':!*mock*'
-}
-
-git-checkout-maybe-remote-branch() {
-    git checkout $1 && git pull origin $1 || {
-        git fetch origin $1:$1 && git checkout $1
-    }
-}
-
-alias gcf=git-checkout-maybe-remote-branch
 
 git-review() {
     git fetch origin $1:$1
@@ -95,79 +12,6 @@ git-review-merge() {
     local merge_commit=$1
     git rev-list --parents -n1 $merge_commit | read merge parent1 parent2
     git checkout $parent2 && egit-diff $parent1...$parent2
-}
-
-git-show-merge() {
-    local merge_commit=$1
-    git rev-list --parents -n1 $merge_commit | (
-        read merge parent1 parent2
-        git diff $2 $parent1...$parent2
-    )
-}
-
-git-graph-merge() {
-    local merge_commit=$1
-    git log --oneline --graph \
-        $(git merge-base $merge_commit^1 $merge_commit^2)..$merge_commit
-}
-
-git-resolve-generated() {
-    git diff --name-only --diff-filter=U |
-        rg '\.(pb|pb\.mock)\.go$|_(gen|mock)\.go$' |
-        xargs -I{} sh -c 'git checkout --theirs "{}" && git add "{}"'
-    echo "Remaining conflicts:"
-    git diff --name-only --diff-filter=U
-}
-
-git-unified-diff() {
-    local commit="$1"
-    local file="$2"
-    git show "$commit~1":"$file" >"/tmp/before-$(basename $file)"
-    git show "$commit":"$file" >"/tmp/after-$(basename $file)"
-    diff -u "/tmp/before-$(basename $file)" "/tmp/after-$(basename $file)"
-}
-
-git-python-xargs() {
-    git ls-files | grep '\.py$' | xargs $@
-}
-
-git-link() {
-    [[ -n $1 ]] || return 1
-    git commit --allow-empty -m ""
-}
-
-git-ls-xargs() {
-    (cd $(git rev-parse --show-toplevel) && git ls | xargs $@)
-}
-
-git-sed() {
-    git ls-files | xargs -P 0 sed --follow-symlinks -i -E "$@"
-}
-
-git-perl-python() {
-    git ls-files '**/*.py' | xargs -P 0 perl -pi -e "$@"
-}
-
-git-graft-1() {
-    stock=$1
-    scion=$2
-    git checkout -b "z-temp-graft-branch"
-    git rebase --onto $stock $scion "z-temp-graft-branch"
-    echo "Done; on a temp branch. You probably want to use reset --hard to make your working branch point at this temp branch's HEAD"
-}
-
-git-graft() {
-    new_commits=$1
-    original_branch=$(git rev-parse --abbrev-ref HEAD)
-    git checkout -b "z-temp-graft-branch"
-    git rebase --onto $original_branch $new_commits $(git rev-parse --abbrev-ref HEAD)
-    echo "Done; on temp branch $(git rev-parse --abbrev-ref HEAD). "
-    echo "You probably want to use reset --hard to make your original branch "
-    echo "$original_branch point at this temp branch's HEAD."
-}
-
-git-grep-joint() {
-    git grep "$2" $(git grep -l "$1")
 }
 
 git-make-repos() {
@@ -184,14 +28,7 @@ git-make-repos() {
     done
 }
 
-git-reflog-day-of-week() {
-    git reflog --date=iso | awk -F'@\\{' '{print $2}' | awk '{print $1}' | while read -r date; do gdate -d "$date" +%A; done | sort | uniq -c | sort -rn
-}
-
-git-use-main() {
-    git symbolic-ref refs/heads/main refs/heads/master
-    git symbolic-ref refs/remotes/origin/main refs/remotes/origin/master
-}
+alias gcf=git-checkout-maybe-remote-branch
 
 # From decluttering of gitconfig:
 #
