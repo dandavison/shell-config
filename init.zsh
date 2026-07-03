@@ -1,23 +1,15 @@
 _cwd=$(pwd)
 cd ~/src/devenv/shell-config
 
+zmodload zsh/datetime  # $EPOCHREALTIME: fork-free microsecond clock
+
 function tsource {
-    [ -e "$1" ] || {
-        return 1
-    }
-    if true; then
+    if false; then
         source "$1"
     else
-        local __date=/opt/homebrew/opt/coreutils/libexec/gnubin/date
-        local __start_ns=$($__date +%s%N)
+        local __start=$EPOCHREALTIME
         source "$1"
-        local __end_ns=$($__date +%s%N)
-        local __delta_ns=$((__end_ns - __start_ns))
-        local __delta_ms=${__delta_ns:0:-6}
-        if ((__delta_ms > 999)); then
-            __delta_ms=${__delta_ms::-3},${__delta_ms: -3}
-        fi
-        echo "$1: ${__delta_ms} ms"
+        printf '%s: %.0f ms\n' "$1" $(( (EPOCHREALTIME - __start) * 1000 ))
     fi
 }
 
