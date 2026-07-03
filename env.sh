@@ -5,7 +5,7 @@ export WORDCHARS="${WORDCHARS/\//}"
 export EDITOR=micro # 'editor --wait'
 export GIT_EDITOR=micro # 'editor --wait'
 export OPEN_IN_EDITOR=~/bin/editor
-export RGI_EDITOR=wormhole
+export RGI_EDITOR=micro
 export FSI_ACTION=micro
 # Fallback default only; wormhole.toml's `editor` field is the source of truth.
 export WORMHOLE_EDITOR=micro
