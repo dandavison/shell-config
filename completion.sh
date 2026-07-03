@@ -20,6 +20,12 @@ load-completions() {
     _cached delta     delta --generate-completion zsh
     # _cached uv        uv generate-shell-completion zsh
     # _cached neomorphus env _NEOMORPHUS_COMPLETE=zsh_source neomorphus
-    compdef neo=neomorphus
+    # compdef neo=neomorphus
 }
-load-completions
+# Defer past the first prompt so the shell is interactive immediately; falls
+# back to synchronous if zsh-defer isn't loaded (e.g. its ~/tmp copy was wiped).
+if (( $+functions[zsh-defer] )); then
+    zsh-defer load-completions
+else
+    load-completions
+fi
