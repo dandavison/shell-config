@@ -22,10 +22,5 @@ load-completions() {
     # _cached neomorphus env _NEOMORPHUS_COMPLETE=zsh_source neomorphus
     # compdef neo=neomorphus
 }
-# Defer past the first prompt so the shell is interactive immediately; falls
-# back to synchronous if zsh-defer isn't loaded (e.g. its ~/tmp copy was wiped).
-if (( $+functions[zsh-defer] )); then
-    zsh-defer load-completions
-else
-    load-completions
-fi
+# Defer past the first prompt so the shell is interactive immediately.
+zsh-defer load-completions

@@ -26,17 +26,20 @@ setopt rmstarsilent
 setopt AUTO_CD
 autoload -U colors && colors
 
-tsource zsh/atuin-history/history.zsh
+tsource ~/tmp/3p/zsh-defer/zsh-defer.plugin.zsh
+
+# Deferred to just after the first prompt. Pass an absolute path: deferred tasks
+# run after init.zsh cd's back to the original directory.
+zsh-defer source $PWD/zsh/atuin-history/history.zsh  # atuin up/down history-search widgets
 tsource ./3p/git-prompt.sh
 tsource zsh/env.zsh
 tsource env.sh
 tsource path-macos.sh
-tsource ~/tmp/3p/zsh-defer/zsh-defer.plugin.zsh
 tsource completion.sh
 tsource zsh/prompt.zsh
 tsource zsh/bindings.zsh
 tsource ~/src/wormhole/shell/lib.sh
-source zsh/syntax-highlighting.zsh # tsource breaks syntax highlighting; don't know why
+zsh-defer source $PWD/zsh/syntax-highlighting.zsh
 tsource secret.sh
 tsource zsh/atuin-history/atuin.zsh
 tsource ../temporal/temporal.sh
