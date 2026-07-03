@@ -48,6 +48,8 @@ tsource alias.sh
 cd "$_cwd"
 unset _cwd
 
-tsource ~/.cloud-tools/ct_setup_shell.sh
-tsource ~/src/devenv/shell-config/xolmis.sh
 tsource ~/src/wormhole/shell/zsh/prompt.sh
+
+if [ -z "$SKIP_XOLMIS" ]; then
+    SKIP_XOLMIS=1 xolmis
+fi
