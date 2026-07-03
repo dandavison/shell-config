@@ -30,19 +30,40 @@ export GLAMOUR_STYLE=light
 export FILTER_BRANCH_SQUELCH_WARNING=1
 export PIP_INDEX_URL=
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-export LS_COLORS="$(/opt/homebrew/bin/vivid generate one-light)"
 
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 
-fzf-set-environment-variables
+# Root for everything cached to speed up shell startup (completions, LS_COLORS).
+# Clear with `zsh-startup-cache-clear`.
+export ZSH_STARTUP_CACHE=$XDG_CACHE_HOME/zsh-startup
+
+# vivid's output is static; cache it ($(<file) reads without forking, vs a
+# ~14ms `vivid generate` fork).
+_ls_colors=$ZSH_STARTUP_CACHE/ls_colors
+[[ -s $_ls_colors ]] || { mkdir -p $ZSH_STARTUP_CACHE; /opt/homebrew/bin/vivid generate one-light >| $_ls_colors }
+export LS_COLORS="$(<$_ls_colors)"
+unset _ls_colors
+
+export FZF_DEFAULT_COMMAND="fd --type file --color=always"
+export FZF_DEFAULT_OPTS="\
+--ansi
+--border rounded
+--color light
+--cycle
+--exact
+--height 50%
+--info hidden
+--layout reverse
+--prompt ' '
+"
 
 # To add local TeX .sty files:
 #   Add to /opt/homebrew/texlive/texmf-local/tex/latex/local
 #   Run `texhash`
 
-__dan_is_macos && export MANPATH="$MANPATH:/opt/homebrew/opt/coreutils/libexec/gnuman" # $(brew --prefix coreutils) is too slow
+[ -e /Applications ] && export MANPATH="$MANPATH:/opt/homebrew/opt/coreutils/libexec/gnuman" # $(brew --prefix coreutils) is too slow
 # export MPLBACKEND="module://itermplot" ITERMPLOT=rv
 
 export HOMEBREW_PREFIX="/opt/homebrew"

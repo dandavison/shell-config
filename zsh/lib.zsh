@@ -1,3 +1,13 @@
+zmodload zsh/datetime # $EPOCHREALTIME: fork-free microsecond clock
+
+function tsource {
+    local __start=$EPOCHREALTIME
+    source "$1"
+    printf '%s: %.0f ms\n' "$1" $(((EPOCHREALTIME - __start) * 1000))
+}
+
+
+
 cp-desktop-latest () {
     cp -r ~/Desktop/*(om[1]) $1
 }
