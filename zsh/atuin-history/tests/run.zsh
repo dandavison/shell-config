@@ -337,6 +337,20 @@ test_cache_refill_walks_past_batch_boundary() {
     teardown_atuin_isolated
 }
 
+test_multiline_command_retrieved_intact() {
+    print "test_multiline_command_retrieved_intact"
+    setup_atuin_isolated
+    local ml=$'ct temporal --env test \\\n    workflow show \\\n    --workflow-id \'{"a":"b"}\''
+    seed_history "ls" "$ml" "pwd"
+    reset_widget_state
+    my-history-prefix-search-backward-widget
+    assert_eq "first UP is single-line newest" "pwd" "$BUFFER"
+    mark_lastwidget_backward
+    my-history-prefix-search-backward-widget
+    assert_eq "second UP returns whole multiline command, not one line" "$ml" "$BUFFER"
+    teardown_atuin_isolated
+}
+
 main() {
     test_up_empty_prefix_returns_most_recent
     test_up_twice_walks_backward_in_time
@@ -360,6 +374,7 @@ main() {
     test_glob_question_mark_single_char
     test_glob_auto_detect_no_wildcards_is_still_prefix
     test_cache_refill_walks_past_batch_boundary
+    test_multiline_command_retrieved_intact
     report_and_exit
 }
 main

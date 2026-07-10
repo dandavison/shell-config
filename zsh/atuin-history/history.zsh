@@ -30,13 +30,13 @@ function _my-history-fetch-batch() {
     local filter=$(_my-history-build-filter)
     local cache_len=${#MY_HISTORY_SEARCH_CACHE}
     local fetched
-    fetched=$(sqlite3 "$db" \
+    fetched=$(sqlite3 -newline $'\x1e' "$db" \
         "SELECT command FROM history $filter GROUP BY command ORDER BY MAX(timestamp) DESC LIMIT $MY_HISTORY_SEARCH_CACHE_BATCH OFFSET $cache_len;")
     if [[ -z $fetched ]]; then
         MY_HISTORY_SEARCH_CACHE_EXHAUSTED=1
         return
     fi
-    local -a rows=("${(f)fetched}")
+    local -a rows=("${(ps:\x1e:)${fetched%$'\x1e'}}")
     MY_HISTORY_SEARCH_CACHE+=("${rows[@]}")
     (( ${#rows} < MY_HISTORY_SEARCH_CACHE_BATCH )) && MY_HISTORY_SEARCH_CACHE_EXHAUSTED=1
 }
