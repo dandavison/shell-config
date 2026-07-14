@@ -11,7 +11,7 @@ autoload -U add-zsh-hook
 
 # One atuin session per tmux pane ($TMUX_PANE is stable and unique per pane),
 # inherited across `exec zsh`. No fork.
-export ATUIN_SESSION=${ATUIN_SESSION:-$TMUX_PANE}
+export ATUIN_SESSION=${ATUIN_SESSION:-${TMUX_PANE:-}}
 export ATUIN_HISTORY="atuin history list"
 
 _atuin_preexec() {
