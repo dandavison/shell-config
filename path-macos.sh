@@ -7,7 +7,7 @@ path=(
     /opt/homebrew/opt/coreutils/libexec/gnubin
     /opt/homebrew/sbin
     /opt/homebrew/bin
-    $JAVA_HOME/bin
+    ${JAVA_HOME:+$JAVA_HOME/bin}
     /opt/homebrew/opt/dotnet@8/bin
     /opt/homebrew/opt/ruby/bin
     /Library/TeX/texbin

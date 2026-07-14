@@ -28,7 +28,7 @@ unset _cwd
 
 source ~/src/wormhole/shell/zsh/prompt.sh
 
-if [ -z "$SKIP_XOLMIS" ]; then
+if [ -z "${SKIP_XOLMIS:-}" ]; then
     SKIP_XOLMIS=1 xolmis
 fi
 

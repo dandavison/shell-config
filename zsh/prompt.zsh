@@ -7,10 +7,10 @@ export GIT_PS1_UNSTAGED="અ "
 export GIT_PS1_STAGED="જ "
 
 function prompt_dir_display {
-    if [[ -n $WORMHOLE_PROJECT_DIR ]] && [[ $PWD != $WORMHOLE_PROJECT_DIR ]]; then
-        echo -n "${WORMHOLE_PROJECT_NAME}/$(realpath --relative-to="$WORMHOLE_PROJECT_DIR" "$PWD")"
-    elif [[ -n $WORMHOLE_PROJECT_DIR ]] && [[ $PWD == $WORMHOLE_PROJECT_DIR ]]; then
-        echo -n "${WORMHOLE_PROJECT_NAME}"
+    if [[ -n ${WORMHOLE_PROJECT_DIR:-} ]] && [[ $PWD != $WORMHOLE_PROJECT_DIR ]]; then
+        echo -n "${WORMHOLE_PROJECT_NAME:-}/$(realpath --relative-to="$WORMHOLE_PROJECT_DIR" "$PWD")"
+    elif [[ -n ${WORMHOLE_PROJECT_DIR:-} ]] && [[ $PWD == $WORMHOLE_PROJECT_DIR ]]; then
+        echo -n "${WORMHOLE_PROJECT_NAME:-}"
     else
         echo -n "${PWD/#$HOME/~}"
     fi
