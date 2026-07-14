@@ -3,6 +3,7 @@ source ~/tmp/3p/zsh-defer/zsh-defer.plugin.zsh
 _cwd=$(pwd)
 cd ~/src/devenv/shell-config
 
+setopt nounset
 setopt interactivecomments
 setopt rmstarsilent
 setopt AUTO_CD
