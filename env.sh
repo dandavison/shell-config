@@ -18,7 +18,6 @@ export PS_LINK_FORMAT=wormhole
 export HOMEBREW_NO_AUTO_UPDATE=1
 export LESS='-FIRX'
 export DELTA_PAGER='less -FR -j.3 -g'
-export GIT_DIFF_OPTS=--unified=77
 export LLM='claude --print'
 # Consumed by the external `hyperlinked` lib, which builds `<scheme>://file/...`
 # URLs. Not routed through wormhole (it has no scheme form) and fixed at shell
