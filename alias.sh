@@ -46,6 +46,8 @@ alias ansifilter="perl -pe 's/\e\[[0-9;]*[mK]//g'"
 alias bat='bat --style header,grid --theme GitHub'
 alias blank='for _ in `seq 1 128`; do echo; done && clear'
 alias neo='neomorphus'
+alias co='claude --model opus'
+alias cs='claude --model sonnet'
 alias cat='LESS=-FIRX bat --plain'
 alias cd='wormhole-cd'
 alias cdg='cd $(git rev-parse --show-toplevel)'
