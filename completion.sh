@@ -16,6 +16,7 @@ load-completions() {
 
     _cached temporal  temporal completion zsh
     _cached wormhole  env COMPLETE=zsh wormhole
+    compdef _clap_dynamic_completer_wormhole w
     _cached should    env _SHOULD_COMPLETE=source_zsh should
     _cached delta     delta --generate-completion zsh
     # _cached uv        uv generate-shell-completion zsh
