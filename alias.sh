@@ -126,7 +126,17 @@ alias gdwwc='gdww --cached'
 alias gf='git fixup'
 alias gfo='git fetch origin'
 alias gfob='git fetch origin $(git rev-parse --abbrev-ref HEAD)'
-alias gfom='git fetch origin main'
+# Fetch origin/main and force local main to match it. Works even when main is
+# checked out in another worktree; when it's checked out here, fast-forward the
+# working tree along with the ref instead of just moving the ref.
+gfom() {
+  git fetch origin main || return
+  if [ "$(git symbolic-ref --short HEAD 2>/dev/null)" = main ]; then
+    git merge --ff-only origin/main
+  else
+    git update-ref refs/heads/main origin/main
+  fi
+}
 alias gg='git grep -n'
 alias ghci='ghci -fwarn-incomplete-patterns'
 alias ghrv='gh repo view --web'
@@ -203,6 +213,7 @@ alias isort-dan='isort --force_single_line_imports --lines 999999 --dont-skip __
 alias j='(jq -C . | less -RSX)'
 alias jql='(jq -C . | less -RSX)'
 alias l='gl'
+alias l1='gl1'
 alias latex-default='latex -shell-escape -interaction nonstopmode -output-directory=${LATEX_OUTPUT_DIRECTORY:-.}'
 alias le='less'
 alias lg='lazygit'
@@ -264,7 +275,7 @@ alias rgc='rg --color=always'
 alias rgd=rg-delta
 alias rm-pyc="find . -type f -name '*.pyc' -delete"
 alias rm-tex='rm -v *.{aux,log,out,toc}'
-alias s='should'
+alias s='git show'
 alias ssh='ssh -A'
 alias tags='git fetch --tags && git tag | sort -V | rg -v "^v\."'
 alias tda='temporal-delete-all'

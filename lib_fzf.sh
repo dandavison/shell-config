@@ -14,3 +14,12 @@ _f-hist() {
 f-hist-x() {
     eval "$(_f-hist)"
 }
+
+# Set $base to the SHA of a commit selected from git log.
+basez() {
+    local sha
+    sha="$(f-git-select-commit)"
+    [[ -n "$sha" ]] || return
+    base="$sha"
+    echo "base=$base"
+}
