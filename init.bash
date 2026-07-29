@@ -1,5 +1,5 @@
 _cwd=$(pwd)
-cd ~/src/devenv/shell-config
+cd ~/src/devenv/shell
 
 source lib.sh
 source lib_fzf.sh

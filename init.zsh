@@ -1,7 +1,7 @@
 source ~/tmp/3p/zsh-defer/zsh-defer.plugin.zsh
 
 _cwd=$(pwd)
-cd ~/src/devenv/shell-config
+cd ~/src/devenv/shell
 
 setopt nounset
 setopt interactivecomments
@@ -32,5 +32,5 @@ if [ -z "${SKIP_XOLMIS:-}" ]; then
     SKIP_XOLMIS=1 xolmis
 fi
 
-zsh-defer source ~/src/devenv/shell-config/zsh/atuin-history/history.zsh
-zsh-defer source ~/src/devenv/shell-config/zsh/syntax-highlighting.zsh
+zsh-defer source ~/src/devenv/shell/zsh/atuin-history/history.zsh
+zsh-defer source ~/src/devenv/shell/zsh/syntax-highlighting.zsh
