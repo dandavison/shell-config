@@ -10,7 +10,7 @@ export FSI_ACTION=micro
 # Fallback default only; wormhole.toml's `editor` field is the source of truth.
 export WORMHOLE_EDITOR=micro
 
-export WORMHOLE_SEARCH_PATHS=~/src/temporal-all/repos:~/src:~/src/devenv
+export WORMHOLE_SEARCH_PATHS=~/src/temporalio:~/src:~/src/devenv
 if [[ -f "${WORMHOLE_PROJECT_DIR:-}/go.mod" ]]; then
   export RIPGREP_CONFIG_PATH=~/src/devenv/dotfiles/rg/go--real-code.config
 fi
