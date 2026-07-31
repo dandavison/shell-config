@@ -7,10 +7,10 @@ export GIT_EDITOR=micro # 'editor --wait'
 export OPEN_IN_EDITOR=~/bin/editor
 export RGI_EDITOR=micro
 export FSI_ACTION=micro
-# Fallback default only; wormhole.toml's `editor` field is the source of truth.
-export WORMHOLE_EDITOR=micro
 
+export WORMHOLE_EDITOR=micro
 export WORMHOLE_SEARCH_PATHS=~/src/temporalio:~/src:~/src/devenv
+WORMHOLE_DEFAULT_PROJECT=temporal
 if [[ -f "${WORMHOLE_PROJECT_DIR:-}/go.mod" ]]; then
   export RIPGREP_CONFIG_PATH=~/src/devenv/dotfiles/rg/go--real-code.config
 fi
@@ -31,6 +31,7 @@ export GLAMOUR_STYLE=light
 export FILTER_BRANCH_SQUELCH_WARNING=1
 export PIP_INDEX_URL=
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export HOMEBREW_NO_ENV_HINTS=1
 
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=$HOME/.config
