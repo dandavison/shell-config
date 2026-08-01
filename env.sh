@@ -4,6 +4,7 @@ export WORDCHARS="${WORDCHARS/\//}"
 
 export EDITOR=micro # 'editor --wait'
 export GIT_EDITOR=micro # 'editor --wait'
+export GIT_SEQUENCE_EDITOR='gitu sequence-editor'
 export OPEN_IN_EDITOR=~/bin/editor
 export RGI_EDITOR=micro
 export FSI_ACTION=micro
