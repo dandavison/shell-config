@@ -10,14 +10,14 @@ export FSI_ACTION=micro
 
 export WORMHOLE_EDITOR=micro
 export WORMHOLE_SEARCH_PATHS=~/src/temporalio:~/src:~/src/devenv
-WORMHOLE_DEFAULT_PROJECT=temporal
+export WORMHOLE_DEFAULT_PROJECT=temporal
 if [[ -f "${WORMHOLE_PROJECT_DIR:-}/go.mod" ]]; then
   export RIPGREP_CONFIG_PATH=~/src/devenv/dotfiles/rg/go--real-code.config
 fi
 export PS_LINK_FORMAT=wormhole
 export HOMEBREW_NO_AUTO_UPDATE=1
-export LESS='-FIRX'
-export DELTA_PAGER='less -FR -j.3 -g'
+export LESS='-IR'
+export DELTA_PAGER='less -R -j.3 -g'
 export OSC1717=V1
 export LLM='claude --print'
 # Consumed by the external `hyperlinked` lib, which builds `<scheme>://file/...`
