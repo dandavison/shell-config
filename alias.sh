@@ -294,6 +294,7 @@ alias v='vui'
 alias vscode-list-contexts='(cd ~/tmp/3p/vscode && rg --color=always RawContextKey)'
 alias wf='which-follow'
 alias w=wormhole
+alias wo='wormhole open'
 alias wpc='wormhole project close'
 alias ws='f-word-from-stdin'
 alias xhyve-nsenter='docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i'
