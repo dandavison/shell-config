@@ -26,3 +26,10 @@ bindkey '\ee' edit-command-line-in-shell-mode
 bindkey '^w' kill-region
 bindkey '^x^r' replace-string
 bindkey '^z' undo
+
+# Alacritty sends ESC ; <byte> for its Cmd-<key> bindings, which only the micro
+# editor understands (see dotfiles/alacritty/alacritty.toml). ESC-; is otherwise
+# unbound, so swallow the trailing byte rather than let ZLE insert it.
+discard-alacritty-cmd-key() { read -k 1 -s }
+zle -N discard-alacritty-cmd-key
+bindkey '\e;' discard-alacritty-cmd-key
