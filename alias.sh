@@ -244,6 +244,7 @@ alias pdflatex='pdflatex -shell-escape -interaction nonstopmode -output-director
 alias pr='gh pr checkout'
 alias prch='gh pr checkout'
 alias preview='open -a /Applications/Preview.app'
+alias prv='gh pr view --web'
 alias ps-me='ps -u `whoami`'
 alias ps-parent='ps -o command= -p $(ps -o ppid= -p $$)'
 alias ps1='ps -Af f'

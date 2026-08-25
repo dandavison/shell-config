@@ -20,12 +20,8 @@ git() {
     fi
 }
 
-# gh infers the head branch from the local branch name, which is wrong whenever the
-# remote-side name differs (see `git publish`). Name it explicitly instead.
+# Unlike the rest of `gh pr`, create ignores branch.<name>.merge and infers the head from
+# the local branch name, which is wrong whenever the remote-side name differs. See `git publish`.
 prc() {
     gh pr create --web --head "$(git pr-branch)" "$@"
-}
-
-prv() {
-    gh pr view --web "$(git pr-branch)" "$@"
 }
