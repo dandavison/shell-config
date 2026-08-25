@@ -19,3 +19,13 @@ git() {
         command git "$@"
     fi
 }
+
+# gh infers the head branch from the local branch name, which is wrong whenever the
+# remote-side name differs (see `git publish`). Name it explicitly instead.
+prc() {
+    gh pr create --web --head "$(git pr-branch)" "$@"
+}
+
+prv() {
+    gh pr view --web "$(git pr-branch)" "$@"
+}
