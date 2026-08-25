@@ -28,6 +28,7 @@ export OSC1717=V1
 export PIP_INDEX_URL=
 export PS_LINK_FORMAT=wormhole
 export RGI_EDITOR=micro
+export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config
 export WORDCHARS="${WORDCHARS/\//}"
 export WORMHOLE_DEFAULT_PROJECT=temporal
 export WORMHOLE_EDITOR=micro
@@ -50,10 +51,6 @@ export FZF_DEFAULT_OPTS="\
 --layout reverse
 --prompt ' '
 "
-
-if [[ -f "${WORMHOLE_PROJECT_DIR:-}/go.mod" ]]; then
-  export RIPGREP_CONFIG_PATH=~/src/devenv/dotfiles/rg/go--real-code.config
-fi
 
 _ls_colors=$ZSH_STARTUP_CACHE/ls_colors
 [[ -s $_ls_colors ]] || { mkdir -p $ZSH_STARTUP_CACHE; /opt/homebrew/bin/vivid generate one-light >| $_ls_colors }
