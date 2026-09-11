@@ -40,7 +40,7 @@ alias -g ggot="':(exclude)*pb.go' ':(exclude)*gen.go' ':(exclude)*mock.go' ':(ex
 alias -g rgo="-g '*.go' -g '\!*pb.go' -g '\!*test.go' -g '\!*mock.go'"
 alias -g gpy="':(exclude)*_pb2_*' ':(exclude)*_pb2.*' ':(exclude)*_generated*'"
 alias -g snap='$(git-snapshot)'
-alias _gl='git log --date relative --color=always --format="%n%n▸ %h %C(blue)%an %C(blue)%ar%C(auto)%d%C(reset)%n%n    %C(green)%s%C(auto)"'
+alias _gl='git log -n 32 --date relative --color=always --format="%n%n▸ %h %C(blue)%an %C(blue)%ar%C(auto)%d%C(reset)%n%n    %C(green)%s%C(auto)"'
 alias ..='cd ..'
 alias ansifilter="perl -pe 's/\e\[[0-9;]*[mK]//g'"
 alias bat='bat --style header,grid --theme GitHub'
@@ -197,7 +197,7 @@ alias grvh='git revert --no-edit HEAD'
 alias grvs='git show | git apply -R -'
 alias gs='git show'
 alias gss='gs --stat=256,256'
-alias gst='git status'
+alias gst='gitu'
 alias gsta='git stash apply'
 alias gstd='git stash drop'
 alias gstk='git stash save --keep-index'
