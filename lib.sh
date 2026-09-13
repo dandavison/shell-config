@@ -13,7 +13,7 @@ delta-toggle() {
 # Wide diff context interactively (where delta pages), default context when piped.
 # `-t 1` is the same signal git uses to decide whether to invoke the pager.
 git() {
-    if [[ -t 1 ]]; then
+    if [[ -t 1 ]] && [[ ! "$*" =~ (^|[[:space:]])(-U[0-9]*|--unified(=[0-9]*)?)([[:space:]]|$) ]]; then
         GIT_DIFF_OPTS=--unified=77 command git "$@"
     else
         command git "$@"
