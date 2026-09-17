@@ -15,13 +15,13 @@ load-completions() {
     }
 
     _cached temporal  temporal completion zsh
-    _cached wormhole  env COMPLETE=zsh wormhole
+    # Not `COMPLETE=zsh wormhole`: that omits wormhole's own zsh additions.
+    _cached wormhole  wormhole completion zsh
     _cached should    env _SHOULD_COMPLETE=source_zsh should
     _cached delta     delta --generate-completion zsh
     # _cached uv        uv generate-shell-completion zsh
     # _cached neomorphus env _NEOMORPHUS_COMPLETE=zsh_source neomorphus
     # compdef neo=neomorphus
-    compdef _clap_dynamic_completer_wormhole w
 }
 # Defer past the first prompt so the shell is interactive immediately.
 zsh-defer load-completions
