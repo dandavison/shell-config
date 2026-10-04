@@ -24,7 +24,6 @@ export LLM='claude --print'
 export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export OPEN_IN_EDITOR=~/bin/editor
-export OSC1717=V1
 export PIP_INDEX_URL=
 export PS_LINK_FORMAT=wormhole
 export RGI_EDITOR=micro
