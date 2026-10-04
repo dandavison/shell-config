@@ -42,6 +42,7 @@ alias -g gpy="':(exclude)*_pb2_*' ':(exclude)*_pb2.*' ':(exclude)*_generated*'"
 alias -g snap='$(git-snapshot)'
 alias _gl='git log -n 32 --date relative --color=always --format="%n%n▸ %h %C(blue)%an %C(blue)%ar%C(auto)%d%C(reset)%n%n    %C(green)%s%C(auto)"'
 alias ..='cd ..'
+alias ai-local-model-serve='mlx-serve'
 alias ansifilter="perl -pe 's/\e\[[0-9;]*[mK]//g'"
 alias as='agent-sessions'
 alias bat='bat --style header,grid --theme GitHub'
